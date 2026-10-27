@@ -167,7 +167,7 @@ def main():
     parser.add_argument("--model", default="dbmdz/bert-base-turkish-cased")
     parser.add_argument("--crf", action="store_true")
     parser.add_argument("--seed", type=int, default=13)
-    parser.add_argument("--epochs", type=int, default=8)
+    parser.add_argument("--epochs", type=int, default=5)
     parser.add_argument("--save", action="store_true")
     args = parser.parse_args()
     tag = f"{args.model.split('/')[-1]}{'_crf' if args.crf else ''}_seed{args.seed}"

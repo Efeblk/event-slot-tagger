@@ -1,0 +1,6 @@
+# GPU part: train_bert.py. Install the CUDA build of torch first:
+#   python -m pip install --index-url https://download.pytorch.org/whl/cu128 torch==2.11.0
+# then:
+#   python -m pip install -r requirements-gpu.txt
+torch==2.11.0
+transformers==5.19.0

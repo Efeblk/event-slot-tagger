@@ -1,0 +1,194 @@
+{
+  "model": "dbmdz/bert-base-turkish-cased",
+  "crf": true,
+  "seed": 42,
+  "epochs": 5,
+  "lr": 3e-05,
+  "batch": 16,
+  "train_seconds": 53.77158130000316,
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 5.779285602974442,
+      "dev_f1": 0.964800923254472
+    },
+    {
+      "epoch": 2,
+      "loss": 0.3754537122429542,
+      "dev_f1": 0.9825581395348837
+    },
+    {
+      "epoch": 3,
+      "loss": 0.11363080435625787,
+      "dev_f1": 0.9836829836829837
+    },
+    {
+      "epoch": 4,
+      "loss": 0.06161928759725272,
+      "dev_f1": 0.9871645274212368
+    },
+    {
+      "epoch": 5,
+      "loss": 0.02416174550829587,
+      "dev_f1": 0.9848484848484849
+    }
+  ],
+  "best_epoch": 4,
+  "decoders": {
+    "crf": {
+      "dev": {
+        "precision": 0.9871645274212368,
+        "recall": 0.9871645274212368,
+        "f1": 0.9871645274212368,
+        "macro_f1": 0.9898566670432271,
+        "token_accuracy": 0.9896324222431668,
+        "request_exact": 0.956081081081081,
+        "labels": {
+          "PLACE": {
+            "precision": 0.9953488372093023,
+            "recall": 0.9953488372093023,
+            "f1": 0.9953488372093023,
+            "support": 215
+          },
+          "DATE": {
+            "precision": 0.9625,
+            "recall": 0.9625,
+            "f1": 0.9625,
+            "support": 160
+          },
+          "TYPE": {
+            "precision": 0.984375,
+            "recall": 0.984375,
+            "f1": 0.984375,
+            "support": 192
+          },
+          "NAME": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 52
+          },
+          "PRICE": {
+            "precision": 1.0,
+            "recall": 0.9878048780487805,
+            "f1": 0.9938650306748467,
+            "support": 82
+          },
+          "PEOPLE": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 86
+          },
+          "EXCLUDE": {
+            "precision": 0.9859154929577465,
+            "recall": 1.0,
+            "f1": 0.9929078014184397,
+            "support": 70
+          }
+        },
+        "ms_per_request": 1.0521932432508234
+      },
+      "codex_test": {
+        "precision": 0.9358333333333333,
+        "recall": 0.9397489539748954,
+        "f1": 0.9377870563674322,
+        "macro_f1": 0.9237160660966575,
+        "token_accuracy": 0.9611546685673557,
+        "request_exact": 0.7859531772575251,
+        "labels": {
+          "PLACE": {
+            "precision": 0.9663299663299664,
+            "recall": 0.9795221843003413,
+            "f1": 0.9728813559322034,
+            "support": 293
+          },
+          "DATE": {
+            "precision": 0.9963369963369964,
+            "recall": 0.9927007299270073,
+            "f1": 0.9945155393053017,
+            "support": 274
+          },
+          "TYPE": {
+            "precision": 0.8549019607843137,
+            "recall": 0.9083333333333333,
+            "f1": 0.8808080808080808,
+            "support": 240
+          },
+          "NAME": {
+            "precision": 0.890625,
+            "recall": 0.8260869565217391,
+            "f1": 0.8571428571428571,
+            "support": 69
+          },
+          "PRICE": {
+            "precision": 0.9891304347826086,
+            "recall": 0.9578947368421052,
+            "f1": 0.9732620320855615,
+            "support": 95
+          },
+          "PEOPLE": {
+            "precision": 0.9111111111111111,
+            "recall": 0.8785714285714286,
+            "f1": 0.8945454545454545,
+            "support": 140
+          },
+          "EXCLUDE": {
+            "precision": 0.8928571428571429,
+            "recall": 0.8928571428571429,
+            "f1": 0.8928571428571429,
+            "support": 84
+          }
+        },
+        "ms_per_request": 1.1111658862875666
+      },
+      "biplan_test": {
+        "precision": 0.9473684210526315,
+        "recall": 0.9642857142857143,
+        "f1": 0.9557522123893806,
+        "macro_f1": 0.9151960784313725,
+        "token_accuracy": 0.9463087248322147,
+        "request_exact": 0.84,
+        "labels": {
+          "PLACE": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 8
+          },
+          "DATE": {
+            "precision": 1.0,
+            "recall": 0.8888888888888888,
+            "f1": 0.9411764705882353,
+            "support": 9
+          },
+          "TYPE": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 23
+          },
+          "PRICE": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 8
+          },
+          "PEOPLE": {
+            "precision": 0.8,
+            "recall": 0.8,
+            "f1": 0.8,
+            "support": 5
+          },
+          "EXCLUDE": {
+            "precision": 0.6,
+            "recall": 1.0,
+            "f1": 0.75,
+            "support": 3
+          }
+        },
+        "ms_per_request": 1.2151120000635274
+      }
+    }
+  }
+}

@@ -1,0 +1,905 @@
+[
+ {
+  "text": "Mersin'de yarın çocuklarla gidilecek bir şey var mı, çok pahalı olmasın",
+  "gold": [
+   "PLACE: Mersin'de",
+   "DATE: yarın",
+   "PEOPLE: çocuklarla",
+   "PRICE: çok pahalı olmasın"
+  ],
+  "predicted": [
+   "PLACE: Mersin'de",
+   "DATE: yarın",
+   "PEOPLE: çocuklarla"
+  ]
+ },
+ {
+  "text": "yarın akşam Kızılay'da tiyatro olsun, müzikali geç",
+  "gold": [
+   "DATE: yarın akşam",
+   "PLACE: Kızılay'da",
+   "TYPE: tiyatro",
+   "EXCLUDE: müzikali"
+  ],
+  "predicted": [
+   "DATE: yarın akşam",
+   "PLACE: Kızılay'da",
+   "TYPE: tiyatro",
+   "TYPE: müzikali"
+  ]
+ },
+ {
+  "text": "12 yaşındaki kızımla Ankara'da pazar günü çocuk müzikali görmek istiyoruz",
+  "gold": [
+   "PEOPLE: 12 yaşındaki kızımla",
+   "PLACE: Ankara'da",
+   "DATE: pazar günü",
+   "TYPE: çocuk müzikali"
+  ],
+  "predicted": [
+   "PEOPLE: kızımla",
+   "PLACE: Ankara'da",
+   "DATE: pazar günü",
+   "TYPE: çocuk müzikali"
+  ]
+ },
+ {
+  "text": "bu akşam Moda Sahnesi'nde Bir Delinin Hatıra Defteri'ni görmek isterim",
+  "gold": [
+   "DATE: bu akşam",
+   "PLACE: Moda Sahnesi'nde",
+   "NAME: Bir Delinin Hatıra Defteri'ni"
+  ],
+  "predicted": [
+   "DATE: bu akşam",
+   "PLACE: Moda Sahnesi'nde",
+   "NAME: Hatıra Defteri'ni"
+  ]
+ },
+ {
+  "text": "annem babam ve ben için Antalya'da pazar sergisi bakar mısın",
+  "gold": [
+   "PEOPLE: annem babam ve ben",
+   "PLACE: Antalya'da",
+   "DATE: pazar",
+   "TYPE: sergisi"
+  ],
+  "predicted": [
+   "PEOPLE: annem babam",
+   "PLACE: Antalya'da",
+   "DATE: pazar",
+   "TYPE: sergisi"
+  ]
+ },
+ {
+  "text": "Karşıyaka'da bugün Altay maçı var mı, Göztepe maçına gitmek istemiyorum",
+  "gold": [
+   "PLACE: Karşıyaka'da",
+   "DATE: bugün",
+   "NAME: Altay",
+   "TYPE: maçı",
+   "EXCLUDE: Göztepe maçına"
+  ],
+  "predicted": [
+   "PLACE: Karşıyaka'da",
+   "DATE: bugün",
+   "NAME: Altay",
+   "TYPE: maçı",
+   "EXCLUDE: Göztepe",
+   "TYPE: maçına"
+  ]
+ },
+ {
+  "text": "Sakarya'da cuma günü Sakaryaspor maçı için iki bilet lazım",
+  "gold": [
+   "PLACE: Sakarya'da",
+   "DATE: cuma günü",
+   "NAME: Sakaryaspor",
+   "TYPE: maçı",
+   "PEOPLE: iki bilet"
+  ],
+  "predicted": [
+   "PLACE: Sakarya'da",
+   "DATE: cuma günü",
+   "NAME: Sakaryaspor",
+   "TYPE: maçı"
+  ]
+ },
+ {
+  "text": "sevgilimle tekirdağ merkezde yarın akşam güzel bi konser bulsana",
+  "gold": [
+   "PEOPLE: sevgilimle",
+   "PLACE: tekirdağ merkezde",
+   "DATE: yarın akşam",
+   "TYPE: konser"
+  ],
+  "predicted": [
+   "PEOPLE: sevgilimle",
+   "PLACE: tekirdağ",
+   "DATE: yarın akşam",
+   "TYPE: konser"
+  ]
+ },
+ {
+  "text": "önümüzdeki cumartesi Eskişehir'de Anadolu Üniversitesi bahar şenliği var mı",
+  "gold": [
+   "DATE: önümüzdeki cumartesi",
+   "PLACE: Eskişehir'de",
+   "NAME: Anadolu Üniversitesi bahar şenliği"
+  ],
+  "predicted": [
+   "DATE: önümüzdeki cumartesi",
+   "PLACE: Eskişehir'de",
+   "NAME: Anadolu Üniversitesi",
+   "TYPE: bahar şenliği"
+  ]
+ },
+ {
+  "text": "Antalya'da stand-up dışında komik bir etkinlik öner, arkadaşım da gelecek",
+  "gold": [
+   "PLACE: Antalya'da",
+   "EXCLUDE: stand-up",
+   "PEOPLE: arkadaşım"
+  ],
+  "predicted": [
+   "PLACE: Antalya'da",
+   "EXCLUDE: stand-up"
+  ]
+ },
+ {
+  "text": "bu gece Ankara'da 21.30 seansına uygun korku filmi istiyorum",
+  "gold": [
+   "DATE: bu gece",
+   "PLACE: Ankara'da",
+   "DATE: 21.30 seansına",
+   "TYPE: korku filmi"
+  ],
+  "predicted": [
+   "DATE: bu gece",
+   "PLACE: Ankara'da",
+   "DATE: 21.30",
+   "TYPE: korku filmi"
+  ]
+ },
+ {
+  "text": "Duman'ı canlı dinlemek için bu cuma Ankara'da mekan bakıyorum",
+  "gold": [
+   "NAME: Duman'ı",
+   "DATE: bu cuma",
+   "PLACE: Ankara'da"
+  ],
+  "predicted": [
+   "NAME: Duman'ı",
+   "TYPE: canlı",
+   "DATE: bu cuma",
+   "PLACE: Ankara'da"
+  ]
+ },
+ {
+  "text": "Nevşehir'de Kapadokya balon festivali hangi tarihte düzenleniyor",
+  "gold": [
+   "PLACE: Nevşehir'de",
+   "NAME: Kapadokya balon festivali"
+  ],
+  "predicted": [
+   "PLACE: Nevşehir'de",
+   "PLACE: Kapadokya",
+   "TYPE: balon festivali"
+  ]
+ },
+ {
+  "text": "Ekim sonunda İstanbul'da 6 kişilik grup için caz festivali öner",
+  "gold": [
+   "DATE: Ekim sonunda",
+   "PLACE: İstanbul'da",
+   "PEOPLE: 6 kişilik grup",
+   "TYPE: caz festivali"
+  ],
+  "predicted": [
+   "DATE: Ekim sonunda",
+   "PLACE: İstanbul'da",
+   "PEOPLE: 6 kişilik",
+   "TYPE: caz festivali"
+  ]
+ },
+ {
+  "text": "Giresun'da gelecek cuma amatör tiyatro oyunu var mı?",
+  "gold": [
+   "PLACE: Giresun'da",
+   "DATE: gelecek cuma",
+   "TYPE: amatör tiyatro oyunu"
+  ],
+  "predicted": [
+   "PLACE: Giresun'da",
+   "DATE: gelecek cuma",
+   "TYPE: amatör",
+   "TYPE: tiyatro oyunu"
+  ]
+ },
+ {
+  "text": "besiktas maci olmasin ya bu gece avrupa yakasinda",
+  "gold": [
+   "EXCLUDE: besiktas maci",
+   "DATE: bu gece",
+   "PLACE: avrupa yakasinda"
+  ],
+  "predicted": [
+   "EXCLUDE: besiktas",
+   "EXCLUDE: maci",
+   "DATE: bu gece",
+   "PLACE: avrupa yakasinda"
+  ]
+ },
+ {
+  "text": "yarin 19.30dan sonra izmir arena'da manga konseri 3 kisiyiz",
+  "gold": [
+   "DATE: yarin 19.30dan sonra",
+   "PLACE: izmir arena'da",
+   "NAME: manga",
+   "TYPE: konseri",
+   "PEOPLE: 3 kisiyiz"
+  ],
+  "predicted": [
+   "DATE: yarin 19.30dan sonra",
+   "PLACE: izmir arena'da",
+   "TYPE: manga konseri",
+   "PEOPLE: 3 kisiyiz"
+  ]
+ },
+ {
+  "text": "antalya merkezde stand-up istemiyom ama caz konseri olur",
+  "gold": [
+   "PLACE: antalya merkezde",
+   "EXCLUDE: stand-up",
+   "TYPE: caz konseri"
+  ],
+  "predicted": [
+   "PLACE: antalya",
+   "EXCLUDE: stand-up",
+   "TYPE: caz konseri"
+  ]
+ },
+ {
+  "text": "zorlu psm'de onumuzdeki cuma aksamı hamlet oyunu sevgilimle",
+  "gold": [
+   "PLACE: zorlu psm'de",
+   "DATE: onumuzdeki cuma aksamı",
+   "NAME: hamlet",
+   "TYPE: oyunu",
+   "PEOPLE: sevgilimle"
+  ],
+  "predicted": [
+   "PLACE: zorlu psm'de",
+   "DATE: onumuzdeki cuma aksamı",
+   "TYPE: hamlet oyunu",
+   "PEOPLE: sevgilimle"
+  ]
+ },
+ {
+  "text": "sadece dolmabahce civari olsun fener maci haric",
+  "gold": [
+   "PLACE: dolmabahce",
+   "EXCLUDE: fener maci"
+  ],
+  "predicted": [
+   "PLACE: dolmabahce",
+   "EXCLUDE: fener",
+   "EXCLUDE: maci"
+  ]
+ },
+ {
+  "text": "canakkalede troya festivali'ne bilet bakiyorum annemle",
+  "gold": [
+   "PLACE: canakkalede",
+   "NAME: troya festivali'ne",
+   "PEOPLE: annemle"
+  ],
+  "predicted": [
+   "PLACE: canakkalede",
+   "NAME: troya",
+   "TYPE: festivali'ne",
+   "PEOPLE: annemle"
+  ]
+ },
+ {
+  "text": "boluda bu gece karaoke gibi bi etkinlik istemiyom",
+  "gold": [
+   "PLACE: boluda",
+   "DATE: bu gece",
+   "EXCLUDE: karaoke"
+  ],
+  "predicted": [
+   "PLACE: boluda",
+   "DATE: bu gece",
+   "TYPE: karaoke"
+  ]
+ },
+ {
+  "text": "bostancida bu aksam duman konseri olmasin",
+  "gold": [
+   "PLACE: bostancida",
+   "DATE: bu aksam",
+   "EXCLUDE: duman konseri"
+  ],
+  "predicted": [
+   "PLACE: bostancida",
+   "DATE: bu aksam",
+   "EXCLUDE: duman",
+   "EXCLUDE: konseri"
+  ]
+ },
+ {
+  "text": "ankara cer modern'de 8 martta hamlet oyunu annemle",
+  "gold": [
+   "PLACE: ankara cer modern'de",
+   "DATE: 8 martta",
+   "NAME: hamlet",
+   "TYPE: oyunu",
+   "PEOPLE: annemle"
+  ],
+  "predicted": [
+   "PLACE: ankara cer modern'de",
+   "DATE: 8 martta",
+   "TYPE: hamlet oyunu",
+   "PEOPLE: annemle"
+  ]
+ },
+ {
+  "text": "marasda cuma aksamı gunes konseri kisi basi 600 tl gecmesin",
+  "gold": [
+   "PLACE: marasda",
+   "DATE: cuma aksamı",
+   "NAME: gunes",
+   "TYPE: konseri",
+   "PRICE: kisi basi 600 tl gecmesin"
+  ],
+  "predicted": [
+   "PLACE: marasda",
+   "DATE: cuma aksamı",
+   "TYPE: gunes konseri",
+   "PRICE: kisi basi 600 tl gecmesin"
+  ]
+ },
+ {
+  "text": "eskisehirde 22.00'de baslayan mor ve otesi konseri",
+  "gold": [
+   "PLACE: eskisehirde",
+   "DATE: 22.00'de",
+   "NAME: mor ve otesi",
+   "TYPE: konseri"
+  ],
+  "predicted": [
+   "PLACE: eskisehirde",
+   "DATE: 22.00'de",
+   "NAME: mor",
+   "TYPE: konseri"
+  ]
+ },
+ {
+  "text": "antalya konyaalti'nda 4 ekimde hadise konseri arkadaslarimla",
+  "gold": [
+   "PLACE: antalya konyaalti'nda",
+   "DATE: 4 ekimde",
+   "NAME: hadise",
+   "TYPE: konseri",
+   "PEOPLE: arkadaslarimla"
+  ],
+  "predicted": [
+   "PLACE: antalya konyaalti'nda",
+   "DATE: 4 ekimde",
+   "TYPE: hadise konseri",
+   "PEOPLE: arkadaslarimla"
+  ]
+ },
+ {
+  "text": "giresunda hafta sonu cocuk tiyatrosu annemle babamla",
+  "gold": [
+   "PLACE: giresunda",
+   "DATE: hafta sonu",
+   "TYPE: cocuk tiyatrosu",
+   "PEOPLE: annemle",
+   "PEOPLE: babamla"
+  ],
+  "predicted": [
+   "PLACE: giresunda",
+   "DATE: hafta sonu",
+   "TYPE: cocuk tiyatrosu",
+   "PEOPLE: annemle babamla"
+  ]
+ },
+ {
+  "text": "mersin'de 9 eylulde manga konseri 1000 tl'yi gecmesin",
+  "gold": [
+   "PLACE: mersin'de",
+   "DATE: 9 eylulde",
+   "NAME: manga",
+   "TYPE: konseri",
+   "PRICE: 1000 tl'yi gecmesin"
+  ],
+  "predicted": [
+   "PLACE: mersin'de",
+   "DATE: 9 eylulde",
+   "TYPE: manga konseri",
+   "PRICE: 1000 tl'yi gecmesin"
+  ]
+ },
+ {
+  "text": "samsunda bu aksam duman konserini es gec baska",
+  "gold": [
+   "PLACE: samsunda",
+   "DATE: bu aksam",
+   "EXCLUDE: duman konserini"
+  ],
+  "predicted": [
+   "PLACE: samsunda",
+   "DATE: bu aksam",
+   "NAME: duman",
+   "TYPE: konserini"
+  ]
+ },
+ {
+  "text": "mugla bodrum'da 3 agustosta sertab erener konseri ucretsiz mi",
+  "gold": [
+   "PLACE: mugla bodrum'da",
+   "DATE: 3 agustosta",
+   "NAME: sertab erener",
+   "TYPE: konseri",
+   "PRICE: ucretsiz"
+  ],
+  "predicted": [
+   "PLACE: mugla",
+   "PLACE: bodrum'da",
+   "DATE: 3 agustosta",
+   "NAME: sertab erener",
+   "TYPE: konseri",
+   "PRICE: ucretsiz"
+  ]
+ },
+ {
+  "text": "manisada 17 mayista mor ve otesi konseri 2 kisi",
+  "gold": [
+   "PLACE: manisada",
+   "DATE: 17 mayista",
+   "NAME: mor ve otesi",
+   "TYPE: konseri",
+   "PEOPLE: 2 kisi"
+  ],
+  "predicted": [
+   "PLACE: manisada",
+   "DATE: 17 mayista",
+   "TYPE: mor",
+   "TYPE: konseri",
+   "PEOPLE: 2 kisi"
+  ]
+ },
+ {
+  "text": "istanbul'da 29 ekimde zorlu psm'de hamlet oyunu annemle",
+  "gold": [
+   "PLACE: istanbul'da",
+   "DATE: 29 ekimde",
+   "PLACE: zorlu psm'de",
+   "NAME: hamlet",
+   "TYPE: oyunu",
+   "PEOPLE: annemle"
+  ],
+  "predicted": [
+   "PLACE: istanbul'da",
+   "DATE: 29 ekimde",
+   "PLACE: zorlu psm'de",
+   "TYPE: hamlet oyunu",
+   "PEOPLE: annemle"
+  ]
+ },
+ {
+  "text": "ankara'da cuma 1500 tl'yi gecmesin hadise konseri annemle",
+  "gold": [
+   "PLACE: ankara'da",
+   "DATE: cuma",
+   "PRICE: 1500 tl'yi gecmesin",
+   "NAME: hadise",
+   "TYPE: konseri",
+   "PEOPLE: annemle"
+  ],
+  "predicted": [
+   "PLACE: ankara'da",
+   "DATE: cuma",
+   "PRICE: 1500 tl'yi gecmesin",
+   "TYPE: konseri",
+   "PEOPLE: annemle"
+  ]
+ },
+ {
+  "text": "Trabzon'da bu pazar Trabzonspor maçı için iki bilet, 900 TL'yi geçmesin",
+  "gold": [
+   "PLACE: Trabzon'da",
+   "DATE: bu pazar",
+   "NAME: Trabzonspor",
+   "TYPE: maçı",
+   "PEOPLE: iki bilet",
+   "PRICE: 900 TL'yi geçmesin"
+  ],
+  "predicted": [
+   "PLACE: Trabzon'da",
+   "DATE: bu pazar",
+   "NAME: Trabzonspor",
+   "TYPE: maçı",
+   "PRICE: 900 TL'yi geçmesin"
+  ]
+ },
+ {
+  "text": "adana'da cumartesi ücretsiz çocuk etkinliği var mı, kızı da getircem",
+  "gold": [
+   "PLACE: adana'da",
+   "DATE: cumartesi",
+   "PRICE: ücretsiz",
+   "TYPE: çocuk etkinliği",
+   "PEOPLE: kızı"
+  ],
+  "predicted": [
+   "PLACE: adana'da",
+   "DATE: cumartesi",
+   "PRICE: ücretsiz",
+   "TYPE: çocuk etkinliği"
+  ]
+ },
+ {
+  "text": "izmirde bu akşam 250 TL altı caz konseri ve 2 bilet lazım",
+  "gold": [
+   "PLACE: izmirde",
+   "DATE: bu akşam",
+   "PRICE: 250 TL altı",
+   "TYPE: caz konseri",
+   "PEOPLE: 2 bilet"
+  ],
+  "predicted": [
+   "PLACE: izmirde",
+   "DATE: bu akşam",
+   "PRICE: 250 TL altı",
+   "TYPE: caz konseri"
+  ]
+ },
+ {
+  "text": "bursa merkezde 8 kasim cocuk tiyatrosu, 2 yetiskin 1 cocuk, kisi basi 300 tl gecmesin",
+  "gold": [
+   "PLACE: bursa merkezde",
+   "DATE: 8 kasim",
+   "TYPE: cocuk tiyatrosu",
+   "PEOPLE: 2 yetiskin 1 cocuk",
+   "PRICE: kisi basi 300 tl gecmesin"
+  ],
+  "predicted": [
+   "PLACE: bursa merkezde",
+   "DATE: 8 kasim",
+   "TYPE: cocuk tiyatrosu",
+   "PEOPLE: 2",
+   "PEOPLE: 1 cocuk",
+   "PRICE: kisi basi 300 tl gecmesin"
+  ]
+ },
+ {
+  "text": "antalyada hafta sonu çocuk oyunu arıyorum, korku filmi hariç, 700 tl civarı",
+  "gold": [
+   "PLACE: antalyada",
+   "DATE: hafta sonu",
+   "TYPE: çocuk oyunu",
+   "EXCLUDE: korku filmi",
+   "PRICE: 700 tl civarı"
+  ],
+  "predicted": [
+   "PLACE: antalyada",
+   "DATE: hafta sonu",
+   "TYPE: çocuk oyunu",
+   "EXCLUDE: korku filmi",
+   "PRICE: 700 tl"
+  ]
+ },
+ {
+  "text": "eskişehirde yarın akşam canlı caz, pop olmasın, 400 lirayı aşmasın",
+  "gold": [
+   "PLACE: eskişehirde",
+   "DATE: yarın akşam",
+   "TYPE: canlı caz",
+   "EXCLUDE: pop",
+   "PRICE: 400 lirayı aşmasın"
+  ],
+  "predicted": [
+   "PLACE: eskişehirde",
+   "DATE: yarın akşam",
+   "TYPE: canlı",
+   "TYPE: caz",
+   "EXCLUDE: pop",
+   "PRICE: 400 lirayı aşmasın"
+  ]
+ },
+ {
+  "text": "Çanakkale'de Troya Festivali'ne yarın akşam gideceğiz, 4 kişilik grup",
+  "gold": [
+   "PLACE: Çanakkale'de",
+   "NAME: Troya Festivali'ne",
+   "DATE: yarın akşam",
+   "PEOPLE: 4 kişilik grup"
+  ],
+  "predicted": [
+   "PLACE: Çanakkale'de",
+   "NAME: Troya Festivali'ne",
+   "DATE: yarın akşam",
+   "PEOPLE: 4 kişilik"
+  ]
+ },
+ {
+  "text": "Hatay'da bu hafta sonu Antakya Medeniyetler Korosu konseri ve uygun bilet arıyorum",
+  "gold": [
+   "PLACE: Hatay'da",
+   "DATE: bu hafta sonu",
+   "NAME: Antakya Medeniyetler Korosu",
+   "TYPE: konseri",
+   "PRICE: uygun"
+  ],
+  "predicted": [
+   "PLACE: Hatay'da",
+   "DATE: bu hafta sonu",
+   "NAME: Antakya",
+   "NAME: Medeniyetler Korosu",
+   "TYPE: konseri"
+  ]
+ },
+ {
+  "text": "Isparta'da 10 Eylül günü Süleyman Demirel Üniversitesi bahar şenliği gibi konser var mı, 1000 TL altı",
+  "gold": [
+   "PLACE: Isparta'da",
+   "DATE: 10 Eylül günü",
+   "NAME: Süleyman Demirel Üniversitesi bahar şenliği",
+   "TYPE: konser",
+   "PRICE: 1000 TL altı"
+  ],
+  "predicted": [
+   "PLACE: Isparta'da",
+   "DATE: 10 Eylül günü",
+   "PLACE: Süleyman Demirel Üniversitesi",
+   "TYPE: bahar şenliği",
+   "TYPE: konser",
+   "PRICE: 1000 TL altı"
+  ]
+ },
+ {
+  "text": "Aydın'da önümüzdeki cumartesi gündüz çocuk tiyatrosu, 3 kişilik aile için 450 TL'yi aşmasın",
+  "gold": [
+   "PLACE: Aydın'da",
+   "DATE: önümüzdeki cumartesi gündüz",
+   "TYPE: çocuk tiyatrosu",
+   "PEOPLE: 3 kişilik aile",
+   "PRICE: 450 TL'yi aşmasın"
+  ],
+  "predicted": [
+   "PLACE: Aydın'da",
+   "DATE: önümüzdeki cumartesi gündüz",
+   "TYPE: çocuk tiyatrosu",
+   "PEOPLE: 3 kişilik",
+   "PRICE: 450 TL'yi aşmasın"
+  ]
+ },
+ {
+  "text": "Kars'ta bu akşam yerel müzik konseri, 250 liradan ucuz olsun",
+  "gold": [
+   "PLACE: Kars'ta",
+   "DATE: bu akşam",
+   "TYPE: yerel müzik konseri",
+   "PRICE: 250 liradan ucuz"
+  ],
+  "predicted": [
+   "PLACE: Kars'ta",
+   "DATE: bu akşam",
+   "TYPE: yerel",
+   "TYPE: müzik konseri",
+   "PRICE: 250 liradan ucuz"
+  ]
+ },
+ {
+  "text": "nevsehirde yarin kapali alanda konser istemem, acik hava olsun",
+  "gold": [
+   "PLACE: nevsehirde",
+   "DATE: yarin",
+   "EXCLUDE: kapali alanda konser",
+   "TYPE: acik hava"
+  ],
+  "predicted": [
+   "PLACE: nevsehirde",
+   "DATE: yarin",
+   "EXCLUDE: kapali alanda",
+   "EXCLUDE: konser",
+   "TYPE: acik hava"
+  ]
+ },
+ {
+  "text": "Van'da bu hafta sonu Van Gölü kıyısında yürüyüş turu, eşim ve iki çocuğumla",
+  "gold": [
+   "PLACE: Van'da",
+   "DATE: bu hafta sonu",
+   "PLACE: Van Gölü kıyısında",
+   "TYPE: yürüyüş turu",
+   "PEOPLE: eşim ve iki çocuğumla"
+  ],
+  "predicted": [
+   "PLACE: Van'da",
+   "DATE: bu hafta sonu",
+   "PLACE: Van Gölü kıyısında",
+   "TYPE: yürüyüş turu",
+   "PEOPLE: eşim",
+   "PEOPLE: iki çocuğumla"
+  ]
+ },
+ {
+  "text": "bursada 15 kasim pazar günü müze gezisi için 4 kişi, öğrenci indirimi olsun",
+  "gold": [
+   "PLACE: bursada",
+   "DATE: 15 kasim pazar günü",
+   "TYPE: müze gezisi",
+   "PEOPLE: 4 kişi",
+   "PRICE: öğrenci indirimi"
+  ],
+  "predicted": [
+   "PLACE: bursada",
+   "DATE: 15 kasim pazar günü",
+   "TYPE: müze gezisi",
+   "PEOPLE: 4 kişi"
+  ]
+ },
+ {
+  "text": "ankara'da 20.00'de başlayan Fenerbahçe maçı için 2 bilet, en fazla 2 bin tl",
+  "gold": [
+   "PLACE: ankara'da",
+   "DATE: 20.00'de",
+   "NAME: Fenerbahçe",
+   "TYPE: maçı",
+   "PEOPLE: 2 bilet",
+   "PRICE: en fazla 2 bin tl"
+  ],
+  "predicted": [
+   "PLACE: ankara'da",
+   "DATE: 20.00'de",
+   "NAME: Fenerbahçe",
+   "TYPE: maçı",
+   "PEOPLE: 2",
+   "PRICE: en fazla 2 bin tl"
+  ]
+ },
+ {
+  "text": "Mardin'de bu cuma akşamı Mezopotamya kültür gecesi, annemle ve 300 TL altı",
+  "gold": [
+   "PLACE: Mardin'de",
+   "DATE: bu cuma akşamı",
+   "NAME: Mezopotamya kültür gecesi",
+   "PEOPLE: annemle",
+   "PRICE: 300 TL altı"
+  ],
+  "predicted": [
+   "PLACE: Mardin'de",
+   "DATE: bu cuma akşamı",
+   "NAME: Mezopotamya",
+   "TYPE: kültür gecesi",
+   "PEOPLE: annemle",
+   "PRICE: 300 TL altı"
+  ]
+ },
+ {
+  "text": "balikesirde hafta sonu sahilde konser olmasin, tiyatro olur",
+  "gold": [
+   "PLACE: balikesirde",
+   "DATE: hafta sonu",
+   "PLACE: sahilde",
+   "EXCLUDE: konser",
+   "TYPE: tiyatro"
+  ],
+  "predicted": [
+   "PLACE: balikesirde",
+   "DATE: hafta sonu",
+   "EXCLUDE: konser",
+   "TYPE: tiyatro"
+  ]
+ },
+ {
+  "text": "Düzce'de 2 Kasım'da Düzce Belediyesi halk dansları gösterisi, 2 kişilik ve ücretsiz",
+  "gold": [
+   "PLACE: Düzce'de",
+   "DATE: 2 Kasım'da",
+   "TYPE: halk dansları gösterisi",
+   "PEOPLE: 2 kişilik",
+   "PRICE: ücretsiz"
+  ],
+  "predicted": [
+   "PLACE: Düzce'de",
+   "DATE: 2 Kasım'da",
+   "PLACE: Düzce Belediyesi",
+   "TYPE: halk dansları gösterisi",
+   "PEOPLE: 2 kişilik",
+   "PRICE: ücretsiz"
+  ]
+ },
+ {
+  "text": "Kırklareli'de yarın akşam geleneksel halk dansları gösterisi, 3 kişi ve 150 TL altı",
+  "gold": [
+   "PLACE: Kırklareli'de",
+   "DATE: yarın akşam",
+   "TYPE: geleneksel halk dansları gösterisi",
+   "PEOPLE: 3 kişi",
+   "PRICE: 150 TL altı"
+  ],
+  "predicted": [
+   "PLACE: Kırklareli'de",
+   "DATE: yarın akşam",
+   "TYPE: halk dansları gösterisi",
+   "PEOPLE: 3 kişi",
+   "PRICE: 150 TL altı"
+  ]
+ },
+ {
+  "text": "bingolde hafta sonu ne yapabiliriz, çocuk da gelecek",
+  "gold": [
+   "PLACE: bingolde",
+   "DATE: hafta sonu",
+   "PEOPLE: çocuk"
+  ],
+  "predicted": [
+   "NAME: bingolde",
+   "DATE: hafta sonu"
+  ]
+ },
+ {
+  "text": "Aksaray'da bu akşam akustik konser, 2 bilet ve 600 TL'den ucuz olsun",
+  "gold": [
+   "PLACE: Aksaray'da",
+   "DATE: bu akşam",
+   "TYPE: akustik konser",
+   "PEOPLE: 2 bilet",
+   "PRICE: 600 TL'den ucuz"
+  ],
+  "predicted": [
+   "PLACE: Aksaray'da",
+   "DATE: bu akşam",
+   "TYPE: akustik konser",
+   "PEOPLE: 2",
+   "PRICE: 600 TL'den ucuz"
+  ]
+ },
+ {
+  "text": "batmanda yarin stand-up disinda bir goster",
+  "gold": [
+   "PLACE: batmanda",
+   "DATE: yarin",
+   "EXCLUDE: stand-up"
+  ],
+  "predicted": [
+   "PLACE: batmanda",
+   "DATE: yarin",
+   "EXCLUDE: stand-up",
+   "TYPE: goster"
+  ]
+ },
+ {
+  "text": "sinopta cuma aksam cocuklar icin tiyatro olsun, kukla olmasin",
+  "gold": [
+   "PLACE: sinopta",
+   "DATE: cuma aksam",
+   "TYPE: cocuklar icin tiyatro",
+   "EXCLUDE: kukla"
+  ],
+  "predicted": [
+   "PLACE: sinopta",
+   "DATE: cuma aksam",
+   "TYPE: tiyatro",
+   "EXCLUDE: kukla"
+  ]
+ },
+ {
+  "text": "igdirda bu gece muzikli bi sey olsun",
+  "gold": [
+   "PLACE: igdirda",
+   "DATE: bu gece"
+  ],
+  "predicted": [
+   "PLACE: igdirda",
+   "DATE: bu gece",
+   "TYPE: muzikli"
+  ]
+ }
+]

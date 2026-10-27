@@ -6,6 +6,8 @@ For each test set (codex_test, biplan_test) and model:
 - slices: requests typed without any Turkish letter vs with them, and PLACE spans written with a suffix;
 - IOB2 breaks: predicted I- tags that do not continue a span of their own label;
 - error types: wrong boundary, wrong label, missed span, invented span.
+Every Codex test request that BERTurk + CRF (lowest seed) gets wrong is listed with its gold and predicted spans in
+results/error_examples.json, for reading the errors by hand.
 Paired bootstrap intervals for the differences in PAIRS (the claims in the README) use the same draws for both models.
 For BERTurk, the run with the lowest seed stands for its group in the
 pairs. Writes results/evaluation.json.
@@ -38,6 +40,10 @@ def load_predictions():
             name, seed = path.stem, None
         models[name][seed] = json.loads(path.read_text(encoding="utf-8"))
     return models
+
+
+def show(tokens, tags):
+    return [f"{label}: {' '.join(tokens[s:e])}" for label, s, e in sorted(spans(tags), key=lambda x: x[1])]
 
 
 def iob2_breaks(pred_list):
@@ -115,6 +121,12 @@ def main():
                 low, high = bootstrap_f1(gold, first[model][t], base_list=first[base][t])
                 out["differences"][f"{model} - {base}"][t] = {"diff": diff, "low": low, "high": high}
 
+    if "berturk_crf" in first:
+        rows = tests["codex_test"]
+        wrong = [{"text": r["text"], "gold": show(r["tokens"], r["tags"]), "predicted": show(r["tokens"], p)}
+                 for r, p in zip(rows, first["berturk_crf"]["codex_test"]) if spans(r["tags"]) != spans(p)]
+        path = ROOT / "results" / "error_examples.json"
+        path.write_text(json.dumps(wrong, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
     (ROOT / "results" / "evaluation.json").write_text(json.dumps(out, indent=2, ensure_ascii=False) + "\n",
                                                       encoding="utf-8")
     print(f"{'model':<22}" + "".join(f"{t:>28}" for t in TESTS) + "   IOB2 breaks")
