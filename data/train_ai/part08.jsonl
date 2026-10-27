@@ -1,0 +1,200 @@
+{"text": "cocugumla hafta sonu gidebilecegimiz bir muze var mi", "spans": [["PEOPLE", "cocugumla"], ["DATE", "hafta sonu"], ["TYPE", "muze"]]}
+{"text": "sevgilimle bu aksam guzel bir sinema var mi", "spans": [["PEOPLE", "sevgilimle"], ["DATE", "bu aksam"], ["TYPE", "sinema"]]}
+{"text": "7 yas ve 4 yasindaki cocuklarla gidebilecegimiz atolye var mi", "spans": [["PEOPLE", "cocuklarla"], ["TYPE", "atolye"]]}
+{"text": "kadikoyde cocuklara uygun ucretsiz bir etkinlik ariyorum", "spans": [["PLACE", "kadikoyde"], ["PRICE", "ucretsiz"]]}
+{"text": "Ankara'da çocuk tiyatrosu var mı bu hafta sonu", "spans": [["PLACE", "Ankara'da"], ["TYPE", "çocuk tiyatrosu"], ["DATE", "bu hafta sonu"]]}
+{"text": "eşimle Karaköy'de bir resim sergisine gitmek istiyoruz", "spans": [["PEOPLE", "eşimle"], ["PLACE", "Karaköy'de"], ["TYPE", "resim sergisine"]]}
+{"text": "arkadaşlarla bu cumartesi müze gezisi yapalım mı", "spans": [["PEOPLE", "arkadaşlarla"], ["DATE", "bu cumartesi"], ["TYPE", "müze gezisi"]]}
+{"text": "izmirde ailecek sinema var mi", "spans": [["PLACE", "izmirde"], ["PEOPLE", "ailecek"], ["TYPE", "sinema"]]}
+{"text": "bu aksam 2 kisi icin sinema ya", "spans": [["DATE", "bu aksam"], ["PEOPLE", "2 kisi"], ["TYPE", "sinema"]]}
+{"text": "naber bi sey yok mu ne yapsam", "spans": []}
+{"text": "cocuklarimla pazar gunu acik hava var mi", "spans": [["PEOPLE", "cocuklarimla"], ["DATE", "pazar gunu"], ["TYPE", "acik hava"]]}
+{"text": "muzeler hafta ici ucretsiz mi ankarada bi muze bulabilir misin", "spans": [["TYPE", "muzeler"], ["DATE", "hafta ici"], ["PRICE", "ucretsiz"], ["PLACE", "ankarada"], ["TYPE", "muze"]]}
+{"text": "Bornova'da sanat atölyesi arıyorum, çocuğumla gideceğim", "spans": [["PLACE", "Bornova'da"], ["TYPE", "sanat atölyesi"], ["PEOPLE", "çocuğumla"]]}
+{"text": "bu akşam tek başıma gidebileceğim bir film gösterimi var mı", "spans": [["DATE", "bu akşam"], ["PEOPLE", "tek başıma"], ["TYPE", "film gösterimi"]]}
+{"text": "kızıma uygun 5 yaş üstü tiyatro oyunu", "spans": [["PEOPLE", "kızıma"], ["TYPE", "tiyatro oyunu"]]}
+{"text": "Nilüfer'de hafta sonu fotoğraf sergisi olur mu", "spans": [["PLACE", "Nilüfer'de"], ["DATE", "hafta sonu"], ["TYPE", "fotoğraf sergisi"]]}
+{"text": "annemle babamla bu pazar müzeye gidelim", "spans": [["PEOPLE", "annemle babamla"], ["DATE", "bu pazar"], ["TYPE", "müzeye"]]}
+{"text": "Antalya'da akşam saat 20.00'den sonra çocuklara uygun bir gösteri var mı", "spans": [["PLACE", "Antalya'da"], ["DATE", "akşam saat 20.00'den sonra"], ["TYPE", "gösteri"]]}
+{"text": "bebekle gidebileceğimiz ücretsiz bir sergi var mı", "spans": [["PEOPLE", "bebekle"], ["PRICE", "ücretsiz"], ["TYPE", "sergi"]]}
+{"text": "kardeşimle sinemaya gitmek istiyorum bu gece", "spans": [["PEOPLE", "kardeşimle"], ["TYPE", "sinemaya"], ["DATE", "bu gece"]]}
+{"text": "Eskişehir'de çocuk atölyesi kaçta başlıyor, saat 14.00 sonrası", "spans": [["PLACE", "Eskişehir'de"], ["TYPE", "çocuk atölyesi"], ["DATE", "saat 14.00 sonrası"]]}
+{"text": "eşimle romantik bir film izlemek istiyoruz, İzmir'de olsun", "spans": [["PEOPLE", "eşimle"], ["TYPE", "film"], ["PLACE", "İzmir'de"]]}
+{"text": "yarın müzeye gidecek miyiz sevgilimle", "spans": [["DATE", "yarın"], ["TYPE", "müzeye"], ["PEOPLE", "sevgilimle"]]}
+{"text": "bi şey yapalım mı, ne var", "spans": []}
+{"text": "Kadıköy'de sanat sergisi açılışı var mı, ücretsiz mi", "spans": [["PLACE", "Kadıköy'de"], ["TYPE", "sanat sergisi"], ["PRICE", "ücretsiz"]]}
+{"text": "çocuklar için bilim müzesi öner bu hafta sonu Bursa'da", "spans": [["TYPE", "bilim müzesi"], ["DATE", "bu hafta sonu"], ["PLACE", "Bursa'da"]]}
+{"text": "bu gece kimse yok ya bi sinema bulsak", "spans": [["DATE", "bu gece"], ["TYPE", "sinema"]]}
+{"text": "Trabzon'da sevgilimle cuma akşamı caz konseri var mı", "spans": [["PLACE", "Trabzon'da"], ["PEOPLE", "sevgilimle"], ["DATE", "cuma akşamı"], ["TYPE", "caz konseri"]]}
+{"text": "kızımla pazar sabahı workshop var mı", "spans": [["PEOPLE", "kızımla"], ["DATE", "pazar sabahı"], ["TYPE", "workshop"]]}
+{"text": "Mersin'de çocuklu aileler için bir seans var mı, 16.00 gibi", "spans": [["PLACE", "Mersin'de"], ["TYPE", "seans"], ["DATE", "16.00 gibi"]]}
+{"text": "hafta sonu bir atölye çalışması, kardeşlerimle katılabilir miyiz", "spans": [["DATE", "hafta sonu"], ["TYPE", "atölye çalışması"], ["PEOPLE", "kardeşlerimle"]]}
+{"text": "Konya'da 4 kişilik sinema bileti saat 21.00'den önce", "spans": [["PLACE", "Konya'da"], ["PEOPLE", "4 kişilik"], ["TYPE", "sinema"], ["DATE", "saat 21.00'den önce"]]}
+{"text": "eşimle yapabileceğimiz ilginç bir müze turu var mı", "spans": [["PEOPLE", "eşimle"], ["TYPE", "müze turu"]]}
+{"text": "Bodrum'da arkadaşlarımla gidebileceğimiz resim atölyesi var mı", "spans": [["PLACE", "Bodrum'da"], ["PEOPLE", "arkadaşlarımla"], ["TYPE", "resim atölyesi"]]}
+{"text": "ücretsiz müzeler mi var çocuklarımla gitmek için", "spans": [["PRICE", "ücretsiz"], ["TYPE", "müzeler"], ["PEOPLE", "çocuklarımla"]]}
+{"text": "canım sıkıldı, ne yapsam", "spans": []}
+{"text": "izmir'de fuar mı var bu hafta sonu ailecek gidebiliriz", "spans": [["PLACE", "izmir'de"], ["TYPE", "fuar"], ["DATE", "bu hafta sonu"], ["PEOPLE", "ailecek"]]}
+{"text": "çiftler için romantik sinema önerisi bu gece 300 TL altı", "spans": [["TYPE", "sinema"], ["DATE", "bu gece"], ["PRICE", "300 TL altı"]]}
+{"text": "Denizli'de çocuk müzesi var mı sabah 10 gibi", "spans": [["PLACE", "Denizli'de"], ["TYPE", "çocuk müzesi"], ["DATE", "sabah 10 gibi"]]}
+{"text": "sevgilimle bu cuma Moda'da bir sergiye gidelim", "spans": [["PEOPLE", "sevgilimle"], ["DATE", "bu cuma"], ["PLACE", "Moda'da"], ["TYPE", "sergiye"]]}
+{"text": "kaç kişiyiz bilmiyorum ama 5 kişi olabiliriz Adana'da sinemaya bakar mısın", "spans": [["PEOPLE", "5 kişi"], ["PLACE", "Adana'da"], ["TYPE", "sinemaya"]]}
+{"text": "Gaziantep'te çocuklara özel tiyatro saat 11 civarı", "spans": [["PLACE", "Gaziantep'te"], ["TYPE", "tiyatro"], ["DATE", "saat 11"]]}
+{"text": "ayşeyle ve eşimle hafta sonu müzeye gidelim", "spans": [["PEOPLE", "ayşeyle"], ["PEOPLE", "eşimle"], ["DATE", "hafta sonu"], ["TYPE", "müzeye"]]}
+{"text": "bugün ne yapsam hiç fikrim yok", "spans": []}
+{"text": "müzeye gitmek istiyorum 🖼️ hafta sonu Eskişehir'de", "spans": [["TYPE", "müzeye"], ["DATE", "hafta sonu"], ["PLACE", "Eskişehir'de"]]}
+{"text": "cocugumla gidebilecegimiz ucretsiz bir workshop bul 🙏", "spans": [["PEOPLE", "cocugumla"], ["PRICE", "ucretsiz"], ["TYPE", "workshop"]]}
+{"text": "Bursa'da kardeşimle bu gece film var mı", "spans": [["PLACE", "Bursa'da"], ["PEOPLE", "kardeşimle"], ["DATE", "bu gece"], ["TYPE", "film"]]}
+{"text": "Çanakkale'de 2 çocuk için en fazla 200 TL'lik etkinlik", "spans": [["PLACE", "Çanakkale'de"], ["PEOPLE", "2 çocuk"], ["PRICE", "en fazla 200 TL'lik"]]}
+{"text": "müzelerde bu gece açılış olur mu", "spans": [["TYPE", "müzelerde"], ["DATE", "bu gece"]]}
+{"text": "Antalya'da kızımla ben sinemaya gidebiliriz", "spans": [["PLACE", "Antalya'da"], ["PEOPLE", "kızımla"], ["TYPE", "sinemaya"]]}
+{"text": "eşimle bi şey yok mu sinema hariç", "spans": [["PEOPLE", "eşimle"], ["EXCLUDE", "sinema"]]}
+{"text": "çocuklarla müze olmasın bi sergi olsun bu hafta", "spans": [["PEOPLE", "çocuklarla"], ["EXCLUDE", "müze"], ["TYPE", "sergi"], ["DATE", "bu hafta"]]}
+{"text": "Ankara'da sinema istemiyorum, tiyatro olsun", "spans": [["PLACE", "Ankara'da"], ["EXCLUDE", "sinema"], ["TYPE", "tiyatro"]]}
+{"text": "bu hafta sonu konser olmasın, müze olabilir", "spans": [["DATE", "bu hafta sonu"], ["EXCLUDE", "konser"], ["TYPE", "müze"]]}
+{"text": "Eskişehir'de çocuk tiyatrosu hariç her şey olur", "spans": [["PLACE", "Eskişehir'de"], ["EXCLUDE", "çocuk tiyatrosu"]]}
+{"text": "arkadaşlarla gitmek istiyoruz, stand-up olmasın", "spans": [["PEOPLE", "arkadaşlarla"], ["EXCLUDE", "stand-up"]]}
+{"text": "müze olsun ama Karaköy dışında", "spans": [["TYPE", "müze"], ["EXCLUDE", "Karaköy"]]}
+{"text": "bu akşam sinema olsun ama korku filmi olmasın", "spans": [["DATE", "bu akşam"], ["TYPE", "sinema"], ["EXCLUDE", "korku filmi"]]}
+{"text": "ücretsiz olsun, workshop istemiyorum", "spans": [["PRICE", "ücretsiz"], ["EXCLUDE", "workshop"]]}
+{"text": "kızımla gideriz, bebek tiyatrosu olmasın", "spans": [["PEOPLE", "kızımla"], ["EXCLUDE", "bebek tiyatrosu"]]}
+{"text": "pazar günü Bornova'da sergi var mı, fotoğraf sergisi hariç", "spans": [["DATE", "pazar günü"], ["PLACE", "Bornova'da"], ["TYPE", "sergi"], ["EXCLUDE", "fotoğraf sergisi"]]}
+{"text": "çiftler için romantik bir yer, ama 1000 TL'yi geçmesin", "spans": [["PRICE", "1000 TL'yi geçmesin"]]}
+{"text": "sevgilimle bu gece tiyatro olsun, opera olmasın", "spans": [["PEOPLE", "sevgilimle"], ["DATE", "bu gece"], ["TYPE", "tiyatro"], ["EXCLUDE", "opera"]]}
+{"text": "bu cumartesi Kadıköy'de çocuklara uygun bir oyun var mı", "spans": [["DATE", "bu cumartesi"], ["PLACE", "Kadıköy'de"], ["TYPE", "oyun"]]}
+{"text": "Konya'da çocuk sinemasi olmasın yetişkin filmi olsun", "spans": [["PLACE", "Konya'da"], ["EXCLUDE", "çocuk sinemasi"], ["TYPE", "yetişkin filmi"]]}
+{"text": "annemle gidebileceğimiz 50 TL altı müze", "spans": [["PEOPLE", "annemle"], ["PRICE", "50 TL altı"], ["TYPE", "müze"]]}
+{"text": "saat 19.00'dan sonra sinema eşimle", "spans": [["DATE", "saat 19.00'dan sonra"], ["TYPE", "sinema"], ["PEOPLE", "eşimle"]]}
+{"text": "Mersin'de çocuklarla yapılacak bi etkinlik 4 kişi", "spans": [["PLACE", "Mersin'de"], ["PEOPLE", "çocuklarla"], ["PEOPLE", "4 kişi"]]}
+{"text": "yarın öğleden sonra Antalya'da çocuklara müzik atölyesi", "spans": [["DATE", "yarın öğleden sonra"], ["PLACE", "Antalya'da"], ["TYPE", "müzik atölyesi"]]}
+{"text": "hafta içi akşamları sinema olmasın tiyatro olabilir", "spans": [["DATE", "hafta içi akşamları"], ["EXCLUDE", "sinema"], ["TYPE", "tiyatro"]]}
+{"text": "ankarada 2 cocuk icin tiyatro", "spans": [["PLACE", "ankarada"], ["PEOPLE", "2 cocuk"], ["TYPE", "tiyatro"]]}
+{"text": "Bornova'da bu hafta sonu fotoğraf sergisi", "spans": [["PLACE", "Bornova'da"], ["DATE", "bu hafta sonu"], ["TYPE", "fotoğraf sergisi"]]}
+{"text": "Bursa'da arkadaşlarımla bi yerlere gidelim 🎉", "spans": [["PLACE", "Bursa'da"], ["PEOPLE", "arkadaşlarımla"]]}
+{"text": "kızım 8 yaşında ona uygun bir atölye var mı", "spans": [["TYPE", "atölye"]]}
+{"text": "Beşiktaş'ta sinema bu gece ücretsiz olsun", "spans": [["PLACE", "Beşiktaş'ta"], ["TYPE", "sinema"], ["DATE", "bu gece"], ["PRICE", "ücretsiz"]]}
+{"text": "sevgilimle Şişli'de 2 kişilik resim sergisi", "spans": [["PEOPLE", "sevgilimle"], ["PLACE", "Şişli'de"], ["PEOPLE", "2 kişilik"], ["TYPE", "resim sergisi"]]}
+{"text": "konsere gitmek istiyorum ama ailemle Çankaya'da", "spans": [["TYPE", "konsere"], ["PEOPLE", "ailemle"], ["PLACE", "Çankaya'da"]]}
+{"text": "müze gezmek istiyorum eşim ve kardeşimle bu pazar", "spans": [["TYPE", "müze"], ["PEOPLE", "eşim"], ["PEOPLE", "kardeşimle"], ["DATE", "bu pazar"]]}
+{"text": "çocuklar için 3 saatlik atölye Eskişehir'de cumartesi", "spans": [["TYPE", "atölye"], ["PLACE", "Eskişehir'de"], ["DATE", "cumartesi"]]}
+{"text": "tek başıma sinemaya gidicem bu aksam ya", "spans": [["PEOPLE", "tek başıma"], ["TYPE", "sinemaya"], ["DATE", "bu aksam"]]}
+{"text": "2 kisi icin cuma aksami ucretsiz bir sey var mi", "spans": [["PEOPLE", "2 kisi"], ["DATE", "cuma aksami"], ["PRICE", "ucretsiz"]]}
+{"text": "Samsun'da müze gezisi olur mu bu gece", "spans": [["PLACE", "Samsun'da"], ["TYPE", "müze gezisi"], ["DATE", "bu gece"]]}
+{"text": "Diyarbakır'da stand-up sevgilimle 500 TL altı", "spans": [["PLACE", "Diyarbakır'da"], ["TYPE", "stand-up"], ["PEOPLE", "sevgilimle"], ["PRICE", "500 TL altı"]]}
+{"text": "dışarıda sinema yok mu 14 yaşındaki oğlumla", "spans": [["TYPE", "sinema"], ["PEOPLE", "oğlumla"]]}
+{"text": "bu gece müzeye ailecek gidelim olmaz mı", "spans": [["DATE", "bu gece"], ["TYPE", "müzeye"], ["PEOPLE", "ailecek"]]}
+{"text": "Muğla'da bu hafta sonu arkadaşlarla açık hava konseri", "spans": [["PLACE", "Muğla'da"], ["DATE", "bu hafta sonu"], ["PEOPLE", "arkadaşlarla"], ["TYPE", "açık hava konseri"]]}
+{"text": "çocuk kulübü etkinliği olmasın, yetişkin müzikli oyun olsun", "spans": [["EXCLUDE", "çocuk kulübü etkinliği"], ["TYPE", "müzikli oyun"]]}
+{"text": "Hatay'da 3 çocuklu aile için bir etkinlik var mı", "spans": [["PLACE", "Hatay'da"], ["PEOPLE", "3 çocuklu aile"]]}
+{"text": "tiyatro yok mu bu hafta sevgiliyle olur", "spans": [["TYPE", "tiyatro"], ["DATE", "bu hafta"], ["PEOPLE", "sevgiliyle"]]}
+{"text": "Gaziantep'te galeri gezisi istemiyorum müze olsun", "spans": [["PLACE", "Gaziantep'te"], ["EXCLUDE", "galeri gezisi"], ["TYPE", "müze"]]}
+{"text": "Çankaya'da bu akşam yalnızca ücretsiz etkinlik", "spans": [["PLACE", "Çankaya'da"], ["DATE", "bu akşam"], ["PRICE", "ücretsiz"]]}
+{"text": "Lara'da cumartesi saat 10 sonrası çocuklarla müze", "spans": [["PLACE", "Lara'da"], ["DATE", "cumartesi saat 10 sonrası"], ["PEOPLE", "çocuklarla"], ["TYPE", "müze"]]}
+{"text": "bi şey bulmam lazım ne yapsam ya", "spans": []}
+{"text": "kardeşimle Üsküdar'da sanat sergisi", "spans": [["PEOPLE", "kardeşimle"], ["PLACE", "Üsküdar'da"], ["TYPE", "sanat sergisi"]]}
+{"text": "gece 11'den sonra sinema var mı Bakırköy'de", "spans": [["DATE", "gece 11'den sonra"], ["TYPE", "sinema"], ["PLACE", "Bakırköy'de"]]}
+{"text": "eşimle ve ben bu hafta sonu 800 TL'ye kadar konser", "spans": [["PEOPLE", "eşimle"], ["DATE", "bu hafta sonu"], ["PRICE", "800 TL'ye kadar"], ["TYPE", "konser"]]}
+{"text": "Tepebaşı'nda 6 yaşındaki kızım için bir atölye", "spans": [["PLACE", "Tepebaşı'nda"], ["TYPE", "atölye"]]}
+{"text": "müzikal izlemek istiyoruz sevgilimle cumartesi", "spans": [["TYPE", "müzikal"], ["PEOPLE", "sevgilimle"], ["DATE", "cumartesi"]]}
+{"text": "çocuklu ailelere uygun sinema var mı bu gece Konak'ta", "spans": [["PEOPLE", "çocuklu"], ["TYPE", "sinema"], ["DATE", "bu gece"], ["PLACE", "Konak'ta"]]}
+{"text": "Karşıyaka'da cuma günü sinemaya kardeşimle", "spans": [["PLACE", "Karşıyaka'da"], ["DATE", "cuma günü"], ["TYPE", "sinemaya"], ["PEOPLE", "kardeşimle"]]}
+{"text": "bu akşam sinema olmasın tiyatro olsun 2 kişiyiz", "spans": [["DATE", "bu akşam"], ["EXCLUDE", "sinema"], ["TYPE", "tiyatro"], ["PEOPLE", "2 kişiyiz"]]}
+{"text": "bebeğimle müze İstanbul'da", "spans": [["PEOPLE", "bebeğimle"], ["TYPE", "müze"], ["PLACE", "İstanbul'da"]]}
+{"text": "ücretsiz müze yarın Muratpaşa'da olur mu", "spans": [["PRICE", "ücretsiz"], ["TYPE", "müze"], ["DATE", "yarın"], ["PLACE", "Muratpaşa'da"]]}
+{"text": "Muratpaşa'da hafta sonu sinema olsun, festival olmasın", "spans": [["PLACE", "Muratpaşa'da"], ["DATE", "hafta sonu"], ["TYPE", "sinema"], ["EXCLUDE", "festival"]]}
+{"text": "Mudanya'da müze gezisi 4 kişi akşam saat 6'dan önce", "spans": [["PLACE", "Mudanya'da"], ["TYPE", "müze gezisi"], ["PEOPLE", "4 kişi"], ["DATE", "akşam saat 6'dan önce"]]}
+{"text": "arkadaşlarımla bu cumartesi için bir şey düşünün", "spans": [["PEOPLE", "arkadaşlarımla"], ["DATE", "bu cumartesi"]]}
+{"text": "cocugum 5 yasinda hafta sonu icin atolye", "spans": [["DATE", "hafta sonu"], ["TYPE", "atolye"]]}
+{"text": "sinema var mı bu hafta Bornova'da kardeşimle", "spans": [["TYPE", "sinema"], ["DATE", "bu hafta"], ["PLACE", "Bornova'da"], ["PEOPLE", "kardeşimle"]]}
+{"text": "kadıköy civarında ücretsiz müze var mı", "spans": [["PLACE", "kadıköy"], ["PRICE", "ücretsiz"], ["TYPE", "müze"]]}
+{"text": "Eskişehir'de 3 kişilik atölye sabah 9 gibi", "spans": [["PLACE", "Eskişehir'de"], ["PEOPLE", "3 kişilik"], ["TYPE", "atölye"], ["DATE", "sabah 9 gibi"]]}
+{"text": "cuma akşamı müze konser olmasın sevgilimle", "spans": [["DATE", "cuma akşamı"], ["TYPE", "müze"], ["EXCLUDE", "konser"], ["PEOPLE", "sevgilimle"]]}
+{"text": "tiyatro olsun bu gece eşimle", "spans": [["TYPE", "tiyatro"], ["DATE", "bu gece"], ["PEOPLE", "eşimle"]]}
+{"text": "çocuklarımla gidebileceğimiz bir sinema var mı yarın", "spans": [["PEOPLE", "çocuklarımla"], ["TYPE", "sinema"], ["DATE", "yarın"]]}
+{"text": "ankarada ya da eskisehirde konser var mi", "spans": [["PLACE", "ankarada"], ["PLACE", "eskisehirde"], ["TYPE", "konser"]]}
+{"text": "Trabzon'da cuma günü 17.00'den sonra müze var mı", "spans": [["PLACE", "Trabzon'da"], ["DATE", "cuma günü 17.00'den sonra"], ["TYPE", "müze"]]}
+{"text": "sevgilimle sinemaya gidelim mi 300 TL'yi geçmesin", "spans": [["PEOPLE", "sevgilimle"], ["TYPE", "sinemaya"], ["PRICE", "300 TL'yi geçmesin"]]}
+{"text": "Antalya'da kardeşimle müze bu hafta", "spans": [["PLACE", "Antalya'da"], ["PEOPLE", "kardeşimle"], ["TYPE", "müze"], ["DATE", "bu hafta"]]}
+{"text": "tek başıma ama ücretsiz sergi olsun", "spans": [["PEOPLE", "tek başıma"], ["PRICE", "ücretsiz"], ["TYPE", "sergi"]]}
+{"text": "🎬 bu gece Kadıköy'de sinema", "spans": [["DATE", "bu gece"], ["PLACE", "Kadıköy'de"], ["TYPE", "sinema"]]}
+{"text": "bu hafta sonu kendi başıma müze gezmek istiyorum", "spans": [["DATE", "bu hafta sonu"], ["PEOPLE", "kendi başıma"], ["TYPE", "müze"]]}
+{"text": "Samsun'da hafta içi ücretsiz workshop", "spans": [["PLACE", "Samsun'da"], ["DATE", "hafta içi"], ["PRICE", "ücretsiz"], ["TYPE", "workshop"]]}
+{"text": "yok ya bi şey var mı", "spans": []}
+{"text": "Bodrum'da ailecek sinema hafta sonu 150 TL altı", "spans": [["PLACE", "Bodrum'da"], ["PEOPLE", "ailecek"], ["TYPE", "sinema"], ["DATE", "hafta sonu"], ["PRICE", "150 TL altı"]]}
+{"text": "kızımla ben bu gece tiyatro hariç her şey", "spans": [["PEOPLE", "kızımla"], ["DATE", "bu gece"], ["EXCLUDE", "tiyatro"]]}
+{"text": "çocuğumla sinemaya gitmek istiyorum animasyon olsun", "spans": [["PEOPLE", "çocuğumla"], ["TYPE", "sinemaya"], ["TYPE", "animasyon"]]}
+{"text": "ne yapsam bilmiyorum ya", "spans": []}
+{"text": "kardeşimle Ankara'da hafta sonu müze var mı 2 kişi", "spans": [["PEOPLE", "kardeşimle"], ["PLACE", "Ankara'da"], ["DATE", "hafta sonu"], ["TYPE", "müze"], ["PEOPLE", "2 kişi"]]}
+{"text": "herhangi bir şey öner ya", "spans": []}
+{"text": "çift olarak gidebileceğimiz romantik sinema", "spans": [["PEOPLE", "çift olarak"], ["TYPE", "sinema"]]}
+{"text": "Kadıköy'de bu hafta sonu ya da gelecek hafta sanat atölyesi", "spans": [["PLACE", "Kadıköy'de"], ["DATE", "bu hafta sonu"], ["DATE", "gelecek hafta"], ["TYPE", "sanat atölyesi"]]}
+{"text": "bebekli aileler için müze bu sabah", "spans": [["PEOPLE", "bebekli"], ["TYPE", "müze"], ["DATE", "bu sabah"]]}
+{"text": "Eskişehir'de ücretsiz bir müze var mı", "spans": [["PLACE", "Eskişehir'de"], ["PRICE", "ücretsiz"], ["TYPE", "müze"]]}
+{"text": "konser olmasın 1 kişi İstanbul'da", "spans": [["EXCLUDE", "konser"], ["PEOPLE", "1 kişi"], ["PLACE", "İstanbul'da"]]}
+{"text": "eşimle bir gösteri ama dans gösterisi istemiyorum", "spans": [["PEOPLE", "eşimle"], ["TYPE", "gösteri"], ["EXCLUDE", "dans gösterisi"]]}
+{"text": "bu hafta Gaziantep'te müze ya da sinema", "spans": [["DATE", "bu hafta"], ["PLACE", "Gaziantep'te"], ["TYPE", "müze"], ["TYPE", "sinema"]]}
+{"text": "saat 15.00 - 17.00 arası kardeşimle müze", "spans": [["DATE", "saat 15.00 - 17.00 arası"], ["PEOPLE", "kardeşimle"], ["TYPE", "müze"]]}
+{"text": "Manisa'da müze arkadaşlarla", "spans": [["PLACE", "Manisa'da"], ["TYPE", "müze"], ["PEOPLE", "arkadaşlarla"]]}
+{"text": "yarın için bir öneri lazım", "spans": []}
+{"text": "ailem gelecek Kayseri'de sinema", "spans": [["PEOPLE", "ailem"], ["PLACE", "Kayseri'de"], ["TYPE", "sinema"]]}
+{"text": "🎭 tiyatro ücretsiz Ankara", "spans": [["TYPE", "tiyatro"], ["PRICE", "ücretsiz"], ["PLACE", "Ankara"]]}
+{"text": "cumartesi bebeğimle çocuk tiyatrosu", "spans": [["DATE", "cumartesi"], ["PEOPLE", "bebeğimle"], ["TYPE", "çocuk tiyatrosu"]]}
+{"text": "arkadaşlarımla konseri Zorlu PSM'de", "spans": [["PEOPLE", "arkadaşlarımla"], ["TYPE", "konseri"], ["PLACE", "Zorlu PSM'de"]]}
+{"text": "Samsun'da 5 kişilik çocuk etkinliği hariç", "spans": [["PLACE", "Samsun'da"], ["PEOPLE", "5 kişilik"], ["EXCLUDE", "çocuk etkinliği"]]}
+{"text": "ne var ne yok, sıkılmış hissediyorum", "spans": []}
+{"text": "Bursa'da ücretsiz sergi bugün", "spans": [["PLACE", "Bursa'da"], ["PRICE", "ücretsiz"], ["TYPE", "sergi"], ["DATE", "bugün"]]}
+{"text": "oğlumla müzeye gidelim sonra sinema", "spans": [["PEOPLE", "oğlumla"], ["TYPE", "müzeye"], ["TYPE", "sinema"]]}
+{"text": "eşim ve ben için 2 kişilik romantik yer", "spans": [["PEOPLE", "eşim"], ["PEOPLE", "2 kişilik"]]}
+{"text": "Kuşadası'nda bu akşam sanat atölyesi", "spans": [["PLACE", "Kuşadası'nda"], ["DATE", "bu akşam"], ["TYPE", "sanat atölyesi"]]}
+{"text": "hiç plan yok, sen seç", "spans": []}
+{"text": "kardeşimle ve annemle Eskişehir'e ne yapsak", "spans": [["PEOPLE", "kardeşimle"], ["PEOPLE", "annemle"], ["PLACE", "Eskişehir'e"]]}
+{"text": "üsküdarda pazar gunu aile icin sergi", "spans": [["PLACE", "üsküdarda"], ["DATE", "pazar gunu"], ["TYPE", "sergi"]]}
+{"text": "yarın saat 8'den sonra konser tek başıma", "spans": [["DATE", "yarın saat 8'den sonra"], ["TYPE", "konser"], ["PEOPLE", "tek başıma"]]}
+{"text": "bu akşam ücretsiz bir şey olur mu Karşıyaka'da", "spans": [["DATE", "bu akşam"], ["PRICE", "ücretsiz"], ["PLACE", "Karşıyaka'da"]]}
+{"text": "anneannemle müze", "spans": [["PEOPLE", "anneannemle"], ["TYPE", "müze"]]}
+{"text": "Antalya'da 15-20 kasım arası sergi", "spans": [["PLACE", "Antalya'da"], ["DATE", "15-20 kasım arası"], ["TYPE", "sergi"]]}
+{"text": "kızımla sinema 200 TL altı", "spans": [["PEOPLE", "kızımla"], ["TYPE", "sinema"], ["PRICE", "200 TL altı"]]}
+{"text": "çocuklar olmadan müze olsun Beşiktaş'ta", "spans": [["TYPE", "müze"], ["PLACE", "Beşiktaş'ta"]]}
+{"text": "merhaba, nasılsın, bi öneri var mı", "spans": []}
+{"text": "müze ve sinema önerin Konya'da bu gece", "spans": [["TYPE", "müze"], ["TYPE", "sinema"], ["PLACE", "Konya'da"], ["DATE", "bu gece"]]}
+{"text": "Edirne'de sanat sergisi bu hafta", "spans": [["PLACE", "Edirne'de"], ["TYPE", "sanat sergisi"], ["DATE", "bu hafta"]]}
+{"text": "sevgilimle sinema olsun tiyatro olmasın", "spans": [["PEOPLE", "sevgilimle"], ["TYPE", "sinema"], ["EXCLUDE", "tiyatro"]]}
+{"text": "etkinlik var mı, bilmiyorum", "spans": []}
+{"text": "oğlumla çocuk atölyesinde 4 saat", "spans": [["PEOPLE", "oğlumla"], ["TYPE", "çocuk atölyesinde"]]}
+{"text": "İstanbul'un Avrupa yakasında bu gece 2 kişi", "spans": [["PLACE", "Avrupa yakasında"], ["DATE", "bu gece"], ["PEOPLE", "2 kişi"]]}
+{"text": "bu ay sonunda müze var mı", "spans": [["DATE", "bu ay sonunda"], ["TYPE", "müze"]]}
+{"text": "ailecek kardeşimle bu cumartesi", "spans": [["PEOPLE", "ailecek"], ["PEOPLE", "kardeşimle"], ["DATE", "bu cumartesi"]]}
+{"text": "Konak'ta 9 yaşında bir çocuk için workshop", "spans": [["PLACE", "Konak'ta"], ["TYPE", "workshop"]]}
+{"text": "akşam yemeğinden sonra film sevgilimle", "spans": [["DATE", "akşam yemeğinden sonra"], ["TYPE", "film"], ["PEOPLE", "sevgilimle"]]}
+{"text": "stand-up olmasın sanat galerisine gitmek istiyorum", "spans": [["EXCLUDE", "stand-up"], ["TYPE", "sanat galerisine"]]}
+{"text": "🙂 çocuklarla hafta içi müze", "spans": [["PEOPLE", "çocuklarla"], ["DATE", "hafta içi"], ["TYPE", "müze"]]}
+{"text": "Mersin'de 500 TL'ye kadar arkadaşlarla konser", "spans": [["PLACE", "Mersin'de"], ["PRICE", "500 TL'ye kadar"], ["PEOPLE", "arkadaşlarla"], ["TYPE", "konser"]]}
+{"text": "müzikal bakalım ama büyük grup olacağız 6 kişi", "spans": [["TYPE", "müzikal"], ["PEOPLE", "6 kişi"]]}
+{"text": "ne yapalım yarın, fikir ver", "spans": []}
+{"text": "Bursa'da sinema ailemle", "spans": [["PLACE", "Bursa'da"], ["TYPE", "sinema"], ["PEOPLE", "ailemle"]]}
+{"text": "ücretsiz ya da 100 TL altı tiyatro", "spans": [["PRICE", "ücretsiz"], ["PRICE", "100 TL altı"], ["TYPE", "tiyatro"]]}
+{"text": "Kadıköy'de bu akşam müze olmasın", "spans": [["PLACE", "Kadıköy'de"], ["DATE", "bu akşam"], ["EXCLUDE", "müze"]]}
+{"text": "kaç kişiyiz bilmiyorum, bi şey öner", "spans": []}
+{"text": "cumartesi için sevgilimle sinema olsun", "spans": [["DATE", "cumartesi"], ["PEOPLE", "sevgilimle"], ["TYPE", "sinema"]]}
+{"text": "Eskişehir'de cocuklu etkinlik var mi", "spans": [["PLACE", "Eskişehir'de"], ["PEOPLE", "cocuklu"]]}
+{"text": "Kadıköy müze pazar ücretsiz olsun, tiyatro hariç", "spans": [["PLACE", "Kadıköy"], ["TYPE", "müze"], ["DATE", "pazar"], ["PRICE", "ücretsiz"], ["EXCLUDE", "tiyatro"]]}
+{"text": "bu gece yalnız çıkacağım sinema", "spans": [["DATE", "bu gece"], ["PEOPLE", "yalnız"], ["TYPE", "sinema"]]}
+{"text": "anne-kız müze gezisi Eskişehir", "spans": [["PEOPLE", "anne-kız"], ["TYPE", "müze gezisi"], ["PLACE", "Eskişehir"]]}
+{"text": "Samsun'da bu hafta sonu 18 yaş üstü film", "spans": [["PLACE", "Samsun'da"], ["DATE", "bu hafta sonu"], ["TYPE", "film"]]}
+{"text": "tiyatro veya sinema tek başıma İzmir'de", "spans": [["TYPE", "tiyatro"], ["TYPE", "sinema"], ["PEOPLE", "tek başıma"], ["PLACE", "İzmir'de"]]}
+{"text": "arkadaşlarımla sergi bu akşam", "spans": [["PEOPLE", "arkadaşlarımla"], ["TYPE", "sergi"], ["DATE", "bu akşam"]]}
+{"text": "2 kişilik bu hafta çocuk filmi olmasın", "spans": [["PEOPLE", "2 kişilik"], ["DATE", "bu hafta"], ["EXCLUDE", "çocuk filmi"]]}
+{"text": "dışarı çıkmak istiyorum ama ne", "spans": []}
+{"text": "bebek ve çocuk dostu müze var mı Bursa'da", "spans": [["TYPE", "müze"], ["PLACE", "Bursa'da"]]}
+{"text": "kocamla Antalya'da müze olsun ama çok pahalı olmasın", "spans": [["PEOPLE", "kocamla"], ["PLACE", "Antalya'da"], ["TYPE", "müze"]]}
+{"text": "yarından sonra konser 1000 TL altı", "spans": [["DATE", "yarından sonra"], ["TYPE", "konser"], ["PRICE", "1000 TL altı"]]}
+{"text": "stand-up ve tiyatro olmasın çocuk atölyesi olsun", "spans": [["EXCLUDE", "stand-up"], ["EXCLUDE", "tiyatro"], ["TYPE", "çocuk atölyesi"]]}
+{"text": "sevgilimle bu gece 🌙 müze", "spans": [["PEOPLE", "sevgilimle"], ["DATE", "bu gece"], ["TYPE", "müze"]]}
+{"text": "cuma günü çocuklarla 🎪 festival", "spans": [["DATE", "cuma günü"], ["PEOPLE", "çocuklarla"], ["TYPE", "festival"]]}
+{"text": "sıkıcı bir gün, öner bi şey", "spans": []}
+{"text": "Eskişehir'de 2 yetişkin 1 çocuk tiyatro", "spans": [["PLACE", "Eskişehir'de"], ["PEOPLE", "2 yetişkin"], ["PEOPLE", "1 çocuk"], ["TYPE", "tiyatro"]]}
+{"text": "konser istemiyorum galeri olsun Karaköy'de", "spans": [["EXCLUDE", "konser"], ["TYPE", "galeri"], ["PLACE", "Karaköy'de"]]}
+{"text": "kardeşimle bu cumartesi için ücretsiz müze", "spans": [["PEOPLE", "kardeşimle"], ["DATE", "bu cumartesi"], ["PRICE", "ücretsiz"], ["TYPE", "müze"]]}
+{"text": "Trabzon'da bu gece 4 kişi uygun fiyatlı sinema", "spans": [["PLACE", "Trabzon'da"], ["DATE", "bu gece"], ["PEOPLE", "4 kişi"], ["TYPE", "sinema"]]}
+{"text": "sanat müzesi olmasın bi atölye olsun", "spans": [["EXCLUDE", "sanat müzesi"], ["TYPE", "atölye"]]}
+{"text": "aile dostu bi şey yarın Mudanya'da", "spans": [["DATE", "yarın"], ["PLACE", "Mudanya'da"]]}

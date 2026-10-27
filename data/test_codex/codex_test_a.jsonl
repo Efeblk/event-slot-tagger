@@ -1,0 +1,99 @@
+{"text":"bu akşam kadıköyde Duman konseri var mı, iki kişi geleceğiz","spans":[["DATE","bu akşam"],["PLACE","kadıköyde"],["NAME","Duman"],["TYPE","konseri"],["PEOPLE","iki kişi"]]}
+{"text":"yarın İzmir'de ücretsiz çocuk tiyatrosu arıyorum, oğlumla gideceğim","spans":[["DATE","yarın"],["PLACE","İzmir'de"],["PRICE","ücretsiz"],["TYPE","çocuk tiyatrosu"],["PEOPLE","oğlumla"]]}
+{"text":"hafta sonu Ankara'da caz konseri olsun ama rock konseri istemem","spans":[["DATE","hafta sonu"],["PLACE","Ankara'da"],["TYPE","caz konseri"],["EXCLUDE","rock konseri"]]}
+{"text":"Cem Yılmaz gösterisi için cuma akşamı Bursa'da en fazla 900 TL bilet bakar mısın?","spans":[["NAME","Cem Yılmaz"],["TYPE","gösterisi"],["DATE","cuma akşamı"],["PLACE","Bursa'da"],["PRICE","en fazla 900 TL"]]}
+{"text":"Antalya'da bugün Fenerbahçe maçı nerede izlenir, arkadaşlarımla geleceğiz","spans":[["PLACE","Antalya'da"],["DATE","bugün"],["NAME","Fenerbahçe"],["TYPE","maçı"],["PEOPLE","arkadaşlarımla"]]}
+{"text":"bu gece Beşiktaş'ta stand-up bul, 500 tl altı olsun","spans":[["DATE","bu gece"],["PLACE","Beşiktaş'ta"],["TYPE","stand-up"],["PRICE","500 tl altı"]]}
+{"text":"Eskişehir'de önümüzdeki cumartesi açık hava konseri var mı?","spans":[["PLACE","Eskişehir'de"],["DATE","önümüzdeki cumartesi"],["TYPE","açık hava konseri"]]}
+{"text":"tek başıma gideceğim, pazar günü Kadıköy civarında ucuz bir caz konseri öner","spans":[["PEOPLE","tek başıma"],["DATE","pazar günü"],["PLACE","Kadıköy"],["PRICE","ucuz"],["TYPE","caz konseri"]]}
+{"text":"Konya'da bu akşam Hamlet oyunu için bilet var mı?","spans":[["PLACE","Konya'da"],["DATE","bu akşam"],["NAME","Hamlet"],["TYPE","oyunu"]]}
+{"text":"cumartesi 20.00'den sonra İstanbul'da 4 kişilik komedi oyunu arıyoruz","spans":[["DATE","cumartesi 20.00'den sonra"],["PLACE","İstanbul'da"],["PEOPLE","4 kişilik"],["TYPE","komedi oyunu"]]}
+{"text":"Zorlu PSM'de gelecek hafta hangi konserler var, annemle gitsem","spans":[["PLACE","Zorlu PSM'de"],["DATE","gelecek hafta"],["TYPE","konserler"],["PEOPLE","annemle"]]}
+{"text":"Trabzon'da Trabzonspor maçı olsun, basketbol maçı olmasın","spans":[["PLACE","Trabzon'da"],["NAME","Trabzonspor"],["TYPE","maçı"],["EXCLUDE","basketbol maçı"]]}
+{"text":"bu akşam Avrupa yakasında ücretsiz sergi gezmek istiyorum","spans":[["DATE","bu akşam"],["PLACE","Avrupa yakasında"],["PRICE","ücretsiz"],["TYPE","sergi"]]}
+{"text":"Mersin'de yarın çocuklarla gidilecek bir şey var mı, çok pahalı olmasın","spans":[["PLACE","Mersin'de"],["DATE","yarın"],["PEOPLE","çocuklarla"]]}
+{"text":"Bostancı Gösteri Merkezi'nde 12 Kasım'da stand-up arıyorum, kişi başı en fazla 700 TL","spans":[["PLACE","Bostancı Gösteri Merkezi'nde"],["DATE","12 Kasım'da"],["TYPE","stand-up"],["PRICE","kişi başı en fazla 700 TL"]]}
+{"text":"Denizli'de bu hafta sonu Zeytinli Rock Festivali var mı?","spans":[["PLACE","Denizli'de"],["DATE","bu hafta sonu"],["NAME","Zeytinli Rock Festivali"]]}
+{"text":"yarın akşam Kızılay'da tiyatro olsun, müzikali geç","spans":[["DATE","yarın akşam"],["PLACE","Kızılay'da"],["TYPE","tiyatro"],["EXCLUDE","müzikali"]]}
+{"text":"sevgilimle gideceğim, Adana'da cuma Duman konseri kaç para?","spans":[["PEOPLE","sevgilimle"],["PLACE","Adana'da"],["DATE","cuma"],["NAME","Duman"],["TYPE","konseri"]]}
+{"text":"Samsun'da ücretsiz festival var mı bugün","spans":[["PLACE","Samsun'da"],["PRICE","ücretsiz"],["TYPE","festival"],["DATE","bugün"]]}
+{"text":"Kadıköy'de 21.00'den sonra bir caz barı etkinliği arıyorum, iki arkadaşız","spans":[["PLACE","Kadıköy'de"],["DATE","21.00'den sonra"],["TYPE","caz barı etkinliği"],["PEOPLE","iki arkadaşız"]]}
+{"text":"Gaziantep'te gelecek ay Güneş konseri için ucuz bilet var mı","spans":[["PLACE","Gaziantep'te"],["DATE","gelecek ay"],["NAME","Güneş"],["TYPE","konseri"],["PRICE","ucuz"]]}
+{"text":"bu pazar İzmit'te açık hava sineması arıyorum, korku filmi olmasın","spans":[["DATE","bu pazar"],["PLACE","İzmit'te"],["TYPE","açık hava sineması"],["EXCLUDE","korku filmi"]]}
+{"text":"annemle Eskişehir Odunpazarı'nda bugün sergi gezebilir miyiz?","spans":[["PEOPLE","annemle"],["PLACE","Eskişehir Odunpazarı'nda"],["DATE","bugün"],["TYPE","sergi"]]}
+{"text":"Kayseri'de akşam Galatasaray maçı yayınlayan yer arıyorum","spans":[["PLACE","Kayseri'de"],["DATE","akşam"],["NAME","Galatasaray"],["TYPE","maçı"]]}
+{"text":"12 yaşındaki kızımla Ankara'da pazar günü çocuk müzikali görmek istiyoruz","spans":[["PEOPLE","kızımla"],["PLACE","Ankara'da"],["DATE","pazar günü"],["TYPE","çocuk müzikali"]]}
+{"text":"bu cuma İzmir Alsancak'ta punk konseri var mı, metal istemiyorum","spans":[["DATE","bu cuma"],["PLACE","İzmir Alsancak'ta"],["TYPE","punk konseri"],["EXCLUDE","metal"]]}
+{"text":"Bursa'da 2 Ekim akşamı 1000 TL'yi geçmesin, Fazıl Say dinlemek istiyorum","spans":[["PLACE","Bursa'da"],["DATE","2 Ekim akşamı"],["PRICE","1000 TL'yi geçmesin"],["NAME","Fazıl Say"]]}
+{"text":"tek kişilik biletle Ankara'da bu gece opera var mı?","spans":[["PEOPLE","tek kişilik"],["PLACE","Ankara'da"],["DATE","bu gece"],["TYPE","opera"]]}
+{"text":"Çanakkale'de hafta sonu Troya Festivali'ne gitsek neler var","spans":[["PLACE","Çanakkale'de"],["DATE","hafta sonu"],["NAME","Troya Festivali"]]}
+{"text":"Maltepe'de yarın 300 liradan ucuz çocuk etkinliği bulabilir misin, oğlum yanımda","spans":[["PLACE","Maltepe'de"],["DATE","yarın"],["PRICE","300 liradan ucuz"],["TYPE","çocuk etkinliği"],["PEOPLE","oğlum yanımda"]]}
+{"text":"Ordu'da pazar günü voleybol maçı var mı, futbol olmasın","spans":[["PLACE","Ordu'da"],["DATE","pazar günü"],["TYPE","voleybol maçı"],["EXCLUDE","futbol"]]}
+{"text":"bu akşam Moda Sahnesi'nde Bir Delinin Hatıra Defteri'ni görmek isterim","spans":[["DATE","bu akşam"],["PLACE","Moda Sahnesi'nde"],["NAME","Bir Delinin Hatıra Defteri"]]}
+{"text":"Tekirdağ'da canlı müzik mekanı öner, arkadaşlarımla çıkacağım bu gece","spans":[["PLACE","Tekirdağ'da"],["TYPE","canlı müzik"],["PEOPLE","arkadaşlarımla"],["DATE","bu gece"]]}
+{"text":"önümüzdeki cuma Antalya Konyaaltı'nda yoga atölyesi var mı?","spans":[["DATE","önümüzdeki cuma"],["PLACE","Antalya Konyaaltı'nda"],["TYPE","yoga atölyesi"]]}
+{"text":"Diyarbakır'da 5 kişilik ekipçe bu akşam stand-up izleyelim","spans":[["PLACE","Diyarbakır'da"],["PEOPLE","5 kişilik"],["DATE","bu akşam"],["TYPE","stand-up"]]}
+{"text":"Kocaeli'nde 18 Ekim'de Manga konseri bileti kaç tl, 800 tl altı varsa","spans":[["PLACE","Kocaeli'nde"],["DATE","18 Ekim'de"],["NAME","Manga"],["TYPE","konseri"],["PRICE","800 tl altı"]]}
+{"text":"İstanbul Anadolu yakasında çocuk tiyatrosu olsun, sirk gösterisi olmasın","spans":[["PLACE","İstanbul Anadolu yakasında"],["TYPE","çocuk tiyatrosu"],["EXCLUDE","sirk gösterisi"]]}
+{"text":"bu gece Çankaya'da evden çıkıp biraz gülesim var","spans":[["DATE","bu gece"],["PLACE","Çankaya'da"]]}
+{"text":"Aydın'da yarın bedava halk konseri nerede","spans":[["PLACE","Aydın'da"],["DATE","yarın"],["PRICE","bedava"],["TYPE","halk konseri"]]}
+{"text":"annem babam ve ben için Antalya'da pazar sergisi bakar mısın","spans":[["PEOPLE","annem babam ve ben"],["PLACE","Antalya'da"],["DATE","pazar"],["TYPE","sergisi"]]}
+{"text":"Balıkesir'de bu akşam caz olur mu?","spans":[["PLACE","Balıkesir'de"],["DATE","bu akşam"],["TYPE","caz"]]}
+{"text":"Karşıyaka'da bugün Altay maçı var mı, Göztepe maçına gitmek istemiyorum","spans":[["PLACE","Karşıyaka'da"],["DATE","bugün"],["NAME","Altay"],["TYPE","maçı"],["NAME","Göztepe"],["EXCLUDE","maçına"]]}
+{"text":"saat 9'dan sonra Bursa Nilüfer'de karaoke gecesi arıyoruz, 3 kişi","spans":[["DATE","saat 9'dan sonra"],["PLACE","Bursa Nilüfer'de"],["TYPE","karaoke gecesi"],["PEOPLE","3 kişi"]]}
+{"text":"Rize'de önümüzdeki hafta doğa yürüyüşü etkinliği var mı, çocuklarla katılabiliriz","spans":[["PLACE","Rize'de"],["DATE","önümüzdeki hafta"],["TYPE","doğa yürüyüşü etkinliği"],["PEOPLE","çocuklarla"]]}
+{"text":"Beyoğlu'nda bu akşam ucuz caz konseri arıyorum, elektronik müzik olmasın","spans":[["PLACE","Beyoğlu'nda"],["DATE","bu akşam"],["PRICE","ucuz"],["TYPE","caz konseri"],["EXCLUDE","elektronik müzik"]]}
+{"text":"Sakarya'da cuma günü Sakaryaspor maçı için iki bilet lazım","spans":[["PLACE","Sakarya'da"],["DATE","cuma günü"],["NAME","Sakaryaspor"],["TYPE","maçı"],["PEOPLE","iki bilet"]]}
+{"text":"Kars'ta bu hafta sonu halk oyunu gösterisi izlemek istiyorum","spans":[["PLACE","Kars'ta"],["DATE","bu hafta sonu"],["TYPE","halk oyunu gösterisi"]]}
+{"text":"sevgilimle tekirdağ merkezde yarın akşam güzel bi konser bulsana","spans":[["PEOPLE","sevgilimle"],["PLACE","tekirdağ merkezde"],["DATE","yarın akşam"],["TYPE","konser"]]}
+{"text":"Isparta'da 14 Haziran'da ücretsiz film gösterimi var mı?","spans":[["PLACE","Isparta'da"],["DATE","14 Haziran'da"],["PRICE","ücretsiz"],["TYPE","film gösterimi"]]}
+{"text":"tek başıma gideceğim, bu akşam Adana'da ne var?","spans":[["PEOPLE","tek başıma"],["DATE","bu akşam"],["PLACE","Adana'da"]]}
+{"text":"yarın Bursa'da Bursaspor maçı izlemek istiyoruz, 6 kişiyiz","spans":[["DATE","yarın"],["PLACE","Bursa'da"],["NAME","Bursaspor"],["TYPE","maçı"],["PEOPLE","6 kişiyiz"]]}
+{"text":"Muğla'da bu hafta sonu caz festivali bileti 1200 TL'yi aşmasın","spans":[["PLACE","Muğla'da"],["DATE","bu hafta sonu"],["TYPE","caz festivali"],["PRICE","1200 TL'yi aşmasın"]]}
+{"text":"çocuğumla beraber İzmir'de yarın kukla tiyatrosu arıyorum","spans":[["PEOPLE","çocuğumla"],["PLACE","İzmir'de"],["DATE","yarın"],["TYPE","kukla tiyatrosu"]]}
+{"text":"Erzurum'da bu akşam buz pateni gösterisi var mı","spans":[["PLACE","Erzurum'da"],["DATE","bu akşam"],["TYPE","buz pateni gösterisi"]]}
+{"text":"haftaya cuma Gaziantep'te Sezen Aksu konseri bul, 1500 liradan ucuz olsun","spans":[["DATE","haftaya cuma"],["PLACE","Gaziantep'te"],["NAME","Sezen Aksu"],["TYPE","konseri"],["PRICE","1500 liradan ucuz"]]}
+{"text":"Bodrum'da yazın açık hava sineması var mı, aksiyon filmi istemiyoruz","spans":[["PLACE","Bodrum'da"],["DATE","yazın"],["TYPE","açık hava sineması"],["EXCLUDE","aksiyon filmi"]]}
+{"text":"Sivas'ta bu pazar Sivasspor maçı kaçta oynanıyor?","spans":[["PLACE","Sivas'ta"],["DATE","bu pazar"],["NAME","Sivasspor"],["TYPE","maçı"]]}
+{"text":"bu akşam Esenler'de rap konseri olsun, arabesk olmasın","spans":[["DATE","bu akşam"],["PLACE","Esenler'de"],["TYPE","rap konseri"],["EXCLUDE","arabesk"]]}
+{"text":"Kırklareli'nde yarın çocuk atölyesi bulabilir miyim, 4 kişilik","spans":[["PLACE","Kırklareli'nde"],["DATE","yarın"],["TYPE","çocuk atölyesi"],["PEOPLE","4 kişilik"]]}
+{"text":"önümüzdeki cumartesi Eskişehir'de Anadolu Üniversitesi bahar şenliği var mı","spans":[["DATE","önümüzdeki cumartesi"],["PLACE","Eskişehir'de"],["NAME","Anadolu Üniversitesi bahar şenliği"]]}
+{"text":"Antalya'da stand-up dışında komik bir etkinlik öner, arkadaşım da gelecek","spans":[["PLACE","Antalya'da"],["EXCLUDE","stand-up"],["PEOPLE","arkadaşım da gelecek"]]}
+{"text":"bu gece Ankara'da 21.30 seansına uygun korku filmi istiyorum","spans":[["DATE","bu gece"],["PLACE","Ankara'da"],["DATE","21.30 seansına"],["TYPE","korku filmi"]]}
+{"text":"Üsküdar'da gelecek hafta klasik müzik dinletisi var mı, dedemle gideceğim","spans":[["PLACE","Üsküdar'da"],["DATE","gelecek hafta"],["TYPE","klasik müzik dinletisi"],["PEOPLE","dedemle"]]}
+{"text":"Bolu'da bugün ücretsiz doğa belgeseli gösterimi var mı?","spans":[["PLACE","Bolu'da"],["DATE","bugün"],["PRICE","ücretsiz"],["TYPE","doğa belgeseli gösterimi"]]}
+{"text":"Duman'ı canlı dinlemek için bu cuma Ankara'da mekan bakıyorum","spans":[["NAME","Duman'ı"],["DATE","bu cuma"],["PLACE","Ankara'da"]]}
+{"text":"Mardin'de bu akşam yöresel müzik konseri arıyorum, pop istemem","spans":[["PLACE","Mardin'de"],["DATE","bu akşam"],["TYPE","yöresel müzik konseri"],["EXCLUDE","pop"]]}
+{"text":"3 kişi olarak gelecek ay İstanbul'da Zorlu PSM'de müzikal izleyelim","spans":[["PEOPLE","3 kişi"],["DATE","gelecek ay"],["PLACE","İstanbul'da"],["PLACE","Zorlu PSM'de"],["TYPE","müzikal"]]}
+{"text":"Afyon'da cuma akşamı bedava stand-up gösterisi var mı","spans":[["PLACE","Afyon'da"],["DATE","cuma akşamı"],["PRICE","bedava"],["TYPE","stand-up gösterisi"]]}
+{"text":"Kuşadası'nda bu hafta sonu tek başıma katılabileceğim salsa gecesi arıyorum","spans":[["PLACE","Kuşadası'nda"],["DATE","bu hafta sonu"],["PEOPLE","tek başıma"],["TYPE","salsa gecesi"]]}
+{"text":"yarın akşam Ankara'da Ankaragücü maçı için iki kişilik yer bakar mısın","spans":[["DATE","yarın akşam"],["PLACE","Ankara'da"],["NAME","Ankaragücü"],["TYPE","maçı"],["PEOPLE","iki kişilik"]]}
+{"text":"İstanbul'da önümüzdeki pazar çocuk oyunu var mı, yetişkin tiyatrosu hariç","spans":[["PLACE","İstanbul'da"],["DATE","önümüzdeki pazar"],["TYPE","çocuk oyunu"],["EXCLUDE","yetişkin tiyatrosu"]]}
+{"text":"Nevşehir'de Kapadokya balon festivali hangi tarihte düzenleniyor","spans":[["PLACE","Nevşehir'de"],["NAME","Kapadokya balon festivali"]]}
+{"text":"annemle birlikte bugün Ümraniye'de resim sergisine gidelim","spans":[["PEOPLE","annemle"],["DATE","bugün"],["PLACE","Ümraniye'de"],["TYPE","resim sergisine"]]}
+{"text":"bu akşam İzmir'de Ege Üniversitesi'nde mezuniyet konseri var mı?","spans":[["DATE","bu akşam"],["PLACE","İzmir'de"],["PLACE","Ege Üniversitesi'nde"],["TYPE","mezuniyet konseri"]]}
+{"text":"Kahramanmaraş'ta pazar günü güreş müsabakası arıyorum, futbol maçı olmasın","spans":[["PLACE","Kahramanmaraş'ta"],["DATE","pazar günü"],["TYPE","güreş müsabakası"],["EXCLUDE","futbol maçı"]]}
+{"text":"yarın gece Beşiktaş'ta karaoke var mı, 2 kişiyiz","spans":[["DATE","yarın gece"],["PLACE","Beşiktaş'ta"],["TYPE","karaoke"],["PEOPLE","2 kişiyiz"]]}
+{"text":"Edirne'de 23 Nisan'da çocuk festivali için ücretsiz program arıyorum","spans":[["PLACE","Edirne'de"],["DATE","23 Nisan'da"],["TYPE","çocuk festivali"],["PRICE","ücretsiz"]]}
+{"text":"bu cuma Antalya'da mor ve ötesi konseri var mı, 5 kişiyiz","spans":[["DATE","bu cuma"],["PLACE","Antalya'da"],["NAME","mor ve ötesi"],["TYPE","konseri"],["PEOPLE","5 kişiyiz"]]}
+{"text":"Beyoğlu'nda ayın 10'unda fotoğraf sergisi açılışı var mı","spans":[["PLACE","Beyoğlu'nda"],["DATE","ayın 10'unda"],["TYPE","fotoğraf sergisi açılışı"]]}
+{"text":"Balıkesir'de bu akşam stand-up olmasın, rock konseri bul","spans":[["PLACE","Balıkesir'de"],["DATE","bu akşam"],["EXCLUDE","stand-up"],["TYPE","rock konseri"]]}
+{"text":"çocuklarımla Bursa'da cumartesi günü buz gösterisi izlemek isteriz","spans":[["PEOPLE","çocuklarımla"],["PLACE","Bursa'da"],["DATE","cumartesi günü"],["TYPE","buz gösterisi"]]}
+{"text":"Trabzon Ortahisar'da bugün Trabzonspor maçı için ucuz bilet olur mu?","spans":[["PLACE","Trabzon Ortahisar'da"],["DATE","bugün"],["NAME","Trabzonspor"],["TYPE","maçı"],["PRICE","ucuz"]]}
+{"text":"Akhisar'da önümüzdeki çarşamba tiyatro bileti arıyorum, çocuk oyunu istemiyorum","spans":[["PLACE","Akhisar'da"],["DATE","önümüzdeki çarşamba"],["TYPE","tiyatro"],["EXCLUDE","çocuk oyunu"]]}
+{"text":"tek başıma çıkacağım, Diyarbakır'da bu akşam halk müziği dinletisi var mı","spans":[["PEOPLE","tek başıma"],["PLACE","Diyarbakır'da"],["DATE","bu akşam"],["TYPE","halk müziği dinletisi"]]}
+{"text":"Ekim sonunda İstanbul'da 6 kişilik grup için caz festivali öner","spans":[["DATE","Ekim sonunda"],["PLACE","İstanbul'da"],["PEOPLE","6 kişilik grup"],["TYPE","caz festivali"]]}
+{"text":"Kütahya'da yarın ücretsiz çocuk filmi gösteriliyor mu?","spans":[["PLACE","Kütahya'da"],["DATE","yarın"],["PRICE","ücretsiz"],["TYPE","çocuk filmi"]]}
+{"text":"Mersin'de bu gece Mersin İdman Yurdu maçı var mı?","spans":[["PLACE","Mersin'de"],["DATE","bu gece"],["NAME","Mersin İdman Yurdu"],["TYPE","maçı"]]}
+{"text":"Gaziosmanpaşa'da önümüzdeki hafta stand-up arıyorum; sihirbazlık gösterisi hariç","spans":[["PLACE","Gaziosmanpaşa'da"],["DATE","önümüzdeki hafta"],["TYPE","stand-up"],["EXCLUDE","sihirbazlık gösterisi"]]}
+{"text":"bu akşam Eskişehir'de 450 TL'ye kadar tiyatro bileti lazım, sevgilimle gideceğim","spans":[["DATE","bu akşam"],["PLACE","Eskişehir'de"],["PRICE","450 TL'ye kadar"],["TYPE","tiyatro"],["PEOPLE","sevgilimle"]]}
+{"text":"İstanbul'da yarın sabah koşu etkinliği var mı, köpeğimle katılabilir miyim","spans":[["PLACE","İstanbul'da"],["DATE","yarın sabah"],["TYPE","koşu etkinliği"],["PEOPLE","köpeğimle"]]}
+{"text":"Samsun'da cuma günü Samsunspor maçı biletleri ne kadar","spans":[["PLACE","Samsun'da"],["DATE","cuma günü"],["NAME","Samsunspor"],["TYPE","maçı"]]}
+{"text":"bu pazar Ankara'da stand-up değil de opera gibi bir şey var mı","spans":[["DATE","bu pazar"],["PLACE","Ankara'da"],["EXCLUDE","stand-up"],["TYPE","opera"]]}
+{"text":"Yalova'da yarın akşam çocuklarla gidebileceğimiz sirk gösterisi bul","spans":[["PLACE","Yalova'da"],["DATE","yarın akşam"],["PEOPLE","çocuklarla"],["TYPE","sirk gösterisi"]]}
+{"text":"Çeşme'de ağustosta ücretsiz plaj konseri var mı?","spans":[["PLACE","Çeşme'de"],["DATE","ağustosta"],["PRICE","ücretsiz"],["TYPE","plaj konseri"]]}
+{"text":"Murat Boz konserine cuma gecesi gidecek 2 kişi için bilet bak","spans":[["NAME","Murat Boz"],["TYPE","konserine"],["DATE","cuma gecesi"],["PEOPLE","2 kişi"]]}
+{"text":"Kocaeli'de bu akşam buz hokeyi maçı izlemek istiyoruz, 4 kişiyiz","spans":[["PLACE","Kocaeli'de"],["DATE","bu akşam"],["TYPE","buz hokeyi maçı"],["PEOPLE","4 kişiyiz"]]}
+{"text":"Giresun'da gelecek cuma amatör tiyatro oyunu var mı?","spans":[["PLACE","Giresun'da"],["DATE","gelecek cuma"],["TYPE","amatör tiyatro oyunu"]]}
+{"text":"kız kardeşimle bu akşam İstanbul'da bale gösterisi arıyorum","spans":[["PEOPLE","kız kardeşimle"],["DATE","bu akşam"],["PLACE","İstanbul'da"],["TYPE","bale gösterisi"]]}
+{"text":"Aksaray'da hafta sonu halk konseri olmasın, klasik müzik dinletisi olsun","spans":[["PLACE","Aksaray'da"],["DATE","hafta sonu"],["EXCLUDE","halk konseri"],["TYPE","klasik müzik dinletisi"]]}

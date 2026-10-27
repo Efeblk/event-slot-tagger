@@ -1,0 +1,200 @@
+{"text": "bu akşam kadıköyde stand-up var mı", "spans": [["DATE", "bu akşam"], ["PLACE", "kadıköyde"], ["TYPE", "stand-up"]]}
+{"text": "yarın beşiktaşta konser var mı", "spans": [["DATE", "yarın"], ["PLACE", "beşiktaşta"], ["TYPE", "konser"]]}
+{"text": "Üsküdar'da cumartesi için rock konseri arıyorum", "spans": [["PLACE", "Üsküdar'da"], ["DATE", "cumartesi"], ["TYPE", "rock konseri"]]}
+{"text": "hafta sonu şişlide ücretsiz stand-up olur mu", "spans": [["DATE", "hafta sonu"], ["PLACE", "şişlide"], ["PRICE", "ücretsiz"], ["TYPE", "stand-up"]]}
+{"text": "bi şeyler yapmak istiyorum ama kadıköy tarafında", "spans": [["PLACE", "kadıköy"]]}
+{"text": "Avrupa yakasında bu hafta konser var mı?", "spans": [["PLACE", "Avrupa yakasında"], ["DATE", "bu hafta"], ["TYPE", "konser"]]}
+{"text": "ucuz bi cem yılmaz gösterisi var mı beyoğluda", "spans": [["PRICE", "ucuz"], ["NAME", "cem yılmaz"], ["TYPE", "gösterisi"], ["PLACE", "beyoğluda"]]}
+{"text": "akşam 9'dan sonra bakırköyde caz konseri", "spans": [["DATE", "akşam 9'dan sonra"], ["PLACE", "bakırköyde"], ["TYPE", "caz konseri"]]}
+{"text": "4 kişiyiz kadıköy veya moda civarında konser var mı", "spans": [["PEOPLE", "4 kişiyiz"], ["PLACE", "kadıköy"], ["PLACE", "moda"], ["TYPE", "konser"]]}
+{"text": "sevgilimle nişantaşında stand-up izlemek istiyorum", "spans": [["PEOPLE", "sevgilimle"], ["PLACE", "nişantaşında"], ["TYPE", "stand-up"]]}
+{"text": "Ataşehir'de bu gece kimler çıkıyor, konser olsun 😊", "spans": [["PLACE", "Ataşehir'de"], ["DATE", "bu gece"], ["TYPE", "konser"]]}
+{"text": "maltepede çocuğumla yapabileceğimiz bir şey var mı", "spans": [["PLACE", "maltepede"], ["PEOPLE", "çocuğumla"]]}
+{"text": "pazar günü karaköyde açık hava konseri var mı", "spans": [["DATE", "pazar günü"], ["PLACE", "karaköyde"], ["TYPE", "açık hava konseri"]]}
+{"text": "kartalda 500 tl altı stand-up bulabilir miyiz", "spans": [["PLACE", "kartalda"], ["PRICE", "500 tl altı"], ["TYPE", "stand-up"]]}
+{"text": "Levent'te perşembe akşamı konser bakıyorum", "spans": [["PLACE", "Levent'te"], ["DATE", "perşembe akşamı"], ["TYPE", "konser"]]}
+{"text": "bu hafta sonu sarıyerde ya da beşiktaşta bi şey olur mu", "spans": [["DATE", "bu hafta sonu"], ["PLACE", "sarıyerde"], ["PLACE", "beşiktaşta"]]}
+{"text": "Kuzguncuk Sahnesi'nde stand-up var mı?", "spans": [["PLACE", "Kuzguncuk Sahnesi'nde"], ["TYPE", "stand-up"]]}
+{"text": "cuma gecesi 22.00'den sonra duman konseri ne zaman", "spans": [["DATE", "cuma gecesi 22.00'den sonra"], ["NAME", "duman"], ["TYPE", "konseri"]]}
+{"text": "Sarıyer'de tek başıma gidebileceğim stand-up gösterisi lazım", "spans": [["PLACE", "Sarıyer'de"], ["PEOPLE", "tek başıma"], ["TYPE", "stand-up gösterisi"]]}
+{"text": "bugün ucuz konser var mı, eminönü tarafı olsun", "spans": [["DATE", "bugün"], ["PRICE", "ucuz"], ["TYPE", "konser"], ["PLACE", "eminönü"]]}
+{"text": "Beyoğlu'nda akşam konser olsun, ucuzsa daha iyi", "spans": [["PLACE", "Beyoğlu'nda"], ["DATE", "akşam"], ["TYPE", "konser"], ["PRICE", "ucuzsa"]]}
+{"text": "üsküdarda yarın ve öbür gün stand-up var mı", "spans": [["PLACE", "üsküdarda"], ["DATE", "yarın"], ["DATE", "öbür gün"], ["TYPE", "stand-up"]]}
+{"text": "Bakırköy'de ekim sonunda Cem Yılmaz stand-up var mı", "spans": [["PLACE", "Bakırköy'de"], ["DATE", "ekim sonunda"], ["NAME", "Cem Yılmaz"], ["TYPE", "stand-up"]]}
+{"text": "ataşehirde 2 kişilik konser bakıyoruz", "spans": [["PLACE", "ataşehirde"], ["PEOPLE", "2 kişilik"], ["TYPE", "konser"]]}
+{"text": "kadıköy civarında ne var bu hafta", "spans": [["PLACE", "kadıköy"], ["DATE", "bu hafta"]]}
+{"text": "bu gece Maltepe'de bi caz konseri olur mu", "spans": [["DATE", "bu gece"], ["PLACE", "Maltepe'de"], ["TYPE", "caz konseri"]]}
+{"text": "rahat bi stand-up lazım, mesela bugün beşiktaştaki kulüpte", "spans": [["TYPE", "stand-up"], ["DATE", "bugün"], ["PLACE", "beşiktaştaki"]]}
+{"text": "Kartal'da perşembe 19.00 sonrası konser var mı", "spans": [["PLACE", "Kartal'da"], ["DATE", "perşembe 19.00 sonrası"], ["TYPE", "konser"]]}
+{"text": "oooo bu hafta sonu İstanbul'da ne konser var", "spans": [["DATE", "bu hafta sonu"], ["PLACE", "İstanbul'da"], ["TYPE", "konser"]]}
+{"text": "Kadıköy'de bugün, en fazla 300 TL stand-up olabilir mi", "spans": [["PLACE", "Kadıköy'de"], ["DATE", "bugün"], ["PRICE", "en fazla 300 TL"], ["TYPE", "stand-up"]]}
+{"text": "eşimle bu akşam Kadıköy'de dinleyebileceğimiz bir konser var mı", "spans": [["PEOPLE", "eşimle"], ["DATE", "bu akşam"], ["PLACE", "Kadıköy'de"], ["TYPE", "konser"]]}
+{"text": "beşiktaşta yarın gece stand-up varsa haber ver", "spans": [["PLACE", "beşiktaşta"], ["DATE", "yarın gece"], ["TYPE", "stand-up"]]}
+{"text": "Zorlu PSM'de ocak ayında hangi konserler var", "spans": [["PLACE", "Zorlu PSM'de"], ["DATE", "ocak ayında"], ["TYPE", "konserler"]]}
+{"text": "eminönünde kuruş kuruş bi şeyler olur mu", "spans": [["PLACE", "eminönünde"]]}
+{"text": "Üsküdar'da sevgilimle, 15 Kasım'da stand-up var mı", "spans": [["PLACE", "Üsküdar'da"], ["PEOPLE", "sevgilimle"], ["DATE", "15 Kasım'da"], ["TYPE", "stand-up"]]}
+{"text": "karaköy civarı konser ara ama ücretsiz olsun", "spans": [["PLACE", "karaköy"], ["TYPE", "konser"], ["PRICE", "ücretsiz"]]}
+{"text": "harbiyede cumartesi akşamı açık hava konseri olur mu", "spans": [["PLACE", "harbiyede"], ["DATE", "cumartesi akşamı"], ["TYPE", "açık hava konseri"]]}
+{"text": "Sezen Aksu konseri İstanbul'da hangi tarihte, bakabilir misin", "spans": [["NAME", "Sezen Aksu"], ["TYPE", "konseri"], ["PLACE", "İstanbul'da"]]}
+{"text": "kadıköyde ya da sultanahmette pazar akşamı bi stand-up", "spans": [["PLACE", "kadıköyde"], ["PLACE", "sultanahmette"], ["DATE", "pazar akşamı"], ["TYPE", "stand-up"]]}
+{"text": "bugün çok sıkıldım, ucuz bi konser lazım, ataşehir tarafı", "spans": [["DATE", "bugün"], ["PRICE", "ucuz"], ["TYPE", "konser"], ["PLACE", "ataşehir"]]}
+{"text": "canım sıkıldı, bi şeyler yapalım", "spans": []}
+{"text": "hiçbir şey istemiyorum, sadece sakin bir yer", "spans": []}
+{"text": "bu akşam kadıköyde konser olmasın, stand-up olsun", "spans": [["DATE", "bu akşam"], ["PLACE", "kadıköyde"], ["EXCLUDE", "konser"], ["TYPE", "stand-up"]]}
+{"text": "üsküdarda konser olur mu, bi şey", "spans": [["PLACE", "üsküdarda"], ["TYPE", "konser"]]}
+{"text": "beşiktaşta stand-up istemiyorum, konser ya da caz olsun", "spans": [["PLACE", "beşiktaşta"], ["EXCLUDE", "stand-up"], ["TYPE", "konser"], ["TYPE", "caz"]]}
+{"text": "ataşehirde cuma akşamı, sadece rock olsun, pop istemiyorum", "spans": [["PLACE", "ataşehirde"], ["DATE", "cuma akşamı"], ["TYPE", "rock"], ["EXCLUDE", "pop"]]}
+{"text": "Kuzguncuk Sahnesi'nde stand-up var mı, cem yılmaz hariç", "spans": [["PLACE", "Kuzguncuk Sahnesi'nde"], ["TYPE", "stand-up"], ["EXCLUDE", "cem yılmaz"]]}
+{"text": "kadıköy dışında bi yer bul, bu hafta sonu caz konseri", "spans": [["EXCLUDE", "kadıköy"], ["DATE", "bu hafta sonu"], ["TYPE", "caz konseri"]]}
+{"text": "şişli olsun, pazar günü konser", "spans": [["PLACE", "şişli"], ["DATE", "pazar günü"], ["TYPE", "konser"]]}
+{"text": "yarın akşam kadıköy dışında olsun, stand-up ya da konser", "spans": [["DATE", "yarın akşam"], ["EXCLUDE", "kadıköy"], ["TYPE", "stand-up"], ["TYPE", "konser"]]}
+{"text": "hafta içi değil hafta sonu, sadece konser", "spans": [["DATE", "hafta sonu"], ["TYPE", "konser"]]}
+{"text": "Sezen Aksu hariç konser bakıyorum, İstanbul'da bu hafta", "spans": [["EXCLUDE", "Sezen Aksu"], ["TYPE", "konser"], ["PLACE", "İstanbul'da"], ["DATE", "bu hafta"]]}
+{"text": "ucuz bi konser lazım, stand-up olsun, üsküdarda", "spans": [["PRICE", "ucuz"], ["TYPE", "konser"], ["TYPE", "stand-up"], ["PLACE", "üsküdarda"]]}
+{"text": "bugün maltepe'de olmasın, yarın kadıköyde", "spans": [["DATE", "bugün"], ["EXCLUDE", "maltepe'de"], ["DATE", "yarın"], ["PLACE", "kadıköyde"]]}
+{"text": "çocuk tiyatrosu olmasın, çocuğumla bi konser olsun", "spans": [["EXCLUDE", "çocuk tiyatrosu"], ["PEOPLE", "çocuğumla"], ["TYPE", "konser"]]}
+{"text": "sadece konser olsun, bi yerde", "spans": [["TYPE", "konser"]]}
+{"text": "yakın bi yer, cumartesi konser", "spans": [["DATE", "cumartesi"], ["TYPE", "konser"]]}
+{"text": "arkadaşlarla gidelim, konser bakalım", "spans": [["PEOPLE", "arkadaşlarla"], ["TYPE", "konser"]]}
+{"text": "ya tiyatro ya da beşiktaşta konser", "spans": [["TYPE", "tiyatro"], ["PLACE", "beşiktaşta"], ["TYPE", "konser"]]}
+{"text": "stand-up izlemek istemiyorum, moda'da olmasın, kadıköy'de bi şey", "spans": [["EXCLUDE", "stand-up"], ["EXCLUDE", "moda'da"], ["PLACE", "kadıköy'de"]]}
+{"text": "Duman konseri için 2 kişi, kadıköyde bu cumartesi", "spans": [["NAME", "Duman"], ["TYPE", "konseri"], ["PEOPLE", "2 kişi"], ["PLACE", "kadıköyde"], ["DATE", "bu cumartesi"]]}
+{"text": "Şişli'de kişi başı en fazla 600 TL stand-up var mı", "spans": [["PLACE", "Şişli'de"], ["PRICE", "kişi başı en fazla 600 TL"], ["TYPE", "stand-up"]]}
+{"text": "bugün Kadıköy'de ücretsiz konser varsa söyle", "spans": [["DATE", "bugün"], ["PLACE", "Kadıköy'de"], ["PRICE", "ücretsiz"], ["TYPE", "konser"]]}
+{"text": "üsküdar'da ucuz konser, 4 kişi giderim", "spans": [["PLACE", "üsküdar'da"], ["PRICE", "ucuz"], ["TYPE", "konser"], ["PEOPLE", "4 kişi"]]}
+{"text": "Sultanahmet'te kişi başı 250 liradan ucuz bi stand-up", "spans": [["PLACE", "Sultanahmet'te"], ["PRICE", "kişi başı 250 liradan ucuz"], ["TYPE", "stand-up"]]}
+{"text": "çocuğumla ve eşimle, bu gece beşiktaşta bedava konser var mı", "spans": [["PEOPLE", "çocuğumla"], ["PEOPLE", "eşimle"], ["DATE", "bu gece"], ["PLACE", "beşiktaşta"], ["PRICE", "bedava"], ["TYPE", "konser"]]}
+{"text": "Kadıköy'de 3 kişilik stand-up, yarın akşam 8'den sonra", "spans": [["PLACE", "Kadıköy'de"], ["PEOPLE", "3 kişilik"], ["TYPE", "stand-up"], ["DATE", "yarın akşam 8'den sonra"]]}
+{"text": "Cem Yılmaz görmek istiyorum, İstanbul'da hangi gün, en fazla 1500 TL", "spans": [["NAME", "Cem Yılmaz"], ["PLACE", "İstanbul'da"], ["PRICE", "en fazla 1500 TL"]]}
+{"text": "bugün 500 liradan ucuz konser bakıyorum eminönünde", "spans": [["DATE", "bugün"], ["PRICE", "500 liradan ucuz"], ["TYPE", "konser"], ["PLACE", "eminönünde"]]}
+{"text": "arkadaşlarımla İstanbul'da bi stand-up izleyelim, 300 TL altı", "spans": [["PEOPLE", "arkadaşlarımla"], ["PLACE", "İstanbul'da"], ["TYPE", "stand-up"], ["PRICE", "300 TL altı"]]}
+{"text": "iki kişi için bu ay konser, en fazla 800 TL", "spans": [["PEOPLE", "iki kişi"], ["DATE", "bu ay"], ["TYPE", "konser"], ["PRICE", "en fazla 800 TL"]]}
+{"text": "ücretsiz stand-up var mı, nisan ayında", "spans": [["PRICE", "ücretsiz"], ["TYPE", "stand-up"], ["DATE", "nisan ayında"]]}
+{"text": "Beşiktaş'ta cumartesi 20.00'den sonra 2 kişilik konser olsa", "spans": [["PLACE", "Beşiktaş'ta"], ["DATE", "cumartesi 20.00'den sonra"], ["PEOPLE", "2 kişilik"], ["TYPE", "konser"]]}
+{"text": "Haluk Levent konseri Üsküdar'da var mı kaç TL", "spans": [["NAME", "Haluk Levent"], ["TYPE", "konseri"], ["PLACE", "Üsküdar'da"]]}
+{"text": "kadıköy'de bedava olan bi şey var mı bu hafta sonu", "spans": [["PLACE", "kadıköy'de"], ["PRICE", "bedava"], ["DATE", "bu hafta sonu"]]}
+{"text": "Tarkan konseri, 1000 TL'yi geçmesin, İstanbul'da", "spans": [["NAME", "Tarkan"], ["TYPE", "konseri"], ["PRICE", "1000 TL'yi geçmesin"], ["PLACE", "İstanbul'da"]]}
+{"text": "Karaköy'de sevgilimle ücretsiz stand-up, pazar günü", "spans": [["PLACE", "Karaköy'de"], ["PEOPLE", "sevgilimle"], ["PRICE", "ücretsiz"], ["TYPE", "stand-up"], ["DATE", "pazar günü"]]}
+{"text": "Kadıköy'de 1000 TL altı konser var mı bu hafta sonu, 2 kişi", "spans": [["PLACE", "Kadıköy'de"], ["PRICE", "1000 TL altı"], ["TYPE", "konser"], ["DATE", "bu hafta sonu"], ["PEOPLE", "2 kişi"]]}
+{"text": "ben tek başıma gidicem, şişli ya da beyoğlu, cuma akşamı konser", "spans": [["PEOPLE", "tek başıma"], ["PLACE", "şişli"], ["PLACE", "beyoğlu"], ["DATE", "cuma akşamı"], ["TYPE", "konser"]]}
+{"text": "ücretsiz sahil konseri var mı kadıköyde", "spans": [["PRICE", "ücretsiz"], ["TYPE", "sahil konseri"], ["PLACE", "kadıköyde"]]}
+{"text": "saat 8'den sonra beşiktaşta konser", "spans": [["DATE", "saat 8'den sonra"], ["PLACE", "beşiktaşta"], ["TYPE", "konser"]]}
+{"text": "21.00'den sonra karaköyde stand-up olsun", "spans": [["DATE", "21.00'den sonra"], ["PLACE", "karaköyde"], ["TYPE", "stand-up"]]}
+{"text": "15-20 kasım arası Kadıköy'de konser var mı", "spans": [["DATE", "15-20 kasım arası"], ["PLACE", "Kadıköy'de"], ["TYPE", "konser"]]}
+{"text": "önümüzdeki ay Ataşehir'de stand-up", "spans": [["DATE", "önümüzdeki ay"], ["PLACE", "Ataşehir'de"], ["TYPE", "stand-up"]]}
+{"text": "ekim sonunda sarıyerde yeni bi konser çıkar mı", "spans": [["DATE", "ekim sonunda"], ["PLACE", "sarıyerde"], ["TYPE", "konser"]]}
+{"text": "Beyoğlu tarafında yarın öğleden sonra, ya da akşam, caz olur mu", "spans": [["PLACE", "Beyoğlu"], ["DATE", "yarın öğleden sonra"], ["DATE", "akşam"], ["TYPE", "caz"]]}
+{"text": "bu gece Avrupa yakasında açık hava konseri", "spans": [["DATE", "bu gece"], ["PLACE", "Avrupa yakasında"], ["TYPE", "açık hava konseri"]]}
+{"text": "Anadolu yakasında hafta sonu stand-up", "spans": [["PLACE", "Anadolu yakasında"], ["DATE", "hafta sonu"], ["TYPE", "stand-up"]]}
+{"text": "cumartesi 20.00'den sonra Üsküdar'da bi konser", "spans": [["DATE", "cumartesi 20.00'den sonra"], ["PLACE", "Üsküdar'da"], ["TYPE", "konser"]]}
+{"text": "Ekim'in ikinci haftası Kadıköy'de konser", "spans": [["DATE", "Ekim'in ikinci haftası"], ["PLACE", "Kadıköy'de"], ["TYPE", "konser"]]}
+{"text": "gelecek hafta İstanbul'da stand-up etkinliği", "spans": [["DATE", "gelecek hafta"], ["PLACE", "İstanbul'da"], ["TYPE", "stand-up"]]}
+{"text": "Kasım'da Kadıköy ve Beşiktaş'ta konser", "spans": [["DATE", "Kasım'da"], ["PLACE", "Kadıköy"], ["PLACE", "Beşiktaş'ta"], ["TYPE", "konser"]]}
+{"text": "salı akşamı bi yerde stand-up, 500 TL'yi geçmesin", "spans": [["DATE", "salı akşamı"], ["TYPE", "stand-up"], ["PRICE", "500 TL'yi geçmesin"]]}
+{"text": "pazar akşamı kadıköyde konser var mı?", "spans": [["DATE", "pazar akşamı"], ["PLACE", "kadıköyde"], ["TYPE", "konser"]]}
+{"text": "bugün mü yarın mı, beşiktaşta bi stand-up", "spans": [["DATE", "bugün"], ["DATE", "yarın"], ["PLACE", "beşiktaşta"], ["TYPE", "stand-up"]]}
+{"text": "Kadıköy'de bu hafta sonu bi konser ararken çocuğumla gelirim", "spans": [["PLACE", "Kadıköy'de"], ["DATE", "bu hafta sonu"], ["TYPE", "konser"], ["PEOPLE", "çocuğumla"]]}
+{"text": "üsküdarda pazartesi ve perşembe akşamları stand-up", "spans": [["PLACE", "üsküdarda"], ["DATE", "pazartesi"], ["DATE", "perşembe akşamları"], ["TYPE", "stand-up"]]}
+{"text": "Haluk Levent konseri için 2 kişiyiz, Kadıköy'de", "spans": [["NAME", "Haluk Levent"], ["TYPE", "konseri"], ["PEOPLE", "2 kişiyiz"], ["PLACE", "Kadıköy'de"]]}
+{"text": "kadıköyde 🎤 stand-up var mı yarın?", "spans": [["PLACE", "kadıköyde"], ["TYPE", "stand-up"], ["DATE", "yarın"]]}
+{"text": "Cem Yılmaz 🤣 bu cumartesi İstanbul'da", "spans": [["NAME", "Cem Yılmaz"], ["DATE", "bu cumartesi"], ["PLACE", "İstanbul'da"]]}
+{"text": "kadikoyde bu aksam stand up var mi", "spans": [["PLACE", "kadikoyde"], ["DATE", "bu aksam"], ["TYPE", "stand up"]]}
+{"text": "besiktasta yarin konser var mi", "spans": [["PLACE", "besiktasta"], ["DATE", "yarin"], ["TYPE", "konser"]]}
+{"text": "sisli'de ucretsiz konser bulabilirmiyiz", "spans": [["PLACE", "sisli'de"], ["PRICE", "ucretsiz"], ["TYPE", "konser"]]}
+{"text": "uskudarda hafta sonu bi caz konseri olur mu", "spans": [["PLACE", "uskudarda"], ["DATE", "hafta sonu"], ["TYPE", "caz konseri"]]}
+{"text": "atasehirde 2 kisilik stand-up lazim", "spans": [["PLACE", "atasehirde"], ["PEOPLE", "2 kisilik"], ["TYPE", "stand-up"]]}
+{"text": "bakirkoyde pazar aksami konser", "spans": [["PLACE", "bakirkoyde"], ["DATE", "pazar aksami"], ["TYPE", "konser"]]}
+{"text": "karakoyde 500 tl altı konser var mi", "spans": [["PLACE", "karakoyde"], ["PRICE", "500 tl altı"], ["TYPE", "konser"]]}
+{"text": "kadikoy tarafinda cumartesi 9dan sonra stand-up", "spans": [["PLACE", "kadikoy"], ["DATE", "cumartesi 9dan sonra"], ["TYPE", "stand-up"]]}
+{"text": "eminonunde yarin aksam 7 gibi konser", "spans": [["PLACE", "eminonunde"], ["DATE", "yarin aksam 7 gibi"], ["TYPE", "konser"]]}
+{"text": "maltepede bi sey var mi, sevgilimle", "spans": [["PLACE", "maltepede"], ["PEOPLE", "sevgilimle"]]}
+{"text": "ehh, bişey olsun artık", "spans": []}
+{"text": "levent'te perşembe konseri var mı abi", "spans": [["PLACE", "levent'te"], ["DATE", "perşembe"], ["TYPE", "konseri"]]}
+{"text": "bu gece besiktasta rock var mi", "spans": [["DATE", "bu gece"], ["PLACE", "besiktasta"], ["TYPE", "rock"]]}
+{"text": "sariyerde ailecek gidebilecegimiz bi konser", "spans": [["PLACE", "sariyerde"], ["TYPE", "konser"]]}
+{"text": "ya tiyatro olmasin, konser olsun kadikoyde", "spans": [["EXCLUDE", "tiyatro"], ["TYPE", "konser"], ["PLACE", "kadikoyde"]]}
+{"text": "stand-up olmasin, yarin pendikte konser", "spans": [["EXCLUDE", "stand-up"], ["DATE", "yarin"], ["PLACE", "pendikte"], ["TYPE", "konser"]]}
+{"text": "naber, napıyosun, ne var ne yok", "spans": []}
+{"text": "abi bi şey yapalım mı, ne dersin", "spans": []}
+{"text": "heey, ne yapıyoruz be, sıkıldım ya", "spans": []}
+{"text": "şişlide mı var kadıköyde mi, bu gece konser", "spans": [["PLACE", "şişlide"], ["PLACE", "kadıköyde"], ["DATE", "bu gece"], ["TYPE", "konser"]]}
+{"text": "Duman konseri bi bakın, 1000 liradan ucuz olsun", "spans": [["NAME", "Duman"], ["TYPE", "konseri"], ["PRICE", "1000 liradan ucuz"]]}
+{"text": "Üsküdar'da bu akşam tek başıma bi şeyler", "spans": [["PLACE", "Üsküdar'da"], ["DATE", "bu akşam"], ["PEOPLE", "tek başıma"]]}
+{"text": "bugün beşiktaşta her şey olur", "spans": [["DATE", "bugün"], ["PLACE", "beşiktaşta"]]}
+{"text": "Kadıköy'de yarın saat 20.30'dan sonra 3 kişiyiz, stand-up?", "spans": [["PLACE", "Kadıköy'de"], ["DATE", "yarın saat 20.30'dan sonra"], ["PEOPLE", "3 kişiyiz"], ["TYPE", "stand-up"]]}
+{"text": "Sarıyer'de ekim ayında kişi başı en fazla 400 TL konser", "spans": [["PLACE", "Sarıyer'de"], ["DATE", "ekim ayında"], ["PRICE", "kişi başı en fazla 400 TL"], ["TYPE", "konser"]]}
+{"text": "Zorlu PSM'de Cem Yılmaz çıkacak mı, bu hafta", "spans": [["PLACE", "Zorlu PSM'de"], ["NAME", "Cem Yılmaz"], ["DATE", "bu hafta"]]}
+{"text": "Bakırköy'de sevgilimle stand-up, hafta içi", "spans": [["PLACE", "Bakırköy'de"], ["PEOPLE", "sevgilimle"], ["TYPE", "stand-up"], ["DATE", "hafta içi"]]}
+{"text": "kendimi iyi hissettiren bir şey olsun, dinlemek istiyorum", "spans": []}
+{"text": "beyoğlu'nda bugün ücretsiz stand-up bulabilir miyim", "spans": [["PLACE", "beyoğlu'nda"], ["DATE", "bugün"], ["PRICE", "ücretsiz"], ["TYPE", "stand-up"]]}
+{"text": "çocuklarla birlikte bi konser: kadıköy, pazar, en fazla 300 TL", "spans": [["PEOPLE", "çocuklarla"], ["TYPE", "konser"], ["PLACE", "kadıköy"], ["DATE", "pazar"], ["PRICE", "en fazla 300 TL"]]}
+{"text": "Harbiye'de ağustos sonu konser var mı", "spans": [["PLACE", "Harbiye'de"], ["DATE", "ağustos sonu"], ["TYPE", "konser"]]}
+{"text": "Cem Yılmaz hariç stand-up ve konser bakıyorum, Kadıköy", "spans": [["EXCLUDE", "Cem Yılmaz"], ["TYPE", "stand-up"], ["TYPE", "konser"], ["PLACE", "Kadıköy"]]}
+{"text": "ne yapsam acaba, kafam çok karışık", "spans": []}
+{"text": "kadıköy'de stand-up ya da caz, 2 kişi", "spans": [["PLACE", "kadıköy'de"], ["TYPE", "stand-up"], ["TYPE", "caz"], ["PEOPLE", "2 kişi"]]}
+{"text": "bu sabah konser oldu mu, akşam ne var İstanbul'da", "spans": [["DATE", "bu sabah"], ["TYPE", "konser"], ["DATE", "akşam"], ["PLACE", "İstanbul'da"]]}
+{"text": "sultanahmette cuma gecesi açık hava konseri olsun 🎶", "spans": [["PLACE", "sultanahmette"], ["DATE", "cuma gecesi"], ["TYPE", "açık hava konseri"]]}
+{"text": "Kuzguncuk'ta kişi başı 200 TL altı stand-up", "spans": [["PLACE", "Kuzguncuk'ta"], ["PRICE", "kişi başı 200 TL altı"], ["TYPE", "stand-up"]]}
+{"text": "maltepe ve kartalda haftaya konser, 4 kişi", "spans": [["PLACE", "maltepe"], ["PLACE", "kartalda"], ["DATE", "haftaya"], ["TYPE", "konser"], ["PEOPLE", "4 kişi"]]}
+{"text": "bu hafta İstanbul'un Avrupa yakasında stand-up var mı", "spans": [["DATE", "bu hafta"], ["PLACE", "İstanbul'un Avrupa yakasında"], ["TYPE", "stand-up"]]}
+{"text": "kardeşimle cumartesi Kadıköy'e gidelim, konser", "spans": [["PEOPLE", "kardeşimle"], ["DATE", "cumartesi"], ["PLACE", "Kadıköy'e"], ["TYPE", "konser"]]}
+{"text": "yapacak bir şey yok, canım sıkkın", "spans": []}
+{"text": "hmm bilmiyorum, bi bakarsın", "spans": []}
+{"text": "en son ne izlediysen onu öner", "spans": []}
+{"text": "bugün nasılsın", "spans": []}
+{"text": "boş ver, sen bi şey bul", "spans": []}
+{"text": "kafam dağılsın bi şeyler olsun", "spans": []}
+{"text": "eve dönmek istemiyorum, sen bi şeyler öner", "spans": []}
+{"text": "selam, ne yapıyorsun", "spans": []}
+{"text": "tamam, teşekkürler", "spans": []}
+{"text": "kadıköy dışında olsun, bi şeyler", "spans": [["EXCLUDE", "kadıköy"]]}
+{"text": "pazar akşamı bi şeyler, kadıköyde", "spans": [["DATE", "pazar akşamı"], ["PLACE", "kadıköyde"]]}
+{"text": "Beşiktaş'ta olmasın, Kadıköy olsun, stand-up olsun", "spans": [["EXCLUDE", "Beşiktaş'ta"], ["PLACE", "Kadıköy"], ["TYPE", "stand-up"]]}
+{"text": "rock olmasın, pop olsun", "spans": [["EXCLUDE", "rock"], ["TYPE", "pop"]]}
+{"text": "sahne kötü, stand-up istemiyorum, konser", "spans": [["EXCLUDE", "stand-up"], ["TYPE", "konser"]]}
+{"text": "Tarkan olmasın, Sezen Aksu olsun", "spans": [["EXCLUDE", "Tarkan"], ["NAME", "Sezen Aksu"]]}
+{"text": "Galatasaray olmasın, Beşiktaş olsun", "spans": [["EXCLUDE", "Galatasaray"], ["NAME", "Beşiktaş"]]}
+{"text": "bugün hiçbir şey istemiyorum, ücretsiz olsun", "spans": [["DATE", "bugün"], ["PRICE", "ücretsiz"]]}
+{"text": "akşam 10'a kadar bi konser", "spans": [["DATE", "akşam 10'a kadar"], ["TYPE", "konser"]]}
+{"text": "yarın sabah 11'de Kadıköy'de bi şey", "spans": [["DATE", "yarın sabah 11'de"], ["PLACE", "Kadıköy'de"]]}
+{"text": "kişi başı 150 TL'den ucuz, Üsküdar, stand-up", "spans": [["PRICE", "kişi başı 150 TL'den ucuz"], ["PLACE", "Üsküdar"], ["TYPE", "stand-up"]]}
+{"text": "merhaba, bu cumartesi akşamı Kadıköy'de 2 kişilik caz konseri arıyorum, en fazla 700 TL", "spans": [["DATE", "bu cumartesi akşamı"], ["PLACE", "Kadıköy'de"], ["PEOPLE", "2 kişilik"], ["TYPE", "caz konseri"], ["PRICE", "en fazla 700 TL"]]}
+{"text": "selam, yarın öğlen Beşiktaş'ta çocuğumla gidebileceğim ücretsiz bi etkinlik var mı", "spans": [["DATE", "yarın öğlen"], ["PLACE", "Beşiktaş'ta"], ["PEOPLE", "çocuğumla"], ["PRICE", "ücretsiz"]]}
+{"text": "Duman konseri için kadıköyde bu hafta sonu 4 kişilik bilet, kişi başı 500 TL altı", "spans": [["NAME", "Duman"], ["TYPE", "konseri"], ["PLACE", "kadıköyde"], ["DATE", "bu hafta sonu"], ["PEOPLE", "4 kişilik"], ["PRICE", "kişi başı 500 TL altı"]]}
+{"text": "bugün mü yarın mı bilmiyorum ama Maltepe'de bi stand-up ve hafta sonu bi konser olsun", "spans": [["DATE", "bugün"], ["DATE", "yarın"], ["PLACE", "Maltepe'de"], ["TYPE", "stand-up"], ["DATE", "hafta sonu"], ["TYPE", "konser"]]}
+{"text": "sevgilimle Ortaköy'de, cuma akşamı, 500 TL altı, stand-up veya caz istiyoruz", "spans": [["PEOPLE", "sevgilimle"], ["PLACE", "Ortaköy'de"], ["DATE", "cuma akşamı"], ["PRICE", "500 TL altı"], ["TYPE", "stand-up"], ["TYPE", "caz"]]}
+{"text": "Kadıköy'de stand-up izlemek istiyoruz ama Cem Yılmaz olmasın, 3 kişiyiz, cumartesi", "spans": [["PLACE", "Kadıköy'de"], ["TYPE", "stand-up"], ["EXCLUDE", "Cem Yılmaz"], ["PEOPLE", "3 kişiyiz"], ["DATE", "cumartesi"]]}
+{"text": "ne zaman bi konser var İstanbul'da ücretsiz, yarından sonra", "spans": [["TYPE", "konser"], ["PLACE", "İstanbul'da"], ["PRICE", "ücretsiz"], ["DATE", "yarından sonra"]]}
+{"text": "Kadıköy'de bu gece, sevgilimle, 300 TL altı caz konseri olsa çok iyi olur", "spans": [["PLACE", "Kadıköy'de"], ["DATE", "bu gece"], ["PEOPLE", "sevgilimle"], ["PRICE", "300 TL altı"], ["TYPE", "caz konseri"]]}
+{"text": "tek başıma Beşiktaş'a gideceğim, konser olsun ama Tarkan olmasın", "spans": [["PEOPLE", "tek başıma"], ["PLACE", "Beşiktaş'a"], ["TYPE", "konser"], ["EXCLUDE", "Tarkan"]]}
+{"text": "bugün Kadıköy'de bi şey yapmak istiyorum; stand-up olsun, ucuz olsun, arkadaşlarla", "spans": [["DATE", "bugün"], ["PLACE", "Kadıköy'de"], ["TYPE", "stand-up"], ["PRICE", "ucuz"], ["PEOPLE", "arkadaşlarla"]]}
+{"text": "15 Mart ile 20 Mart arası İstanbul'da konser, 2 kişi, 800 TL'yi geçmesin", "spans": [["DATE", "15 Mart ile 20 Mart arası"], ["PLACE", "İstanbul'da"], ["TYPE", "konser"], ["PEOPLE", "2 kişi"], ["PRICE", "800 TL'yi geçmesin"]]}
+{"text": "aksam 8 den sonra uskudarda ucuz caz olur mu, cocugumla gelirim", "spans": [["DATE", "aksam 8 den sonra"], ["PLACE", "uskudarda"], ["PRICE", "ucuz"], ["TYPE", "caz"], ["PEOPLE", "cocugumla"]]}
+{"text": "sadece konser olsun, tiyatro olmasın, bu hafta sonu kadıköyde", "spans": [["TYPE", "konser"], ["EXCLUDE", "tiyatro"], ["DATE", "bu hafta sonu"], ["PLACE", "kadıköyde"]]}
+{"text": "naber abi, bu akşam bi yerde Şişli'de Cem Yılmaz ya da Duman var mı, en fazla 1000 TL", "spans": [["DATE", "bu akşam"], ["PLACE", "Şişli'de"], ["NAME", "Cem Yılmaz"], ["NAME", "Duman"], ["PRICE", "en fazla 1000 TL"]]}
+{"text": "yarın akşam 9 gibi Üsküdar'da, sevgilimle ücretsiz bi caz konseri olabilir mi", "spans": [["DATE", "yarın akşam 9 gibi"], ["PLACE", "Üsküdar'da"], ["PEOPLE", "sevgilimle"], ["PRICE", "ücretsiz"], ["TYPE", "caz konseri"]]}
+{"text": "uzun zamandır Moda'da bi konser yok, bu ay olsun", "spans": [["PLACE", "Moda'da"], ["TYPE", "konser"], ["DATE", "bu ay"]]}
+{"text": "sahil kenarında konser, kadıköy moda, bugün yarın arası", "spans": [["TYPE", "konser"], ["PLACE", "kadıköy"], ["PLACE", "moda"], ["DATE", "bugün yarın arası"]]}
+{"text": "Kadıköy'de bu hafta sonu ya da gelecek hafta, cem yılmaz olmasın, duman olsun", "spans": [["PLACE", "Kadıköy'de"], ["DATE", "bu hafta sonu"], ["DATE", "gelecek hafta"], ["EXCLUDE", "cem yılmaz"], ["NAME", "duman"]]}
+{"text": "kişi başı en fazla 600 TL, beşiktaşta, cumartesi gecesi, stand-up", "spans": [["PRICE", "kişi başı en fazla 600 TL"], ["PLACE", "beşiktaşta"], ["DATE", "cumartesi gecesi"], ["TYPE", "stand-up"]]}
+{"text": "yarın Karaköy'de, 2 kişi, ücretsiz, açık hava etkinliği olur mu", "spans": [["DATE", "yarın"], ["PLACE", "Karaköy'de"], ["PEOPLE", "2 kişi"], ["PRICE", "ücretsiz"]]}
+{"text": "kadikoyde bugun ne var, stand up falan", "spans": [["PLACE", "kadikoyde"], ["DATE", "bugun"], ["TYPE", "stand up"]]}
+{"text": "uskudar ya da besiktas tarafinda bu aksam konser", "spans": [["PLACE", "uskudar"], ["PLACE", "besiktas"], ["DATE", "bu aksam"], ["TYPE", "konser"]]}
+{"text": "Haluk Levent olmasın, yerine Sezen Aksu", "spans": [["EXCLUDE", "Haluk Levent"], ["NAME", "Sezen Aksu"]]}
+{"text": "bu gece kadıköy'de ucuz konser ya da stand-up, 2 kişi", "spans": [["DATE", "bu gece"], ["PLACE", "kadıköy'de"], ["PRICE", "ucuz"], ["TYPE", "konser"], ["TYPE", "stand-up"], ["PEOPLE", "2 kişi"]]}
+{"text": "stand-up dışında ne varsa, yarın Beşiktaş'ta", "spans": [["EXCLUDE", "stand-up"], ["DATE", "yarın"], ["PLACE", "Beşiktaş'ta"]]}
+{"text": "arkadaşlarımla bu hafta sonu Harbiye'de konser, kişi başı 400 TL", "spans": [["PEOPLE", "arkadaşlarımla"], ["DATE", "bu hafta sonu"], ["PLACE", "Harbiye'de"], ["TYPE", "konser"], ["PRICE", "kişi başı 400 TL"]]}
+{"text": "bi bakın Ataşehir'de caz var mı ücretsiz ya da düşük fiyatlı", "spans": [["PLACE", "Ataşehir'de"], ["TYPE", "caz"], ["PRICE", "ücretsiz"]]}
+{"text": "Kadıköy'de 2 kişilik, cumartesi, konser, 1500 TL altı", "spans": [["PLACE", "Kadıköy'de"], ["PEOPLE", "2 kişilik"], ["DATE", "cumartesi"], ["TYPE", "konser"], ["PRICE", "1500 TL altı"]]}
+{"text": "eminönü'nde 15.30'dan sonra stand-up, en fazla 250 TL", "spans": [["PLACE", "eminönü'nde"], ["DATE", "15.30'dan sonra"], ["TYPE", "stand-up"], ["PRICE", "en fazla 250 TL"]]}
+{"text": "Ankara değil İstanbul'da, bu gece konser", "spans": [["EXCLUDE", "Ankara"], ["PLACE", "İstanbul'da"], ["DATE", "bu gece"], ["TYPE", "konser"]]}
+{"text": "canım stand-up çekiyor, bu akşam Şişli'de", "spans": [["TYPE", "stand-up"], ["DATE", "bu akşam"], ["PLACE", "Şişli'de"]]}
+{"text": "ya bi sey yok mu hafta sonu kadikoyde", "spans": [["DATE", "hafta sonu"], ["PLACE", "kadikoyde"]]}
+{"text": "👀 ucuz konser sevgilimle bu hafta Kadıköy'de", "spans": [["PRICE", "ucuz"], ["TYPE", "konser"], ["PEOPLE", "sevgilimle"], ["DATE", "bu hafta"], ["PLACE", "Kadıköy'de"]]}
+{"text": "Beşiktaş'ta stand-up var mı, yarın 3 kişiyiz, 500 tl'ye kadar", "spans": [["PLACE", "Beşiktaş'ta"], ["TYPE", "stand-up"], ["DATE", "yarın"], ["PEOPLE", "3 kişiyiz"], ["PRICE", "500 tl'ye kadar"]]}
+{"text": "Cem Yılmaz gösterisi Kuzguncuk'ta mı, bu ay", "spans": [["NAME", "Cem Yılmaz"], ["TYPE", "gösterisi"], ["PLACE", "Kuzguncuk'ta"], ["DATE", "bu ay"]]}
+{"text": "eşimle Maltepe'de yarın akşam caz, ucuz", "spans": [["PEOPLE", "eşimle"], ["PLACE", "Maltepe'de"], ["DATE", "yarın akşam"], ["TYPE", "caz"], ["PRICE", "ucuz"]]}
+{"text": "Bakırköy'de bugün akşam 6'dan sonra konser?", "spans": [["PLACE", "Bakırköy'de"], ["DATE", "bugün akşam 6'dan sonra"], ["TYPE", "konser"]]}
+{"text": "çocuk tiyatrosu olmasın, pazar ve cumartesi Kadıköy'de konser", "spans": [["EXCLUDE", "çocuk tiyatrosu"], ["DATE", "pazar"], ["DATE", "cumartesi"], ["PLACE", "Kadıköy'de"], ["TYPE", "konser"]]}
+{"text": "İstanbul'un her yerinde, ama Beşiktaş olmasın, yarın akşam için", "spans": [["PLACE", "İstanbul'un"], ["EXCLUDE", "Beşiktaş"], ["DATE", "yarın akşam"]]}
+{"text": "sahil konseri olsun, saat 19'dan sonra, tek başıma, kişi başı 250 TL altı", "spans": [["TYPE", "sahil konseri"], ["DATE", "saat 19'dan sonra"], ["PEOPLE", "tek başıma"], ["PRICE", "kişi başı 250 TL altı"]]}

@@ -1,0 +1,200 @@
+{"text": "bu akşam kadıköyde konser olmasın", "spans": [["DATE", "bu akşam"], ["PLACE", "kadıköyde"], ["EXCLUDE", "konser"]]}
+{"text": "hafta sonu ankarada tiyatro hariç bişey var mı", "spans": [["DATE", "hafta sonu"], ["PLACE", "ankarada"], ["EXCLUDE", "tiyatro"]]}
+{"text": "stand-up istemiyorum, izmirde yarın konser olsun", "spans": [["EXCLUDE", "stand-up"], ["PLACE", "izmirde"], ["DATE", "yarın"], ["TYPE", "konser"]]}
+{"text": "bursada cuma akşamı maç olmasın abi", "spans": [["PLACE", "bursada"], ["DATE", "cuma akşamı"], ["EXCLUDE", "maç"]]}
+{"text": "Antalya dışında bir yer öner, bu ay ucuz bi etkinlik lazım", "spans": [["EXCLUDE", "Antalya"], ["DATE", "bu ay"], ["PRICE", "ucuz"]]}
+{"text": "Zorlu PSM'de olmasın, başka yerde bi şey olsun", "spans": [["EXCLUDE", "Zorlu PSM'de"]]}
+{"text": "çocuk tiyatrosu olmasın, bunun yerine caz konseri olsun, cumartesi", "spans": [["EXCLUDE", "çocuk tiyatrosu"], ["TYPE", "caz konseri"], ["DATE", "cumartesi"]]}
+{"text": "canım sıkıldı naber", "spans": []}
+{"text": "Duman'ı istemiyorum, Cem Yılmaz olsun", "spans": [["EXCLUDE", "Duman'ı"], ["NAME", "Cem Yılmaz"]]}
+{"text": "eskişehirde bu hafta sonu, fenerbahçe maçı hariç", "spans": [["PLACE", "eskişehirde"], ["DATE", "bu hafta sonu"], ["EXCLUDE", "fenerbahçe"], ["EXCLUDE", "maçı"]]}
+{"text": "kadıköy dışında kalsın istemiyorum, stand-up bakıyorum", "spans": [["EXCLUDE", "kadıköy"], ["TYPE", "stand-up"]]}
+{"text": "konserlere gitmek istemiyorum ama müzikal olabilir", "spans": [["EXCLUDE", "konserlere"], ["TYPE", "müzikal"]]}
+{"text": "sevgilimle gidicez, ama tiyatro olmasın ya", "spans": [["PEOPLE", "sevgilimle"], ["EXCLUDE", "tiyatro"]]}
+{"text": "ucuz olsun ama bowling olmasın, yarın öğleden sonra", "spans": [["PRICE", "ucuz"], ["EXCLUDE", "bowling"], ["DATE", "yarın öğleden sonra"]]}
+{"text": "İzmir'de olsun ama Karşıyaka olmasın", "spans": [["PLACE", "İzmir'de"], ["EXCLUDE", "Karşıyaka"]]}
+{"text": "ankarada sinema istemiyom, konser olsun", "spans": [["PLACE", "ankarada"], ["EXCLUDE", "sinema"], ["TYPE", "konser"]]}
+{"text": "4 kişiyiz, Galatasaray maçı olmasın, bursada hafta içi", "spans": [["PEOPLE", "4 kişiyiz"], ["EXCLUDE", "Galatasaray"], ["EXCLUDE", "maçı"], ["PLACE", "bursada"], ["DATE", "hafta içi"]]}
+{"text": "Trabzonspor olmasın, yerel bi grup olsun ya", "spans": [["EXCLUDE", "Trabzonspor"]]}
+{"text": "ücretsiz olsun, açık hava konseri hariç", "spans": [["PRICE", "ücretsiz"], ["EXCLUDE", "açık hava konseri"]]}
+{"text": "Bodrumda olsun, Çeşme olmasın", "spans": [["PLACE", "Bodrumda"], ["EXCLUDE", "Çeşme"]]}
+{"text": "bi şey yapmak istiyorum ama ne bilmiyorum abi", "spans": []}
+{"text": "mersinde bu akşam, hamlet olmasın, yeni bi oyun", "spans": [["PLACE", "mersinde"], ["DATE", "bu akşam"], ["EXCLUDE", "hamlet"]]}
+{"text": "kişi başı en fazla 300 TL, ama dans gösterisi olmasın", "spans": [["PRICE", "kişi başı en fazla 300 TL"], ["EXCLUDE", "dans gösterisi"]]}
+{"text": "Tarkan konserine gitmek istemiyorum", "spans": [["EXCLUDE", "Tarkan"], ["EXCLUDE", "konserine"]]}
+{"text": "gaziantepte cumartesi, halk müziği olsun ama arabesk olmasın", "spans": [["PLACE", "gaziantepte"], ["DATE", "cumartesi"], ["TYPE", "halk müziği"], ["EXCLUDE", "arabesk"]]}
+{"text": "ne yapsam bilmiyorum, sinema hariç her şey olur", "spans": [["EXCLUDE", "sinema"]]}
+{"text": "Adanada çocuklarımla, palyaço gösterisi olmasın", "spans": [["PLACE", "Adanada"], ["PEOPLE", "çocuklarımla"], ["EXCLUDE", "palyaço gösterisi"]]}
+{"text": "kayseride bu hafta sonu, Mor ve Ötesi olmasın ama Teoman olsun", "spans": [["PLACE", "kayseride"], ["DATE", "bu hafta sonu"], ["EXCLUDE", "Mor ve Ötesi"], ["NAME", "Teoman"]]}
+{"text": "isterim ama stand-up dışında ne varsa", "spans": [["EXCLUDE", "stand-up"]]}
+{"text": "Beyoğlu hariç İstanbul'da akşam bi konser arıyom", "spans": [["EXCLUDE", "Beyoğlu"], ["PLACE", "İstanbul'da"], ["DATE", "akşam"], ["TYPE", "konser"]]}
+{"text": "hiç spor olmasın canım, ayrıca diyarbakırda ne var", "spans": [["EXCLUDE", "spor"], ["PLACE", "diyarbakırda"]]}
+{"text": "yarın akşam trabzonda dans, koreografi olmasın", "spans": [["DATE", "yarın akşam"], ["PLACE", "trabzonda"], ["TYPE", "dans"], ["EXCLUDE", "koreografi"]]}
+{"text": "Bursa dışında olsun, İzmir olabilir", "spans": [["EXCLUDE", "Bursa"], ["PLACE", "İzmir"]]}
+{"text": "kadıköyde ama açık hava olmasın, akşam 9dan sonra", "spans": [["PLACE", "kadıköyde"], ["EXCLUDE", "açık hava"], ["DATE", "akşam 9dan sonra"]]}
+{"text": "ne yapalım bilmiyorum ya 😅", "spans": []}
+{"text": "çocuk tiyatrosu istemem, yetişkin oyunu olsun", "spans": [["EXCLUDE", "çocuk tiyatrosu"], ["TYPE", "yetişkin oyunu"]]}
+{"text": "tiyatro olmasın lan bu sefer, müzikal hariç", "spans": [["EXCLUDE", "tiyatro"], ["EXCLUDE", "müzikal"]]}
+{"text": "tek başıma gideceğim, konser hariç", "spans": [["PEOPLE", "tek başıma"], ["EXCLUDE", "konser"]]}
+{"text": "antalyada 3 kişiyiz, konser olmasın", "spans": [["PLACE", "antalyada"], ["PEOPLE", "3 kişiyiz"], ["EXCLUDE", "konser"]]}
+{"text": "Fenerbahçe olmasın, Beşiktaş olsun, 500 tl altı", "spans": [["EXCLUDE", "Fenerbahçe"], ["NAME", "Beşiktaş"], ["PRICE", "500 tl altı"]]}
+{"text": "eskişehirde hafta sonu bi şey var mı, opera olmasın", "spans": [["PLACE", "eskişehirde"], ["DATE", "hafta sonu"], ["EXCLUDE", "opera"]]}
+{"text": "bodrumda olmasın, yerel konser olsun", "spans": [["EXCLUDE", "bodrumda"], ["TYPE", "konser"]]}
+{"text": "sinemaya gitmek istemiyorum, konserler olsun ücretsiz", "spans": [["EXCLUDE", "sinemaya"], ["TYPE", "konserler"], ["PRICE", "ücretsiz"]]}
+{"text": "ankara dışı olsun, izmirde ne var", "spans": [["EXCLUDE", "ankara"], ["PLACE", "izmirde"]]}
+{"text": "Duman hariç 2 kişilik bi konser", "spans": [["EXCLUDE", "Duman"], ["PEOPLE", "2 kişilik"], ["TYPE", "konser"]]}
+{"text": "pazar günü bi şeyler, maç dışında her şey olur", "spans": [["DATE", "pazar günü"], ["EXCLUDE", "maç"]]}
+{"text": "naber, ne var", "spans": []}
+{"text": "kadıköy ve beşiktaş dışında bi yer istiyorum, sahne olsun", "spans": [["EXCLUDE", "kadıköy"], ["EXCLUDE", "beşiktaş"]]}
+{"text": "Istanbulda olmasın ama Ankarada olsun, bu cuma", "spans": [["EXCLUDE", "Istanbulda"], ["PLACE", "Ankarada"], ["DATE", "bu cuma"]]}
+{"text": "bu hafta sonu tiyatro, ama komedi olmasın, ücretli olabilir", "spans": [["DATE", "bu hafta sonu"], ["TYPE", "tiyatro"], ["EXCLUDE", "komedi"]]}
+{"text": "Kayseri olmasın Konya olsun", "spans": [["EXCLUDE", "Kayseri"], ["PLACE", "Konya"]]}
+{"text": "Teoman olsun, Mor ve Ötesi dinlemek istemem, bu akşam izmirde", "spans": [["NAME", "Teoman"], ["EXCLUDE", "Mor ve Ötesi"], ["DATE", "bu akşam"], ["PLACE", "izmirde"]]}
+{"text": "gaziantepte dışarıda oyun falan olmasın, kafe ortamı yeter", "spans": [["PLACE", "gaziantepte"], ["EXCLUDE", "oyun"]]}
+{"text": "hiç komedi istemiyorum ya, müzik olsun", "spans": [["EXCLUDE", "komedi"], ["TYPE", "müzik"]]}
+{"text": "Cem Yılmaz olmasın bu sefer", "spans": [["EXCLUDE", "Cem Yılmaz"]]}
+{"text": "1000 TL'yi geçmesin, bodrum hariç her yer olur", "spans": [["PRICE", "1000 TL'yi geçmesin"], ["EXCLUDE", "bodrum"]]}
+{"text": "antalyada yarın öğlen konser olmasın ama ballet olabilir", "spans": [["PLACE", "antalyada"], ["DATE", "yarın öğlen"], ["EXCLUDE", "konser"], ["TYPE", "ballet"]]}
+{"text": "rock konseri istemem, pop olsun, samsunda", "spans": [["EXCLUDE", "rock konseri"], ["TYPE", "pop"], ["PLACE", "samsunda"]]}
+{"text": "arkadaşlarla gidicem, opera hariç", "spans": [["PEOPLE", "arkadaşlarla"], ["EXCLUDE", "opera"]]}
+{"text": "stand-up ve tiyatro olmasın, mersinde cumartesi konser olsun", "spans": [["EXCLUDE", "stand-up"], ["EXCLUDE", "tiyatro"], ["PLACE", "mersinde"], ["DATE", "cumartesi"], ["TYPE", "konser"]]}
+{"text": "yok canım ne sinema ne tiyatro, bi konser olsun bursada", "spans": [["EXCLUDE", "sinema"], ["EXCLUDE", "tiyatro"], ["TYPE", "konser"], ["PLACE", "bursada"]]}
+{"text": "kafam dağılsın bi şeyler lazım", "spans": []}
+{"text": "Galatasaray dışında her takım olur, cumartesi istanbulda", "spans": [["EXCLUDE", "Galatasaray"], ["DATE", "cumartesi"], ["PLACE", "istanbulda"]]}
+{"text": "arabesk olmasın, pop olsun", "spans": [["EXCLUDE", "arabesk"], ["TYPE", "pop"]]}
+{"text": "ankarada kızılay dışında, 2 kişiyiz", "spans": [["PLACE", "ankarada"], ["EXCLUDE", "kızılay"], ["PEOPLE", "2 kişiyiz"]]}
+{"text": "ücretsiz olsun ama bale olmasın", "spans": [["PRICE", "ücretsiz"], ["EXCLUDE", "bale"]]}
+{"text": "Kadıköy'de olmasın, Ataşehir'de olsun, cuma gecesi", "spans": [["EXCLUDE", "Kadıköy'de"], ["PLACE", "Ataşehir'de"], ["DATE", "cuma gecesi"]]}
+{"text": "dans istemiyorum, Yalova'da bir şey var mı", "spans": [["EXCLUDE", "dans"], ["PLACE", "Yalova'da"]]}
+{"text": "sadece müze olsun, sergi olmasın yani", "spans": [["TYPE", "müze"], ["EXCLUDE", "sergi"]]}
+{"text": "sevgilimle gidicem, konser olmasın", "spans": [["PEOPLE", "sevgilimle"], ["EXCLUDE", "konser"]]}
+{"text": "sinema olmasın ya, bursa'da tiyatro olabilir", "spans": [["EXCLUDE", "sinema"], ["PLACE", "bursa'da"], ["TYPE", "tiyatro"]]}
+{"text": "kişi başı en fazla 200 TL, dans hariç bi şey arıyorum", "spans": [["PRICE", "kişi başı en fazla 200 TL"], ["EXCLUDE", "dans"]]}
+{"text": "Duman'a bayılmıyorum ama müzik istiyorum, İstanbul'da", "spans": [["EXCLUDE", "Duman'a"], ["TYPE", "müzik"], ["PLACE", "İstanbul'da"]]}
+{"text": "akşam 8'den sonra olsun, stand-up dışında", "spans": [["DATE", "akşam 8'den sonra"], ["EXCLUDE", "stand-up"]]}
+{"text": "hiç plan yok, sıkıldım", "spans": []}
+{"text": "mersin dışında olsun, adanada", "spans": [["EXCLUDE", "mersin"], ["PLACE", "adanada"]]}
+{"text": "3 kişi olacağız, Trabzonspor olmasın", "spans": [["PEOPLE", "3 kişi"], ["EXCLUDE", "Trabzonspor"]]}
+{"text": "ankara olmasın izmir olsun, yarın", "spans": [["EXCLUDE", "ankara"], ["PLACE", "izmir"], ["DATE", "yarın"]]}
+{"text": "film olmasın, oyun olsun, hafta içi, izmirde", "spans": [["EXCLUDE", "film"], ["TYPE", "oyun"], ["DATE", "hafta içi"], ["PLACE", "izmirde"]]}
+{"text": "Ezhel olmasın, Sezen Aksu olsun", "spans": [["EXCLUDE", "Ezhel"], ["NAME", "Sezen Aksu"]]}
+{"text": "konser ve maç olmasın, bu akşam bi yer", "spans": [["EXCLUDE", "konser"], ["EXCLUDE", "maç"], ["DATE", "bu akşam"]]}
+{"text": "kadıköyde olmayan bi yer, bodrum ya da çeşme", "spans": [["EXCLUDE", "kadıköyde"], ["PLACE", "bodrum"], ["PLACE", "çeşme"]]}
+{"text": "çocuk şovu olmasın, yetişkin komedisi olsun, kadıköyde", "spans": [["EXCLUDE", "çocuk şovu"], ["TYPE", "yetişkin komedisi"], ["PLACE", "kadıköyde"]]}
+{"text": "bi öneri at, fark etmez", "spans": []}
+{"text": "Alanya'da ne var? hafta sonu, dans istemiyorum", "spans": [["PLACE", "Alanya'da"], ["DATE", "hafta sonu"], ["EXCLUDE", "dans"]]}
+{"text": "Kayseri'de olsun, sinemalar olmasın", "spans": [["PLACE", "Kayseri'de"], ["EXCLUDE", "sinemalar"]]}
+{"text": "sevgilimle gideceğiz, hafta içi, sinema olmasın", "spans": [["PEOPLE", "sevgilimle"], ["DATE", "hafta içi"], ["EXCLUDE", "sinema"]]}
+{"text": "Ortaköy'de olmasın, Galata'da olsun cumartesi akşamı", "spans": [["EXCLUDE", "Ortaköy'de"], ["PLACE", "Galata'da"], ["DATE", "cumartesi akşamı"]]}
+{"text": "hiç komedi olmasın ama tiyatro ve dans olabilir", "spans": [["EXCLUDE", "komedi"], ["TYPE", "tiyatro"], ["TYPE", "dans"]]}
+{"text": "Antalya ve Muğla dışında, ucuz bi şey lazım bu ay", "spans": [["EXCLUDE", "Antalya"], ["EXCLUDE", "Muğla"], ["PRICE", "ucuz"], ["DATE", "bu ay"]]}
+{"text": "kendimi iyi hissetmek istiyorum 🙂", "spans": []}
+{"text": "bu hafta sonu, sahne performansı olmasın, sadece konser", "spans": [["DATE", "bu hafta sonu"], ["EXCLUDE", "sahne performansı"], ["TYPE", "konser"]]}
+{"text": "Ankara'da bu gece, Kenan Doğulu olmasın", "spans": [["PLACE", "Ankara'da"], ["DATE", "bu gece"], ["EXCLUDE", "Kenan Doğulu"]]}
+{"text": "hafta içi 2 kişilik olsun, stand-up ve konser olmasın", "spans": [["DATE", "hafta içi"], ["PEOPLE", "2 kişilik"], ["EXCLUDE", "stand-up"], ["EXCLUDE", "konser"]]}
+{"text": "yarın gece ücretsiz bir şeyler, müze hariç", "spans": [["DATE", "yarın gece"], ["PRICE", "ücretsiz"], ["EXCLUDE", "müze"]]}
+{"text": "İstanbul olmasın, Eskişehir olsun. Tiyatro dışında", "spans": [["EXCLUDE", "İstanbul"], ["PLACE", "Eskişehir"], ["EXCLUDE", "Tiyatro"]]}
+{"text": "stand-up olsun, kadıköy hariç", "spans": [["TYPE", "stand-up"], ["EXCLUDE", "kadıköy"]]}
+{"text": "Galatasaray ve Fenerbahçe olmasın, Başakşehir olsun, yarın akşam", "spans": [["EXCLUDE", "Galatasaray"], ["EXCLUDE", "Fenerbahçe"], ["NAME", "Başakşehir"], ["DATE", "yarın akşam"]]}
+{"text": "izmirde meyhane olmasın, bi tiyatro olsun", "spans": [["PLACE", "izmirde"], ["EXCLUDE", "meyhane"], ["TYPE", "tiyatro"]]}
+{"text": "15-20 kasım arası ankarada, opera olmasın", "spans": [["DATE", "15-20 kasım arası"], ["PLACE", "ankarada"], ["EXCLUDE", "opera"]]}
+{"text": "bodrumda olsun ama dış mekan olmasın", "spans": [["PLACE", "bodrumda"], ["EXCLUDE", "dış mekan"]]}
+{"text": "çocuğumla gidicem, dans ve sirk olmasın", "spans": [["PEOPLE", "çocuğumla"], ["EXCLUDE", "dans"], ["EXCLUDE", "sirk"]]}
+{"text": "hayat monoton ya, ne yapsam", "spans": []}
+{"text": "konseri istemiyorum, Athena olsun", "spans": [["EXCLUDE", "konseri"], ["NAME", "Athena"]]}
+{"text": "her yer olur ama Ankara olmasın, yazın", "spans": [["EXCLUDE", "Ankara"], ["DATE", "yazın"]]}
+{"text": "tiyatroya gitmek istemiyorum, ama sokak festivali olsun", "spans": [["EXCLUDE", "tiyatroya"], ["TYPE", "sokak festivali"]]}
+{"text": "Samsun dışında, Trabzon'da ne var bu hafta?", "spans": [["EXCLUDE", "Samsun"], ["PLACE", "Trabzon'da"], ["DATE", "bu hafta"]]}
+{"text": "stand-up olmasın canım, 500 liradan ucuz olsun", "spans": [["EXCLUDE", "stand-up"], ["PRICE", "500 liradan ucuz"]]}
+{"text": "tek başıma gidicem, bowling olmasın", "spans": [["PEOPLE", "tek başıma"], ["EXCLUDE", "bowling"]]}
+{"text": "Kadıköy ve Üsküdar'da olmasın, Beyoğlu'nda olsun", "spans": [["EXCLUDE", "Kadıköy"], ["EXCLUDE", "Üsküdar'da"], ["PLACE", "Beyoğlu'nda"]]}
+{"text": "biraz eğlence lazım ama spor olmasın bi de bu ayın sonu", "spans": [["EXCLUDE", "spor"], ["DATE", "bu ayın sonu"]]}
+{"text": "kişi başı en fazla 400 TL, yarışma hariç", "spans": [["PRICE", "kişi başı en fazla 400 TL"], ["EXCLUDE", "yarışma"]]}
+{"text": "besiktasta bu hafta sonu, maç dışında ne varsa", "spans": [["PLACE", "besiktasta"], ["DATE", "bu hafta sonu"], ["EXCLUDE", "maç"]]}
+{"text": "İzmir'de olmasın, Bursa'da olsun ama açık hava olmasın", "spans": [["EXCLUDE", "İzmir'de"], ["PLACE", "Bursa'da"], ["EXCLUDE", "açık hava"]]}
+{"text": "tiyatro olsun ama Hamlet olmasın", "spans": [["TYPE", "tiyatro"], ["EXCLUDE", "Hamlet"]]}
+{"text": "pazartesi akşamı 2 kişi, rock konseri olmasın", "spans": [["DATE", "pazartesi akşamı"], ["PEOPLE", "2 kişi"], ["EXCLUDE", "rock konseri"]]}
+{"text": "bilmiyom ki, sen söyle", "spans": []}
+{"text": "ankaraya gidiyorum, orada bi konser olsun, ama Cem Yılmaz istemem", "spans": [["PLACE", "ankaraya"], ["TYPE", "konser"], ["EXCLUDE", "Cem Yılmaz"]]}
+{"text": "konya dışında olsun, kayseri olabilir", "spans": [["EXCLUDE", "konya"], ["PLACE", "kayseri"]]}
+{"text": "ne olursa olsun ama dans olmasın", "spans": [["EXCLUDE", "dans"]]}
+{"text": "şarkı olmasın, sadece komedi lütfen", "spans": [["EXCLUDE", "şarkı"], ["TYPE", "komedi"]]}
+{"text": "yarın cuma, maç olmasın ama konser ok", "spans": [["DATE", "yarın cuma"], ["EXCLUDE", "maç"], ["TYPE", "konser"]]}
+{"text": "Adana'da olmasın, Mersin'de olsun", "spans": [["EXCLUDE", "Adana'da"], ["PLACE", "Mersin'de"]]}
+{"text": "canım sıkıldı, ama stand-up olmasın, tiyatro bakalım?", "spans": [["EXCLUDE", "stand-up"], ["TYPE", "tiyatro"]]}
+{"text": "çocuk şovu olmasın, kadıköyde cumartesi", "spans": [["EXCLUDE", "çocuk şovu"], ["PLACE", "kadıköyde"], ["DATE", "cumartesi"]]}
+{"text": "Mor ve Ötesi dinlemek istemiyorum, Duman olsun, istanbulda", "spans": [["EXCLUDE", "Mor ve Ötesi"], ["NAME", "Duman"], ["PLACE", "istanbulda"]]}
+{"text": "ekim sonunda, ankarada, dans istemiyorum, komedi olsun", "spans": [["DATE", "ekim sonunda"], ["PLACE", "ankarada"], ["EXCLUDE", "dans"], ["TYPE", "komedi"]]}
+{"text": "kişi başı en fazla 150 TL, konser olmasın", "spans": [["PRICE", "kişi başı en fazla 150 TL"], ["EXCLUDE", "konser"]]}
+{"text": "antalyada olmasın, bodrumda 4 kişiyiz", "spans": [["EXCLUDE", "antalyada"], ["PLACE", "bodrumda"], ["PEOPLE", "4 kişiyiz"]]}
+{"text": "boş kaldım, ne yapacağımı bilmiyorum", "spans": []}
+{"text": "eşim ve çocuklarla, sirk olmasın", "spans": [["PEOPLE", "eşim ve çocuklarla"], ["EXCLUDE", "sirk"]]}
+{"text": "konser olsun ama Tarkan olmasın, izmirde", "spans": [["TYPE", "konser"], ["EXCLUDE", "Tarkan"], ["PLACE", "izmirde"]]}
+{"text": "Bodrum olsun, Marmaris hariç", "spans": [["PLACE", "Bodrum"], ["EXCLUDE", "Marmaris"]]}
+{"text": "müzikal olmasın, opera olsun", "spans": [["EXCLUDE", "müzikal"], ["TYPE", "opera"]]}
+{"text": "ücretsiz olsun, stand-up olmasın", "spans": [["PRICE", "ücretsiz"], ["EXCLUDE", "stand-up"]]}
+{"text": "yarın öğlen, Hamlet dışında bi oyun", "spans": [["DATE", "yarın öğlen"], ["EXCLUDE", "Hamlet"], ["TYPE", "oyun"]]}
+{"text": "kadıköyde değil, üsküdarda bi şey", "spans": [["EXCLUDE", "kadıköyde"], ["PLACE", "üsküdarda"]]}
+{"text": "film istemem, belgesel olabilir, cumartesi", "spans": [["EXCLUDE", "film"], ["TYPE", "belgesel"], ["DATE", "cumartesi"]]}
+{"text": "ne olursa olsun bi şey lazım", "spans": []}
+{"text": "Samsunda olmasın, Trabzon olsun", "spans": [["EXCLUDE", "Samsunda"], ["PLACE", "Trabzon"]]}
+{"text": "Ezhel istemiyorum, Cem Yılmaz olsun, yarın", "spans": [["EXCLUDE", "Ezhel"], ["NAME", "Cem Yılmaz"], ["DATE", "yarın"]]}
+{"text": "tiyatro olmasın bu hafta, Eskişehir'de ne var?", "spans": [["EXCLUDE", "tiyatro"], ["DATE", "bu hafta"], ["PLACE", "Eskişehir'de"]]}
+{"text": "Maltepe hariç istanbulda, sinema olmasın", "spans": [["EXCLUDE", "Maltepe"], ["PLACE", "istanbulda"], ["EXCLUDE", "sinema"]]}
+{"text": "konser ve tiyatro dışında iyi, bursa'da olsun", "spans": [["EXCLUDE", "konser"], ["EXCLUDE", "tiyatro"], ["PLACE", "bursa'da"]]}
+{"text": "dışarı çıkmak istiyorum ama ne bilmiyorum", "spans": []}
+{"text": "22'den önce olsun, stand-up olmasın", "spans": [["DATE", "22'den önce"], ["EXCLUDE", "stand-up"]]}
+{"text": "çok pahalı olmasın, sinema ve tiyatro hariç", "spans": [["EXCLUDE", "sinema"], ["EXCLUDE", "tiyatro"]]}
+{"text": "hiç bi müzik olmasın, komedi olsun, izmirde", "spans": [["EXCLUDE", "müzik"], ["TYPE", "komedi"], ["PLACE", "izmirde"]]}
+{"text": "kadıköy istemiyom, beşiktaşta olsun", "spans": [["EXCLUDE", "kadıköy"], ["PLACE", "beşiktaşta"]]}
+{"text": "6 kişiyiz, konser ve maç olmasın", "spans": [["PEOPLE", "6 kişiyiz"], ["EXCLUDE", "konser"], ["EXCLUDE", "maç"]]}
+{"text": "Göksel olmasın, Sertab Erener olsun", "spans": [["EXCLUDE", "Göksel"], ["NAME", "Sertab Erener"]]}
+{"text": "naber, öneri var mı", "spans": []}
+{"text": "Çeşme olmasın, Alaçatı olsun, hafta sonu", "spans": [["EXCLUDE", "Çeşme"], ["PLACE", "Alaçatı"], ["DATE", "hafta sonu"]]}
+{"text": "yalnız değilim, 3 kişiyiz, stand-up ve tiyatro olmasın", "spans": [["PEOPLE", "3 kişiyiz"], ["EXCLUDE", "stand-up"], ["EXCLUDE", "tiyatro"]]}
+{"text": "yazlık konser olsun, rock konseri hariç", "spans": [["TYPE", "konser"], ["EXCLUDE", "rock konseri"]]}
+{"text": "maçı izleyemem, ama dans olabilir", "spans": [["EXCLUDE", "maçı"], ["TYPE", "dans"]]}
+{"text": "çocukla gidelim, korku olmasın, tiyatro olsun", "spans": [["PEOPLE", "çocukla"], ["EXCLUDE", "korku"], ["TYPE", "tiyatro"]]}
+{"text": "sıkıntıdan patlıyorum", "spans": []}
+{"text": "antalya dışında, muğla olsun, sinema da olmasın", "spans": [["EXCLUDE", "antalya"], ["PLACE", "muğla"], ["EXCLUDE", "sinema"]]}
+{"text": "tiyatro olsun, Karşıyaka ve Bornova hariç", "spans": [["TYPE", "tiyatro"], ["EXCLUDE", "Karşıyaka"], ["EXCLUDE", "Bornova"]]}
+{"text": "ücretsiz olsun, konser olmasın, bu cuma", "spans": [["PRICE", "ücretsiz"], ["EXCLUDE", "konser"], ["DATE", "bu cuma"]]}
+{"text": "kadıköy ve ataşehir hariç, cumartesi akşamı istanbulda", "spans": [["EXCLUDE", "kadıköy"], ["EXCLUDE", "ataşehir"], ["DATE", "cumartesi akşamı"], ["PLACE", "istanbulda"]]}
+{"text": "aile tiyatrosu olmasın, yetişkinlere özel olsun", "spans": [["EXCLUDE", "aile tiyatrosu"]]}
+{"text": "ankara'da cuma ve cumartesi, konser dışında her şey", "spans": [["PLACE", "ankara'da"], ["DATE", "cuma ve cumartesi"], ["EXCLUDE", "konser"]]}
+{"text": "hiç bir tiyatro istemiyorum, aksam mesela bi konser", "spans": [["EXCLUDE", "tiyatro"], ["DATE", "aksam"], ["TYPE", "konser"]]}
+{"text": "yabancı grup olmasın, Teoman olsun, bursada", "spans": [["EXCLUDE", "yabancı grup"], ["NAME", "Teoman"], ["PLACE", "bursada"]]}
+{"text": "mersinde sahil konseri olsun, arabesk olmasın", "spans": [["PLACE", "mersinde"], ["TYPE", "sahil konseri"], ["EXCLUDE", "arabesk"]]}
+{"text": "bursa dışı, ücretli olsun ama 300 TL'yi geçmesin", "spans": [["EXCLUDE", "bursa"], ["PRICE", "300 TL'yi geçmesin"]]}
+{"text": "evde oturmak istemiyorum, ama bowling ve kafe olmasın", "spans": [["EXCLUDE", "bowling"], ["EXCLUDE", "kafe"]]}
+{"text": "Gaziantep olmasın, Adana'da olsun cumartesi günü", "spans": [["EXCLUDE", "Gaziantep"], ["PLACE", "Adana'da"], ["DATE", "cumartesi günü"]]}
+{"text": "bişey öner abi", "spans": []}
+{"text": "Fenerbahçe maçı dışında, bugün", "spans": [["EXCLUDE", "Fenerbahçe"], ["EXCLUDE", "maçı"], ["DATE", "bugün"]]}
+{"text": "2 kişilik olsun, pazar gününe, kalabalık konser olmasın", "spans": [["PEOPLE", "2 kişilik"], ["DATE", "pazar gününe"], ["EXCLUDE", "konser"]]}
+{"text": "gece yarısı olmasın, akşam olsun, stand-up dışında", "spans": [["DATE", "akşam"], ["EXCLUDE", "stand-up"]]}
+{"text": "Duman olsun, Tarkan olmasın, sinemaya çıkmıyorum", "spans": [["NAME", "Duman"], ["EXCLUDE", "Tarkan"], ["EXCLUDE", "sinemaya"]]}
+{"text": "ankarada, gençlik merkezi olmasın, sokakta bi şey", "spans": [["PLACE", "ankarada"], ["EXCLUDE", "gençlik merkezi"]]}
+{"text": "antalyaya gidicem, ama yat turu olmasın", "spans": [["PLACE", "antalyaya"], ["EXCLUDE", "yat turu"]]}
+{"text": "bi kişi için ucuz bir şey, konser dışında", "spans": [["PEOPLE", "bi kişi"], ["PRICE", "ucuz"], ["EXCLUDE", "konser"]]}
+{"text": "yarın, kadıköy hariç, sinema olsun", "spans": [["DATE", "yarın"], ["EXCLUDE", "kadıköy"], ["TYPE", "sinema"]]}
+{"text": "İstanbul'da konserler olmasın, eskişehirde tiyatro olabilir", "spans": [["EXCLUDE", "İstanbul'da"], ["EXCLUDE", "konserler"], ["PLACE", "eskişehirde"], ["TYPE", "tiyatro"]]}
+{"text": "Kayseri'de pazar günü, dans olmasın", "spans": [["PLACE", "Kayseri'de"], ["DATE", "pazar günü"], ["EXCLUDE", "dans"]]}
+{"text": "stand-up hariç her şey olur, pazartesi akşamı, ne olur?", "spans": [["EXCLUDE", "stand-up"], ["DATE", "pazartesi akşamı"]]}
+{"text": "ne var ne yok ya", "spans": []}
+{"text": "çocuğum da gelecek, ama korku ve gerilim olmasın", "spans": [["PEOPLE", "çocuğum"], ["EXCLUDE", "korku"], ["EXCLUDE", "gerilim"]]}
+{"text": "500 tl altı, sinema olmasın ama konser ok", "spans": [["PRICE", "500 tl altı"], ["EXCLUDE", "sinema"], ["TYPE", "konser"]]}
+{"text": "kafa dağıtacak bi şey lazım", "spans": []}
+{"text": "Hamlet istemiyom, stand-up de olmasın, ne varsa", "spans": [["EXCLUDE", "Hamlet"], ["EXCLUDE", "stand-up"]]}
+{"text": "kadıköy civarında olmasın, bu gece ankarada", "spans": [["EXCLUDE", "kadıköy"], ["DATE", "bu gece"], ["PLACE", "ankarada"]]}
+{"text": "konser istemiyorum, komedi olsun, ücretsiz olsa da", "spans": [["EXCLUDE", "konser"], ["TYPE", "komedi"], ["PRICE", "ücretsiz"]]}
+{"text": "tiyatro dışında kalsın, dans olsun, izmirde ve bursada", "spans": [["EXCLUDE", "tiyatro"], ["TYPE", "dans"], ["PLACE", "izmirde"], ["PLACE", "bursada"]]}
+{"text": "hiç sinema yok, konser olabilir kadıköyde", "spans": [["EXCLUDE", "sinema"], ["TYPE", "konser"], ["PLACE", "kadıköyde"]]}
+{"text": "spor olmasın ama futbol olabilir, bugün akşam", "spans": [["EXCLUDE", "spor"], ["TYPE", "futbol"], ["DATE", "bugün akşam"]]}
+{"text": "Trabzonspor maçı olmasın, Samsunspor olsun", "spans": [["EXCLUDE", "Trabzonspor"], ["EXCLUDE", "maçı"], ["NAME", "Samsunspor"]]}
+{"text": "Göktürk'te olmasın, Beykoz'da olsun", "spans": [["EXCLUDE", "Göktürk'te"], ["PLACE", "Beykoz'da"]]}
+{"text": "çocuk şovu olmasın, ama aile dostu, 4 kişiyiz", "spans": [["EXCLUDE", "çocuk şovu"], ["PEOPLE", "4 kişiyiz"]]}
+{"text": "1000 TL'yi geçmesin ama rock konseri olsun, Duman olmasın, sevgilimle", "spans": [["PRICE", "1000 TL'yi geçmesin"], ["TYPE", "rock konseri"], ["EXCLUDE", "Duman"], ["PEOPLE", "sevgilimle"]]}
+{"text": "bir şey istemiyom, sadece sohbet", "spans": []}
+{"text": "Gaziantep'te olmasın, Diyarbakır'da olsun bu ay, dans hariç", "spans": [["EXCLUDE", "Gaziantep'te"], ["PLACE", "Diyarbakır'da"], ["DATE", "bu ay"], ["EXCLUDE", "dans"]]}
+{"text": "Eskişehir olmasın, Konya olsun, 2 kişi, yarın", "spans": [["EXCLUDE", "Eskişehir"], ["PLACE", "Konya"], ["PEOPLE", "2 kişi"], ["DATE", "yarın"]]}
+{"text": "akşam 9'dan sonra olsun, opera olmasın, rahat bi yer", "spans": [["DATE", "akşam 9'dan sonra"], ["EXCLUDE", "opera"]]}

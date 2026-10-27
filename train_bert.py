@@ -1,62 +1,41 @@
-"""Fine-tune a pre-trained transformer for slot tagging on training set D (SGD + MASSIVE + typo copies, from
-train_classic), set E (D + synthetic rows) or set F (E + messy copies).
+"""Fine-tune a Turkish BERT (BERTurk, dbmdz/bert-base-turkish-cased) to tag event requests.
 
-Usage: python train_bert.py [--model bert-base-uncased|roberta-base|vinai/bertweet-base] [--train-set D|E|F]
-[--teacher DIR --alpha A] [--tag NAME] [--seed N]. The output tag is --tag, or else the model name's first part
-(bert, roberta, bertweet) plus _large for large models. Set D writes <tag>_results.json,
-reports/<tag>_messy_predictions.csv and artifacts/<tag>/; sets E and F add an _E or _F suffix to each of those names,
-and a --seed other than 42 adds _seed<n>. --synthetic N (data curve) trains on set D plus the first N rows of the
-synthetic pool and adds _syn<N>. When data/codex/codex_more_test.jsonl exists, the 60 Codex requests plus those are
-also scored as codex_all.
+Each word is labeled at its first sub-token; the other sub-tokens are ignored in the loss (-100). Three ways to turn
+the model's scores into tags:
+- softmax: the best tag of each word on its own (argmax), as in a plain token classifier.
+- softmax + BIO rules: the same scores, decoded with Viterbi where transitions that break IOB2 (O -> I-DATE) are
+  forbidden. No retraining; this is the constrained decoding of week 6.
+- --crf: a linear-chain CRF layer on top of BERTurk (learned transition scores, trained with the CRF loss
+  log Z - gold score, decoded with Viterbi). Its decoding also forbids IOB2-breaking transitions.
 
-Labels are O plus B-/I- for city, date and event_name. Only the first sub-token of each word is labelled and its
-prediction is used for the word; predictions go through repair_bio. Runs 4 epochs (--epochs) of AdamW with linear
-warmup, bf16 autocast on CUDA and seed 42 (--seed). The epoch with the best span micro F1 on SGD dev + MASSIVE dev is
-kept, then scored once on SGD test, MASSIVE test, the messy test set and the Codex test set. Writes the summary to
-results/<tag>_results.json, the per-row messy predictions to reports/<tag>_messy_predictions.csv and the model to
-artifacts/<tag>/. Requires torch with a CUDA GPU (see requirements-gpu.txt).
+AdamW with linear warmup, bf16 autocast, batch 16. The epoch with the best dev span F1 is kept; then the dev set and
+both test sets are scored once. Writes results/<tag>.json and results/predictions/<tag>_<decoder>.json; the weights
+are saved to artifacts/<tag>.pt with --save.
 
-Distillation: --teacher artifacts/<dir> runs that trained model over the training rows first and keeps its
-probabilities for each word (temperature T = 2). The student then learns from both the gold tags and those soft labels:
-loss = alpha * cross-entropy(gold) + (1 - alpha) * T^2 * KL(teacher || student). Soft labels are per word, so the
-teacher may use a different tokenizer. The output names get a _kd<alpha> suffix.
-
-Shrinking: --init-from artifacts/<dir> --keep-layers 0,3,6,9 starts from a trained model (its tokenizer comes from
---model) and keeps only the listed transformer layers before training.
+Usage: python train_bert.py [--model NAME] [--crf] [--seed N] [--epochs N] [--save]
+Requires torch with a CUDA GPU.
 """
 
 import argparse
-import csv
 import json
 import math
-import platform
 import random
 import time
-from pathlib import Path
 
 import numpy as np
 import torch
 import torch.nn.functional as F
-import transformers
-from torch.optim import AdamW
-from transformers import AutoModelForTokenClassification, AutoTokenizer, get_linear_schedule_with_warmup
+from torch import nn
+from transformers import AutoModel, AutoTokenizer, get_linear_schedule_with_warmup
 
-from slots import describe, read_jsonl, repair_bio, slot_f1, span_scores
-from train_classic import load, set_d_rows, set_e_rows, set_f_rows, synthetic_pool
+from common import ROOT, TAGS, bio_valid, read_jsonl, span_scores
 
-ROOT = Path(__file__).resolve().parent
-DEFAULT_MODEL = "bert-base-uncased"
-SLOTS = ["city", "date", "event_name"]
-LABELS = ["O"] + [f"{prefix}-{slot}" for slot in SLOTS for prefix in ("B", "I")]
-LABEL_ID = {label: i for i, label in enumerate(LABELS)}
-SEED = 42
-LR = 3e-5
-WEIGHT_DECAY = 0.01
-BATCH = 32
-EPOCHS = 4
-WARMUP = 0.1
-MAX_LEN = 128
-TEMPERATURE = 2.0
+TAG_ID = {tag: i for i, tag in enumerate(TAGS)}
+SPLITS = ("dev", "codex_test", "biplan_test")
+LR, HEAD_LR, BATCH, WARMUP, MAX_LEN = 3e-5, 1e-3, 16, 0.1, 128
+# allowed[i, j] is True when tag j may follow tag i under IOB2; allowed_start[j] when tag j may start a request.
+ALLOWED = torch.tensor([[bio_valid(a, b) for b in TAGS] for a in TAGS])
+ALLOWED_START = torch.tensor([bio_valid("O", b) for b in TAGS])
 
 
 def set_seed(seed):
@@ -66,268 +45,198 @@ def set_seed(seed):
     torch.cuda.manual_seed_all(seed)
 
 
+def viterbi(emissions, transitions, start):
+    """Best tag path for one request. emissions [words, tags], transitions [tags, tags], start [tags]; all scores
+    are added (log space). Forbidden moves are -inf."""
+    score = start + emissions[0]
+    back = []
+    for emission in emissions[1:]:
+        total = score.unsqueeze(1) + transitions  # [previous, next]
+        score, pointer = total.max(dim=0)
+        score = score + emission
+        back.append(pointer)
+    path = [int(score.argmax())]
+    for pointer in reversed(back):
+        path.append(int(pointer[path[-1]]))
+    return path[::-1]
+
+
+class Tagger(nn.Module):
+    """Encoder + linear layer giving one score per tag for each word; optionally a CRF on top."""
+
+    def __init__(self, name, crf):
+        super().__init__()
+        self.encoder = AutoModel.from_pretrained(name)
+        self.head = nn.Linear(self.encoder.config.hidden_size, len(TAGS))
+        self.crf = crf
+        if crf:
+            self.transitions = nn.Parameter(torch.zeros(len(TAGS), len(TAGS)))
+            self.start = nn.Parameter(torch.zeros(len(TAGS)))
+            self.end = nn.Parameter(torch.zeros(len(TAGS)))
+
+    def word_scores(self, ids, mask, first):
+        """Scores [batch, words, tags] read at each word's first sub-token; first is [batch, words] positions."""
+        hidden = self.encoder(input_ids=ids, attention_mask=mask).last_hidden_state
+        hidden = torch.gather(hidden, 1, first.unsqueeze(-1).expand(-1, -1, hidden.size(-1)))
+        return self.head(hidden).float()
+
+    def loss(self, scores, tags, word_mask):
+        if not self.crf:
+            return F.cross_entropy(scores[word_mask], tags[word_mask])
+        return self.crf_nll(scores, tags, word_mask).mean()
+
+    def crf_nll(self, scores, tags, word_mask):
+        """-log P(gold path | request) = log Z - score(gold), with Z from the forward algorithm (log-sum-exp)."""
+        batch, words, _ = scores.shape
+        rows = torch.arange(batch, device=scores.device)
+        gold = self.start[tags[:, 0]] + scores[rows, 0, tags[:, 0]]
+        alpha = self.start + scores[:, 0]  # [batch, tags]
+        for i in range(1, words):
+            on = word_mask[:, i]
+            step = scores[rows, i, tags[:, i]] + self.transitions[tags[:, i - 1], tags[:, i]]
+            gold = gold + step * on
+            nxt = torch.logsumexp(alpha.unsqueeze(2) + self.transitions, dim=1) + scores[:, i]
+            alpha = torch.where(on.unsqueeze(1), nxt, alpha)
+        last = word_mask.sum(1) - 1
+        gold = gold + self.end[tags[rows, last]]
+        return torch.logsumexp(alpha + self.end, dim=1) - gold
+
+    def decode(self, scores, n_words, rules):
+        """Tag ids for one request from its word scores [words, tags]."""
+        scores = scores[:n_words].cpu()
+        if not self.crf and not rules:
+            return scores.argmax(-1).tolist()
+        forbid = torch.where(ALLOWED, 0.0, -math.inf)
+        forbid_start = torch.where(ALLOWED_START, 0.0, -math.inf)
+        if not self.crf:
+            return viterbi(scores, forbid, forbid_start)
+        emissions = scores.clone()
+        emissions[-1] += self.end.detach().cpu()
+        return viterbi(emissions, self.transitions.detach().cpu() + forbid, self.start.detach().cpu() + forbid_start)
+
+
 def encode(tokenizer, rows):
-    """Per sentence: sub-token ids, labels (first sub-token of each word only, -100 elsewhere) and each word's
-    first position.
-
-    Each word is tokenized alone with a leading space (RoBERTa's byte-level BPE needs it; BERT and BERTweet ignore it),
-    so one manual alignment works for all three models without word_ids(). Specials are added around the content,
-    which is cut to MAX_LEN - 2 sub-tokens like a truncating tokenizer would. A word with no sub-token gets <unk>.
-    Words cut off by truncation get None as position and are predicted as O.
-    """
-    limit = MAX_LEN - 2
-    examples, missing = [], 0
+    """Sub-token ids, first sub-token position of each word, and tag ids per request."""
+    out = []
     for r in rows:
-        content, labels, starts = [], [], []
-        for word, tag in zip(r["tokens"], r["tags"]):
-            sub = tokenizer.convert_tokens_to_ids(tokenizer.tokenize(" " + word)) or [tokenizer.unk_token_id]
-            if len(content) >= limit:
-                starts.append(None)
-                continue
-            starts.append(1 + len(content))
-            labels += [LABEL_ID[tag]] + [-100] * (len(sub) - 1)
-            content += sub
-        content, labels = content[:limit], labels[:limit]
-        ids = [tokenizer.cls_token_id] + content + [tokenizer.sep_token_id]
-        labels = [-100] + labels + [-100]
-        missing += starts.count(None)
-        examples.append({"ids": ids, "labels": labels, "word_pos": starts})
-    if missing:
-        print(f"warning: {missing} words have no sub-token position and will be predicted as O", flush=True)
-    return examples
-
-
-def collate(items, pad_id):
-    """Pad a batch to its longest sentence and move it to the GPU."""
-    n = max(len(e["ids"]) for e in items)
-    ids = torch.full((len(items), n), pad_id, dtype=torch.long)
-    mask = torch.zeros((len(items), n), dtype=torch.long)
-    labels = torch.full((len(items), n), -100, dtype=torch.long)
-    for i, e in enumerate(items):
-        size = len(e["ids"])
-        ids[i, :size] = torch.tensor(e["ids"])
-        mask[i, :size] = 1
-        labels[i, :size] = torch.tensor(e["labels"])
-    return ids.cuda(), mask.cuda(), labels.cuda()
-
-
-def collate_soft(items, n):
-    """Teacher probabilities placed at each word's first sub-token: (soft [batch, n, labels], has_soft [batch, n])."""
-    soft = torch.zeros((len(items), n, len(LABELS)))
-    has_soft = torch.zeros((len(items), n), dtype=torch.bool)
-    for i, e in enumerate(items):
-        for pos, probs in zip(e["word_pos"], e["soft"]):
-            if pos is not None and probs is not None:
-                soft[i, pos] = torch.tensor(probs)
-                has_soft[i, pos] = True
-    return soft.cuda(), has_soft.cuda()
-
-
-def distill_loss(logits, labels, soft, has_soft, alpha, temperature=TEMPERATURE):
-    """alpha * cross-entropy with the gold labels + (1 - alpha) * T^2 * KL(teacher || student) on the soft positions."""
-    logits = logits.float()
-    hard = F.cross_entropy(logits.reshape(-1, logits.size(-1)), labels.reshape(-1), ignore_index=-100)
-    student = F.log_softmax(logits[has_soft] / temperature, dim=-1)
-    kl = F.kl_div(student, soft[has_soft], reduction="batchmean") * temperature ** 2
-    return alpha * hard + (1 - alpha) * kl
-
-
-def keep_layers(model, keep):
-    """Shrink the encoder in place to the transformer layers with the given 0-based indexes, in order."""
-    layers = model.base_model.encoder.layer
-    model.base_model.encoder.layer = torch.nn.ModuleList([layers[i] for i in keep])
-    model.config.num_hidden_layers = len(keep)
-
-
-@torch.no_grad()
-def soft_labels(teacher_dir, rows):
-    """The teacher's per-word probabilities at temperature T for every row (None for words it cut off)."""
-    teacher = AutoModelForTokenClassification.from_pretrained(teacher_dir).cuda().eval()
-    tokenizer = AutoTokenizer.from_pretrained(teacher.config.base_model_id)
-    examples, out = encode(tokenizer, rows), []
-    for start in range(0, len(examples), BATCH):
-        chunk = examples[start:start + BATCH]
-        ids, mask, _ = collate(chunk, tokenizer.pad_token_id)
-        with torch.autocast("cuda", dtype=torch.bfloat16):
-            logits = teacher(input_ids=ids, attention_mask=mask).logits
-        probs = F.softmax(logits.float() / TEMPERATURE, dim=-1).cpu()
-        for e, row in zip(chunk, probs):
-            out.append([row[pos].tolist() if pos is not None else None for pos in e["word_pos"]])
-    del teacher
-    torch.cuda.empty_cache()
+        enc = tokenizer(r["tokens"], is_split_into_words=True, truncation=True, max_length=MAX_LEN)
+        first = {}
+        for pos, word in enumerate(enc.word_ids()):
+            if word is not None and word not in first:
+                first[word] = pos
+        if len(first) < len(r["tokens"]):
+            raise ValueError(f"request too long for {MAX_LEN} sub-tokens: {r['text']!r}")
+        out.append({"ids": enc["input_ids"], "first": [first[i] for i in range(len(r["tokens"]))],
+                    "tags": [TAG_ID[t] for t in r["tags"]]})
     return out
 
 
+def collate(items, pad_id):
+    n_sub = max(len(e["ids"]) for e in items)
+    n_words = max(len(e["first"]) for e in items)
+    ids = torch.full((len(items), n_sub), pad_id)
+    mask = torch.zeros((len(items), n_sub), dtype=torch.long)
+    first = torch.zeros((len(items), n_words), dtype=torch.long)
+    tags = torch.zeros((len(items), n_words), dtype=torch.long)
+    word_mask = torch.zeros((len(items), n_words), dtype=torch.bool)
+    for i, e in enumerate(items):
+        ids[i, :len(e["ids"])] = torch.tensor(e["ids"])
+        mask[i, :len(e["ids"])] = 1
+        first[i, :len(e["first"])] = torch.tensor(e["first"])
+        tags[i, :len(e["tags"])] = torch.tensor(e["tags"])
+        word_mask[i, :len(e["first"])] = True
+    return [t.cuda() for t in (ids, mask, first, tags, word_mask)]
+
+
 @torch.no_grad()
-def predict(model, examples, pad_id):
-    """BIO tags per sentence, read from each word's first sub-token and repaired with repair_bio."""
+def predict(model, examples, pad_id, rules):
     model.eval()
-    tags = []
+    out = []
     for start in range(0, len(examples), BATCH):
         chunk = examples[start:start + BATCH]
-        ids, mask, _ = collate(chunk, pad_id)
+        ids, mask, first, _, _ = collate(chunk, pad_id)
         with torch.autocast("cuda", dtype=torch.bfloat16):
-            logits = model(input_ids=ids, attention_mask=mask).logits
-        best = logits.argmax(-1).cpu().tolist()
-        for e, row in zip(chunk, best):
-            tags.append(repair_bio([LABELS[row[pos]] if pos is not None else "O" for pos in e["word_pos"]]))
-    return tags
+            scores = model.word_scores(ids, mask, first)
+        for e, s in zip(chunk, scores):
+            out.append([TAGS[i] for i in model.decode(s, len(e["first"]), rules)])
+    return out
 
 
-def evaluate(model, examples, rows, pad_id):
-    """Span scores against the gold tags of rows, plus the predicted tags."""
-    pred = predict(model, examples, pad_id)
-    return span_scores([r["tags"] for r in rows], pred), pred
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--model", default="dbmdz/bert-base-turkish-cased")
+    parser.add_argument("--crf", action="store_true")
+    parser.add_argument("--seed", type=int, default=13)
+    parser.add_argument("--epochs", type=int, default=8)
+    parser.add_argument("--save", action="store_true")
+    args = parser.parse_args()
+    tag = f"{args.model.split('/')[-1]}{'_crf' if args.crf else ''}_seed{args.seed}"
+    set_seed(args.seed)
 
+    tokenizer = AutoTokenizer.from_pretrained(args.model)
+    data = {name: read_jsonl(ROOT / "data" / "clean" / f"{name}.jsonl") for name in ("train",) + SPLITS}
+    examples = {name: encode(tokenizer, rows) for name, rows in data.items()}
+    model = Tagger(args.model, args.crf).cuda()
 
-def train(model, train_ex, dev_ex, dev_rows, pad_id, alpha=None, epochs=EPOCHS, seed=SEED):
-    """Train for epochs epochs; return the per-epoch history and the epoch whose weights are loaded at the end.
-    With alpha, the examples carry teacher soft labels and distill_loss is used."""
-    no_decay = ("bias", "LayerNorm.weight")
-    groups = [
-        {"params": [p for n, p in model.named_parameters() if not any(k in n for k in no_decay)],
-         "weight_decay": WEIGHT_DECAY},
-        {"params": [p for n, p in model.named_parameters() if any(k in n for k in no_decay)], "weight_decay": 0.0},
-    ]
-    optimizer = AdamW(groups, lr=LR)
-    total = math.ceil(len(train_ex) / BATCH) * epochs
-    scheduler = get_linear_schedule_with_warmup(optimizer, int(WARMUP * total), total)
-    order_rng = torch.Generator().manual_seed(seed)
-    history, best = [], None
-    for epoch in range(1, epochs + 1):
+    head = [p for n, p in model.named_parameters() if not n.startswith("encoder.")]
+    optimizer = torch.optim.AdamW([{"params": model.encoder.parameters(), "lr": LR, "weight_decay": 0.01},
+                                   {"params": head, "lr": HEAD_LR, "weight_decay": 0.0}])
+    steps = math.ceil(len(examples["train"]) / BATCH) * args.epochs
+    scheduler = get_linear_schedule_with_warmup(optimizer, int(WARMUP * steps), steps)
+    rules = not args.crf
+    history, best_f1, best_state = [], -1.0, None
+    start_time = time.perf_counter()
+    for epoch in range(1, args.epochs + 1):
         model.train()
+        order = torch.randperm(len(examples["train"])).tolist()
         losses = []
-        order = torch.randperm(len(train_ex), generator=order_rng).tolist()
-        for start in range(0, len(order), BATCH):
-            batch = [train_ex[i] for i in order[start:start + BATCH]]
-            ids, mask, labels = collate(batch, pad_id)
+        for i in range(0, len(order), BATCH):
+            ids, mask, first, tags, word_mask = collate([examples["train"][j] for j in order[i:i + BATCH]],
+                                                        tokenizer.pad_token_id)
             with torch.autocast("cuda", dtype=torch.bfloat16):
-                if alpha is None:
-                    loss = model(input_ids=ids, attention_mask=mask, labels=labels).loss
-                else:
-                    loss = distill_loss(model(input_ids=ids, attention_mask=mask).logits, labels,
-                                        *collate_soft(batch, ids.size(1)), alpha)
+                scores = model.word_scores(ids, mask, first)
+            loss = model.loss(scores, tags, word_mask)
             loss.backward()
             torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
             optimizer.step()
             scheduler.step()
             optimizer.zero_grad()
             losses.append(loss.item())
-        dev, _ = evaluate(model, dev_ex, dev_rows, pad_id)
-        history.append({"epoch": epoch, "train_loss": sum(losses) / len(losses), "dev_f1": dev["f1"]})
-        print(f"epoch {epoch}: train loss {history[-1]['train_loss']:.4f}, dev F1 {dev['f1']:.4f}", flush=True)
-        if best is None or dev["f1"] > best[0]:
-            best = (dev["f1"], epoch, {k: v.detach().cpu().clone() for k, v in model.state_dict().items()})
-    model.load_state_dict(best[2])
-    return history, best[1]
+        dev_f1 = span_scores([r["tags"] for r in data["dev"]],
+                             predict(model, examples["dev"], tokenizer.pad_token_id, rules))["f1"]
+        history.append({"epoch": epoch, "loss": sum(losses) / len(losses), "dev_f1": dev_f1})
+        print(f"epoch {epoch}: loss {history[-1]['loss']:.4f}  dev F1 {dev_f1:.3f}", flush=True)
+        if dev_f1 > best_f1:
+            best_f1, best_state = dev_f1, {k: v.detach().clone() for k, v in model.state_dict().items()}
+    train_seconds = time.perf_counter() - start_time
+    model.load_state_dict(best_state)
 
-
-def main():
-    started = time.perf_counter()
-    parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    parser.add_argument("--model", default=DEFAULT_MODEL, help="Hugging Face model id")
-    parser.add_argument("--train-set", default="D", choices=["D", "E", "F"],
-                        help="D (default), E: D plus synthetic rows, F: E plus messy copies")
-    parser.add_argument("--teacher", type=Path, help="trained model directory to distill from (soft labels)")
-    parser.add_argument("--alpha", type=float, default=0.5, help="weight of the gold-label loss when distilling")
-    parser.add_argument("--tag", help="output name instead of the one derived from --model")
-    parser.add_argument("--epochs", type=int, default=EPOCHS, help=f"training epochs (default {EPOCHS})")
-    parser.add_argument("--init-from", type=Path, help="start from this trained model directory instead of --model")
-    parser.add_argument("--synthetic", type=int, help="data curve: set D plus the first N rows of the synthetic pool")
-    parser.add_argument("--seed", type=int, default=SEED, help=f"random seed (default {SEED}; others add _seed<n>)")
-    parser.add_argument("--keep-layers", help="comma-separated 0-based layer indexes to keep, e.g. 0,3,6,9")
-    args = parser.parse_args()
-    model_id = args.model
-    name = model_id.split("/")[-1].lower()
-    tag = args.tag or name.split("-")[0] + ("_large" if "large" in name else "")
-    suffix = ("" if args.train_set == "D" else f"_{args.train_set}") + (f"_kd{args.alpha}" if args.teacher else "")
-    if args.synthetic is not None:
-        if args.train_set != "D":
-            raise SystemExit("--synthetic adds to set D; leave --train-set at D")
-        suffix += f"_syn{args.synthetic}"
-    suffix += "" if args.seed == SEED else f"_seed{args.seed}"
-    if not torch.cuda.is_available():
-        raise SystemExit("CUDA GPU required")
-    set_seed(args.seed)
-    results_dir, reports, artifacts = ROOT / "results", ROOT / "reports", ROOT / "artifacts" / (tag + suffix)
-    results_dir.mkdir(exist_ok=True)
-    reports.mkdir(exist_ok=True)
-
-    train_rows = {"D": set_d_rows, "E": set_e_rows, "F": set_f_rows}[args.train_set]()
-    if args.synthetic is not None:
-        train_rows += synthetic_pool()[:args.synthetic]
-    dev_rows = load("dev") + load("massive_dev")
-    tests = {"SGD test": load("test"), "MASSIVE test": load("massive_test"),
-             "messy": read_jsonl(ROOT / "data" / "messy" / "messy_test.jsonl"),
-             "codex": read_jsonl(ROOT / "data" / "codex" / "codex_test.jsonl")}
-    more = ROOT / "data" / "codex" / "codex_more_test.jsonl"
-    if more.exists():
-        tests["codex_all"] = tests["codex"] + read_jsonl(more)
-
-    tokenizer = AutoTokenizer.from_pretrained(model_id)
-    pad_id = tokenizer.pad_token_id
-    model = AutoModelForTokenClassification.from_pretrained(
-        args.init_from or model_id, num_labels=len(LABELS), id2label=dict(enumerate(LABELS)), label2id=LABEL_ID)
-    if args.keep_layers:
-        keep_layers(model, [int(i) for i in args.keep_layers.split(",")])
-    model.cuda()
-    train_ex, dev_ex = encode(tokenizer, train_rows), encode(tokenizer, dev_rows)
-    if args.teacher:
-        for e, soft in zip(train_ex, soft_labels(args.teacher, train_rows)):
-            e["soft"] = soft
-    test_ex = {name: encode(tokenizer, rows) for name, rows in tests.items()}
-
-    train_started = time.perf_counter()
-    history, chosen = train(model, train_ex, dev_ex, dev_rows, pad_id, args.alpha if args.teacher else None,
-                            args.epochs, args.seed)
-    train_seconds = time.perf_counter() - train_started
-
-    scores, messy_pred = {}, None
-    for name, rows in tests.items():
-        scores[name], pred = evaluate(model, test_ex[name], rows, pad_id)
-        if name == "messy":
-            messy_pred = pred
-
-    # Saving the BERTweet tokenizer loses its BPE merges, so store the base id and reload the original.
-    model.config.base_model_id = model_id
-    model.save_pretrained(artifacts)
-
-    gpu = torch.cuda.get_device_name(0)
-    results = {
-        "model": model_id, "labels": LABELS, "seed": args.seed,
-        "hyperparameters": {"lr": LR, "weight_decay": WEIGHT_DECAY, "batch": BATCH, "max_epochs": args.epochs,
-                            "warmup": WARMUP, "max_len": MAX_LEN, "grad_clip": 1.0, "precision": "bf16 autocast"},
-        "distillation": ({"teacher": args.teacher.name, "alpha": args.alpha, "temperature": TEMPERATURE}
-                         if args.teacher else None),
-        "init_from": args.init_from.name if args.init_from else None, "kept_layers": args.keep_layers,
-        "parameters": sum(p.numel() for p in model.parameters()),
-        "train_sentences": len(train_rows), "dev_sentences": len(dev_rows),
-        "epochs": history, "chosen_epoch": chosen, "dev_f1_chosen": history[chosen - 1]["dev_f1"],
-        "test": scores, "train_seconds": train_seconds,
-        "gpu": gpu,
-        "versions": {"python": platform.python_version(), "torch": torch.__version__,
-                     "cuda": torch.version.cuda, "transformers": transformers.__version__},
-    }
-    with open(results_dir / f"{tag}{suffix}_results.json", "w", encoding="utf-8", newline="\n") as f:
-        json.dump(results, f, indent=2, ensure_ascii=False)
-        f.write("\n")
-
-    with open(reports / f"{tag}{suffix}_messy_predictions.csv", "w", encoding="utf-8", newline="") as f:
-        writer = csv.writer(f, lineterminator="\n")
-        writer.writerow(["id", "text", "gold_spans", "predicted_spans"])
-        for r, p in zip(tests["messy"], messy_pred):
-            writer.writerow([r["id"], r["text"], describe(r["tokens"], r["tags"]), describe(r["tokens"], p)])
-
-    print()
-    head = (f"{'SGD test F1':>12}{'MASSIVE F1':>12}{'messy F1':>10}{'Codex F1':>10}  "
-            + "  ".join(f"{s:<10}" for s in SLOTS))
-    print(head)
-    print("-" * len(head))
-    per_slot = "  ".join(f"{slot_f1(scores['messy'], s):<10}" for s in SLOTS)
-    print(f"{scores['SGD test']['f1']:>12.3f}{scores['MASSIVE test']['f1']:>12.3f}"
-          f"{scores['messy']['f1']:>10.3f}{scores['codex']['f1']:>10.3f}  {per_slot}")
-    print(f"\nchosen epoch {chosen}, train time {train_seconds:.1f}s, total {time.perf_counter() - started:.1f}s, "
-          f"GPU {gpu}")
+    out = {"model": args.model, "crf": args.crf, "seed": args.seed, "epochs": args.epochs, "lr": LR,
+           "batch": BATCH, "train_seconds": train_seconds, "history": history,
+           "best_epoch": max(history, key=lambda h: h["dev_f1"])["epoch"], "decoders": {}}
+    preds = {}
+    decoders = {"crf": True} if args.crf else {"softmax": False, "softmax_bio": True}
+    for decoder, use_rules in decoders.items():
+        out["decoders"][decoder], preds[decoder] = {}, {}
+        for split in SPLITS:
+            torch.cuda.synchronize()
+            begin = time.perf_counter()
+            preds[decoder][split] = predict(model, examples[split], tokenizer.pad_token_id, use_rules)
+            torch.cuda.synchronize()
+            ms = (time.perf_counter() - begin) * 1000 / len(data[split])
+            out["decoders"][decoder][split] = {**span_scores([r["tags"] for r in data[split]], preds[decoder][split]),
+                                               "ms_per_request": ms}
+            print(f"{decoder:<12} {split:<12} F1 {out['decoders'][decoder][split]['f1']:.3f}")
+    (ROOT / "results").mkdir(exist_ok=True)
+    (ROOT / "results" / f"{tag}.json").write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8")
+    (ROOT / "results" / "predictions").mkdir(exist_ok=True)
+    for decoder, by_split in preds.items():
+        path = ROOT / "results" / "predictions" / f"{tag}_{decoder}.json"
+        path.write_text(json.dumps(by_split) + "\n", encoding="utf-8")
+    if args.save:
+        (ROOT / "artifacts").mkdir(exist_ok=True)
+        torch.save(model.state_dict(), ROOT / "artifacts" / f"{tag}.pt")
+    print(f"wrote results/{tag}.json")
 
 
 if __name__ == "__main__":

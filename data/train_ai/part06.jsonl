@@ -1,0 +1,200 @@
+{"text": "bu hafta sonu kadıköyde duman konseri var mı", "spans": [["DATE", "bu hafta sonu"], ["PLACE", "kadıköyde"], ["NAME", "duman"], ["TYPE", "konseri"]]}
+{"text": "Cem Yılmaz'ı izlemek istiyorum ankarada cuma akşamı", "spans": [["NAME", "Cem Yılmaz'ı"], ["PLACE", "ankarada"], ["DATE", "cuma akşamı"]]}
+{"text": "fenerbahçe maçı var mı bu cumartesi", "spans": [["NAME", "fenerbahçe"], ["TYPE", "maçı"], ["DATE", "bu cumartesi"]]}
+{"text": "izmirde tarkan konseri olur mu yarın", "spans": [["PLACE", "izmirde"], ["NAME", "tarkan"], ["TYPE", "konseri"], ["DATE", "yarın"]]}
+{"text": "hmm bi şey arıyorum, ne bulursam", "spans": []}
+{"text": "ata demirer stand-up ne zaman bursada", "spans": [["NAME", "ata demirer"], ["TYPE", "stand-up"], ["PLACE", "bursada"]]}
+{"text": "Hamlet oyunu antalyada hafta sonu", "spans": [["NAME", "Hamlet"], ["TYPE", "oyunu"], ["PLACE", "antalyada"], ["DATE", "hafta sonu"]]}
+{"text": "bu akşam Beşiktaş maçı var mı", "spans": [["DATE", "bu akşam"], ["NAME", "Beşiktaş"], ["TYPE", "maçı"]]}
+{"text": "Mabel Matiz konseri ankaraya gidicem bu ay", "spans": [["NAME", "Mabel Matiz"], ["TYPE", "konseri"], ["PLACE", "ankaraya"], ["DATE", "bu ay"]]}
+{"text": "kadıköy'de sezen aksu konseri olsun 500 tl altı", "spans": [["PLACE", "kadıköy'de"], ["NAME", "sezen aksu"], ["TYPE", "konseri"], ["PRICE", "500 tl altı"]]}
+{"text": "Tarkan olmasın, Sertab Erener olsun konser", "spans": [["EXCLUDE", "Tarkan"], ["NAME", "Sertab Erener"], ["TYPE", "konser"]]}
+{"text": "Duman hariç bi konser öner", "spans": [["EXCLUDE", "Duman"], ["TYPE", "konser"]]}
+{"text": "zeytinli rock festivali eskişehirde mi", "spans": [["NAME", "zeytinli rock festivali"], ["PLACE", "eskişehirde"]]}
+{"text": "Hamlet'i görmek istiyorum, en fazla 150 TL", "spans": [["NAME", "Hamlet'i"], ["PRICE", "en fazla 150 TL"]]}
+{"text": "Kenan Doğulu konseri 2 kişilik gidelim", "spans": [["NAME", "Kenan Doğulu"], ["TYPE", "konseri"], ["PEOPLE", "2 kişilik"]]}
+{"text": "Athena konseri bu hafta sonu kadıköyde", "spans": [["NAME", "Athena"], ["TYPE", "konseri"], ["DATE", "bu hafta sonu"], ["PLACE", "kadıköyde"]]}
+{"text": "naber, ne yapıyosun", "spans": []}
+{"text": "basketbol maçı anadolu efes olsun", "spans": [["TYPE", "basketbol maçı"], ["NAME", "anadolu efes"]]}
+{"text": "Oppenheimer filmi var mı bu gece", "spans": [["NAME", "Oppenheimer"], ["TYPE", "filmi"], ["DATE", "bu gece"]]}
+{"text": "ankara'da teoman konserine bilet var mı", "spans": [["PLACE", "ankara'da"], ["NAME", "teoman"], ["TYPE", "konserine"]]}
+{"text": "yarın galatasaray maçı izmirde mi", "spans": [["DATE", "yarın"], ["NAME", "galatasaray"], ["TYPE", "maçı"], ["PLACE", "izmirde"]]}
+{"text": "mabel matiz konseri kişi başı en fazla 600 TL", "spans": [["NAME", "mabel matiz"], ["TYPE", "konseri"], ["PRICE", "kişi başı en fazla 600 TL"]]}
+{"text": "Ajda Pekkan'ı izlemek için ücretsiz bir yer var mı", "spans": [["NAME", "Ajda Pekkan'ı"], ["PRICE", "ücretsiz"]]}
+{"text": "Cimri oyunu için ankarada bilet bakıyorum", "spans": [["NAME", "Cimri"], ["TYPE", "oyunu"], ["PLACE", "ankarada"]]}
+{"text": "kadıköyde ve beşiktaşta stand-up olsun, cumartesi", "spans": [["PLACE", "kadıköyde"], ["PLACE", "beşiktaşta"], ["TYPE", "stand-up"], ["DATE", "cumartesi"]]}
+{"text": "Yılmaz Erdoğan'ın oyununa gitmek istiyorum", "spans": [["NAME", "Yılmaz Erdoğan'ın"], ["TYPE", "oyununa"]]}
+{"text": "gripin olmasın, athena olsun", "spans": [["EXCLUDE", "gripin"], ["NAME", "athena"]]}
+{"text": "bu ay sezen aksu konseri var mı", "spans": [["DATE", "bu ay"], ["NAME", "sezen aksu"], ["TYPE", "konseri"]]}
+{"text": "Ankara'da Cem Yılmaz istemiyorum", "spans": [["PLACE", "Ankara'da"], ["EXCLUDE", "Cem Yılmaz"]]}
+{"text": "beşiktaş olmasın fenerbahçe maçı olsun", "spans": [["EXCLUDE", "beşiktaş"], ["NAME", "fenerbahçe"], ["TYPE", "maçı"]]}
+{"text": "hafta içi kadıköyde duman konseri, 4 kişilik gideriz", "spans": [["DATE", "hafta içi"], ["PLACE", "kadıköyde"], ["NAME", "duman"], ["TYPE", "konseri"], ["PEOPLE", "4 kişilik"]]}
+{"text": "Sertab Erener'i çocuğumla dinlemek istiyorum", "spans": [["NAME", "Sertab Erener'i"], ["PEOPLE", "çocuğumla"]]}
+{"text": "sevgilimle Hamlet'e gitmek istiyoruz izmirde", "spans": [["PEOPLE", "sevgilimle"], ["NAME", "Hamlet'e"], ["PLACE", "izmirde"]]}
+{"text": "tek başıma Galatasaray maçına gidicem", "spans": [["PEOPLE", "tek başıma"], ["NAME", "Galatasaray"], ["TYPE", "maçına"]]}
+{"text": "Teoman, Duman, Replikas: hangisi bu hafta sonu bursada", "spans": [["NAME", "Teoman"], ["NAME", "Duman"], ["NAME", "Replikas"], ["DATE", "bu hafta sonu"], ["PLACE", "bursada"]]}
+{"text": "yarın akşam için kadıköyde ücretsiz film gösterimi", "spans": [["DATE", "yarın akşam"], ["PLACE", "kadıköyde"], ["PRICE", "ücretsiz"], ["TYPE", "film gösterimi"]]}
+{"text": "Duman konseri için kaç para ödeyeceğim? en fazla 800 TL", "spans": [["NAME", "Duman"], ["TYPE", "konseri"], ["PRICE", "en fazla 800 TL"]]}
+{"text": "kadıköyde Sezen Aksu konseri 300 liradan ucuz olsun", "spans": [["PLACE", "kadıköyde"], ["NAME", "Sezen Aksu"], ["TYPE", "konseri"], ["PRICE", "300 liradan ucuz"]]}
+{"text": "Hamlet 1000 TL'yi geçmesin bilet", "spans": [["NAME", "Hamlet"], ["PRICE", "1000 TL'yi geçmesin"]]}
+{"text": "Cem Yılmaz gösterisi ücretsiz olsun 2 kişi için", "spans": [["NAME", "Cem Yılmaz"], ["TYPE", "gösterisi"], ["PRICE", "ücretsiz"], ["PEOPLE", "2 kişi"]]}
+{"text": "bi tarkan konseri bulabilir misin, ankarada olsun", "spans": [["NAME", "tarkan"], ["TYPE", "konseri"], ["PLACE", "ankarada"]]}
+{"text": "Ataşehir'de Fenerbahçe maçı var mı, bugün?", "spans": [["PLACE", "Ataşehir'de"], ["NAME", "Fenerbahçe"], ["TYPE", "maçı"], ["DATE", "bugün"]]}
+{"text": "ANKARADA Teoman konseri bu hafta", "spans": [["PLACE", "ANKARADA"], ["NAME", "Teoman"], ["TYPE", "konseri"], ["DATE", "bu hafta"]]}
+{"text": "hepsi istanbulda olsun, yarın gece tiyatro oyunu", "spans": [["PLACE", "istanbulda"], ["DATE", "yarın gece"], ["TYPE", "tiyatro oyunu"]]}
+{"text": "galatasaray maçını izlemek istiyorum annemle", "spans": [["NAME", "galatasaray"], ["TYPE", "maçını"], ["PEOPLE", "annemle"]]}
+{"text": "öneri lazım ya, hiçbir fikrim yok", "spans": []}
+{"text": "Teoman olmasın, Athena'nın konseri olsun", "spans": [["EXCLUDE", "Teoman"], ["NAME", "Athena'nın"], ["TYPE", "konseri"]]}
+{"text": "fenerbahçe maçı olsun, galatasaray olmasın", "spans": [["NAME", "fenerbahçe"], ["TYPE", "maçı"], ["EXCLUDE", "galatasaray"]]}
+{"text": "Duman dışında kalan konserler olsun, ankara civarında", "spans": [["EXCLUDE", "Duman"], ["TYPE", "konserler"], ["PLACE", "ankara"]]}
+{"text": "hiç bir şey istemiyorum", "spans": []}
+{"text": "naber abi ne var", "spans": []}
+{"text": "kuzey yakasında Galatasaray maçı var mı", "spans": [["PLACE", "kuzey yakasında"], ["NAME", "Galatasaray"], ["TYPE", "maçı"]]}
+{"text": "bu gece Cem Yılmaz'ın gösterisi var mı", "spans": [["DATE", "bu gece"], ["NAME", "Cem Yılmaz'ın"], ["TYPE", "gösterisi"]]}
+{"text": "Bursa'da ya da izmirde Teoman konseri var mı", "spans": [["PLACE", "Bursa'da"], ["PLACE", "izmirde"], ["NAME", "Teoman"], ["TYPE", "konseri"]]}
+{"text": "kişi başı en fazla 300 TL, Galatasaray maçına 4 kişi gidiyoruz", "spans": [["PRICE", "kişi başı en fazla 300 TL"], ["NAME", "Galatasaray"], ["TYPE", "maçına"], ["PEOPLE", "4 kişi"]]}
+{"text": "Fenerbahçe Beko maçı bu hafta mı var?", "spans": [["NAME", "Fenerbahçe Beko"], ["TYPE", "maçı"], ["DATE", "bu hafta"]]}
+{"text": "Hamlet ve Othello, hangisi antalyada?", "spans": [["NAME", "Hamlet"], ["NAME", "Othello"], ["PLACE", "antalyada"]]}
+{"text": "Ankara'da Leyla ile Mecnun oyunu", "spans": [["PLACE", "Ankara'da"], ["NAME", "Leyla ile Mecnun"], ["TYPE", "oyunu"]]}
+{"text": "çocuğumla gidebileceğim bir Cem Yılmaz gösterisi", "spans": [["PEOPLE", "çocuğumla"], ["NAME", "Cem Yılmaz"], ["TYPE", "gösterisi"]]}
+{"text": "Mabel Matiz konserine iki kişi gitmek istiyoruz, ankaraya", "spans": [["NAME", "Mabel Matiz"], ["TYPE", "konserine"], ["PEOPLE", "iki kişi"], ["PLACE", "ankaraya"]]}
+{"text": "gripin olmasın, bursada başka ne var bu hafta", "spans": [["EXCLUDE", "gripin"], ["PLACE", "bursada"], ["DATE", "bu hafta"]]}
+{"text": "Sertab Erener, mabel matiz, Teoman... hangisi ucuz", "spans": [["NAME", "Sertab Erener"], ["NAME", "mabel matiz"], ["NAME", "Teoman"], ["PRICE", "ucuz"]]}
+{"text": "sezen aksu konseri için kaç para", "spans": [["NAME", "sezen aksu"], ["TYPE", "konseri"]]}
+{"text": "istanbulda yarın Fenerbahçe maçı, 3 kişi olacağız", "spans": [["PLACE", "istanbulda"], ["DATE", "yarın"], ["NAME", "Fenerbahçe"], ["TYPE", "maçı"], ["PEOPLE", "3 kişi"]]}
+{"text": "ne yapsam ya, öneri lazım", "spans": []}
+{"text": "ankarada basketbol maçı var mı bu cumartesi", "spans": [["PLACE", "ankarada"], ["TYPE", "basketbol maçı"], ["DATE", "bu cumartesi"]]}
+{"text": "Ankara'da Oppenheimer gösterimi hangi saatte", "spans": [["PLACE", "Ankara'da"], ["NAME", "Oppenheimer"], ["TYPE", "gösterimi"]]}
+{"text": "Inception filmi için bilet ararken ücretsiz bulamadım", "spans": [["NAME", "Inception"], ["TYPE", "filmi"], ["PRICE", "ücretsiz"]]}
+{"text": "Hamlet'i izlemek için en fazla 400 TL", "spans": [["NAME", "Hamlet'i"], ["PRICE", "en fazla 400 TL"]]}
+{"text": "Trabzonspor maçına gitmek istiyoruz, trabzonda olur mu", "spans": [["NAME", "Trabzonspor"], ["TYPE", "maçına"], ["PLACE", "trabzonda"]]}
+{"text": "Gaziantep'te Göztepe maçı bu akşam var mı", "spans": [["PLACE", "Gaziantep'te"], ["NAME", "Göztepe"], ["TYPE", "maçı"], ["DATE", "bu akşam"]]}
+{"text": "Duman ve Athena hariç ankarada konser", "spans": [["EXCLUDE", "Duman"], ["EXCLUDE", "Athena"], ["PLACE", "ankarada"], ["TYPE", "konser"]]}
+{"text": "Mabel matiz konseri 500 liradan ucuz, çocuklarla", "spans": [["NAME", "Mabel matiz"], ["TYPE", "konseri"], ["PRICE", "500 liradan ucuz"], ["PEOPLE", "çocuklarla"]]}
+{"text": "herhangi bi şey olur, sıkıldım", "spans": []}
+{"text": "Murat Övüç stand-up gösterisi cumartesi akşamı kadıköyde", "spans": [["NAME", "Murat Övüç"], ["TYPE", "stand-up gösterisi"], ["DATE", "cumartesi akşamı"], ["PLACE", "kadıköyde"]]}
+{"text": "ne bileyim, sen seç", "spans": []}
+{"text": "ne yaptım hatırlamıyorum ya", "spans": []}
+{"text": "bu sefer tarkan olmasın, teoman olsun", "spans": [["EXCLUDE", "tarkan"], ["NAME", "teoman"]]}
+{"text": "Fenerbahçe maçı olsun ama Beşiktaş olmasın", "spans": [["NAME", "Fenerbahçe"], ["TYPE", "maçı"], ["EXCLUDE", "Beşiktaş"]]}
+{"text": "pazar günü kadıköyde Galatasaray Basketbol maçı?", "spans": [["DATE", "pazar günü"], ["PLACE", "kadıköyde"], ["NAME", "Galatasaray"], ["TYPE", "Basketbol maçı"]]}
+{"text": "Athena konseri kişi başı 600 TL'yi geçmesin", "spans": [["NAME", "Athena"], ["TYPE", "konseri"], ["PRICE", "kişi başı 600 TL'yi geçmesin"]]}
+{"text": "kadıköyde 3 kişi, Murat Övüç'ü izleyelim", "spans": [["PLACE", "kadıköyde"], ["PEOPLE", "3 kişi"], ["NAME", "Murat Övüç'ü"]]}
+{"text": "Cimri oyununa annemle gitmek istiyorum izmirde", "spans": [["NAME", "Cimri"], ["TYPE", "oyununa"], ["PEOPLE", "annemle"], ["PLACE", "izmirde"]]}
+{"text": "hiçbir şey olmasın, Hamlet hariç", "spans": [["EXCLUDE", "Hamlet"]]}
+{"text": "ne yapsam acaba, hiç fikrim yok", "spans": []}
+{"text": "bişey var mı, sezen aksu olsun ucuz", "spans": [["NAME", "sezen aksu"], ["PRICE", "ucuz"]]}
+{"text": "Teoman'a bilet ayırtalım, 3 kişi, ankaraya bu hafta", "spans": [["NAME", "Teoman'a"], ["PEOPLE", "3 kişi"], ["PLACE", "ankaraya"], ["DATE", "bu hafta"]]}
+{"text": "Zeytinli Rock Festivali 2 gün mü sürüyor, izmirde mi", "spans": [["NAME", "Zeytinli Rock Festivali"], ["PLACE", "izmirde"]]}
+{"text": "galatasaray - beşiktaş derbisi var mı bu hafta", "spans": [["NAME", "galatasaray"], ["NAME", "beşiktaş"], ["TYPE", "derbisi"], ["DATE", "bu hafta"]]}
+{"text": "hiç gitmedim, gidelim mi bir yere", "spans": []}
+{"text": "duman ve tarkan olmasın, cem yılmaz olsun", "spans": [["EXCLUDE", "duman"], ["EXCLUDE", "tarkan"], ["NAME", "cem yılmaz"]]}
+{"text": "ne yapılır sence, hmm", "spans": []}
+{"text": "karşıyaka'da Hamlet oyunu bu hafta sonu", "spans": [["PLACE", "karşıyaka'da"], ["NAME", "Hamlet"], ["TYPE", "oyunu"], ["DATE", "bu hafta sonu"]]}
+{"text": "Ayrıca Anadolu Efes maçına 2 kişi bilet bakıyorum", "spans": [["NAME", "Anadolu Efes"], ["TYPE", "maçına"], ["PEOPLE", "2 kişi"]]}
+{"text": "yarın bursada, cem yılmaz'ın gösterisi var mı", "spans": [["DATE", "yarın"], ["PLACE", "bursada"], ["NAME", "cem yılmaz'ın"], ["TYPE", "gösterisi"]]}
+{"text": "kişi başı en fazla 500 TL olsun, mabel matiz", "spans": [["PRICE", "kişi başı en fazla 500 TL"], ["NAME", "mabel matiz"]]}
+{"text": "ne yapsam bilmiyorum yaa", "spans": []}
+{"text": "Mabel Matiz'in konserine ücretsiz girmek istiyorum", "spans": [["NAME", "Mabel Matiz'in"], ["TYPE", "konserine"], ["PRICE", "ücretsiz"]]}
+{"text": "Hamlet, Othello ve Cimri... bu akşam kadıköyde?", "spans": [["NAME", "Hamlet"], ["NAME", "Othello"], ["NAME", "Cimri"], ["DATE", "bu akşam"], ["PLACE", "kadıköyde"]]}
+{"text": "Kayseri'de Duman konseri olur mu", "spans": [["PLACE", "Kayseri'de"], ["NAME", "Duman"], ["TYPE", "konseri"]]}
+{"text": "ne yapsak ya sıkıldım", "spans": []}
+{"text": "bu gece istanbulda Oppenheimer izlemek var mı", "spans": [["DATE", "bu gece"], ["PLACE", "istanbulda"], ["NAME", "Oppenheimer"]]}
+{"text": "mabel matiz konseri yarın, sevgilimle en fazla 400 TL", "spans": [["NAME", "mabel matiz"], ["TYPE", "konseri"], ["DATE", "yarın"], ["PEOPLE", "sevgilimle"], ["PRICE", "en fazla 400 TL"]]}
+{"text": "Galatasaray'ın maçını kaçırmak istemiyorum", "spans": [["NAME", "Galatasaray'ın"], ["TYPE", "maçını"]]}
+{"text": "Ajda Pekkan olsun, Tarkan olmasın", "spans": [["NAME", "Ajda Pekkan"], ["EXCLUDE", "Tarkan"]]}
+{"text": "hafta sonu ankarada Hamlet mi Cimri mi", "spans": [["DATE", "hafta sonu"], ["PLACE", "ankarada"], ["NAME", "Hamlet"], ["NAME", "Cimri"]]}
+{"text": "Teoman 2 kişilik bilet, 19.00'dan sonra", "spans": [["NAME", "Teoman"], ["PEOPLE", "2 kişilik"], ["DATE", "19.00'dan sonra"]]}
+{"text": "bu cuma gecesi Mabel Matiz, kadıköy civarında", "spans": [["DATE", "bu cuma gecesi"], ["NAME", "Mabel Matiz"], ["PLACE", "kadıköy"]]}
+{"text": "Beşiktaş olmasın, izmirde basketbol olsun", "spans": [["EXCLUDE", "Beşiktaş"], ["PLACE", "izmirde"], ["TYPE", "basketbol"]]}
+{"text": "sezen aksu konseri kişi başı en fazla 700 TL", "spans": [["NAME", "sezen aksu"], ["TYPE", "konseri"], ["PRICE", "kişi başı en fazla 700 TL"]]}
+{"text": "ücretsiz Hamlet var mı izmirde", "spans": [["PRICE", "ücretsiz"], ["NAME", "Hamlet"], ["PLACE", "izmirde"]]}
+{"text": "Efes ve Fenerbahçe maçlarına bakıyorum, cumartesi", "spans": [["NAME", "Efes"], ["NAME", "Fenerbahçe"], ["TYPE", "maçlarına"], ["DATE", "cumartesi"]]}
+{"text": "Sertab Erener'e giden var mı? yarın antalyada", "spans": [["NAME", "Sertab Erener'e"], ["DATE", "yarın"], ["PLACE", "antalyada"]]}
+{"text": "Cem Yılmaz olsun, 2 kişi, kadıköyde", "spans": [["NAME", "Cem Yılmaz"], ["PEOPLE", "2 kişi"], ["PLACE", "kadıköyde"]]}
+{"text": "Duman'a gitmek istiyorum, ama sadece cumartesi", "spans": [["NAME", "Duman'a"], ["DATE", "cumartesi"]]}
+{"text": "Gripin hariç ankara'da ne var", "spans": [["EXCLUDE", "Gripin"], ["PLACE", "ankara'da"]]}
+{"text": "bu akşam rock konseri var mı, 1000 TL altı", "spans": [["DATE", "bu akşam"], ["TYPE", "rock konseri"], ["PRICE", "1000 TL altı"]]}
+{"text": "Teoman'ın konseri yarın saat 9'dan sonra", "spans": [["NAME", "Teoman'ın"], ["TYPE", "konseri"], ["DATE", "yarın saat 9'dan sonra"]]}
+{"text": "Zeytinli Rock Festivali'ne bilet alalım mı, eskişehirde", "spans": [["NAME", "Zeytinli Rock Festivali'ne"], ["PLACE", "eskişehirde"]]}
+{"text": "yarın gece kadıköyde basketbol maçı, en fazla 300 TL", "spans": [["DATE", "yarın gece"], ["PLACE", "kadıköyde"], ["TYPE", "basketbol maçı"], ["PRICE", "en fazla 300 TL"]]}
+{"text": "bu hafta sonu üç kişi olarak Galatasaray'a gidelim", "spans": [["DATE", "bu hafta sonu"], ["PEOPLE", "üç kişi"], ["NAME", "Galatasaray'a"]]}
+{"text": "Mabel Matiz konserine tek başıma gitmeyi düşünüyorum", "spans": [["NAME", "Mabel Matiz"], ["TYPE", "konserine"], ["PEOPLE", "tek başıma"]]}
+{"text": "istanbul'da bursa'da ne var, Hamlet yok mu", "spans": [["PLACE", "istanbul'da"], ["PLACE", "bursa'da"], ["NAME", "Hamlet"]]}
+{"text": "ücretsiz stand-up ara, kadıköy veya beşiktaş", "spans": [["PRICE", "ücretsiz"], ["TYPE", "stand-up"], ["PLACE", "kadıköy"], ["PLACE", "beşiktaş"]]}
+{"text": "hafta içi akşamları Duman konseri olsun", "spans": [["DATE", "hafta içi akşamları"], ["NAME", "Duman"], ["TYPE", "konseri"]]}
+{"text": "Athena'yı görmek istiyorum, çocuğumla", "spans": [["NAME", "Athena'yı"], ["PEOPLE", "çocuğumla"]]}
+{"text": "en fazla 500 TL'ye Fenerbahçe maçı var mı", "spans": [["PRICE", "en fazla 500 TL'ye"], ["NAME", "Fenerbahçe"], ["TYPE", "maçı"]]}
+{"text": "mabel matiz, sezen aksu, athena: hepsi olur", "spans": [["NAME", "mabel matiz"], ["NAME", "sezen aksu"], ["NAME", "athena"]]}
+{"text": "galatasaray maçı olmasın, Beşiktaş'ı izleyelim", "spans": [["EXCLUDE", "galatasaray"], ["NAME", "Beşiktaş'ı"]]}
+{"text": "kadıköyde açık hava konseri var mı bu ay", "spans": [["PLACE", "kadıköyde"], ["TYPE", "açık hava konseri"], ["DATE", "bu ay"]]}
+{"text": "Ankara'da Hamlet oyunu, 2 kişi, en fazla 250 TL", "spans": [["PLACE", "Ankara'da"], ["NAME", "Hamlet"], ["TYPE", "oyunu"], ["PEOPLE", "2 kişi"], ["PRICE", "en fazla 250 TL"]]}
+{"text": "kim daha iyi acaba, bilmiyorum", "spans": []}
+{"text": "bugün istanbul'da ne var, bi tiyatro", "spans": [["DATE", "bugün"], ["PLACE", "istanbul'da"], ["TYPE", "tiyatro"]]}
+{"text": "sevgilimle izlemek istiyorum Oppenheimer'ı, bu cumartesi", "spans": [["PEOPLE", "sevgilimle"], ["NAME", "Oppenheimer'ı"], ["DATE", "bu cumartesi"]]}
+{"text": "izmir'de Göztepe maçına bilet var mı", "spans": [["PLACE", "izmir'de"], ["NAME", "Göztepe"], ["TYPE", "maçına"]]}
+{"text": "Hamlet hariç, ankarada opera ne var", "spans": [["EXCLUDE", "Hamlet"], ["PLACE", "ankarada"], ["TYPE", "opera"]]}
+{"text": "ucuz Teoman konseri olsun, akşam", "spans": [["PRICE", "ucuz"], ["NAME", "Teoman"], ["TYPE", "konseri"], ["DATE", "akşam"]]}
+{"text": "Fenerbahçe'nin maçı için Kadıköy'e gidiyoruz 3 kişi", "spans": [["NAME", "Fenerbahçe'nin"], ["TYPE", "maçı"], ["PLACE", "Kadıköy'e"], ["PEOPLE", "3 kişi"]]}
+{"text": "tiyatro olsun konser olmasın, bursada", "spans": [["TYPE", "tiyatro"], ["EXCLUDE", "konser"], ["PLACE", "bursada"]]}
+{"text": "Duman'ın yeni albüm konseri var mı yarın", "spans": [["NAME", "Duman'ın"], ["TYPE", "albüm konseri"], ["DATE", "yarın"]]}
+{"text": "annemle Cimri'yi izleyelim, izmirde", "spans": [["PEOPLE", "annemle"], ["NAME", "Cimri'yi"], ["PLACE", "izmirde"]]}
+{"text": "bu hafta içi, Mabel Matiz 1000 TL'yi geçmesin", "spans": [["DATE", "bu hafta içi"], ["NAME", "Mabel Matiz"], ["PRICE", "1000 TL'yi geçmesin"]]}
+{"text": "naber, hiç bi fikrim yok", "spans": []}
+{"text": "kişi başı en fazla 200 TL, sezen aksu olsun", "spans": [["PRICE", "kişi başı en fazla 200 TL"], ["NAME", "sezen aksu"]]}
+{"text": "Mabel Matiz konserine gitmek için 2 kişi oluruz", "spans": [["NAME", "Mabel Matiz"], ["TYPE", "konserine"], ["PEOPLE", "2 kişi"]]}
+{"text": "izmir'de bi Teoman konseri var mı, ucuz olsun", "spans": [["PLACE", "izmir'de"], ["NAME", "Teoman"], ["TYPE", "konseri"], ["PRICE", "ucuz"]]}
+{"text": "Tarkan konseri olsun, galatasaray maçı olmasın", "spans": [["NAME", "Tarkan"], ["TYPE", "konseri"], ["EXCLUDE", "galatasaray"]]}
+{"text": "ankaraya gidince Hamlet izlerim, cumartesi", "spans": [["PLACE", "ankaraya"], ["NAME", "Hamlet"], ["DATE", "cumartesi"]]}
+{"text": "Efes maçı ücretsiz olsun yarın ankarada", "spans": [["NAME", "Efes"], ["TYPE", "maçı"], ["PRICE", "ücretsiz"], ["DATE", "yarın"], ["PLACE", "ankarada"]]}
+{"text": "bu akşam Oppenheimer, sonra Barbie 4 kişilik", "spans": [["DATE", "bu akşam"], ["NAME", "Oppenheimer"], ["NAME", "Barbie"], ["PEOPLE", "4 kişilik"]]}
+{"text": "ya bu hafta sonu hangi filmler var, kadıköyde", "spans": [["DATE", "bu hafta sonu"], ["TYPE", "filmler"], ["PLACE", "kadıköyde"]]}
+{"text": "The Notebook filmi ücretsiz gösteriliyor mu", "spans": [["NAME", "The Notebook"], ["TYPE", "filmi"], ["PRICE", "ücretsiz"]]}
+{"text": "bi Galatasaray maçı dolu mu, 4 kişi", "spans": [["NAME", "Galatasaray"], ["TYPE", "maçı"], ["PEOPLE", "4 kişi"]]}
+{"text": "Sezen Aksu'yu dinlemek için iki kişi gidelim, İzmir'de", "spans": [["NAME", "Sezen Aksu'yu"], ["PEOPLE", "iki kişi"], ["PLACE", "İzmir'de"]]}
+{"text": "hafta sonu Sertab Erener konseri ankarada, 500 tl altı", "spans": [["DATE", "hafta sonu"], ["NAME", "Sertab Erener"], ["TYPE", "konseri"], ["PLACE", "ankarada"], ["PRICE", "500 tl altı"]]}
+{"text": "Cem Yılmaz'a bilet bakıyorum, sevgilimle gideriz", "spans": [["NAME", "Cem Yılmaz'a"], ["PEOPLE", "sevgilimle"]]}
+{"text": "galatasaray hariç bütün maçlar olsun", "spans": [["EXCLUDE", "galatasaray"], ["TYPE", "maçlar"]]}
+{"text": "kadıköy veya beşiktaşta Duman olsun, ücretsiz", "spans": [["PLACE", "kadıköy"], ["PLACE", "beşiktaşta"], ["NAME", "Duman"], ["PRICE", "ücretsiz"]]}
+{"text": "bu ay mabel matiz konseri yok mu", "spans": [["DATE", "bu ay"], ["NAME", "mabel matiz"], ["TYPE", "konseri"]]}
+{"text": "Trabzonspor'un maçı olmasın bu hafta", "spans": [["EXCLUDE", "Trabzonspor'un"], ["DATE", "bu hafta"]]}
+{"text": "izmir'de yarın akşam Hamlet, 4 kişi", "spans": [["PLACE", "izmir'de"], ["DATE", "yarın akşam"], ["NAME", "Hamlet"], ["PEOPLE", "4 kişi"]]}
+{"text": "Duman, Teoman ve Tarkan olmasın, Athena olsun", "spans": [["EXCLUDE", "Duman"], ["EXCLUDE", "Teoman"], ["EXCLUDE", "Tarkan"], ["NAME", "Athena"]]}
+{"text": "Efes maçına gitmek istiyorum, arkadaşlarla", "spans": [["NAME", "Efes"], ["TYPE", "maçına"], ["PEOPLE", "arkadaşlarla"]]}
+{"text": "canım sıkıldı naber", "spans": []}
+{"text": "ankara'da ya da istanbul'da, bi konser öner, kişi başı en fazla 500 TL", "spans": [["PLACE", "ankara'da"], ["PLACE", "istanbul'da"], ["TYPE", "konser"], ["PRICE", "kişi başı en fazla 500 TL"]]}
+{"text": "Göztepe maçı kaça ucuz, izmirde mi", "spans": [["NAME", "Göztepe"], ["TYPE", "maçı"], ["PRICE", "ucuz"], ["PLACE", "izmirde"]]}
+{"text": "yarın öğleden sonra Hamlet var mı, 1000 TL'yi geçmesin", "spans": [["DATE", "yarın öğleden sonra"], ["NAME", "Hamlet"], ["PRICE", "1000 TL'yi geçmesin"]]}
+{"text": "Ajda Pekkan'a bilet, kadıköyde, en fazla 800 TL", "spans": [["NAME", "Ajda Pekkan'a"], ["PLACE", "kadıköyde"], ["PRICE", "en fazla 800 TL"]]}
+{"text": "Bursa'da Mabel Matiz konseri, 4 kişi gidecek", "spans": [["PLACE", "Bursa'da"], ["NAME", "Mabel Matiz"], ["TYPE", "konseri"], ["PEOPLE", "4 kişi"]]}
+{"text": "antalyada cumartesi günü Efes maçı var mı", "spans": [["PLACE", "antalyada"], ["DATE", "cumartesi günü"], ["NAME", "Efes"], ["TYPE", "maçı"]]}
+{"text": "Cimri ve Hamlet dışında bir oyun öner, kadıköyde", "spans": [["EXCLUDE", "Cimri"], ["EXCLUDE", "Hamlet"], ["TYPE", "oyun"], ["PLACE", "kadıköyde"]]}
+{"text": "hafta sonu çocuğumla gidebileceğimiz Duman konseri", "spans": [["DATE", "hafta sonu"], ["PEOPLE", "çocuğumla"], ["NAME", "Duman"], ["TYPE", "konseri"]]}
+{"text": "Athena konseri olmasın, Sezen Aksu olsun", "spans": [["EXCLUDE", "Athena"], ["NAME", "Sezen Aksu"]]}
+{"text": "bugün Hamlet var mı? ucuz bulabilir miyim", "spans": [["DATE", "bugün"], ["NAME", "Hamlet"], ["PRICE", "ucuz"]]}
+{"text": "çocuk tiyatrosu olsun, ankarada, cumartesi", "spans": [["TYPE", "çocuk tiyatrosu"], ["PLACE", "ankarada"], ["DATE", "cumartesi"]]}
+{"text": "Tarkan için bu cumartesi ankarada olur mu", "spans": [["NAME", "Tarkan"], ["DATE", "bu cumartesi"], ["PLACE", "ankarada"]]}
+{"text": "Teoman'ı izlemek için sevgilimle olur mu", "spans": [["NAME", "Teoman'ı"], ["PEOPLE", "sevgilimle"]]}
+{"text": "Cem Yılmaz olmasın, Yılmaz Erdoğan olsun, 2 kişi", "spans": [["EXCLUDE", "Cem Yılmaz"], ["NAME", "Yılmaz Erdoğan"], ["PEOPLE", "2 kişi"]]}
+{"text": "kadıköy'de yarın, kişi başı en fazla 400 TL, Mabel Matiz", "spans": [["PLACE", "kadıköy'de"], ["DATE", "yarın"], ["PRICE", "kişi başı en fazla 400 TL"], ["NAME", "Mabel Matiz"]]}
+{"text": "istanbul'da yarın Galatasaray maçı var, ücretsiz mi", "spans": [["PLACE", "istanbul'da"], ["DATE", "yarın"], ["NAME", "Galatasaray"], ["TYPE", "maçı"], ["PRICE", "ücretsiz"]]}
+{"text": "hangi basketbol maçları var bu hafta ankarada", "spans": [["TYPE", "basketbol maçları"], ["DATE", "bu hafta"], ["PLACE", "ankarada"]]}
+{"text": "Mabel Matiz ve Duman dışında bişey ver, kadıköy", "spans": [["EXCLUDE", "Mabel Matiz"], ["EXCLUDE", "Duman"], ["PLACE", "kadıköy"]]}
+{"text": "Göztepe maçı olsun, sevgilimle gidelim, bu cuma", "spans": [["NAME", "Göztepe"], ["TYPE", "maçı"], ["PEOPLE", "sevgilimle"], ["DATE", "bu cuma"]]}
+{"text": "ankara'daki Hamlet hangi saatte, 19.00'dan önce", "spans": [["PLACE", "ankara'daki"], ["NAME", "Hamlet"], ["DATE", "19.00'dan önce"]]}
+{"text": "ucuz Oppenheimer gösterimi var mı, 2 kişi", "spans": [["PRICE", "ucuz"], ["NAME", "Oppenheimer"], ["TYPE", "gösterimi"], ["PEOPLE", "2 kişi"]]}
+{"text": "Tarkan konserine gidelim, Duman'ı istemiyorum", "spans": [["NAME", "Tarkan"], ["TYPE", "konserine"], ["EXCLUDE", "Duman'ı"]]}
+{"text": "istanbul'un Anadolu yakasında Fenerbahçe maçı", "spans": [["PLACE", "istanbul'un Anadolu yakasında"], ["NAME", "Fenerbahçe"], ["TYPE", "maçı"]]}
+{"text": "bu akşamki Duman konseri için kaç para", "spans": [["DATE", "bu akşamki"], ["NAME", "Duman"], ["TYPE", "konseri"]]}
+{"text": "ankara'da tek başıma Hamlet izlemek istiyorum", "spans": [["PLACE", "ankara'da"], ["PEOPLE", "tek başıma"], ["NAME", "Hamlet"]]}
+{"text": "en ucuz Cem Yılmaz bileti nerede", "spans": [["PRICE", "en ucuz"], ["NAME", "Cem Yılmaz"]]}
+{"text": "galatasaray maçı ve konser olsun, bi de izmirde", "spans": [["NAME", "galatasaray"], ["TYPE", "maçı"], ["TYPE", "konser"], ["PLACE", "izmirde"]]}
+{"text": "cumartesi ve pazar, Sertab Erener, 3 kişi", "spans": [["DATE", "cumartesi ve pazar"], ["NAME", "Sertab Erener"], ["PEOPLE", "3 kişi"]]}
+{"text": "Athena konseri 19.00'dan sonra mı başlıyor", "spans": [["NAME", "Athena"], ["TYPE", "konseri"], ["DATE", "19.00'dan sonra"]]}
+{"text": "izmir'de maç var mı bu hafta sonu, Bursaspor", "spans": [["PLACE", "izmir'de"], ["TYPE", "maç"], ["DATE", "bu hafta sonu"], ["NAME", "Bursaspor"]]}
+{"text": "Zeytinli Rock Festivali ne zaman", "spans": [["NAME", "Zeytinli Rock Festivali"]]}
+{"text": "Kenan Doğulu'nun konseri ucuz olsun, cumartesi", "spans": [["NAME", "Kenan Doğulu'nun"], ["TYPE", "konseri"], ["PRICE", "ucuz"], ["DATE", "cumartesi"]]}
+{"text": "canım bir şey istemiyor", "spans": []}
+{"text": "sevgilimle cem yılmaz'ın gösterisine gidelim", "spans": [["PEOPLE", "sevgilimle"], ["NAME", "cem yılmaz'ın"], ["TYPE", "gösterisine"]]}
+{"text": "Hamlet mi Othello mu, kadıköyde cumartesi", "spans": [["NAME", "Hamlet"], ["NAME", "Othello"], ["PLACE", "kadıköyde"], ["DATE", "cumartesi"]]}
+{"text": "Oppenheimer'ı bu hafta sonu ücretsiz izleyebilir miyim", "spans": [["NAME", "Oppenheimer'ı"], ["DATE", "bu hafta sonu"], ["PRICE", "ücretsiz"]]}

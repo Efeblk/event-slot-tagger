@@ -1,0 +1,200 @@
+{"text": "ankarada bu akşam tiyatro var mı", "spans": [["PLACE", "ankarada"], ["DATE", "bu akşam"], ["TYPE", "tiyatro"]]}
+{"text": "eskişehirde hafta sonu opera olsun ama 300 tl altı", "spans": [["PLACE", "eskişehirde"], ["DATE", "hafta sonu"], ["TYPE", "opera"], ["PRICE", "300 tl altı"]]}
+{"text": "kızılay'da ucuz bir tiyatro oyunu arıyorum", "spans": [["PLACE", "kızılay'da"], ["PRICE", "ucuz"], ["TYPE", "tiyatro"]]}
+{"text": "Çankaya'da bu hafta sonu bale var mı?", "spans": [["PLACE", "Çankaya'da"], ["DATE", "bu hafta sonu"], ["TYPE", "bale"]]}
+{"text": "öğrenciyim bütçem az, ankarada ucuz konser var mı", "spans": [["PLACE", "ankarada"], ["PRICE", "ucuz"], ["TYPE", "konser"]]}
+{"text": "eskişehirde arkadaşlarla gitmek istiyorum bi tiyatro", "spans": [["PLACE", "eskişehirde"], ["PEOPLE", "arkadaşlarla"], ["TYPE", "tiyatro"]]}
+{"text": "Ankara'da Kuğu Gölü ne zaman?", "spans": [["PLACE", "Ankara'da"], ["NAME", "Kuğu Gölü"]]}
+{"text": "keçiörende ucuz opera var mı yarın akşam", "spans": [["PLACE", "keçiörende"], ["PRICE", "ucuz"], ["TYPE", "opera"], ["DATE", "yarın akşam"]]}
+{"text": "eskişehir'de çocuğumla gidebileceğim bir şey varmı", "spans": [["PLACE", "eskişehir'de"], ["PEOPLE", "çocuğumla"]]}
+{"text": "canım sıkıldı", "spans": []}
+{"text": "Tepebaşı'nda cumartesi akşamı 2 kişilik opera bileti", "spans": [["PLACE", "Tepebaşı'nda"], ["DATE", "cumartesi akşamı"], ["PEOPLE", "2 kişilik"], ["TYPE", "opera"]]}
+{"text": "ankara'da bale izlemek istiyom, kişi başı en fazla 400 TL", "spans": [["PLACE", "ankara'da"], ["TYPE", "bale"], ["PRICE", "kişi başı en fazla 400 TL"]]}
+{"text": "Ankara Sahnesi'nde ücretsiz oyun var mı", "spans": [["PLACE", "Ankara Sahnesi'nde"], ["PRICE", "ücretsiz"]]}
+{"text": "bu akşam eskişehir'de bi konser olur mu", "spans": [["DATE", "bu akşam"], ["PLACE", "eskişehir'de"], ["TYPE", "konser"]]}
+{"text": "Yarın Ankara'da 4 kişiyiz tiyatro bakıyoruz", "spans": [["DATE", "Yarın"], ["PLACE", "Ankara'da"], ["PEOPLE", "4 kişiyiz"], ["TYPE", "tiyatro"]]}
+{"text": "Ankara'da öğrenci dostu ucuz tiyatro önerir misin", "spans": [["PLACE", "Ankara'da"], ["PRICE", "ucuz"], ["TYPE", "tiyatro"]]}
+{"text": "Eskişehir Şehir Tiyatrosu bu ay ne oynuyor", "spans": [["PLACE", "Eskişehir Şehir Tiyatrosu"], ["DATE", "bu ay"]]}
+{"text": "hamlet ankarada ne zaman", "spans": [["NAME", "hamlet"], ["PLACE", "ankarada"]]}
+{"text": "eskişehirde Carmen olsun", "spans": [["PLACE", "eskişehirde"], ["NAME", "Carmen"]]}
+{"text": "ankarada Don Giovanni operası var mı bu hafta", "spans": [["PLACE", "ankarada"], ["NAME", "Don Giovanni"], ["TYPE", "operası"], ["DATE", "bu hafta"]]}
+{"text": "ankara'da 1000 TL'yi geçmesin bir bale", "spans": [["PLACE", "ankara'da"], ["PRICE", "1000 TL'yi geçmesin"], ["TYPE", "bale"]]}
+{"text": "Çankaya'da sevgilimle bale izlemek istiyorum", "spans": [["PLACE", "Çankaya'da"], ["PEOPLE", "sevgilimle"], ["TYPE", "bale"]]}
+{"text": "eskişehirde 500 liradan ucuz opera var mı", "spans": [["PLACE", "eskişehirde"], ["PRICE", "500 liradan ucuz"], ["TYPE", "opera"]]}
+{"text": "bu hafta sonu ankara'da hiç konser olmasın", "spans": [["DATE", "bu hafta sonu"], ["PLACE", "ankara'da"], ["EXCLUDE", "konser"]]}
+{"text": "tiyatro olsun konser olmasın ankarada", "spans": [["TYPE", "tiyatro"], ["EXCLUDE", "konser"], ["PLACE", "ankarada"]]}
+{"text": "eskişehirde opera hariç her şey olur", "spans": [["PLACE", "eskişehirde"], ["EXCLUDE", "opera"]]}
+{"text": "Kızılay'da stand-up istemiyorum tiyatro olsun", "spans": [["PLACE", "Kızılay'da"], ["EXCLUDE", "stand-up"], ["TYPE", "tiyatro"]]}
+{"text": "ankara'da bu akşam, ama bale olmasın", "spans": [["PLACE", "ankara'da"], ["DATE", "bu akşam"], ["EXCLUDE", "bale"]]}
+{"text": "ücretsiz bir şey olsun, eskişehir hariç", "spans": [["PRICE", "ücretsiz"], ["EXCLUDE", "eskişehir"]]}
+{"text": "ankara'da bale ya da opera, konser istemiyorum", "spans": [["PLACE", "ankara'da"], ["TYPE", "bale"], ["TYPE", "opera"], ["EXCLUDE", "konser"]]}
+{"text": "Eskişehir'de Odunpazarı tarafında bu cumartesi tiyatro", "spans": [["PLACE", "Eskişehir'de"], ["PLACE", "Odunpazarı"], ["DATE", "bu cumartesi"], ["TYPE", "tiyatro"]]}
+{"text": "Tepebaşı civarında ücretsiz konser var mı", "spans": [["PLACE", "Tepebaşı"], ["PRICE", "ücretsiz"], ["TYPE", "konser"]]}
+{"text": "Ankara'da yarın öğleden sonra 2 kişiyiz", "spans": [["PLACE", "Ankara'da"], ["DATE", "yarın öğleden sonra"], ["PEOPLE", "2 kişiyiz"]]}
+{"text": "pazar günü saat 20.00'den sonra ankarada oyun", "spans": [["DATE", "pazar günü saat 20.00'den sonra"], ["PLACE", "ankarada"]]}
+{"text": "eskişehirde saat 9'dan sonra bi bale var mı", "spans": [["PLACE", "eskişehirde"], ["DATE", "saat 9'dan sonra"], ["TYPE", "bale"]]}
+{"text": "Ankara'da sabah 10 ile 12 arası ücretsiz bir şey var mı", "spans": [["PLACE", "Ankara'da"], ["DATE", "sabah 10 ile 12 arası"], ["PRICE", "ücretsiz"]]}
+{"text": "eskişehir'de 15-20 kasım arası opera", "spans": [["PLACE", "eskişehir'de"], ["DATE", "15-20 kasım arası"], ["TYPE", "opera"]]}
+{"text": "önümüzdeki ay ankara'da bale gösterisi", "spans": [["DATE", "önümüzdeki ay"], ["PLACE", "ankara'da"], ["TYPE", "bale"]]}
+{"text": "ankara'daki ucuz tiyatrolar", "spans": [["PLACE", "ankara'daki"], ["PRICE", "ucuz"], ["TYPE", "tiyatrolar"]]}
+{"text": "Mamak'ta çocuk tiyatrosu var mı hafta sonu", "spans": [["PLACE", "Mamak'ta"], ["TYPE", "çocuk tiyatrosu"], ["DATE", "hafta sonu"]]}
+{"text": "tek başıma eskişehirde opera izlemek istiyorum", "spans": [["PEOPLE", "tek başıma"], ["PLACE", "eskişehirde"], ["TYPE", "opera"]]}
+{"text": "ankara'da 3 kişi bale izleyelim", "spans": [["PLACE", "ankara'da"], ["PEOPLE", "3 kişi"], ["TYPE", "bale"]]}
+{"text": "naber ankarada bugün konser var mı abi", "spans": [["PLACE", "ankarada"], ["DATE", "bugün"], ["TYPE", "konser"]]}
+{"text": "ya eskişehirde ne var bu akşam", "spans": [["PLACE", "eskişehirde"], ["DATE", "bu akşam"]]}
+{"text": "Eskişehir'de bi tiyatro oyununa en fazla 150 TL", "spans": [["PLACE", "Eskişehir'de"], ["TYPE", "tiyatro"], ["PRICE", "en fazla 150 TL"]]}
+{"text": "ankara'da yarın saat 21.00'den önce ucuz bi konser", "spans": [["PLACE", "ankara'da"], ["DATE", "yarın saat 21.00'den önce"], ["PRICE", "ucuz"], ["TYPE", "konser"]]}
+{"text": "Çankaya Kültür Merkezi'nde hafta içi ücretsiz opera", "spans": [["PLACE", "Çankaya Kültür Merkezi'nde"], ["DATE", "hafta içi"], ["PRICE", "ücretsiz"], ["TYPE", "opera"]]}
+{"text": "yarın ankara'da olacak ama para yok, ücretsiz olsun", "spans": [["DATE", "yarın"], ["PLACE", "ankara'da"], ["PRICE", "ücretsiz"]]}
+{"text": "eskişehir'deki ucuz tiyatro salonları", "spans": [["PLACE", "eskişehir'deki"], ["PRICE", "ucuz"], ["TYPE", "tiyatro"]]}
+{"text": "Ankara'da Hamlet oynuyor mu bu hafta", "spans": [["PLACE", "Ankara'da"], ["NAME", "Hamlet"], ["DATE", "bu hafta"]]}
+{"text": "ankarada martı oyunu görmek istiyom", "spans": [["PLACE", "ankarada"], ["NAME", "martı"]]}
+{"text": "Zeynep Arslan bu akşam Ankara'da mı", "spans": [["NAME", "Zeynep Arslan"], ["DATE", "bu akşam"], ["PLACE", "Ankara'da"]]}
+{"text": "keçiören'de kızımla çocuk tiyatrosuna gitmek istiyorum", "spans": [["PLACE", "keçiören'de"], ["PEOPLE", "kızımla"], ["TYPE", "çocuk tiyatrosuna"]]}
+{"text": "Eskişehir'de 2 kişilik ucuz bale var mı", "spans": [["PLACE", "Eskişehir'de"], ["PEOPLE", "2 kişilik"], ["PRICE", "ucuz"], ["TYPE", "bale"]]}
+{"text": "ankara'da çarşamba akşamı bale 500 tl'ye kadar", "spans": [["PLACE", "ankara'da"], ["DATE", "çarşamba akşamı"], ["TYPE", "bale"], ["PRICE", "500 tl'ye kadar"]]}
+{"text": "Ankara'da öğrenciyim, en fazla 200 TL'lik tiyatro arıyorum", "spans": [["PLACE", "Ankara'da"], ["PRICE", "en fazla 200 TL'lik"], ["TYPE", "tiyatro"]]}
+{"text": "bu akşam kızılayda bir şey olur mu", "spans": [["DATE", "bu akşam"], ["PLACE", "kızılayda"]]}
+{"text": "Kızılay'da ücretsiz etkinlik var mı", "spans": [["PLACE", "Kızılay'da"], ["PRICE", "ücretsiz"]]}
+{"text": "Tepebaşı'nda Carmen ya da La Traviata bakalım", "spans": [["PLACE", "Tepebaşı'nda"], ["NAME", "Carmen"], ["NAME", "La Traviata"]]}
+{"text": "eskişehirde hafta sonu 2 kişilik konser", "spans": [["PLACE", "eskişehirde"], ["DATE", "hafta sonu"], ["PEOPLE", "2 kişilik"], ["TYPE", "konser"]]}
+{"text": "emin değilim ne istediğimi 🎭", "spans": []}
+{"text": "merhaba, öğrenci kartım var. Eskişehir'de ucuz bir opera gösterisi öner", "spans": [["PLACE", "Eskişehir'de"], ["PRICE", "ucuz"], ["TYPE", "opera"]]}
+{"text": "ankarada akşam tiyatro olur mu", "spans": [["PLACE", "ankarada"], ["DATE", "akşam"], ["TYPE", "tiyatro"]]}
+{"text": "Eskişehir'de bu hafta sonu iki kişi gidebileceğimiz bale var mı", "spans": [["PLACE", "Eskişehir'de"], ["DATE", "bu hafta sonu"], ["PEOPLE", "iki kişi"], ["TYPE", "bale"]]}
+{"text": "Kuğu Gölü'nü Ankara'da izlemek istiyorum, bilet 800 TL'yi geçmesin", "spans": [["NAME", "Kuğu Gölü'nü"], ["PLACE", "Ankara'da"], ["PRICE", "800 TL'yi geçmesin"]]}
+{"text": "bugün ankara'da bi tiyatro bakalım ama uygun fiyatlı olsun", "spans": [["DATE", "bugün"], ["PLACE", "ankara'da"], ["TYPE", "tiyatro"], ["PRICE", "uygun fiyatlı"]]}
+{"text": "Eskişehir Opera Binası'nda perşembe akşamı bilet ne kadar", "spans": [["PLACE", "Eskişehir Opera Binası'nda"], ["DATE", "perşembe akşamı"]]}
+{"text": "tek başıma ankara'da ücretsiz bale var mı", "spans": [["PEOPLE", "tek başıma"], ["PLACE", "ankara'da"], ["PRICE", "ücretsiz"], ["TYPE", "bale"]]}
+{"text": "ne yapsam ya, sıkıldım", "spans": []}
+{"text": "bir şeyler öner ne olur", "spans": []}
+{"text": "ne yapsam acaba", "spans": []}
+{"text": "sıkıldım, öner bi şey", "spans": []}
+{"text": "etkinlik öner", "spans": []}
+{"text": "plan yapmak istiyorum hangi gün olsa fark etmez", "spans": []}
+{"text": "ne yapsak bilmiyoruz hadi", "spans": []}
+{"text": "ankara'da bale var mı, ama Kuğu Gölü olmasın", "spans": [["PLACE", "ankara'da"], ["TYPE", "bale"], ["EXCLUDE", "Kuğu Gölü"]]}
+{"text": "Çankaya'da stand-up olsun ama Zeynep Arslan olmasın", "spans": [["PLACE", "Çankaya'da"], ["TYPE", "stand-up"], ["EXCLUDE", "Zeynep Arslan"]]}
+{"text": "bu hafta sonu eskişehir'de tiyatro, opera hariç", "spans": [["DATE", "bu hafta sonu"], ["PLACE", "eskişehir'de"], ["TYPE", "tiyatro"], ["EXCLUDE", "opera"]]}
+{"text": "2 kişiyiz, ücretsiz ya da ucuz bir şey lazım, ankara'da", "spans": [["PEOPLE", "2 kişiyiz"], ["PRICE", "ücretsiz"], ["PRICE", "ucuz"], ["PLACE", "ankara'da"]]}
+{"text": "Keçiören'de 20.00'den sonra tiyatro var mı", "spans": [["PLACE", "Keçiören'de"], ["DATE", "20.00'den sonra"], ["TYPE", "tiyatro"]]}
+{"text": "ankarada akşam 8'den sonra opera", "spans": [["PLACE", "ankarada"], ["DATE", "akşam 8'den sonra"], ["TYPE", "opera"]]}
+{"text": "Odunpazarı'nda çarşamba günü konser olsun, bilet en fazla 250 TL", "spans": [["PLACE", "Odunpazarı'nda"], ["DATE", "çarşamba günü"], ["TYPE", "konser"], ["PRICE", "en fazla 250 TL"]]}
+{"text": "ankara'da sevgilimle opera izlemek istiyorum ama bale olmasın", "spans": [["PLACE", "ankara'da"], ["PEOPLE", "sevgilimle"], ["TYPE", "opera"], ["EXCLUDE", "bale"]]}
+{"text": "Eskişehir'de Hamlet ne zaman oynuyor", "spans": [["PLACE", "Eskişehir'de"], ["NAME", "Hamlet"]]}
+{"text": "bu cumartesi Ankara'da Martı oyunu var mı", "spans": [["DATE", "bu cumartesi"], ["PLACE", "Ankara'da"], ["NAME", "Martı"]]}
+{"text": "tiyatro istemiyorum opera olsun Ankara'da", "spans": [["EXCLUDE", "tiyatro"], ["TYPE", "opera"], ["PLACE", "Ankara'da"]]}
+{"text": "ankara'da hafta içi öğrenci kulübü ucuz tiyatro", "spans": [["PLACE", "ankara'da"], ["DATE", "hafta içi"], ["PRICE", "ucuz"], ["TYPE", "tiyatro"]]}
+{"text": "Keçiören Çocuk Tiyatrosu'nda bu akşam 7'de oyun var mı", "spans": [["PLACE", "Keçiören Çocuk Tiyatrosu'nda"], ["DATE", "bu akşam 7'de"]]}
+{"text": "sevgilimle eskişehirde bi opera var mı", "spans": [["PEOPLE", "sevgilimle"], ["PLACE", "eskişehirde"], ["TYPE", "opera"]]}
+{"text": "dört kişi ankara'da bale izleyeceğiz, toplam 1200 TL'yi geçmesin", "spans": [["PEOPLE", "dört kişi"], ["PLACE", "ankara'da"], ["TYPE", "bale"], ["PRICE", "toplam 1200 TL'yi geçmesin"]]}
+{"text": "Ankara'da Yenimahalle tarafında bu gece konser var mı", "spans": [["PLACE", "Ankara'da"], ["PLACE", "Yenimahalle"], ["DATE", "bu gece"], ["TYPE", "konser"]]}
+{"text": "eskişehir'de bi yerde gitmek istediğim tiyatro etkinliği var mı", "spans": [["PLACE", "eskişehir'de"], ["TYPE", "tiyatro"]]}
+{"text": "yarın akşam için Ankara'da en ucuz bale", "spans": [["DATE", "yarın akşam"], ["PLACE", "Ankara'da"], ["PRICE", "en ucuz"], ["TYPE", "bale"]]}
+{"text": "ankaraya gelicem bu hafta bir bale ya da tiyatro bakalım", "spans": [["PLACE", "ankaraya"], ["DATE", "bu hafta"], ["TYPE", "bale"], ["TYPE", "tiyatro"]]}
+{"text": "Kızılay Sahnesi'nde 4 kişilik ucuz opera", "spans": [["PLACE", "Kızılay Sahnesi'nde"], ["PEOPLE", "4 kişilik"], ["PRICE", "ucuz"], ["TYPE", "opera"]]}
+{"text": "Eskişehir'de cumartesi günü çocuğumla ücretsiz bir etkinlik var mı", "spans": [["PLACE", "Eskişehir'de"], ["DATE", "cumartesi günü"], ["PEOPLE", "çocuğumla"], ["PRICE", "ücretsiz"]]}
+{"text": "ankarada bale var, sadece 16.00'dan sonra olsun", "spans": [["PLACE", "ankarada"], ["TYPE", "bale"], ["DATE", "16.00'dan sonra"]]}
+{"text": "Tepebaşı'nda bi konser ayarlayabilir misin, Duman olmasın", "spans": [["PLACE", "Tepebaşı'nda"], ["TYPE", "konser"], ["EXCLUDE", "Duman"]]}
+{"text": "Ankara'da ücretsiz olsun, sahne sanatları falan", "spans": [["PLACE", "Ankara'da"], ["PRICE", "ücretsiz"]]}
+{"text": "eskişehirde bu akşam 2 kişi için bale bileti yok mu", "spans": [["PLACE", "eskişehirde"], ["DATE", "bu akşam"], ["PEOPLE", "2 kişi"], ["TYPE", "bale"]]}
+{"text": "Ankara'da ucuz tiyatro. Bir de 19.30'da başlayan var mı?", "spans": [["PLACE", "Ankara'da"], ["PRICE", "ucuz"], ["TYPE", "tiyatro"], ["DATE", "19.30'da"]]}
+{"text": "eskişehirdeki kültür merkezinde bu hafta ücretsiz konser", "spans": [["PLACE", "eskişehirdeki kültür merkezinde"], ["DATE", "bu hafta"], ["PRICE", "ücretsiz"], ["TYPE", "konser"]]}
+{"text": "Ankara'da bu hafta sonu bale olsun, Kuğu Gölü dışında", "spans": [["PLACE", "Ankara'da"], ["DATE", "bu hafta sonu"], ["TYPE", "bale"], ["EXCLUDE", "Kuğu Gölü"]]}
+{"text": "eskisehirde ogrenciyim arkadasla opera var mi", "spans": [["PLACE", "eskisehirde"], ["PEOPLE", "arkadasla"], ["TYPE", "opera"]]}
+{"text": "ankaraya bi bilet lazim 300 liradan ucuz olsun", "spans": [["PLACE", "ankaraya"], ["PRICE", "300 liradan ucuz"]]}
+{"text": "bu gece tek başıma gidecek bi yer arıyorum tiyatro olsun", "spans": [["DATE", "bu gece"], ["PEOPLE", "tek başıma"], ["TYPE", "tiyatro"]]}
+{"text": "Çankaya Kültür Sahnesi'nde bu akşam opera var mı", "spans": [["PLACE", "Çankaya Kültür Sahnesi'nde"], ["DATE", "bu akşam"], ["TYPE", "opera"]]}
+{"text": "ankara'da 3 gün sonra bale 🎭", "spans": [["PLACE", "ankara'da"], ["DATE", "3 gün sonra"], ["TYPE", "bale"]]}
+{"text": "eskişehirde ucuz bale, Hamlet hariç", "spans": [["PLACE", "eskişehirde"], ["PRICE", "ucuz"], ["TYPE", "bale"], ["EXCLUDE", "Hamlet"]]}
+{"text": "Ankara'da eşimle gidebileceğimiz bir opera var mı", "spans": [["PLACE", "Ankara'da"], ["PEOPLE", "eşimle"], ["TYPE", "opera"]]}
+{"text": "eskişehir'de 3 kişilik hafta içi tiyatro 100 tl altı", "spans": [["PLACE", "eskişehir'de"], ["PEOPLE", "3 kişilik"], ["DATE", "hafta içi"], ["TYPE", "tiyatro"], ["PRICE", "100 tl altı"]]}
+{"text": "bi şey bulamadım, öner bakalım", "spans": []}
+{"text": "Odunpazarı'nda yarın öğleden sonra ücretsiz tiyatro", "spans": [["PLACE", "Odunpazarı'nda"], ["DATE", "yarın öğleden sonra"], ["PRICE", "ücretsiz"], ["TYPE", "tiyatro"]]}
+{"text": "ankara'da Zeynep Arslan konseri var mı bu cuma", "spans": [["PLACE", "ankara'da"], ["NAME", "Zeynep Arslan"], ["TYPE", "konseri"], ["DATE", "bu cuma"]]}
+{"text": "Eskişehir'de annemle bale izlemek istiyorum", "spans": [["PLACE", "Eskişehir'de"], ["PEOPLE", "annemle"], ["TYPE", "bale"]]}
+{"text": "kızılay'da perşembe akşamı 1000 TL altı opera", "spans": [["PLACE", "kızılay'da"], ["DATE", "perşembe akşamı"], ["PRICE", "1000 TL altı"], ["TYPE", "opera"]]}
+{"text": "ankarada akşam tiyatro, konser olmasın", "spans": [["PLACE", "ankarada"], ["DATE", "akşam"], ["TYPE", "tiyatro"], ["EXCLUDE", "konser"]]}
+{"text": "Yenimahalle'de ucuz bale, 2 kişiyiz", "spans": [["PLACE", "Yenimahalle'de"], ["PRICE", "ucuz"], ["TYPE", "bale"], ["PEOPLE", "2 kişiyiz"]]}
+{"text": "ankara'da bale bakıyorum ama en fazla 1500 TL olsun", "spans": [["PLACE", "ankara'da"], ["TYPE", "bale"], ["PRICE", "en fazla 1500 TL"]]}
+{"text": "bugün eskişehirde tiyatro var mı abi, 20 kişiyiz", "spans": [["DATE", "bugün"], ["PLACE", "eskişehirde"], ["TYPE", "tiyatro"], ["PEOPLE", "20 kişiyiz"]]}
+{"text": "Ankara'da Kuğu Gölü var mı bu hafta sonu", "spans": [["PLACE", "Ankara'da"], ["NAME", "Kuğu Gölü"], ["DATE", "bu hafta sonu"]]}
+{"text": "eskişehir hafta sonu tiyatro var mı", "spans": [["PLACE", "eskişehir"], ["DATE", "hafta sonu"], ["TYPE", "tiyatro"]]}
+{"text": "Çankaya'da 15 yaşındaki çocuğumla bale", "spans": [["PLACE", "Çankaya'da"], ["PEOPLE", "çocuğumla"], ["TYPE", "bale"]]}
+{"text": "ankarada ucuz bi opera gösterisi yada tiyatro", "spans": [["PLACE", "ankarada"], ["PRICE", "ucuz"], ["TYPE", "opera"], ["TYPE", "tiyatro"]]}
+{"text": "öğrenci olarak 150 liraya kadar bilet ararım, Ankara'da", "spans": [["PRICE", "150 liraya kadar"], ["PLACE", "Ankara'da"]]}
+{"text": "Eskişehir'de bu akşam bale yok mu", "spans": [["PLACE", "Eskişehir'de"], ["DATE", "bu akşam"], ["TYPE", "bale"]]}
+{"text": "Kızılay'da bu hafta sonu opera gösterisi, bilet ücretsiz olsun", "spans": [["PLACE", "Kızılay'da"], ["DATE", "bu hafta sonu"], ["TYPE", "opera"], ["PRICE", "ücretsiz"]]}
+{"text": "tiyatro değil konser istiyorum ankarada", "spans": [["EXCLUDE", "tiyatro"], ["TYPE", "konser"], ["PLACE", "ankarada"]]}
+{"text": "Ankara'da bu gece 2 kişilik bale, bilet en fazla 700 TL", "spans": [["PLACE", "Ankara'da"], ["DATE", "bu gece"], ["PEOPLE", "2 kişilik"], ["TYPE", "bale"], ["PRICE", "en fazla 700 TL"]]}
+{"text": "Ankara'da stand-up olsun, Cem Yılmaz olmasın", "spans": [["PLACE", "Ankara'da"], ["TYPE", "stand-up"], ["EXCLUDE", "Cem Yılmaz"]]}
+{"text": "eskişehirde dört kişiyiz, bugün ucuz bir oyun bakalım", "spans": [["PLACE", "eskişehirde"], ["PEOPLE", "dört kişiyiz"], ["DATE", "bugün"], ["PRICE", "ucuz"]]}
+{"text": "ankaraya gelsem hangi tiyatro iyi olur", "spans": [["PLACE", "ankaraya"], ["TYPE", "tiyatro"]]}
+{"text": "Eskişehir'in ücretsiz etkinliklerine bakıyorum", "spans": [["PLACE", "Eskişehir'in"], ["PRICE", "ücretsiz"]]}
+{"text": "ankara'da 18.00'de başlayan bale var mı", "spans": [["PLACE", "ankara'da"], ["DATE", "18.00'de"], ["TYPE", "bale"]]}
+{"text": "Çankaya'da yarın 9'da başlayan bale", "spans": [["PLACE", "Çankaya'da"], ["DATE", "yarın 9'da"], ["TYPE", "bale"]]}
+{"text": "bu hafta sonu ne var ankara?", "spans": [["DATE", "bu hafta sonu"], ["PLACE", "ankara"]]}
+{"text": "Keçiören'de kardeşimle tiyatro olsun, bilet 80 TL'den ucuz", "spans": [["PLACE", "Keçiören'de"], ["PEOPLE", "kardeşimle"], ["TYPE", "tiyatro"], ["PRICE", "80 TL'den ucuz"]]}
+{"text": "eskisehirde yalniz gidicem, bale yada opera", "spans": [["PLACE", "eskisehirde"], ["PEOPLE", "yalniz"], ["TYPE", "bale"], ["TYPE", "opera"]]}
+{"text": "ankara'da cuma akşamı opera, konser olmasın", "spans": [["PLACE", "ankara'da"], ["DATE", "cuma akşamı"], ["TYPE", "opera"], ["EXCLUDE", "konser"]]}
+{"text": "Tepebaşı'nda hafta sonu gösteri var mı, bale olmasın", "spans": [["PLACE", "Tepebaşı'nda"], ["DATE", "hafta sonu"], ["EXCLUDE", "bale"]]}
+{"text": "Ankara Sahnesi'nde bu akşam Hamlet", "spans": [["PLACE", "Ankara Sahnesi'nde"], ["DATE", "bu akşam"], ["NAME", "Hamlet"]]}
+{"text": "ankaraya gitmek için bi plan, 5 kişiyiz ucuz olsun", "spans": [["PLACE", "ankaraya"], ["PEOPLE", "5 kişiyiz"], ["PRICE", "ucuz"]]}
+{"text": "bu cumartesi eskişehir'de opera, sadece 500 TL'ye kadar", "spans": [["DATE", "bu cumartesi"], ["PLACE", "eskişehir'de"], ["TYPE", "opera"], ["PRICE", "500 TL'ye kadar"]]}
+{"text": "Yenimahalle Sahnesi'nde Martı oynuyor mu", "spans": [["PLACE", "Yenimahalle Sahnesi'nde"], ["NAME", "Martı"]]}
+{"text": "izmirde bu akşam ucuz tiyatro", "spans": [["PLACE", "izmirde"], ["DATE", "bu akşam"], ["PRICE", "ucuz"], ["TYPE", "tiyatro"]]}
+{"text": "Ankara'da ücretsiz bale var mı, bi de 2 kişiyiz", "spans": [["PLACE", "Ankara'da"], ["PRICE", "ücretsiz"], ["TYPE", "bale"], ["PEOPLE", "2 kişiyiz"]]}
+{"text": "öğrenciyim, öner bi şeyler", "spans": []}
+{"text": "Eskişehir'de yarın Hamlet var mı", "spans": [["PLACE", "Eskişehir'de"], ["DATE", "yarın"], ["NAME", "Hamlet"]]}
+{"text": "ankara'da bu gece bale, ya da tiyatro olsa da olur", "spans": [["PLACE", "ankara'da"], ["DATE", "bu gece"], ["TYPE", "bale"], ["TYPE", "tiyatro"]]}
+{"text": "bu hafta ankarada hiç bale istemiyorum, opera olsun", "spans": [["DATE", "bu hafta"], ["PLACE", "ankarada"], ["EXCLUDE", "bale"], ["TYPE", "opera"]]}
+{"text": "arkadaşlarla Ankara'da bi şey yapmak istiyoruz 🎉", "spans": [["PEOPLE", "arkadaşlarla"], ["PLACE", "Ankara'da"]]}
+{"text": "Kızılay'da 2 kişilik ücretsiz opera", "spans": [["PLACE", "Kızılay'da"], ["PEOPLE", "2 kişilik"], ["PRICE", "ücretsiz"], ["TYPE", "opera"]]}
+{"text": "ankara'da akşam saat 7'de bale, 400 TL'den ucuz", "spans": [["PLACE", "ankara'da"], ["DATE", "akşam saat 7'de"], ["TYPE", "bale"], ["PRICE", "400 TL'den ucuz"]]}
+{"text": "Eskişehir'de Carmen olsun, kişi başı 300 TL'yi geçmesin", "spans": [["PLACE", "Eskişehir'de"], ["NAME", "Carmen"], ["PRICE", "kişi başı 300 TL'yi geçmesin"]]}
+{"text": "tiyatro olsun opera olmasın, Kızılay'da bu akşam", "spans": [["TYPE", "tiyatro"], ["EXCLUDE", "opera"], ["PLACE", "Kızılay'da"], ["DATE", "bu akşam"]]}
+{"text": "ya Ankara'da ya da Eskişehir'de bi tiyatro olsun", "spans": [["PLACE", "Ankara'da"], ["PLACE", "Eskişehir'de"], ["TYPE", "tiyatro"]]}
+{"text": "ne var acaba bi bakalım", "spans": []}
+{"text": "eskişehir'de hafta sonu 2 kişiyiz bale", "spans": [["PLACE", "eskişehir'de"], ["DATE", "hafta sonu"], ["PEOPLE", "2 kişiyiz"], ["TYPE", "bale"]]}
+{"text": "keçiören'de yeni açılan tiyatroyu bulamadım", "spans": [["PLACE", "keçiören'de"], ["TYPE", "tiyatroyu"]]}
+{"text": "bugün Ankara'da olacak bi bale var mı, öğrenciyim", "spans": [["DATE", "bugün"], ["PLACE", "Ankara'da"], ["TYPE", "bale"]]}
+{"text": "Çankaya'da bu gece konser, Duman olmasın", "spans": [["PLACE", "Çankaya'da"], ["DATE", "bu gece"], ["TYPE", "konser"], ["EXCLUDE", "Duman"]]}
+{"text": "sevgilimle ankarada ucuz bi bale izlemek istiyorum", "spans": [["PEOPLE", "sevgilimle"], ["PLACE", "ankarada"], ["PRICE", "ucuz"], ["TYPE", "bale"]]}
+{"text": "Tepebaşı'nda 10.30'da başlayan çocuk oyunu var mı", "spans": [["PLACE", "Tepebaşı'nda"], ["DATE", "10.30'da"], ["TYPE", "çocuk oyunu"]]}
+{"text": "ankarada öğrenci olarak cumartesi bi tiyatro arıyorum", "spans": [["PLACE", "ankarada"], ["DATE", "cumartesi"], ["TYPE", "tiyatro"]]}
+{"text": "1000 liranın altında Ankara'da bir bale var mı", "spans": [["PRICE", "1000 liranın altında"], ["PLACE", "Ankara'da"], ["TYPE", "bale"]]}
+{"text": "bu akşam eskişehirde 4 kişi için tiyatro olabilir mi", "spans": [["DATE", "bu akşam"], ["PLACE", "eskişehirde"], ["PEOPLE", "4 kişi"], ["TYPE", "tiyatro"]]}
+{"text": "Eskişehir'de Hamlet görmek istiyorum", "spans": [["PLACE", "Eskişehir'de"], ["NAME", "Hamlet"]]}
+{"text": "ankara'da yarın tiyatro yok mu ya", "spans": [["PLACE", "ankara'da"], ["DATE", "yarın"], ["TYPE", "tiyatro"]]}
+{"text": "ücretsiz tiyatro arıyom ankarada", "spans": [["PRICE", "ücretsiz"], ["TYPE", "tiyatro"], ["PLACE", "ankarada"]]}
+{"text": "Ankara'da opera, ama Carmen hariç", "spans": [["PLACE", "Ankara'da"], ["TYPE", "opera"], ["EXCLUDE", "Carmen"]]}
+{"text": "eskişehir'de bugün yalnız değilim, 2 kişiyiz bale", "spans": [["PLACE", "eskişehir'de"], ["DATE", "bugün"], ["PEOPLE", "2 kişiyiz"], ["TYPE", "bale"]]}
+{"text": "Kızılay'daki ucuz tiyatro salonuna gidelim mi", "spans": [["PLACE", "Kızılay'daki"], ["PRICE", "ucuz"], ["TYPE", "tiyatro"]]}
+{"text": "bu hafta sonu Ankara'da hiçbir şey yok mu", "spans": [["DATE", "bu hafta sonu"], ["PLACE", "Ankara'da"]]}
+{"text": "ankara'da bale izlerken çocuğum da olacak", "spans": [["PLACE", "ankara'da"], ["TYPE", "bale"], ["PEOPLE", "çocuğum"]]}
+{"text": "Eskişehir'de Tepebaşı'nda opera olsun, bilet 250 TL'yi geçmesin", "spans": [["PLACE", "Eskişehir'de"], ["PLACE", "Tepebaşı'nda"], ["TYPE", "opera"], ["PRICE", "250 TL'yi geçmesin"]]}
+{"text": "yarın öğle arası ankarada ücretsiz konser", "spans": [["DATE", "yarın öğle arası"], ["PLACE", "ankarada"], ["PRICE", "ücretsiz"], ["TYPE", "konser"]]}
+{"text": "Çankaya Kültür Merkezi'nde 20.30 bale, 2 kişilik", "spans": [["PLACE", "Çankaya Kültür Merkezi'nde"], ["DATE", "20.30"], ["TYPE", "bale"], ["PEOPLE", "2 kişilik"]]}
+{"text": "ankara'da 1 hafta içinde tiyatro var mı", "spans": [["PLACE", "ankara'da"], ["DATE", "1 hafta içinde"], ["TYPE", "tiyatro"]]}
+{"text": "Eskişehir'de Berk Tuncer konseri var mı", "spans": [["PLACE", "Eskişehir'de"], ["NAME", "Berk Tuncer"], ["TYPE", "konseri"]]}
+{"text": "bi sürü şey bulamadım, öner", "spans": []}
+{"text": "ankara'da kişi başı 250 TL altı tiyatro", "spans": [["PLACE", "ankara'da"], ["PRICE", "kişi başı 250 TL altı"], ["TYPE", "tiyatro"]]}
+{"text": "eskişehirde hafta içi akşamları opera var mı", "spans": [["PLACE", "eskişehirde"], ["DATE", "hafta içi akşamları"], ["TYPE", "opera"]]}
+{"text": "Ankara'da bugün 5 kişilik bale, en fazla 600 TL", "spans": [["PLACE", "Ankara'da"], ["DATE", "bugün"], ["PEOPLE", "5 kişilik"], ["TYPE", "bale"], ["PRICE", "en fazla 600 TL"]]}
+{"text": "yakında Ankara'da bale mi var", "spans": [["DATE", "yakında"], ["PLACE", "Ankara'da"], ["TYPE", "bale"]]}
+{"text": "Yarın Eskişehir'de olacağım, konser olmasın, tiyatro olsun", "spans": [["DATE", "Yarın"], ["PLACE", "Eskişehir'de"], ["EXCLUDE", "konser"], ["TYPE", "tiyatro"]]}
+{"text": "kızılay'da gece konseri var mı, opera olmasın", "spans": [["PLACE", "kızılay'da"], ["DATE", "gece"], ["TYPE", "konseri"], ["EXCLUDE", "opera"]]}
+{"text": "Ankara'da bir tiyatro festivali var mı", "spans": [["PLACE", "Ankara'da"], ["TYPE", "tiyatro festivali"]]}
+{"text": "ankaraya 7 ile 10 arası için tiyatro bakıyorum", "spans": [["PLACE", "ankaraya"], ["DATE", "7 ile 10 arası"], ["TYPE", "tiyatro"]]}
+{"text": "eskişehirde cuma günü 3 kişiyiz, stand-up olsun", "spans": [["PLACE", "eskişehirde"], ["DATE", "cuma günü"], ["PEOPLE", "3 kişiyiz"], ["TYPE", "stand-up"]]}
+{"text": "ankara'da bu gece tek başıma bale ararsam ucuz olur mu", "spans": [["PLACE", "ankara'da"], ["DATE", "bu gece"], ["PEOPLE", "tek başıma"], ["TYPE", "bale"], ["PRICE", "ucuz"]]}
+{"text": "Tepebaşı Tiyatrosu'nda Hamlet 19.00'da mı", "spans": [["PLACE", "Tepebaşı Tiyatrosu'nda"], ["NAME", "Hamlet"], ["DATE", "19.00'da"]]}
+{"text": "naber, bu akşam ankarada bi şey var mı", "spans": [["DATE", "bu akşam"], ["PLACE", "ankarada"]]}
+{"text": "ankara'da 3 kişiyiz, ücretsiz olsun, kızımla bale izleyelim", "spans": [["PLACE", "ankara'da"], ["PEOPLE", "3 kişiyiz"], ["PRICE", "ücretsiz"], ["PEOPLE", "kızımla"], ["TYPE", "bale"]]}
+{"text": "bu hafta sonu ankara'da kişi başı en fazla 150 TL'lik opera", "spans": [["DATE", "bu hafta sonu"], ["PLACE", "ankara'da"], ["PRICE", "kişi başı en fazla 150 TL'lik"], ["TYPE", "opera"]]}
+{"text": "Eskişehir'de Carmen olmasın, Don Giovanni olsun", "spans": [["PLACE", "Eskişehir'de"], ["EXCLUDE", "Carmen"], ["NAME", "Don Giovanni"]]}
+{"text": "ankara'da yarın saat 14.00 bale ücretsiz mi", "spans": [["PLACE", "ankara'da"], ["DATE", "yarın saat 14.00"], ["TYPE", "bale"], ["PRICE", "ücretsiz"]]}
+{"text": "Ankara'da sevgilimle öğrenci fiyatına ucuz bi tiyatro", "spans": [["PLACE", "Ankara'da"], ["PEOPLE", "sevgilimle"], ["PRICE", "ucuz"], ["TYPE", "tiyatro"]]}
+{"text": "bugün eskişehirde ne oynuyo", "spans": [["DATE", "bugün"], ["PLACE", "eskişehirde"]]}
+{"text": "hangi gün olursa olsun, öner bi şey", "spans": []}
+{"text": "Kızılay'da arkadaşlarımla bu cuma gidebileceğimiz bale", "spans": [["PLACE", "Kızılay'da"], ["PEOPLE", "arkadaşlarımla"], ["DATE", "bu cuma"], ["TYPE", "bale"]]}

@@ -1,0 +1,200 @@
+{"text": "bu akşam kadıköyde ücretsiz konser var mı", "spans": [["DATE", "bu akşam"], ["PLACE", "kadıköyde"], ["PRICE", "ücretsiz"], ["TYPE", "konser"]]}
+{"text": "bedava stand-up nerede olur ankarada", "spans": [["PRICE", "bedava"], ["TYPE", "stand-up"], ["PLACE", "ankarada"]]}
+{"text": "ücretsiz açık hava konseri bursa", "spans": [["PRICE", "ücretsiz"], ["TYPE", "açık hava konseri"], ["PLACE", "bursa"]]}
+{"text": "cumartesi ücretsiz tiyatro izmirde", "spans": [["DATE", "cumartesi"], ["PRICE", "ücretsiz"], ["TYPE", "tiyatro"], ["PLACE", "izmirde"]]}
+{"text": "eskişehirde bedava çocuk tiyatrosu var mı çocuğumla", "spans": [["PLACE", "eskişehirde"], ["PRICE", "bedava"], ["TYPE", "çocuk tiyatrosu"], ["PEOPLE", "çocuğumla"]]}
+{"text": "ucretsiz konser antalyada", "spans": [["PRICE", "ucretsiz"], ["TYPE", "konser"], ["PLACE", "antalyada"]]}
+{"text": "hafta içi akşamları ücretsiz sergi var mı ankara", "spans": [["DATE", "hafta içi akşamları"], ["PRICE", "ücretsiz"], ["TYPE", "sergi"], ["PLACE", "ankara"]]}
+{"text": "bu hafta ücretsiz müze etkinliği var mı", "spans": [["DATE", "bu hafta"], ["PRICE", "ücretsiz"], ["TYPE", "müze"]]}
+{"text": "sevgilimle ücretsiz sinema", "spans": [["PEOPLE", "sevgilimle"], ["PRICE", "ücretsiz"], ["TYPE", "sinema"]]}
+{"text": "tek başıma bedava konser var mı", "spans": [["PEOPLE", "tek başıma"], ["PRICE", "bedava"], ["TYPE", "konser"]]}
+{"text": "kişi başı 200 tl altı tiyatro bakıyorum ankarada", "spans": [["PRICE", "kişi başı 200 tl altı"], ["TYPE", "tiyatro"], ["PLACE", "ankarada"]]}
+{"text": "kişi başı en fazla 600 TL, iki kişiyiz, İzmir'de konser", "spans": [["PRICE", "kişi başı en fazla 600 TL"], ["PEOPLE", "iki kişiyiz"], ["PLACE", "İzmir'de"], ["TYPE", "konser"]]}
+{"text": "4 kişiyiz kişi başı 250 liraya kadar maç olur mu", "spans": [["PEOPLE", "4 kişiyiz"], ["PRICE", "kişi başı 250 liraya kadar"], ["TYPE", "maç"]]}
+{"text": "2 kişilik kişi başı ucuz bir tiyatro", "spans": [["PEOPLE", "2 kişilik"], ["PRICE", "kişi başı ucuz"], ["TYPE", "tiyatro"]]}
+{"text": "bursada kişi başı 150 TL civarı caz konseri", "spans": [["PLACE", "bursada"], ["PRICE", "kişi başı 150 TL"], ["TYPE", "caz konseri"]]}
+{"text": "toplam 1000 TL'yi geçmesin, 3 kişiyiz, hafta sonu bir konser", "spans": [["PRICE", "toplam 1000 TL'yi geçmesin"], ["PEOPLE", "3 kişiyiz"], ["DATE", "hafta sonu"], ["TYPE", "konser"]]}
+{"text": "üç kişiyiz toplam 1000 TL'ye kadar stand-up", "spans": [["PEOPLE", "üç kişiyiz"], ["PRICE", "toplam 1000 TL'ye kadar"], ["TYPE", "stand-up"]]}
+{"text": "kişi başı 500 lirayı geçmesin, arkadaşlarla caz", "spans": [["PRICE", "kişi başı 500 lirayı geçmesin"], ["PEOPLE", "arkadaşlarla"], ["TYPE", "caz"]]}
+{"text": "annemle babamla kişi başı 300 TL'ye kadar bale", "spans": [["PEOPLE", "annemle babamla"], ["PRICE", "kişi başı 300 TL'ye kadar"], ["TYPE", "bale"]]}
+{"text": "bu cumartesi 2 kişi için en fazla 400 TL opera", "spans": [["DATE", "bu cumartesi"], ["PEOPLE", "2 kişi"], ["PRICE", "en fazla 400 TL"], ["TYPE", "opera"]]}
+{"text": "400-600 TL arası konser var mı istanbulda", "spans": [["PRICE", "400-600 TL arası"], ["TYPE", "konser"], ["PLACE", "istanbulda"]]}
+{"text": "izmirde kişi başı 200-400 lira arası müzikal", "spans": [["PLACE", "izmirde"], ["PRICE", "kişi başı 200-400 lira arası"], ["TYPE", "müzikal"]]}
+{"text": "altı kişilik grubumuz var, antalyada toplam 2000 TL altı açık hava konseri", "spans": [["PEOPLE", "altı kişilik"], ["PLACE", "antalyada"], ["PRICE", "toplam 2000 TL altı"], ["TYPE", "açık hava konseri"]]}
+{"text": "5 kişiyiz cuma akşamı ankarada 1000 TL'yi geçmeyen tiyatro", "spans": [["PEOPLE", "5 kişiyiz"], ["DATE", "cuma akşamı"], ["PLACE", "ankarada"], ["PRICE", "1000 TL'yi geçmeyen"], ["TYPE", "tiyatro"]]}
+{"text": "ucuz bi şeyler var mı mersinde", "spans": [["PRICE", "ucuz"], ["PLACE", "mersinde"]]}
+{"text": "ücretsiz olsun konser olmasın", "spans": [["PRICE", "ücretsiz"], ["EXCLUDE", "konser"]]}
+{"text": "kişi başı 300 TL altı, stand-up istemiyorum", "spans": [["PRICE", "kişi başı 300 TL altı"], ["EXCLUDE", "stand-up"]]}
+{"text": "üç kişiyiz ücretsiz olsun, müzikal dışında", "spans": [["PEOPLE", "üç kişiyiz"], ["PRICE", "ücretsiz"], ["EXCLUDE", "müzikal"]]}
+{"text": "izmirde tiyatro olsun konser olmasın, 300 lira altı", "spans": [["PLACE", "izmirde"], ["TYPE", "tiyatro"], ["EXCLUDE", "konser"], ["PRICE", "300 lira altı"]]}
+{"text": "bu akşam ücretsiz, Duman olmasın", "spans": [["DATE", "bu akşam"], ["PRICE", "ücretsiz"], ["EXCLUDE", "Duman"]]}
+{"text": "ankara dışında 2 kişilik ücretsiz", "spans": [["EXCLUDE", "ankara"], ["PEOPLE", "2 kişilik"], ["PRICE", "ücretsiz"]]}
+{"text": "yarın kişi başı 250 TL, sinema olmasın", "spans": [["DATE", "yarın"], ["PRICE", "kişi başı 250 TL"], ["EXCLUDE", "sinema"]]}
+{"text": "eskişehirde konser istemiyorum, bedava olsun", "spans": [["PLACE", "eskişehirde"], ["EXCLUDE", "konser"], ["PRICE", "bedava"]]}
+{"text": "çocuğumla gidelim ama oyun olmasın, 200 TL altı", "spans": [["PEOPLE", "çocuğumla"], ["EXCLUDE", "oyun"], ["PRICE", "200 TL altı"]]}
+{"text": "müzikal istemiyorum, ücretsiz bi şey olsun izmirde", "spans": [["EXCLUDE", "müzikal"], ["PRICE", "ücretsiz"], ["PLACE", "izmirde"]]}
+{"text": "istanbul dışında ucuz konser", "spans": [["EXCLUDE", "istanbul"], ["PRICE", "ucuz"], ["TYPE", "konser"]]}
+{"text": "en fazla 500 TL, hafta sonu, tiyatro olmasın, müzikal olsun", "spans": [["PRICE", "en fazla 500 TL"], ["DATE", "hafta sonu"], ["EXCLUDE", "tiyatro"], ["TYPE", "müzikal"]]}
+{"text": "800 TL altı olsun, bursada 2 kişi, opera olmasın", "spans": [["PRICE", "800 TL altı"], ["PLACE", "bursada"], ["PEOPLE", "2 kişi"], ["EXCLUDE", "opera"]]}
+{"text": "bi şey olsun ama spor olmasın, sevgilimle izmirde ucuz", "spans": [["EXCLUDE", "spor"], ["PEOPLE", "sevgilimle"], ["PLACE", "izmirde"], ["PRICE", "ucuz"]]}
+{"text": "istanbulda bu hafta sonu çocuğumla bedava müze var mı", "spans": [["PLACE", "istanbulda"], ["DATE", "bu hafta sonu"], ["PEOPLE", "çocuğumla"], ["PRICE", "bedava"], ["TYPE", "müze"]]}
+{"text": "Bursa'da Cem Yılmaz var mı, 1000 TL altı", "spans": [["PLACE", "Bursa'da"], ["NAME", "Cem Yılmaz"], ["PRICE", "1000 TL altı"]]}
+{"text": "Fenerbahçe maçına 2 kişi gitmek istiyoruz, kişi başı 800 TL'yi geçmesin", "spans": [["NAME", "Fenerbahçe"], ["TYPE", "maçına"], ["PEOPLE", "2 kişi"], ["PRICE", "kişi başı 800 TL'yi geçmesin"]]}
+{"text": "yarın akşam ankarada ücretsiz stand-up", "spans": [["DATE", "yarın akşam"], ["PLACE", "ankarada"], ["PRICE", "ücretsiz"], ["TYPE", "stand-up"]]}
+{"text": "ücretsiz konser var mı bu hafta sonu eskişehirde", "spans": [["PRICE", "ücretsiz"], ["TYPE", "konser"], ["DATE", "bu hafta sonu"], ["PLACE", "eskişehirde"]]}
+{"text": "ne yapsam bilmiyorum ya", "spans": []}
+{"text": "kadıköyde 4 kişi, toplam 1200 TL, caz", "spans": [["PLACE", "kadıköyde"], ["PEOPLE", "4 kişi"], ["PRICE", "toplam 1200 TL"], ["TYPE", "caz"]]}
+{"text": "ücretsiz dans gösterisi antalya", "spans": [["PRICE", "ücretsiz"], ["TYPE", "dans gösterisi"], ["PLACE", "antalya"]]}
+{"text": "kayseride bedava maç var mı", "spans": [["PLACE", "kayseride"], ["PRICE", "bedava"], ["TYPE", "maç"]]}
+{"text": "konya'da 2 kişilik 500 tl altı tiyatro", "spans": [["PLACE", "konya'da"], ["PEOPLE", "2 kişilik"], ["PRICE", "500 tl altı"], ["TYPE", "tiyatro"]]}
+{"text": "gaziantepte ucuz caz konseri 🎷", "spans": [["PLACE", "gaziantepte"], ["PRICE", "ucuz"], ["TYPE", "caz konseri"]]}
+{"text": "samsunda 3 kişiyiz ücretsiz bi şeyler", "spans": [["PLACE", "samsunda"], ["PEOPLE", "3 kişiyiz"], ["PRICE", "ücretsiz"]]}
+{"text": "bu gece kişi başı 100 TL civarı Beşiktaş maçı", "spans": [["DATE", "bu gece"], ["PRICE", "kişi başı 100 TL"], ["NAME", "Beşiktaş"], ["TYPE", "maçı"]]}
+{"text": "sevgilimle 1000 lirayı geçmeyen bir gösteri", "spans": [["PEOPLE", "sevgilimle"], ["PRICE", "1000 lirayı geçmeyen"], ["TYPE", "gösteri"]]}
+{"text": "ankara'da kişi başı en fazla 350 TL opera var mı", "spans": [["PLACE", "ankara'da"], ["PRICE", "kişi başı en fazla 350 TL"], ["TYPE", "opera"]]}
+{"text": "mayıs sonunda izmirde 3 kişiyiz, toplam 600 tl'yi geçmesin", "spans": [["DATE", "mayıs sonunda"], ["PLACE", "izmirde"], ["PEOPLE", "3 kişiyiz"], ["PRICE", "toplam 600 tl'yi geçmesin"]]}
+{"text": "Duman konseri ücretsiz mi istanbulda", "spans": [["NAME", "Duman"], ["TYPE", "konseri"], ["PRICE", "ücretsiz"], ["PLACE", "istanbulda"]]}
+{"text": "bu akşam 2 kişi, 300 TL'ye kadar, kadıköy", "spans": [["DATE", "bu akşam"], ["PEOPLE", "2 kişi"], ["PRICE", "300 TL'ye kadar"], ["PLACE", "kadıköy"]]}
+{"text": "eskişehirde tiyatro, kişi başı 200 TL'den ucuz", "spans": [["PLACE", "eskişehirde"], ["TYPE", "tiyatro"], ["PRICE", "kişi başı 200 TL'den ucuz"]]}
+{"text": "kafam dağılsın öner bi şey", "spans": []}
+{"text": "bu hafta sonu Hamlet oyunu 2 kişi", "spans": [["DATE", "bu hafta sonu"], ["NAME", "Hamlet"], ["TYPE", "oyunu"], ["PEOPLE", "2 kişi"]]}
+{"text": "yaz akşamı antalyada ücretsiz açık hava konseri, 4 kişiyiz", "spans": [["DATE", "yaz akşamı"], ["PLACE", "antalyada"], ["PRICE", "ücretsiz"], ["TYPE", "açık hava konseri"], ["PEOPLE", "4 kişiyiz"]]}
+{"text": "sabah 10'dan akşam 8'e kadar izmirde ücretsiz etkinlik", "spans": [["DATE", "sabah 10'dan akşam 8'e kadar"], ["PLACE", "izmirde"], ["PRICE", "ücretsiz"]]}
+{"text": "çocuk tiyatrosu için kişi başı 150 tl", "spans": [["TYPE", "çocuk tiyatrosu"], ["PRICE", "kişi başı 150 tl"]]}
+{"text": "karşı yakada 2 kişi ucuz konser", "spans": [["PLACE", "karşı yakada"], ["PEOPLE", "2 kişi"], ["PRICE", "ucuz"], ["TYPE", "konser"]]}
+{"text": "bursada ücretsiz olan bir şeyler yok mu", "spans": [["PLACE", "bursada"], ["PRICE", "ücretsiz"]]}
+{"text": "sevgilimle akşam 700 tl altı konser", "spans": [["PEOPLE", "sevgilimle"], ["DATE", "akşam"], ["PRICE", "700 tl altı"], ["TYPE", "konser"]]}
+{"text": "cumartesi 2000 TL altı, ankarada, 4 kişiyiz", "spans": [["DATE", "cumartesi"], ["PRICE", "2000 TL altı"], ["PLACE", "ankarada"], ["PEOPLE", "4 kişiyiz"]]}
+{"text": "kadıköy civarında 500 TL'yi geçmeyen konser", "spans": [["PLACE", "kadıköy"], ["PRICE", "500 TL'yi geçmeyen"], ["TYPE", "konser"]]}
+{"text": "kişi başı 800 tl altı, fenerbahçe maçı olsun", "spans": [["PRICE", "kişi başı 800 tl altı"], ["NAME", "fenerbahçe"], ["TYPE", "maçı"]]}
+{"text": "ücretsiz film gösterimi var mı ankarada", "spans": [["PRICE", "ücretsiz"], ["TYPE", "film gösterimi"], ["PLACE", "ankarada"]]}
+{"text": "iki kişiyiz bedava olsun", "spans": [["PEOPLE", "iki kişiyiz"], ["PRICE", "bedava"]]}
+{"text": "600 TL'yi geçmeyen konser bakıyom izmirde", "spans": [["PRICE", "600 TL'yi geçmeyen"], ["TYPE", "konser"], ["PLACE", "izmirde"]]}
+{"text": "ücretsiz oyun olur mu, çocuklarla gidecez", "spans": [["PRICE", "ücretsiz"], ["TYPE", "oyun"], ["PEOPLE", "çocuklarla"]]}
+{"text": "tek başıma 1000 lirayı geçmeyen festival", "spans": [["PEOPLE", "tek başıma"], ["PRICE", "1000 lirayı geçmeyen"], ["TYPE", "festival"]]}
+{"text": "akşam 9'dan sonra 2 kişi kadıköyde bedava müzik", "spans": [["DATE", "akşam 9'dan sonra"], ["PEOPLE", "2 kişi"], ["PLACE", "kadıköyde"], ["PRICE", "bedava"], ["TYPE", "müzik"]]}
+{"text": "toplamda 3000 TL'yi aşmasın, dört kişiyiz, konser", "spans": [["PRICE", "toplamda 3000 TL'yi aşmasın"], ["PEOPLE", "dört kişiyiz"], ["TYPE", "konser"]]}
+{"text": "rock konseri olsun, kişi başı 400 TL altı, ankara", "spans": [["TYPE", "rock konseri"], ["PRICE", "kişi başı 400 TL altı"], ["PLACE", "ankara"]]}
+{"text": "ankara'da bugün ücretsiz tiyatro var mı abi", "spans": [["PLACE", "ankara'da"], ["DATE", "bugün"], ["PRICE", "ücretsiz"], ["TYPE", "tiyatro"]]}
+{"text": "bursada kişi başı 250 tl civarı konser", "spans": [["PLACE", "bursada"], ["PRICE", "kişi başı 250 tl"], ["TYPE", "konser"]]}
+{"text": "sevgilimle bu akşam 500 TL'ye kadar caz", "spans": [["PEOPLE", "sevgilimle"], ["DATE", "bu akşam"], ["PRICE", "500 TL'ye kadar"], ["TYPE", "caz"]]}
+{"text": "eskişehirde opera olsun, 3 kişi, ücretsiz", "spans": [["PLACE", "eskişehirde"], ["TYPE", "opera"], ["PEOPLE", "3 kişi"], ["PRICE", "ücretsiz"]]}
+{"text": "çocuğumla ücretsiz müzeye gitmek istiyorum izmirde", "spans": [["PEOPLE", "çocuğumla"], ["PRICE", "ücretsiz"], ["TYPE", "müzeye"], ["PLACE", "izmirde"]]}
+{"text": "bedava ya da 100 TL altı sinema", "spans": [["PRICE", "bedava"], ["PRICE", "100 TL altı"], ["TYPE", "sinema"]]}
+{"text": "kişi başı en fazla 600 TL, ankarada iki kişiyiz, tiyatro", "spans": [["PRICE", "kişi başı en fazla 600 TL"], ["PLACE", "ankarada"], ["PEOPLE", "iki kişiyiz"], ["TYPE", "tiyatro"]]}
+{"text": "Kuzey Ses konseri ücretsiz mi", "spans": [["NAME", "Kuzey Ses"], ["TYPE", "konseri"], ["PRICE", "ücretsiz"]]}
+{"text": "cuma gecesi 2 kişi 300 TL altı stand-up", "spans": [["DATE", "cuma gecesi"], ["PEOPLE", "2 kişi"], ["PRICE", "300 TL altı"], ["TYPE", "stand-up"]]}
+{"text": "maç olsun ama 500 TL'yi geçmesin, kocaeli", "spans": [["TYPE", "maç"], ["PRICE", "500 TL'yi geçmesin"], ["PLACE", "kocaeli"]]}
+{"text": "istanbulda bugün ücretsiz konser, sevgilimle", "spans": [["PLACE", "istanbulda"], ["DATE", "bugün"], ["PRICE", "ücretsiz"], ["TYPE", "konser"], ["PEOPLE", "sevgilimle"]]}
+{"text": "ankarada 1000 lira altı caz konseri var mı", "spans": [["PLACE", "ankarada"], ["PRICE", "1000 lira altı"], ["TYPE", "caz konseri"]]}
+{"text": "izmir'de yarın ücretsiz olan maçlar", "spans": [["PLACE", "izmir'de"], ["DATE", "yarın"], ["PRICE", "ücretsiz"], ["TYPE", "maçlar"]]}
+{"text": "300 TL'nin altında olan cuma gecesi konserleri", "spans": [["PRICE", "300 TL'nin altında"], ["DATE", "cuma gecesi"], ["TYPE", "konserleri"]]}
+{"text": "naber abi ne var", "spans": []}
+{"text": "bu akşam kadıköyde 3 kişi kişi başı 200 lira", "spans": [["DATE", "bu akşam"], ["PLACE", "kadıköyde"], ["PEOPLE", "3 kişi"], ["PRICE", "kişi başı 200 lira"]]}
+{"text": "annemle bu cumartesi izmirde 500 tl'yi geçmeyen tiyatro", "spans": [["PEOPLE", "annemle"], ["DATE", "bu cumartesi"], ["PLACE", "izmirde"], ["PRICE", "500 tl'yi geçmeyen"], ["TYPE", "tiyatro"]]}
+{"text": "Cem Yılmaz ankarada kaç para?", "spans": [["NAME", "Cem Yılmaz"], ["PLACE", "ankarada"]]}
+{"text": "arkadaşlarla 600 tl altı kadıköy konser", "spans": [["PEOPLE", "arkadaşlarla"], ["PRICE", "600 tl altı"], ["PLACE", "kadıköy"], ["TYPE", "konser"]]}
+{"text": "dört kişilik aile için ücretsiz çocuk etkinliği bursada", "spans": [["PEOPLE", "dört kişilik"], ["PRICE", "ücretsiz"], ["TYPE", "çocuk etkinliği"], ["PLACE", "bursada"]]}
+{"text": "tek başıma gitmeyi düşünüyorum, 200 TL altı sinema", "spans": [["PEOPLE", "tek başıma"], ["PRICE", "200 TL altı"], ["TYPE", "sinema"]]}
+{"text": "eskişehirde ucuz stand-up olur mu", "spans": [["PLACE", "eskişehirde"], ["PRICE", "ucuz"], ["TYPE", "stand-up"]]}
+{"text": "kişi başı 1500 TL'den ucuz konser", "spans": [["PRICE", "kişi başı 1500 TL'den ucuz"], ["TYPE", "konser"]]}
+{"text": "izmir'de ücretsiz bi maç ara", "spans": [["PLACE", "izmir'de"], ["PRICE", "ücretsiz"], ["TYPE", "maç"]]}
+{"text": "gelecek hafta bursada 2 kişi kişi başı 300 tl altı", "spans": [["DATE", "gelecek hafta"], ["PLACE", "bursada"], ["PEOPLE", "2 kişi"], ["PRICE", "kişi başı 300 tl altı"]]}
+{"text": "ucuz bi tiyatro arıyorum antalya", "spans": [["PRICE", "ucuz"], ["TYPE", "tiyatro"], ["PLACE", "antalya"]]}
+{"text": "canım sıkıldı ne yapsam abi", "spans": []}
+{"text": "naber abi bi şey öner", "spans": []}
+{"text": "kafam çok dağınık, bi şeyler lazım", "spans": []}
+{"text": "ne yapsam ya 🙂", "spans": []}
+{"text": "bilmiyorum hiçbir fikrim yok", "spans": []}
+{"text": "planım yok ne önerirsin", "spans": []}
+{"text": "ne var ne yok bakalım", "spans": []}
+{"text": "etkinlik öner", "spans": []}
+{"text": "sıkıldım, aktivite lazım", "spans": []}
+{"text": "yardım et, bi fikir ver", "spans": []}
+{"text": "ücretsiz olsun konser olmasın, kişi başı 300 TL altı tiyatro", "spans": [["PRICE", "ücretsiz"], ["EXCLUDE", "konser"], ["PRICE", "kişi başı 300 TL altı"], ["TYPE", "tiyatro"]]}
+{"text": "iki kişiyiz, sevgilimle, 1000 TL altı olsun, ankarada", "spans": [["PEOPLE", "iki kişiyiz"], ["PEOPLE", "sevgilimle"], ["PRICE", "1000 TL altı"], ["PLACE", "ankarada"]]}
+{"text": "bu hafta sonu 2 kişi kişi başı 250 tl altı mersinde", "spans": [["DATE", "bu hafta sonu"], ["PEOPLE", "2 kişi"], ["PRICE", "kişi başı 250 tl altı"], ["PLACE", "mersinde"]]}
+{"text": "sıkıldım abi bi fikir ver", "spans": []}
+{"text": "tiyatro olsun, 6 kişiyiz, toplam 1800 TL'yi geçmesin", "spans": [["TYPE", "tiyatro"], ["PEOPLE", "6 kişiyiz"], ["PRICE", "toplam 1800 TL'yi geçmesin"]]}
+{"text": "Beşiktaş maçı olsun ama bedava olsun", "spans": [["NAME", "Beşiktaş"], ["TYPE", "maçı"], ["PRICE", "bedava"]]}
+{"text": "gece geç saatte kadıköyde ucuz müzik", "spans": [["DATE", "gece geç saatte"], ["PLACE", "kadıköyde"], ["PRICE", "ucuz"], ["TYPE", "müzik"]]}
+{"text": "yaz tatilinde izmirde 3 kişi ücretsiz film", "spans": [["DATE", "yaz tatilinde"], ["PLACE", "izmirde"], ["PEOPLE", "3 kişi"], ["PRICE", "ücretsiz"], ["TYPE", "film"]]}
+{"text": "eşimle 800 tl'ye kadar konser var mı ankarada", "spans": [["PEOPLE", "eşimle"], ["PRICE", "800 tl'ye kadar"], ["TYPE", "konser"], ["PLACE", "ankarada"]]}
+{"text": "dans gösterisi hariç antalyada bedava", "spans": [["EXCLUDE", "dans gösterisi"], ["PLACE", "antalyada"], ["PRICE", "bedava"]]}
+{"text": "çocuklar için kişi başı 50 TL'ye kadar tiyatro", "spans": [["PRICE", "kişi başı 50 TL'ye kadar"], ["TYPE", "tiyatro"]]}
+{"text": "bu sabah ücretsiz yürüyüş izmirde", "spans": [["DATE", "bu sabah"], ["PRICE", "ücretsiz"], ["TYPE", "yürüyüş"], ["PLACE", "izmirde"]]}
+{"text": "Duman olmasın Bursa'da 2 kişi bedava", "spans": [["EXCLUDE", "Duman"], ["PLACE", "Bursa'da"], ["PEOPLE", "2 kişi"], ["PRICE", "bedava"]]}
+{"text": "toplamda 500 TL'nin altında 4 kişi için stand-up", "spans": [["PRICE", "toplamda 500 TL'nin altında"], ["PEOPLE", "4 kişi"], ["TYPE", "stand-up"]]}
+{"text": "arkadaşlarımla 700 lira altı bi konser", "spans": [["PEOPLE", "arkadaşlarımla"], ["PRICE", "700 lira altı"], ["TYPE", "konser"]]}
+{"text": "aile olarak 4 kişi ücretsiz etkinlik var mı samsun", "spans": [["PEOPLE", "4 kişi"], ["PRICE", "ücretsiz"], ["PLACE", "samsun"]]}
+{"text": "kişi başı en fazla 250 TL, bu gece, tiyatro", "spans": [["PRICE", "kişi başı en fazla 250 TL"], ["DATE", "bu gece"], ["TYPE", "tiyatro"]]}
+{"text": "bu akşam ucuz bi konser var mı Ankara'da", "spans": [["DATE", "bu akşam"], ["PRICE", "ucuz"], ["TYPE", "konser"], ["PLACE", "Ankara'da"]]}
+{"text": "Fenerbahçe maçı olsun ama 1000 TL'yi geçmesin", "spans": [["NAME", "Fenerbahçe"], ["TYPE", "maçı"], ["PRICE", "1000 TL'yi geçmesin"]]}
+{"text": "ne yapayım şimdi ya", "spans": []}
+{"text": "çocuğumla ücretsiz çocuk tiyatrosu", "spans": [["PEOPLE", "çocuğumla"], ["PRICE", "ücretsiz"], ["TYPE", "çocuk tiyatrosu"]]}
+{"text": "bu hafta sonu Ankara'da kişi başı 300 TL'yi geçmeyen tiyatro", "spans": [["DATE", "bu hafta sonu"], ["PLACE", "Ankara'da"], ["PRICE", "kişi başı 300 TL'yi geçmeyen"], ["TYPE", "tiyatro"]]}
+{"text": "istanbul dışında ücretsiz çocuk etkinliği", "spans": [["EXCLUDE", "istanbul"], ["PRICE", "ücretsiz"], ["TYPE", "çocuk etkinliği"]]}
+{"text": "dört kişi, ücretsiz, bursa, caz", "spans": [["PEOPLE", "dört kişi"], ["PRICE", "ücretsiz"], ["PLACE", "bursa"], ["TYPE", "caz"]]}
+{"text": "akşam 19.00'dan sonra 2 kişi bedava konser", "spans": [["DATE", "akşam 19.00'dan sonra"], ["PEOPLE", "2 kişi"], ["PRICE", "bedava"], ["TYPE", "konser"]]}
+{"text": "bugün öğleden sonra 2 kişi için ücretsiz yer", "spans": [["DATE", "bugün öğleden sonra"], ["PEOPLE", "2 kişi"], ["PRICE", "ücretsiz"]]}
+{"text": "kişi başı 350 TL'yi geçmeyen opera var mı eskişehir", "spans": [["PRICE", "kişi başı 350 TL'yi geçmeyen"], ["TYPE", "opera"], ["PLACE", "eskişehir"]]}
+{"text": "perşembe akşamı 5 kişiyiz kadıköyde 800 TL altı", "spans": [["DATE", "perşembe akşamı"], ["PEOPLE", "5 kişiyiz"], ["PLACE", "kadıköyde"], ["PRICE", "800 TL altı"]]}
+{"text": "ücretsiz festival var mı mersinde yaz", "spans": [["PRICE", "ücretsiz"], ["TYPE", "festival"], ["PLACE", "mersinde"], ["DATE", "yaz"]]}
+{"text": "kişi başı 100 tl altı çocuk müzesi", "spans": [["PRICE", "kişi başı 100 tl altı"], ["TYPE", "çocuk müzesi"]]}
+{"text": "3 kişilik grubumuz bursada 1200 TL'ye kadar", "spans": [["PEOPLE", "3 kişilik"], ["PLACE", "bursada"], ["PRICE", "1200 TL'ye kadar"]]}
+{"text": "kişi başı 600 TL, opera olmasın, balet olsun", "spans": [["PRICE", "kişi başı 600 TL"], ["EXCLUDE", "opera"], ["TYPE", "balet"]]}
+{"text": "bilmem ki, ne öneririsin", "spans": []}
+{"text": "tiyatro istemiyorum, konser olsun, 400 TL altı", "spans": [["EXCLUDE", "tiyatro"], ["TYPE", "konser"], ["PRICE", "400 TL altı"]]}
+{"text": "iki kişi bedava olsun ama stand-up olmasın", "spans": [["PEOPLE", "iki kişi"], ["PRICE", "bedava"], ["EXCLUDE", "stand-up"]]}
+{"text": "ankara'da ya da izmirde 2 kişi ucuz tiyatro", "spans": [["PLACE", "ankara'da"], ["PLACE", "izmirde"], ["PEOPLE", "2 kişi"], ["PRICE", "ucuz"], ["TYPE", "tiyatro"]]}
+{"text": "pazartesi akşamı 4 kişi 1000 TL altı müzikal", "spans": [["DATE", "pazartesi akşamı"], ["PEOPLE", "4 kişi"], ["PRICE", "1000 TL altı"], ["TYPE", "müzikal"]]}
+{"text": "Hamlet tiyatrosu 2 kişi ücretsiz mi", "spans": [["NAME", "Hamlet"], ["TYPE", "tiyatrosu"], ["PEOPLE", "2 kişi"], ["PRICE", "ücretsiz"]]}
+{"text": "eşim ve ben için bedava konser", "spans": [["PEOPLE", "eşim ve ben"], ["PRICE", "bedava"], ["TYPE", "konser"]]}
+{"text": "kadıköy ve beşiktaşta 300 TL altı caz", "spans": [["PLACE", "kadıköy"], ["PLACE", "beşiktaşta"], ["PRICE", "300 TL altı"], ["TYPE", "caz"]]}
+{"text": "Avrupa yakasında 2 kişilik 500 TL'ye kadar konser", "spans": [["PLACE", "Avrupa yakasında"], ["PEOPLE", "2 kişilik"], ["PRICE", "500 TL'ye kadar"], ["TYPE", "konser"]]}
+{"text": "saat 20.00'den önce ucuz bi şey ankara", "spans": [["DATE", "saat 20.00'den önce"], ["PRICE", "ucuz"], ["PLACE", "ankara"]]}
+{"text": "izmir'de kişi başı 600 TL altı festival, 2 kişiyiz", "spans": [["PLACE", "izmir'de"], ["PRICE", "kişi başı 600 TL altı"], ["TYPE", "festival"], ["PEOPLE", "2 kişiyiz"]]}
+{"text": "sevgilimle ucuz bi caz konseri", "spans": [["PEOPLE", "sevgilimle"], ["PRICE", "ucuz"], ["TYPE", "caz konseri"]]}
+{"text": "keyifli bi şey olsun ama ne bilmiyorum", "spans": []}
+{"text": "ankara dışında 2 kişi bedava konser", "spans": [["EXCLUDE", "ankara"], ["PEOPLE", "2 kişi"], ["PRICE", "bedava"], ["TYPE", "konser"]]}
+{"text": "bu akşam ücretsiz maç var mı bursa", "spans": [["DATE", "bu akşam"], ["PRICE", "ücretsiz"], ["TYPE", "maç"], ["PLACE", "bursa"]]}
+{"text": "tek başıma 350 TL'yi geçmeyen stand-up", "spans": [["PEOPLE", "tek başıma"], ["PRICE", "350 TL'yi geçmeyen"], ["TYPE", "stand-up"]]}
+{"text": "gelecek hafta izmirde 2 kişi için 300 lira altı", "spans": [["DATE", "gelecek hafta"], ["PLACE", "izmirde"], ["PEOPLE", "2 kişi"], ["PRICE", "300 lira altı"]]}
+{"text": "bebeğimle ücretsiz çocuk tiyatrosu var mı", "spans": [["PEOPLE", "bebeğimle"], ["PRICE", "ücretsiz"], ["TYPE", "çocuk tiyatrosu"]]}
+{"text": "fiyatı 500 TL'yi geçmesin, cuma akşamı, antalya", "spans": [["PRICE", "500 TL'yi geçmesin"], ["DATE", "cuma akşamı"], ["PLACE", "antalya"]]}
+{"text": "2 kişiyiz bedava olsun konya'da stand-up", "spans": [["PEOPLE", "2 kişiyiz"], ["PRICE", "bedava"], ["PLACE", "konya'da"], ["TYPE", "stand-up"]]}
+{"text": "hafta içi ucuz konserler kadıköyde", "spans": [["DATE", "hafta içi"], ["PRICE", "ucuz"], ["TYPE", "konserler"], ["PLACE", "kadıköyde"]]}
+{"text": "Cem Yılmaz olsun ama 600 TL altı", "spans": [["NAME", "Cem Yılmaz"], ["PRICE", "600 TL altı"]]}
+{"text": "bi tavsiye ver ya", "spans": []}
+{"text": "bugün gece ücretsiz gösteri istanbulda", "spans": [["DATE", "bugün gece"], ["PRICE", "ücretsiz"], ["TYPE", "gösteri"], ["PLACE", "istanbulda"]]}
+{"text": "cumartesi ya da pazar, 2 kişi, 500 TL'ye kadar", "spans": [["DATE", "cumartesi"], ["DATE", "pazar"], ["PEOPLE", "2 kişi"], ["PRICE", "500 TL'ye kadar"]]}
+{"text": "kadıköyde kişi başı bedava konser var mı akşam", "spans": [["PLACE", "kadıköyde"], ["PRICE", "kişi başı bedava"], ["TYPE", "konser"], ["DATE", "akşam"]]}
+{"text": "kardeşimle yarın öğlen ücretsiz müze", "spans": [["PEOPLE", "kardeşimle"], ["DATE", "yarın öğlen"], ["PRICE", "ücretsiz"], ["TYPE", "müze"]]}
+{"text": "tiyatro olmasın sadece konser, 200 TL altı", "spans": [["EXCLUDE", "tiyatro"], ["TYPE", "konser"], ["PRICE", "200 TL altı"]]}
+{"text": "ankara'da 5 kişilik grup için ücretsiz yer arıyoruz", "spans": [["PLACE", "ankara'da"], ["PEOPLE", "5 kişilik"], ["PRICE", "ücretsiz"]]}
+{"text": "ücretsiz konser yoksa kişi başı 100 tl altı", "spans": [["PRICE", "ücretsiz"], ["TYPE", "konser"], ["PRICE", "kişi başı 100 tl altı"]]}
+{"text": "eskişehir'de ucuz opera 🎭", "spans": [["PLACE", "eskişehir'de"], ["PRICE", "ucuz"], ["TYPE", "opera"]]}
+{"text": "2 kişiyiz kişi başı 2000 TL'ye kadar, gece", "spans": [["PEOPLE", "2 kişiyiz"], ["PRICE", "kişi başı 2000 TL'ye kadar"], ["DATE", "gece"]]}
+{"text": "cuma gecesi 3 kişi bedava festival", "spans": [["DATE", "cuma gecesi"], ["PEOPLE", "3 kişi"], ["PRICE", "bedava"], ["TYPE", "festival"]]}
+{"text": "Zeytinli Rock Festivali 2 kişi ücretsiz mi", "spans": [["NAME", "Zeytinli Rock Festivali"], ["PEOPLE", "2 kişi"], ["PRICE", "ücretsiz"]]}
+{"text": "Hamlet için 300 TL altı, eskişehirde", "spans": [["NAME", "Hamlet"], ["PRICE", "300 TL altı"], ["PLACE", "eskişehirde"]]}
+{"text": "akşam 6'dan sonra kişi başı 150 TL'ye kadar sinema", "spans": [["DATE", "akşam 6'dan sonra"], ["PRICE", "kişi başı 150 TL'ye kadar"], ["TYPE", "sinema"]]}
+{"text": "annemle ücretsiz bi konsere gidelim, izmir", "spans": [["PEOPLE", "annemle"], ["PRICE", "ücretsiz"], ["TYPE", "konsere"], ["PLACE", "izmir"]]}
+{"text": "naber, ne yapsam ki", "spans": []}
+{"text": "1000 TL altı, hafta sonu, trabzon", "spans": [["PRICE", "1000 TL altı"], ["DATE", "hafta sonu"], ["PLACE", "trabzon"]]}
+{"text": "ankarada 2 kişi bedava, müzikal dışında", "spans": [["PLACE", "ankarada"], ["PEOPLE", "2 kişi"], ["PRICE", "bedava"], ["EXCLUDE", "müzikal"]]}
+{"text": "bu akşam Duman konseri, ücretsiz olsun", "spans": [["DATE", "bu akşam"], ["NAME", "Duman"], ["TYPE", "konseri"], ["PRICE", "ücretsiz"]]}
+{"text": "sevgilimle sürpriz olsun, 400 TL altı, kadıköy", "spans": [["PEOPLE", "sevgilimle"], ["PRICE", "400 TL altı"], ["PLACE", "kadıköy"]]}
+{"text": "konya'da 4 kişi ücretsiz çocuk konseri", "spans": [["PLACE", "konya'da"], ["PEOPLE", "4 kişi"], ["PRICE", "ücretsiz"], ["TYPE", "çocuk konseri"]]}
+{"text": "gece 23.00'ten sonra bedava müzik olur mu", "spans": [["DATE", "gece 23.00'ten sonra"], ["PRICE", "bedava"], ["TYPE", "müzik"]]}
+{"text": "kişi başı 800 TL'nin altı, izmirde, 2 kişiyiz, stand-up hariç", "spans": [["PRICE", "kişi başı 800 TL'nin altı"], ["PLACE", "izmirde"], ["PEOPLE", "2 kişiyiz"], ["EXCLUDE", "stand-up"]]}
+{"text": "bu cumartesi bursada 1000 TL'ye kadar caz olsun, sevgilimle", "spans": [["DATE", "bu cumartesi"], ["PLACE", "bursada"], ["PRICE", "1000 TL'ye kadar"], ["TYPE", "caz"], ["PEOPLE", "sevgilimle"]]}
+{"text": "3 kişi ücretsiz ama tiyatro olmasın", "spans": [["PEOPLE", "3 kişi"], ["PRICE", "ücretsiz"], ["EXCLUDE", "tiyatro"]]}
+{"text": "fenerbahçe maçına 4 kişi bedava olur mu", "spans": [["NAME", "fenerbahçe"], ["TYPE", "maçına"], ["PEOPLE", "4 kişi"], ["PRICE", "bedava"]]}
+{"text": "sabah 11'den öğleden sonra 2 kişi ücretsiz çocuk müzesi", "spans": [["DATE", "sabah 11'den öğleden sonra"], ["PEOPLE", "2 kişi"], ["PRICE", "ücretsiz"], ["TYPE", "çocuk müzesi"]]}
+{"text": "mersinde kişi başı 250 liraya kadar tiyatro", "spans": [["PLACE", "mersinde"], ["PRICE", "kişi başı 250 liraya kadar"], ["TYPE", "tiyatro"]]}
+{"text": "ücretsiz ya da 100 TL altı, ankara, kardeşimle", "spans": [["PRICE", "ücretsiz"], ["PRICE", "100 TL altı"], ["PLACE", "ankara"], ["PEOPLE", "kardeşimle"]]}
+{"text": "tek kişiyim bugün 300 TL altı ne var", "spans": [["PEOPLE", "tek kişiyim"], ["DATE", "bugün"], ["PRICE", "300 TL altı"]]}
+{"text": "antalyada 1500 TL'nin altında dört kişiyiz konser olmasın", "spans": [["PLACE", "antalyada"], ["PRICE", "1500 TL'nin altında"], ["PEOPLE", "dört kişiyiz"], ["EXCLUDE", "konser"]]}
+{"text": "izmir'de 3 kişiyiz kişi başı en fazla 700 TL, sinema olsun", "spans": [["PLACE", "izmir'de"], ["PEOPLE", "3 kişiyiz"], ["PRICE", "kişi başı en fazla 700 TL"], ["TYPE", "sinema"]]}
+{"text": "bu gece 2 kişi ücretsiz yer varsa, bursa'da bi müzik", "spans": [["DATE", "bu gece"], ["PEOPLE", "2 kişi"], ["PRICE", "ücretsiz"], ["PLACE", "bursa'da"], ["TYPE", "müzik"]]}

@@ -1,38 +1,103 @@
 {
-  "train": {
-    "rows": 5586,
-    "empty_dropped": 31150,
-    "duplicates_dropped": 53,
-    "leakage_dropped": 0,
-    "conflicts": 0,
+  "codex_test": {
+    "lines": 299,
+    "bad_spans": 0,
+    "duplicates": 0,
+    "hand_fixes": 23,
+    "requests": 299,
+    "tokens": 2806,
     "spans": {
-      "city": 3330,
-      "date": 2095,
-      "event_name": 1805
+      "PLACE": 293,
+      "DATE": 274,
+      "TYPE": 240,
+      "PEOPLE": 140,
+      "PRICE": 95,
+      "EXCLUDE": 84,
+      "NAME": 69
+    }
+  },
+  "biplan_test": {
+    "lines": 25,
+    "bad_spans": 0,
+    "duplicates": 0,
+    "requests": 25,
+    "tokens": 149,
+    "spans": {
+      "TYPE": 23,
+      "DATE": 9,
+      "PLACE": 8,
+      "PRICE": 8,
+      "PEOPLE": 5,
+      "EXCLUDE": 3
+    }
+  },
+  "part01": {
+    "lines": 200,
+    "bad_spans": 0
+  },
+  "part02": {
+    "lines": 200,
+    "bad_spans": 0
+  },
+  "part03": {
+    "lines": 200,
+    "bad_spans": 0
+  },
+  "part04": {
+    "lines": 200,
+    "bad_spans": 0
+  },
+  "part05": {
+    "lines": 200,
+    "bad_spans": 0
+  },
+  "part06": {
+    "lines": 200,
+    "bad_spans": 0
+  },
+  "part07": {
+    "lines": 200,
+    "bad_spans": 0
+  },
+  "part08": {
+    "lines": 200,
+    "bad_spans": 0
+  },
+  "part09": {
+    "lines": 200,
+    "bad_spans": 0
+  },
+  "part10": {
+    "lines": 200,
+    "bad_spans": 0
+  },
+  "train": {
+    "duplicates_or_test_matches_dropped": 9,
+    "requests": 1691,
+    "tokens": 12446,
+    "spans": {
+      "PLACE": 1214,
+      "TYPE": 1131,
+      "DATE": 924,
+      "PRICE": 568,
+      "PEOPLE": 518,
+      "EXCLUDE": 390,
+      "NAME": 271
     }
   },
   "dev": {
-    "rows": 626,
-    "empty_dropped": 3736,
-    "duplicates_dropped": 5,
-    "leakage_dropped": 10,
-    "conflicts": 0,
+    "duplicates_or_train_test_matches_dropped": 4,
+    "requests": 296,
+    "tokens": 2122,
     "spans": {
-      "city": 428,
-      "date": 245,
-      "event_name": 106
+      "PLACE": 215,
+      "TYPE": 192,
+      "DATE": 160,
+      "PEOPLE": 86,
+      "PRICE": 82,
+      "EXCLUDE": 70,
+      "NAME": 52
     }
   },
-  "test": {
-    "rows": 784,
-    "empty_dropped": 6160,
-    "duplicates_dropped": 2,
-    "leakage_dropped": 7,
-    "conflicts": 0,
-    "spans": {
-      "city": 514,
-      "date": 395,
-      "event_name": 106
-    }
-  }
+  "dropped_lines": []
 }

@@ -1,0 +1,25 @@
+{"text": "10 ekimde saat 20:00’den sonra konser", "spans": [["DATE", "10 ekimde saat 20:00’den sonra"], ["TYPE", "konser"]]}
+{"text": "11 ekimde 16:00’dan önce tiyatro", "spans": [["DATE", "11 ekimde 16:00’dan önce"], ["TYPE", "tiyatro"]]}
+{"text": "6 yaşındaki çocuğum için uygun bir gösteri", "spans": [["PEOPLE", "6 yaşındaki çocuğum"], ["TYPE", "gösteri"]]}
+{"text": "Anadolu yakasında caz konseri", "spans": [["PLACE", "Anadolu yakasında"], ["TYPE", "caz konseri"]]}
+{"text": "Avrupa yakasında tiyatro, en fazla 800 TL", "spans": [["PLACE", "Avrupa yakasında"], ["TYPE", "tiyatro"], ["PRICE", "en fazla 800 TL"]]}
+{"text": "Kadıköy dışında tiyatro", "spans": [["EXCLUDE", "Kadıköy"], ["TYPE", "tiyatro"]]}
+{"text": "arkadaşlarla bir şeyler yapalım, dans etmek istiyoruz", "spans": [["PEOPLE", "arkadaşlarla"]]}
+{"text": "bir müzikal izlemek istiyoruz", "spans": [["TYPE", "müzikal"]]}
+{"text": "bu akşam kadıköyde en fazla 500 TL stand-up", "spans": [["DATE", "bu akşam"], ["PLACE", "kadıköyde"], ["PRICE", "en fazla 500 TL"], ["TYPE", "stand-up"]]}
+{"text": "bu hafta sonu İstanbul’da konser", "spans": [["DATE", "bu hafta sonu"], ["PLACE", "İstanbul’da"], ["TYPE", "konser"]]}
+{"text": "dört kişi kişi başı en fazla 600 TL konser", "spans": [["PEOPLE", "dört kişi"], ["PRICE", "kişi başı en fazla 600 TL"], ["TYPE", "konser"]]}
+{"text": "ekim sonunda harbiyede açık hava konseri", "spans": [["DATE", "ekim sonunda"], ["PLACE", "harbiyede"], ["TYPE", "açık hava konseri"]]}
+{"text": "iki kişi toplam en fazla 1600 TL tiyatro", "spans": [["PEOPLE", "iki kişi"], ["PRICE", "toplam en fazla 1600 TL"], ["TYPE", "tiyatro"]]}
+{"text": "kadikoyde tiyatro izlemek istiyorum", "spans": [["PLACE", "kadikoyde"], ["TYPE", "tiyatro"]]}
+{"text": "küfür ve cinsel içerik olmayan bir gösteri", "spans": [["TYPE", "gösteri"]]}
+{"text": "rock konseri ama rap olmasın", "spans": [["TYPE", "rock konseri"], ["EXCLUDE", "rap"]]}
+{"text": "romantik caz konseri", "spans": [["TYPE", "caz konseri"]]}
+{"text": "sevgilimle sakin samimi bir akşam geçirmek istiyorum, tür fark etmez", "spans": [["PEOPLE", "sevgilimle"], ["DATE", "akşam"]]}
+{"text": "standap izlemek istiyorum", "spans": [["TYPE", "standap"]]}
+{"text": "tekerlekli sandalye erişimi olan bir konser", "spans": [["TYPE", "konser"]]}
+{"text": "tiyatro veya stand-up, konser olmasın", "spans": [["TYPE", "tiyatro"], ["TYPE", "stand-up"], ["EXCLUDE", "konser"]]}
+{"text": "yarın 500 tl altı tiyatro", "spans": [["DATE", "yarın"], ["PRICE", "500 tl altı"], ["TYPE", "tiyatro"]]}
+{"text": "yarın Beşiktaş’ta en fazla 700 TL konser", "spans": [["DATE", "yarın"], ["PLACE", "Beşiktaş’ta"], ["PRICE", "en fazla 700 TL"], ["TYPE", "konser"]]}
+{"text": "yarın Kadıköy’de en fazla 1000 TL konser", "spans": [["DATE", "yarın"], ["PLACE", "Kadıköy’de"], ["PRICE", "en fazla 1000 TL"], ["TYPE", "konser"]]}
+{"text": "ücretsiz bir etkinlik istiyorum", "spans": [["PRICE", "ücretsiz"]]}

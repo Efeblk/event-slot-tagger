@@ -1,0 +1,100 @@
+{"text":"abi bu aksam kadikoyde duman konseri var mi 2 kisi gidicez","spans":[["DATE","bu aksam"],["PLACE","kadikoyde"],["NAME","duman"],["TYPE","konseri"],["PEOPLE","2 kisi"]]}
+{"text":"yarin ankarada cem yilmaz stand-up ucuz bi yer varmi","spans":[["DATE","yarin"],["PLACE","ankarada"],["NAME","cem yilmaz"],["TYPE","stand-up"],["PRICE","ucuz"]]}
+{"text":"izmirde hafta sonu cocuk tiyatrosu ariyom oglumla","spans":[["PLACE","izmirde"],["DATE","hafta sonu"],["TYPE","cocuk tiyatrosu"],["PEOPLE","oglumla"]]}
+{"text":"besiktas maci olmasin ya bu gece avrupa yakasinda","spans":[["EXCLUDE","besiktas maci"],["DATE","bu gece"],["PLACE","avrupa yakasinda"]]}
+{"text":"bodrumda 12 ekimde hadise konseri kisi basi en fazla 900 tl","spans":[["PLACE","bodrumda"],["DATE","12 ekimde"],["NAME","hadise"],["TYPE","konseri"],["PRICE","kisi basi en fazla 900 tl"]]}
+{"text":"eskisehirde yarin bedava bi etkinlik var mi arkadaslarla","spans":[["PLACE","eskisehirde"],["DATE","yarin"],["PRICE","bedava"],["PEOPLE","arkadaslarla"]]}
+{"text":"canim sikildi ya","spans":[]}
+{"text":"trabzonda cuma aksami fenerbahce maci ariyorum babamla","spans":[["PLACE","trabzonda"],["DATE","cuma aksami"],["NAME","fenerbahce"],["TYPE","maci"],["PEOPLE","babamla"]]}
+{"text":"kadikoy civarinda bu aksam tiyatro olsun konser olmasin","spans":[["PLACE","kadikoy"],["DATE","bu aksam"],["TYPE","tiyatro"],["EXCLUDE","konser"]]}
+{"text":"gaziantepte ucretsiz cocuk etkinligi gibi bi sey var mi","spans":[["PLACE","gaziantepte"],["PRICE","ucretsiz"]]}
+{"text":"yarin 19.30dan sonra izmir arena'da manga konseri 3 kisiyiz","spans":[["DATE","yarin 19.30dan sonra"],["PLACE","izmir arena'da"],["NAME","manga"],["TYPE","konseri"],["PEOPLE","3 kisiyiz"]]}
+{"text":"antalya merkezde stand-up istemiyom ama caz konseri olur","spans":[["PLACE","antalya merkezde"],["EXCLUDE","stand-up"],["TYPE","caz konseri"]]}
+{"text":"naber ya adanada bu hafta sonu basket maci var mi","spans":[["PLACE","adanada"],["DATE","bu hafta sonu"],["TYPE","basket maci"]]}
+{"text":"zorlu psm'de onumuzdeki cuma aksamı hamlet oyunu sevgilimle","spans":[["PLACE","zorlu psm'de"],["DATE","onumuzdeki cuma aksamı"],["NAME","hamlet"],["TYPE","oyunu"],["PEOPLE","sevgilimle"]]}
+{"text":"konya'da yarin 500 tl alti rock konseri bulsana abi","spans":[["PLACE","konya'da"],["DATE","yarin"],["PRICE","500 tl alti"],["TYPE","rock konseri"]]}
+{"text":"sadece dolmabahce civari olsun fener maci haric","spans":[["PLACE","dolmabahce"],["EXCLUDE","fener maci"]]}
+{"text":"samsunda bu aksam ucretsiz biseyler var mi","spans":[["PLACE","samsunda"],["DATE","bu aksam"],["PRICE","ucretsiz"]]}
+{"text":"canakkalede troya festivali'ne bilet bakiyorum annemle","spans":[["PLACE","canakkalede"],["NAME","troya festivali'ne"],["PEOPLE","annemle"]]}
+{"text":"eskisehirde pazar gunu acik hava konseri olsun 4 kisilik","spans":[["PLACE","eskisehirde"],["DATE","pazar gunu"],["TYPE","acik hava konseri"],["PEOPLE","4 kisilik"]]}
+{"text":"ya bi plan yapalim da","spans":[]}
+{"text":"kayseride cumartesi saat 9'dan sonra cem adrian konseri","spans":[["PLACE","kayseride"],["DATE","cumartesi saat 9'dan sonra"],["NAME","cem adrian"],["TYPE","konseri"]]}
+{"text":"kadikoyde bu aksam 1000 tl'yi gecmesin duman konseri 2 kisi","spans":[["PLACE","kadikoyde"],["DATE","bu aksam"],["PRICE","1000 tl'yi gecmesin"],["NAME","duman"],["TYPE","konseri"],["PEOPLE","2 kisi"]]}
+{"text":"mugla'da cuma tiyatro istemiyorum rock konseri bak","spans":[["PLACE","mugla'da"],["DATE","cuma"],["EXCLUDE","tiyatro"],["TYPE","rock konseri"]]}
+{"text":"duzcede bedava stand-up var mi tek basima gelcem","spans":[["PLACE","duzcede"],["PRICE","bedava"],["TYPE","stand-up"],["PEOPLE","tek basima"]]}
+{"text":"bu aksam bi seyler olsa yeter ya","spans":[["DATE","bu aksam"]]}
+{"text":"istanbul anadolu yakasinda pazar 20.00'den sonra fenerbahce maci","spans":[["PLACE","istanbul anadolu yakasinda"],["DATE","pazar 20.00'den sonra"],["NAME","fenerbahce"],["TYPE","maci"]]}
+{"text":"malatyada gelecek hafta cocuk tiyatrosu oglumla gidecem","spans":[["PLACE","malatyada"],["DATE","gelecek hafta"],["TYPE","cocuk tiyatrosu"],["PEOPLE","oglumla"]]}
+{"text":"bursa'da hadise konseri olmasin ya","spans":[["PLACE","bursa'da"],["EXCLUDE","hadise konseri"]]}
+{"text":"mersinde ekim sonunda caz konseri ucuz bulur muyuz","spans":[["PLACE","mersinde"],["DATE","ekim sonunda"],["TYPE","caz konseri"],["PRICE","ucuz"]]}
+{"text":"abi ankarada cumartesi ne var 5 kisiyiz","spans":[["PLACE","ankarada"],["DATE","cumartesi"],["PEOPLE","5 kisiyiz"]]}
+{"text":"boluda bu gece karaoke gibi bi etkinlik istemiyom","spans":[["PLACE","boluda"],["DATE","bu gece"],["EXCLUDE","karaoke"]]}
+{"text":"tekirdagda 15 kasimda sertab erener konseri kisi basi 700 tl altina","spans":[["PLACE","tekirdagda"],["DATE","15 kasimda"],["NAME","sertab erener"],["TYPE","konseri"],["PRICE","kisi basi 700 tl altina"]]}
+{"text":"rizede bedava bisey var mi yarin","spans":[["PLACE","rizede"],["PRICE","bedava"],["DATE","yarin"]]}
+{"text":"sivasta hafta sonu sivasspor maci 3 kisi","spans":[["PLACE","sivasta"],["DATE","hafta sonu"],["NAME","sivasspor"],["TYPE","maci"],["PEOPLE","3 kisi"]]}
+{"text":"ankara'da bu aksam stand-up istemem ya konser de olmasin","spans":[["PLACE","ankara'da"],["DATE","bu aksam"],["EXCLUDE","stand-up"],["EXCLUDE","konser"]]}
+{"text":"denizlide pazar gunu acik hava konseri var mi","spans":[["PLACE","denizlide"],["DATE","pazar gunu"],["TYPE","acik hava konseri"]]}
+{"text":"of sıkıldım","spans":[]}
+{"text":"balikesirde yarin cem yilmaz gosterisi 2 kisi","spans":[["PLACE","balikesirde"],["DATE","yarin"],["NAME","cem yilmaz"],["PEOPLE","2 kisi"]]}
+{"text":"urfa'da gelecek cuma bedava tiyatro bulsana","spans":[["PLACE","urfa'da"],["DATE","gelecek cuma"],["PRICE","bedava"],["TYPE","tiyatro"]]}
+{"text":"bostancida bu aksam duman konseri olmasin","spans":[["PLACE","bostancida"],["DATE","bu aksam"],["NAME","duman konseri"]]}
+{"text":"kirklarelide 21 haziranda zeytinli rock festivali'ne gidicez 6 kisi","spans":[["PLACE","kirklarelide"],["DATE","21 haziranda"],["NAME","zeytinli rock festivali'ne"],["PEOPLE","6 kisi"]]}
+{"text":"sakaryada en fazla 400 tl caz konseri bu gece","spans":[["PLACE","sakaryada"],["PRICE","en fazla 400 tl"],["TYPE","caz konseri"],["DATE","bu gece"]]}
+{"text":"abi antalyada mac istemem baska ne var","spans":[["PLACE","antalyada"],["EXCLUDE","mac"]]}
+{"text":"van'da yarin cocuk tiyatrosu cocugumla","spans":[["PLACE","van'da"],["DATE","yarin"],["TYPE","cocuk tiyatrosu"],["PEOPLE","cocugumla"]]}
+{"text":"edirnede cumartesi bedava konser var mi","spans":[["PLACE","edirnede"],["DATE","cumartesi"],["PRICE","bedava"],["TYPE","konser"]]}
+{"text":"izmirde bu hafta sonu manga olmasin ya","spans":[["PLACE","izmirde"],["DATE","bu hafta sonu"],["EXCLUDE","manga"]]}
+{"text":"canim bi disari cikmak istiyo","spans":[]}
+{"text":"ankara cer modern'de 8 martta hamlet oyunu annemle","spans":[["PLACE","ankara cer modern'de"],["DATE","8 martta"],["NAME","hamlet"],["TYPE","oyunu"],["PEOPLE","annemle"]]}
+{"text":"kocaelide aksam 300 liradan ucuz stand-up var mi","spans":[["PLACE","kocaelide"],["DATE","aksam"],["PRICE","300 liradan ucuz"],["TYPE","stand-up"]]}
+{"text":"fethiyede yazin acik hava konseri ariyorum arkadasimla","spans":[["PLACE","fethiyede"],["DATE","yazin"],["TYPE","acik hava konseri"],["PEOPLE","arkadasimla"]]}
+{"text":"trabzonda mac olmasin tiyatro olur","spans":[["PLACE","trabzonda"],["EXCLUDE","mac"],["TYPE","tiyatro"]]}
+{"text":"bilecikte yarin bi aktivite var mi sevgilimle","spans":[["PLACE","bilecikte"],["DATE","yarin"],["PEOPLE","sevgilimle"]]}
+{"text":"marasda cuma aksamı gunes konseri kisi basi 600 tl gecmesin","spans":[["PLACE","marasda"],["DATE","cuma aksamı"],["NAME","gunes"],["TYPE","konseri"],["PRICE","kisi basi 600 tl gecmesin"]]}
+{"text":"antalya'da pazar gunu iceride olsun acik hava konseri istemiyorum","spans":[["PLACE","antalya'da"],["DATE","pazar gunu"],["EXCLUDE","acik hava konseri"]]}
+{"text":"ordu'da ucretsiz cocuk tiyatrosu 2 kisi","spans":[["PLACE","ordu'da"],["PRICE","ucretsiz"],["TYPE","cocuk tiyatrosu"],["PEOPLE","2 kisi"]]}
+{"text":"ya yarin hic bisey dusunemiyom","spans":[["DATE","yarin"]]}
+{"text":"eskisehirde 22.00'de baslayan mor ve otesi konseri","spans":[["PLACE","eskisehirde"],["DATE","22.00'de"],["NAME","mor ve otesi"],["TYPE","konseri"]]}
+{"text":"mardinde gelecek pazar cem yilmaz istemiyorum","spans":[["PLACE","mardinde"],["DATE","gelecek pazar"],["EXCLUDE","cem yilmaz"]]}
+{"text":"gebzede bu aksam 2 kisilik ucuz tiyatro","spans":[["PLACE","gebzede"],["DATE","bu aksam"],["PEOPLE","2 kisilik"],["PRICE","ucuz"],["TYPE","tiyatro"]]}
+{"text":"karsda ne yapilir ya","spans":[["PLACE","karsda"]]}
+{"text":"antalya konyaalti'nda 4 ekimde hadise konseri arkadaslarimla","spans":[["PLACE","antalya konyaalti'nda"],["DATE","4 ekimde"],["NAME","hadise"],["TYPE","konseri"],["PEOPLE","arkadaslarimla"]]}
+{"text":"izmitte bu gece rock konseri olsun stand-up olmasin","spans":[["PLACE","izmitte"],["DATE","bu gece"],["TYPE","rock konseri"],["EXCLUDE","stand-up"]]}
+{"text":"igdirda bedava bi etkinlik var mi abi","spans":[["PLACE","igdirda"],["PRICE","bedava"]]}
+{"text":"istanbul'da gelecek cuma avrupa yakasinda fenerbahce maci babamla","spans":[["PLACE","istanbul'da"],["DATE","gelecek cuma"],["PLACE","avrupa yakasinda"],["NAME","fenerbahce"],["TYPE","maci"],["PEOPLE","babamla"]]}
+{"text":"adapazarinda bu aksam 250 tl altina stand-up","spans":[["PLACE","adapazarinda"],["DATE","bu aksam"],["PRICE","250 tl altina"],["TYPE","stand-up"]]}
+{"text":"yozgatda yarin tiyatro olmasin konser de olmasin","spans":[["PLACE","yozgatda"],["DATE","yarin"],["EXCLUDE","tiyatro"],["EXCLUDE","konser"]]}
+{"text":"giresunda hafta sonu cocuk tiyatrosu annemle babamla","spans":[["PLACE","giresunda"],["DATE","hafta sonu"],["TYPE","cocuk tiyatrosu"],["PEOPLE","annemle"],["PEOPLE","babamla"]]}
+{"text":"abi bi yere gitsek de","spans":[]}
+{"text":"mersin'de 9 eylulde manga konseri 1000 tl'yi gecmesin","spans":[["PLACE","mersin'de"],["DATE","9 eylulde"],["NAME","manga"],["TYPE","konseri"],["PRICE","1000 tl'yi gecmesin"]]}
+{"text":"ordu merkezde yarin mac haric ne var","spans":[["PLACE","ordu merkezde"],["DATE","yarin"],["EXCLUDE","mac"]]}
+{"text":"kucukcekmece'de bu aksam hamlet oyunu olmasin","spans":[["PLACE","kucukcekmece'de"],["DATE","bu aksam"],["NAME","hamlet"],["TYPE","oyunu"]]}
+{"text":"afyonda ucretsiz caz konseri tek basima giderim","spans":[["PLACE","afyonda"],["PRICE","ucretsiz"],["TYPE","caz konseri"],["PEOPLE","tek basima"]]}
+{"text":"denizlide cumartesi 18.00'den sonra basket maci var mi","spans":[["PLACE","denizlide"],["DATE","cumartesi 18.00'den sonra"],["TYPE","basket maci"]]}
+{"text":"aksarayda cocuk tiyatrosu istemiyom sevgilimle cikcam","spans":[["PLACE","aksarayda"],["EXCLUDE","cocuk tiyatrosu"],["PEOPLE","sevgilimle"]]}
+{"text":"bu hafta icin bi sey ayarlayalim mi","spans":[["DATE","bu hafta"]]}
+{"text":"bursa nilufer'de zeytinli rock festivali'ne 3 kisi gidicez","spans":[["PLACE","bursa nilufer'de"],["NAME","zeytinli rock festivali'ne"],["PEOPLE","3 kisi"]]}
+{"text":"kutahyada pazartesi bedava tiyatro var mi ya","spans":[["PLACE","kutahyada"],["DATE","pazartesi"],["PRICE","bedava"],["TYPE","tiyatro"]]}
+{"text":"samsunda bu aksam duman konserini es gec baska","spans":[["PLACE","samsunda"],["DATE","bu aksam"],["EXCLUDE","duman konserini"]]}
+{"text":"erzurumda onumuzdeki cuma aksamı acik hava konseri annemle","spans":[["PLACE","erzurumda"],["DATE","onumuzdeki cuma aksamı"],["TYPE","acik hava konseri"],["PEOPLE","annemle"]]}
+{"text":"duzcede 21.00'den sonra 600 tl alti stand-up","spans":[["PLACE","duzcede"],["DATE","21.00'den sonra"],["PRICE","600 tl alti"],["TYPE","stand-up"]]}
+{"text":"bitlisde bu gece mac istemiyorum ya","spans":[["PLACE","bitlisde"],["DATE","bu gece"],["EXCLUDE","mac"]]}
+{"text":"corumda bu pazar bisey var mi 2 kisi","spans":[["PLACE","corumda"],["DATE","bu pazar"],["PEOPLE","2 kisi"]]}
+{"text":"kadikoyde cuma aksami acik hava konseri olsun tiyatro hariç","spans":[["PLACE","kadikoyde"],["DATE","cuma aksami"],["TYPE","acik hava konseri"],["EXCLUDE","tiyatro"]]}
+{"text":"mugla bodrum'da 3 agustosta sertab erener konseri ucretsiz mi","spans":[["PLACE","mugla bodrum'da"],["DATE","3 agustosta"],["NAME","sertab erener"],["TYPE","konseri"],["PRICE","ucretsiz"]]}
+{"text":"canim cok bunaldim bi plan lazim","spans":[]}
+{"text":"karabukte gelecek hafta fenerbahce maci olsun basket maci olmasin","spans":[["PLACE","karabukte"],["DATE","gelecek hafta"],["NAME","fenerbahce"],["TYPE","maci"],["EXCLUDE","basket maci"]]}
+{"text":"kirsehirde yarin ucuz konser bulabilir miyiz arkadaslarla","spans":[["PLACE","kirsehirde"],["DATE","yarin"],["PRICE","ucuz"],["TYPE","konser"],["PEOPLE","arkadaslarla"]]}
+{"text":"manisada 17 mayista mor ve otesi konseri 2 kisi","spans":[["PLACE","manisada"],["DATE","17 mayista"],["NAME","mor ve otesi"],["TYPE","konseri"],["PEOPLE","2 kisi"]]}
+{"text":"tekirdagda bu hafta sonu tiyatro olmasin stand-up istemem","spans":[["PLACE","tekirdagda"],["DATE","bu hafta sonu"],["EXCLUDE","tiyatro"],["EXCLUDE","stand-up"]]}
+{"text":"sakaryada yarin 800 liradan ucuz cocuk tiyatrosu oglumla","spans":[["PLACE","sakaryada"],["DATE","yarin"],["PRICE","800 liradan ucuz"],["TYPE","cocuk tiyatrosu"],["PEOPLE","oglumla"]]}
+{"text":"abi bugun nereye kacalim","spans":[["DATE","bugun"]]}
+{"text":"bursada 6 temmuzda cem yilmaz stand-up 4 kisi","spans":[["PLACE","bursada"],["DATE","6 temmuzda"],["NAME","cem yilmaz"],["TYPE","stand-up"],["PEOPLE","4 kisi"]]}
+{"text":"amasya'da bedava etkinlik yok mu ya","spans":[["PLACE","amasya'da"],["PRICE","bedava"]]}
+{"text":"istanbul'da 29 ekimde zorlu psm'de hamlet oyunu annemle","spans":[["PLACE","istanbul'da"],["DATE","29 ekimde"],["PLACE","zorlu psm'de"],["NAME","hamlet"],["TYPE","oyunu"],["PEOPLE","annemle"]]}
+{"text":"nevsehirde bu aksam konser olmasin ya","spans":[["PLACE","nevsehirde"],["DATE","bu aksam"],["EXCLUDE","konser"]]}
+{"text":"artvinde yarin bi aktivite bakiyorum","spans":[["PLACE","artvinde"],["DATE","yarin"]]}
+{"text":"ankara'da cuma 1500 tl'yi gecmesin hadise konseri annemle","spans":[["PLACE","ankara'da"],["DATE","cuma"],["PRICE","1500 tl'yi gecmesin"],["NAME","hadise"],["TYPE","konseri"],["PEOPLE","annemle"]]}
+{"text":"giresunda bu gece rock konseri olmasin tiyatro olabilir","spans":[["PLACE","giresunda"],["DATE","bu gece"],["EXCLUDE","rock konseri"],["TYPE","tiyatro"]]}
+{"text":"edirne'de 2 subatta bedava cocuk tiyatrosu 3 kisiyiz","spans":[["PLACE","edirne'de"],["DATE","2 subatta"],["PRICE","bedava"],["TYPE","cocuk tiyatrosu"],["PEOPLE","3 kisiyiz"]]}
+{"text":"ya ne var ne yok bu aksam","spans":[["DATE","bu aksam"]]}

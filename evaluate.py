@@ -1,98 +1,132 @@
-"""Extra checks of the saved models: 95% bootstrap confidence intervals and word-level confusion matrices.
+"""Compare every trained tagger from its saved predictions (results/predictions/*.json); no model is rerun.
 
-The test sets are small (50 messy requests, 260 Codex requests), so one F1 number hides how much it could move with
-other requests. For each model and test set this draws the test sentences again with replacement 1,000 times, scores
-each draw with micro exact-span F1 and keeps the middle 95% (slots.bootstrap_f1). Comparisons are paired: both models
-are scored on the same draws, and a difference whose interval stays above 0 is not explained by the choice of test
-requests alone. No retraining and no new data.
-
-The confusion matrices count, for each word, its gold slot against the predicted slot (B-/I- dropped, O = no slot),
-for the models in CONFUSION, so the errors behind each F1 can be seen: missed slots, false alarms and mixed-up slots.
-
-Models: the four classic models trained on set E (artifacts/classic) and the saved transformers (artifacts/). Writes
-results/evaluation.json. Needs torch with a CUDA GPU for the transformers.
+For each test set (codex_test, biplan_test) and model:
+- exact-span micro F1 with a 95% bootstrap interval over requests (1,000 draws), macro F1 and per-label F1;
+- for BERTurk models trained with several seeds: mean and standard deviation over the seeds;
+- slices: requests typed without any Turkish letter vs with them, and PLACE spans written with a suffix;
+- IOB2 breaks: predicted I- tags that do not continue a span of their own label;
+- error types: wrong boundary, wrong label, missed span, invented span.
+Paired bootstrap intervals for the differences in PAIRS (the claims in the README) use the same draws for both models.
+For BERTurk, the run with the lowest seed stands for its group in the
+pairs. Writes results/evaluation.json.
 
 Usage: python evaluate.py
 """
 
 import json
-from pathlib import Path
+import re
+import statistics
+from collections import Counter, defaultdict
 
-import joblib
+from common import ROOT, bootstrap_f1, read_jsonl, span_scores, spans
 
-from extract import classic_tagger
-from slots import bootstrap_f1, read_jsonl, span_scores, word_confusion
-
-ROOT = Path(__file__).resolve().parent
-ROUNDS = 1000
-CLASSIC = (("dictionary", "Parser (set E)"), ("naive_bayes", "Naive Bayes (set E)"),
-           ("logistic_regression", "Logistic Regression (set E)"), ("linear_svm", "Linear SVM (set E)"))
-TRANSFORMERS = (("bert", "BERT (set D)"), ("roberta", "RoBERTa (set D)"), ("bertweet", "BERTweet (set D)"),
-                ("bertweet_E", "BERTweet_E"), ("bertweet_6L_E_kd0.7", "BERTweet_E 6 layers"))
-# (model, baseline): the claims the README makes about these pairs.
-PAIRS = (("BERTweet_E", "BERTweet (set D)"), ("BERTweet_E", "Linear SVM (set E)"),
-         ("BERTweet_E", "RoBERTa (set D)"), ("BERTweet_E 6 layers", "BERTweet_E"))
-CONFUSION = ("Linear SVM (set E)", "BERTweet (set D)", "BERTweet_E")
+TESTS = ("codex_test", "biplan_test")
+TURKISH = re.compile("[çğıöşüÇĞİÖŞÜ]")
+PAIRS = (("crf", "hmm_bio"), ("crf", "crf_no_suffix"), ("hmm_bio", "hmm"), ("hmm", "frequent_tag"),
+         ("berturk_softmax_bio", "berturk_softmax"), ("berturk_crf", "berturk_softmax_bio"),
+         ("berturk_softmax_bio", "crf"))
 
 
-def test_sets():
-    codex = read_jsonl(ROOT / "data" / "codex" / "codex_test.jsonl")
-    return {"SGD test": read_jsonl(ROOT / "data" / "clean" / "test.jsonl"),
-            "messy": read_jsonl(ROOT / "data" / "messy" / "messy_test.jsonl"),
-            "codex_all": codex + read_jsonl(ROOT / "data" / "codex" / "codex_more_test.jsonl")}
+def load_predictions():
+    """{model: {seed or None: {split: tags}}}. BERTurk files are named bert-base-turkish-cased[_crf]_seed<N>_<decoder>."""
+    models = defaultdict(dict)
+    for path in sorted((ROOT / "results" / "predictions").glob("*.json")):
+        match = re.fullmatch(r"bert-base-turkish-cased(_crf)?_seed(\d+)_(\w+)", path.stem)
+        if match:
+            name, seed = ("berturk_crf" if match[1] else f"berturk_{match[3]}"), int(match[2])
+        else:
+            name, seed = path.stem, None
+        models[name][seed] = json.loads(path.read_text(encoding="utf-8"))
+    return models
 
 
-def transformer_predictions(path, tests):
-    """Tags for every test set, in batches as train_bert scores them (one request at a time can differ a little in
-    bf16), so the F1 matches results/<tag>_results.json."""
-    from transformers import AutoModelForTokenClassification, AutoTokenizer
+def iob2_breaks(pred_list):
+    return sum(tag.startswith("I-") and prev[2:] != tag[2:]
+               for tags in pred_list for prev, tag in zip(["O"] + tags[:-1], tags))
 
-    import train_bert
 
-    model = AutoModelForTokenClassification.from_pretrained(path).cuda()
-    tokenizer = AutoTokenizer.from_pretrained(model.config.base_model_id)
-    return {test: train_bert.predict(model, train_bert.encode(tokenizer, rows), tokenizer.pad_token_id)
-            for test, rows in tests.items()}
+def error_types(gold_list, pred_list):
+    counts = Counter()
+    for gold_tags, pred_tags in zip(gold_list, pred_list):
+        gold, pred = spans(gold_tags), spans(pred_tags)
+        for label, s, e in gold - pred:
+            near = [p for p in pred if p[1] < e and p[2] > s]
+            if any(p[0] == label for p in near):
+                counts["wrong boundary"] += 1
+            elif near:
+                counts["wrong label"] += 1
+            else:
+                counts["missed"] += 1
+        counts["invented"] += sum(1 for _, s, e in pred - gold if not any(g[1] < e and g[2] > s for g in gold))
+    return dict(counts)
+
+
+def place_suffix_recall(rows, pred_list):
+    """Recall of PLACE spans whose last word carries a suffix (an apostrophe or a -de/-da/-te/-ta ending)."""
+    found = total = 0
+    for r, pred in zip(rows, pred_list):
+        for label, s, e in spans(r["tags"]):
+            word = r["tokens"][e - 1].lower()
+            if label == "PLACE" and ("'" in word or "’" in word or word[-2:] in ("de", "da", "te", "ta")):
+                total += 1
+                found += (label, s, e) in spans(pred)
+    return found / total if total else None
+
+
+def describe(rows, preds):
+    gold = [r["tags"] for r in rows]
+    low, high = bootstrap_f1(gold, preds)
+    plain = [i for i, r in enumerate(rows) if not TURKISH.search(r["text"])]
+    turkish = [i for i, r in enumerate(rows) if TURKISH.search(r["text"])]
+    scores = span_scores(gold, preds)
+    return {"f1": scores["f1"], "low": low, "high": high, "macro_f1": scores["macro_f1"],
+            "precision": scores["precision"], "recall": scores["recall"],
+            "request_exact": scores["request_exact"],
+            "labels": {k: round(v["f1"], 4) for k, v in scores["labels"].items()},
+            "f1_no_turkish_letters": span_scores([gold[i] for i in plain], [preds[i] for i in plain])["f1"],
+            "f1_with_turkish_letters": span_scores([gold[i] for i in turkish], [preds[i] for i in turkish])["f1"],
+            "place_suffix_recall": place_suffix_recall(rows, preds),
+            "iob2_breaks": iob2_breaks(preds), "errors": error_types(gold, preds)}
 
 
 def main():
-    tests = test_sets()
-    preds = {}
-    for key, name in CLASSIC:
-        tag = classic_tagger(joblib.load(ROOT / "artifacts" / "classic" / f"{key}.joblib"))
-        preds[name] = {test: [tag(r["tokens"]) for r in rows] for test, rows in tests.items()}
-    for key, name in TRANSFORMERS:
-        preds[name] = transformer_predictions(ROOT / "artifacts" / key, tests)
-    out = {"rounds": ROUNDS, "sentences": {test: len(rows) for test, rows in tests.items()},
-           "models": {}, "differences": {}, "confusion": {}}
-    for name, by_test in preds.items():
-        out["models"][name] = {}
-        for test, rows in tests.items():
-            gold = [r["tags"] for r in rows]
-            low, high = bootstrap_f1(gold, by_test[test], rounds=ROUNDS)
-            out["models"][name][test] = {"f1": span_scores(gold, by_test[test])["f1"], "low": low, "high": high}
+    tests = {name: read_jsonl(ROOT / "data" / "clean" / f"{name}.jsonl") for name in TESTS}
+    models = load_predictions()
+    out = {"requests": {t: len(rows) for t, rows in tests.items()},
+           "slice_sizes": {t: sum(not TURKISH.search(r["text"]) for r in rows) for t, rows in tests.items()},
+           "models": {}, "seeds": {}, "differences": {}}
+    first = {}
+    for name, by_seed in models.items():
+        seed = min(by_seed, key=lambda s: -1 if s is None else s)
+        first[name] = by_seed[seed]
+        out["models"][name] = {t: describe(rows, by_seed[seed][t]) for t, rows in tests.items()}
+        if len(by_seed) > 1:
+            out["seeds"][name] = {}
+            for t, rows in tests.items():
+                f1s = [span_scores([r["tags"] for r in rows], p[t])["f1"] for p in by_seed.values()]
+                out["seeds"][name][t] = {"seeds": sorted(by_seed), "f1": f1s, "mean": statistics.mean(f1s),
+                                         "std": statistics.stdev(f1s)}
     for model, base in PAIRS:
-        key = f"{model} - {base}"
-        out["differences"][key] = {}
-        for test, rows in tests.items():
-            gold = [r["tags"] for r in rows]
-            low, high = bootstrap_f1(gold, preds[model][test], base_list=preds[base][test], rounds=ROUNDS)
-            diff = span_scores(gold, preds[model][test])["f1"] - span_scores(gold, preds[base][test])["f1"]
-            out["differences"][key][test] = {"diff": diff, "low": low, "high": high}
-    for name in CONFUSION:
-        out["confusion"][name] = {test: word_confusion([r["tags"] for r in rows], preds[name][test])
-                                  for test, rows in tests.items()}
+        if model in first and base in first:
+            out["differences"][f"{model} - {base}"] = {}
+            for t, rows in tests.items():
+                gold = [r["tags"] for r in rows]
+                diff = span_scores(gold, first[model][t])["f1"] - span_scores(gold, first[base][t])["f1"]
+                low, high = bootstrap_f1(gold, first[model][t], base_list=first[base][t])
+                out["differences"][f"{model} - {base}"][t] = {"diff": diff, "low": low, "high": high}
 
-    path = ROOT / "results" / "evaluation.json"
-    path.write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8")
-    print(f"\n{'model':<30}" + "".join(f"{test:>24}" for test in tests))
+    (ROOT / "results" / "evaluation.json").write_text(json.dumps(out, indent=2, ensure_ascii=False) + "\n",
+                                                      encoding="utf-8")
+    print(f"{'model':<22}" + "".join(f"{t:>28}" for t in TESTS) + "   IOB2 breaks")
     for name, by_test in out["models"].items():
-        print(f"{name:<30}" + "".join(f"{s['f1']:>8.3f} [{s['low']:.3f}, {s['high']:.3f}]" for s in by_test.values()))
-    print()
+        cells = "".join(f"{s['f1']:>12.3f} [{s['low']:.3f}, {s['high']:.3f}]" for s in by_test.values())
+        print(f"{name:<22}{cells}   {sum(s['iob2_breaks'] for s in by_test.values())}")
+    for name, by_test in out["seeds"].items():
+        print(f"{name:<22}" + "".join(f"{'mean ' + format(s['mean'], '.3f') + ' ± ' + format(s['std'], '.3f'):>28}"
+                                      for s in by_test.values()) + f"   ({len(next(iter(by_test.values()))['f1'])} seeds)")
     for key, by_test in out["differences"].items():
-        print(f"{key:<45}" + "".join(f"{s['diff']:>+8.3f} [{s['low']:+.3f}, {s['high']:+.3f}]"
-                                     for s in by_test.values()))
-    print(f"\nwrote {path}")
+        print(f"{key:<44}" + "".join(f"{s['diff']:>+8.3f} [{s['low']:+.3f}, {s['high']:+.3f}]" for s in by_test.values()))
+    print("wrote results/evaluation.json")
 
 
 if __name__ == "__main__":
