@@ -1,365 +1,209 @@
-# Slot filling for event-search requests
+# Tagging Turkish event requests
 
-COE025 Natural Language Processing, Project 1: Text Classification.
-Solo project by İsmet Efe Balık (see `contributions/`).
+COE025 Natural Language Processing, Project 2: Token Classification.
+Solo project by İsmet Efe Balık (see `contributions/`). Project 1 (English slot filling) is kept unchanged in
+`project1/`.
 
-A user types a request like *"wanna catch the lakers game w my dad tmrw"*. The task is to
-classify every word as part of a **city**, a **date**, an **event name**, or nothing (BIO
-tags), then read off the slots: event = `lakers`, date = `tmrw`. This is word-level text
-classification (slot filling). It tags words like named-entity recognition does, but the labels are not named
-entities: "tmrw", "this weekend" and "the lakers game" are the slots of a request, and the hard part is messy user
-text, not news text. The found slots then decide which questions an assistant asks next.
+A user types a request to an event app, for example
 
-The goal is robustness: models trained on clean assistant data must also work on messy,
-lowercase, typo-filled requests.
+```
+bu akşam kadıköyde en fazla 500 TL stand-up, konser olmasın
+```
+
+The task is to give every word a BIO tag so the app can read off what the user wants:
+
+| word | bu | akşam | kadıköyde | en | fazla | 500 | TL | stand-up | , | konser | olmasın |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| tag | B-DATE | I-DATE | B-PLACE | B-PRICE | I-PRICE | I-PRICE | I-PRICE | B-TYPE | O | B-EXCLUDE | O |
+
+Seven labels (15 BIO tags): **PLACE, DATE, TYPE** (kind of event), **NAME** (performer, team, play), **PRICE**
+(a price limit), **PEOPLE** (how many / who comes along) and **EXCLUDE** (what the user does *not* want).
+
+Why this is harder than the slot filling of the lecture (`fly from Boston to Paris`):
+
+- **Turkish suffixes are inside the word.** `kadıköyde` = Kadıköy + *-de* ("in"). The place is not a separate token,
+  so the tagger must recognize a place from a word it may never have seen with that ending (`harbiyede`,
+  `odunpazarı'nda`).
+- **People type without Turkish letters** (`kadikoyde`, `aksam`, `ucretsiz`), in lowercase, with typos.
+- **The same word changes label with context**, like *Washington* on the slides: `konser` is TYPE in
+  `konser olsun` and EXCLUDE in `konser olmasın`. Only the next word decides.
+- **Labels are about the request, not about the world**: `Kadıköy` is PLACE in `Kadıköy'de tiyatro` and EXCLUDE in
+  `Kadıköy dışında tiyatro`.
+
+There is no public Turkish dataset for this task, so this project built one. It is the request parser that
+Bi' Plan (my event-recommendation app for İstanbul) needs.
 
 ## Data
 
-This project builds its own dataset of **messy event requests** (slang, lowercase, typos, emojis), the kind of text
-real users type and public datasets lack, and uses two public datasets of clean assistant requests as the base.
+All labels follow one written guide, [`data/GUIDELINES.md`](data/GUIDELINES.md) (span boundaries, suffixes,
+NAME vs TYPE, what EXCLUDE covers).
 
-**Own dataset: 2,267 messy requests**, written for this project, tagged with city / date / event_name and cleaned by
-an included script:
-
-| Part | How it was made | Rows | Use |
+| Set | How it was made | Requests | Use |
 |---|---|---|---|
-| AI-written requests | Written with their slots by Claude Haiku (2,400 rows in `data/synthetic/`); `prepare_synthetic.py` checks that every slot is in the text on word boundaries, drops duplicates and drops the 443 rows that name an event of a test set | 1,957 (942 of them in training set E, all for the data curve) | train |
-| Messy test | Drafted by AI, checked and corrected by hand | 50 | test |
-| Codex test | Written by a different AI agent (OpenAI Codex), checked by hand (9 of the first 60 and 3 of the other 200 labels fixed) | 260 (60 + 200 more for the data curve) | test |
+| AI-written | 10 Claude Haiku agents, 200 requests each, one focus per agent (cities, prices, exclusions, performers, very messy chat style, ...). Prompt: [`data/train_ai/PROMPT.md`](data/train_ai/PROMPT.md) | 2,000 → 1,691 train + 296 dev | train, choose settings |
+| Codex test | Written by a **different AI** (OpenAI Codex) from the same guide, without seeing any training file. Prompt and history: [`data/test_codex/PROMPT.md`](data/test_codex/PROMPT.md) | 299 | test |
+| Bi' Plan test | The 25 Turkish requests of the Bi' Plan golden set, written by me for the app, labeled following the guide | 25 | test |
 
-Licence: MIT (`data/LICENSE.md`).
+Cleaning (`prepare_data.py`): every span must be found in its text on whole words, in order; lines that fail are
+dropped and listed in `data/clean/stats.json` (0 in the final data). Duplicates are removed after lowercasing and
+folding Turkish letters (`Kadıköy'de` = `kadikoyde`), and any training or dev request that matches a test request is
+dropped. Dev is a fixed 15% of each AI part.
 
-**Base datasets: clean requests**, downloaded and converted by `prepare_sgd.py` and `prepare_massive.py`:
+Honest notes on the data:
+- The training data is AI-written, not collected from users. The Codex test exists so that a model cannot score well
+  only by learning Haiku's writing style: every model scores 0.04–0.15 F1 lower on the Codex test than on dev (same
+  writer as train), which shows the effect is real.
+- The first Codex attempt was rejected and deleted unused: it came from one sentence template and had lost every
+  Turkish letter. The second attempt was written in three batches (see the prompt file).
+- All 299 Codex lines were reviewed against the guide. 23 labels were corrected; the original files are unchanged and
+  the corrections, each with a reason, are in [`data/test_codex/fixes.json`](data/test_codex/fixes.json).
+- The Bi' Plan set is small (25 requests) and its intervals are wide; it is a real-use check, not the main test.
 
-| Set | Source | Licence | Train / dev / test sentences |
-|---|---|---|---|
-| SGD Events | Google Schema-Guided Dialogue, user turns of the Events services | CC BY-SA 4.0 | 5,586 / 626 / 784 |
-| MASSIVE en-US | Amazon MASSIVE, rows with date, place or event slots | CC BY 4.0 | 2,607 / 488 / 633 |
+Span counts (from `data/clean/stats.json`):
 
-The preprocessing scripts download the raw data, map the slots to `city` / `date` /
-`event_name`, convert character spans to BIO tags, remove duplicates, and drop dev/test
-sentences that also appear in an earlier split. Counts and dropped rows are in
-`data/clean/stats.json` and `data/clean/massive_stats.json`. Licence details are in
-`data/LICENSE.md`.
-
-Training sets for the experiments: **A** SGD, **B** SGD + MASSIVE, **C** SGD + typo copies,
-**D** SGD + MASSIVE + typo copies (each word of 4+ letters gets one random letter edit with probability 0.15),
-**E** set D + the synthetic rows. Synthetic rows that mention an event name of the messy test set are dropped (58 of
-1,000), so the messy test does not leak into training. **F** (distillation experiment only) adds a chat-style copy
-of every SGD, MASSIVE and synthetic sentence to set E: lowercased, common words swapped for slang ("tomorrow" →
-"tmrw"), plus typos.
-
-The Codex test set checks set E fairly: the same AI model (Haiku) helped draft both the synthetic rows and the messy
-test, so a gain on the messy test alone could come from shared style. The Codex requests come from a different model.
-9 of its 60 labels were changed by hand to follow the training data's rules (times such as "after 9" are not dates,
-"celtics vs heat" is one event name); the original file is not kept.
+| Split | PLACE | DATE | TYPE | NAME | PRICE | PEOPLE | EXCLUDE |
+|---|---|---|---|---|---|---|---|
+| train | 1,214 | 924 | 1,131 | 271 | 568 | 518 | 390 |
+| Codex test | 293 | 274 | 240 | 69 | 95 | 140 | 84 |
 
 ## Methods
 
-- **Parser** (dictionary baseline): tags any span it saw in training (longest match).
-- **Naive Bayes, Logistic Regression, Linear SVM**: one prediction per word from hand-made
-  features (the word, its prefixes and suffixes, its shape, neighbouring words).
-- **BERT, RoBERTa, BERTweet**: fine-tuned pre-trained transformers (`bert-base-uncased`,
-  `roberta-base`, `vinai/bertweet-base`), trained for up to 4 epochs; BERTweet also on set E.
-- **Distillation**: a trained teacher gives a probability for every tag of every training word
-  (soft labels). The student learns from both the gold tags and the soft labels:
-  loss = α · cross-entropy(gold tags) + (1 − α) · T² · KL(teacher, student), with T = 2 and α
-  chosen on dev from 0.3, 0.5 and 0.7. Two setups: RoBERTa-large teaching BERTweet (same job,
-  bigger teacher), and BERTweet teaching BERT-mini (`google/bert_uncased_L-4_H-256_A-4`, 12×
-  smaller).
-- **Shrinking BERTweet**: start from the trained BERTweet (set E), keep only some of its 12
-  layers (6 = every other; 4 spread out = 1, 4, 7, 10; 4 bottom = 1–4), and train again with
-  its own soft labels. Then store the weights as 16-bit floats or 8-bit integers (`quantize.py`).
-- **Jev** (TypeSafe, optional, paid): answers what word tagging cannot, namely the event type
-  and the number of tickets ("with my girlfriend" means two).
+Every method gives one tag per word; all are scored the same way.
 
-### Baselines and new methods
+| Method | File | What it is |
+|---|---|---|
+| Frequent tag | `hmm.py` | Each word gets the tag it had most often in training; unseen words get O (the slides' baseline). |
+| HMM | `hmm.py` | Bigram hidden Markov model written from scratch: start, transition and emission probabilities by counting with add-0.1 smoothing, Viterbi decoding in log space. Unseen and rare words are mapped to an unknown-word class by their last two letters (`<UNK-de>`), so Turkish case endings still give a clue. `hmm_bio` also forbids IOB2-breaking transitions. |
+| CRF | `crf.py` | Linear-chain CRF (sklearn-crfsuite) with word features: folded word, stem before the apostrophe, the suffix after it, last 1–4 letters, shape, neighbouring words. c1, c2 chosen on dev from a 3×3 grid (chosen: 0.05, 0.1). `crf_no_suffix` drops the suffix features. |
+| BERTurk | `train_bert.py` | `dbmdz/bert-base-turkish-cased` fine-tuned as a token classifier, first sub-token of each word labeled (others −100). Decoded three ways: **softmax** (argmax per word), **softmax + BIO rules** (Viterbi over the same scores with IOB2-breaking transitions forbidden, no retraining), and **+ CRF layer** (learned transition scores, trained with the CRF loss log Z − gold score, Viterbi decoding). |
 
-The methods taught in the course, in their plain form, are the baselines; the rest are this project's new methods.
-Architecture and the specific pre-trained model are listed separately.
+The HMM's Viterbi and the CRF layer's loss and decoding are checked against the worked examples of the week 6
+slides in `tests/test_tagging.py` ("can fish" → VN with joint weight 0.1344; Z = 16 and loss = ln 2).
 
-| Role | Method | Architecture | Specific model |
-|---|---|---|---|
-| Baseline | Parser | dictionary lookup (longest match) | built from the training spans |
-| Baseline | Naive Bayes, Logistic Regression, Linear SVM | linear classifiers on hand-made word features | scikit-learn |
-| Baseline | BERT | BERT encoder (12 layers) | `bert-base-uncased` |
-| Baseline | RoBERTa | RoBERTa encoder (12 layers) | `roberta-base` |
-| New | BERTweet | RoBERTa encoder (12 layers), pre-trained on tweets | `vinai/bertweet-base` |
-| New | AI-written messy training data (set E) | same models, new data | BERTweet_E and the classic models on set E |
-| New | Distillation | teacher and student encoders | `roberta-large` → BERTweet; BERTweet → `google/bert_uncased_L-4_H-256_A-4` (BERT-mini) |
-| New | Shrinking | BERTweet with 6 or 4 of its 12 layers, 16-bit and 8-bit weights | from BERTweet_E |
-| New | Jev (TypeSafe) | hosted model that answers choice questions with probabilities | `jev-1.13.0`: event type and ticket count, and tested as a teacher |
-
-Every setting is chosen on the dev sets (SGD dev + MASSIVE dev); each test set is scored once.
-
-**Metric: micro-averaged exact-span F1.** A slot counts as correct only if its type and both ends match the gold
-span exactly; precision and recall are counted over all slots of all sentences together (micro average), and
-`results/*.json` also keep the F1 of each slot type. Accuracy per word would be misleading: 82% of the words in the
-SGD test (68% in the messy test) have no slot ("O"), so a model that tags nothing would already look good. A
-half-found name ("roan" instead of "chappell roan") is also a wrong answer for the user, which exact spans count
-as wrong.
+Training setup for BERTurk: AdamW (encoder 3e-5, head 1e-3), linear warmup 10%, batch 16, 5 epochs, bf16; the epoch
+with the best dev F1 is kept. Three seeds (7, 13, 42) for every BERTurk variant.
 
 ## Results
 
-Span F1. Single run with seed 42.
+Metric: **exact-span micro F1** (a span counts only if label and both boundaries are right, as on the slides).
+Brackets: 95% bootstrap interval over requests (1,000 draws). BERTurk rows: mean ± standard deviation over 3 seeds;
+the interval is of the lowest seed. Everything is in `results/evaluation.json`; test sets were scored once, after all
+settings were chosen on dev.
 
-| Model | Training set | Chosen on dev | SGD test | MASSIVE test | Messy test | Codex test |
-|---|---|---|---|---|---|---|
-| Parser | D | longest match | 0.72 | 0.76 | 0.58 | 0.58 |
-| Naive Bayes | D | alpha = 1.0 | 0.66 | 0.58 | 0.55 | 0.59 |
-| Logistic Regression | D | C = 10 | 0.88 | 0.84 | 0.62 | 0.61 |
-| Linear SVM | D | C = 0.1 | 0.87 | 0.84 | 0.67 | 0.66 |
-| BERT | D | epoch 3 | 0.97 | 0.91 | 0.71 | 0.72 |
-| RoBERTa | D | epoch 3 | 0.98 | 0.91 | 0.75 | 0.80 |
-| BERTweet | D | epoch 2 | 0.98 | 0.90 | 0.78 | 0.84 |
-| Naive Bayes | E | alpha = 1.0 | 0.67 | 0.58 | 0.63 | 0.71 |
-| Logistic Regression | E | C = 3 | 0.89 | 0.83 | 0.87 | 0.80 |
-| Linear SVM | E | C = 1 | 0.89 | 0.83 | 0.85 | 0.81 |
-| **BERTweet** | E | epoch 4 | **0.98** | 0.91 | **0.95** | **0.95** |
-
-Distillation (training set E unless noted; BERT-mini trained for 8 epochs):
-
-| Student (size) | Teacher | Labels | Dev | MASSIVE test | Messy test | Codex test |
-|---|---|---|---|---|---|---|
-| RoBERTa-large (355M) | none | gold | 0.967 | 0.92 | 0.93 | 0.91 |
-| BERTweet (135M) | none | gold | 0.966 | 0.91 | 0.95 | 0.95 |
-| BERTweet (135M) | RoBERTa-large | gold + soft, α = 0.3 | 0.966 | 0.91 | 0.94 | 0.95 |
-| BERT-mini (11M) | none | gold | 0.957 | 0.89 | 0.84 | 0.83 |
-| BERT-mini (11M) | BERTweet | gold + soft, α = 0.5 | 0.960 | 0.89 | 0.86 | 0.83 |
-| BERT-mini (11M), set F | none | gold | 0.956 | 0.90 | 0.84 | 0.85 |
-| BERT-mini (11M), set F | BERTweet | gold + soft, α = 0.7 | 0.957 | 0.91 | 0.85 | 0.86 |
-
-Shrinking BERTweet (set E, soft labels from the full BERTweet, α chosen on dev). Size is the stored weights;
-scores from `quantize.py`, so the 32-bit rows are full-precision runs and can differ slightly from training,
-which scores with bf16 (≈ sizes: parameters × 4 bytes):
-
-| Model | Layers kept | Stored as | Size | Dev | Messy test | Codex test |
-|---|---|---|---|---|---|---|
-| BERTweet | all 12 | 32-bit | 537 MB | 0.966 | 0.95 | 0.95 |
-| BERTweet | all 12 | 16-bit | 269 MB | 0.966 | 0.95 | 0.95 |
-| BERTweet | all 12 | 8-bit | 137 MB | 0.944 | 0.88 | 0.90 |
-| BERTweet, α = 0.7 | 6 (every other) | 16-bit | **184 MB** | 0.964 | **0.95** | **0.95** |
-| BERTweet, α = 0.7 | 6 (every other) | 8-bit | 93 MB | 0.954 | 0.92 | 0.89 |
-| BERTweet, α = 0.3 | 4 bottom (1–4) | 16-bit | 155 MB | 0.965 | 0.90 | 0.94 |
-| BERTweet, α = 0.3 | 4 bottom (1–4) | 8-bit | 79 MB | 0.956 | 0.87 | 0.92 |
-| BERTweet, α = 0.5 | 4 spread (1, 4, 7, 10) | 32-bit (training) | ≈ 310 MB | 0.964 | 0.89 | 0.90 |
-| BERT-mini, α = 0.5 | — | 32-bit (training) | ≈ 45 MB | 0.960 | 0.86 | 0.83 |
-
-Three seeds (42, 1, 2) for the key comparisons, mean ± standard deviation. The seed changes the
-classifier's starting weights, dropout and the order of the training sentences; the data and α stay
-the same:
-
-| Model | Dev | MASSIVE test | Messy test | Codex test |
+| Method | Dev F1 | Codex test F1 | Bi' Plan F1 | IOB2 breaks (both tests) |
 |---|---|---|---|---|
-| BERTweet, set D | 0.966 ± 0.002 | 0.91 ± 0.01 | 0.80 ± 0.03 | 0.83 ± 0.01 |
-| BERTweet, set E | 0.966 ± 0.001 | 0.91 ± 0.01 | **0.95 ± 0.01** | **0.94 ± 0.02** |
-| BERTweet 6 layers, set E, soft labels α = 0.7 | 0.964 ± 0.001 | 0.90 ± 0.00 | 0.93 ± 0.02 | 0.94 ± 0.01 |
-| BERT-mini, set E, gold labels | 0.957 ± 0.003 | 0.89 ± 0.01 | 0.84 ± 0.01 | 0.84 ± 0.01 |
-| BERT-mini, set E, soft labels α = 0.5 | 0.957 ± 0.004 | 0.89 ± 0.01 | 0.85 ± 0.02 | 0.84 ± 0.01 |
+| Frequent tag | 0.782 | 0.632 [0.603, 0.661] | 0.717 | 188 |
+| HMM | 0.857 | 0.769 [0.745, 0.794] | 0.852 | 0 |
+| HMM + BIO rules | 0.857 | 0.769 [0.745, 0.794] | 0.852 | 0 |
+| CRF, no suffix features | 0.954 | 0.848 [0.827, 0.869] | 0.955 | 0 |
+| CRF | 0.968 | 0.873 [0.855, 0.893] | 0.965 | 0 |
+| BERTurk, softmax | 0.983 | 0.937 ± 0.003 | 0.945 ± 0.010 | 8 |
+| BERTurk, softmax + BIO rules | 0.984 | 0.940 ± 0.002 | 0.945 ± 0.010 | 0 |
+| **BERTurk + CRF layer** | 0.986 | **0.941 ± 0.004** [0.932, 0.959] | 0.956 ± 0.000 | 0 |
 
-Main findings:
+Paired differences on the Codex test (same bootstrap draws for both models):
 
-1. **Every model loses accuracy on messy requests.** The classic models find cities well but
-   miss casual dates ("tmrw") and lowercase event names ("taylor swift").
-2. **Mixing MASSIVE and typo copies into training helps the classic models on messy text**
-   (Linear SVM: 0.52 on set A, 0.67 on set D).
-3. **BERTweet, pre-trained on tweets, handles messy text best.** It had the best dev score of
-   the three transformers, so it is the main model. Its event-name F1 on messy requests is
-   0.69 against 0.19 for Linear SVM.
-4. **More data of the same kind barely helps**: Linear SVM trained on 10% of SGD already
-   reaches 0.90 test F1, and on all of it 0.92.
-5. **AI-written messy training data helps a lot, and the gain holds on the independent Codex
-   test**: BERTweet goes from 0.84 to 0.95 there, Linear SVM from 0.66 to 0.81. The clean test
-   scores stay the same. Over three seeds the gain is far larger than the spread (messy 0.80 ±
-   0.03 → 0.95 ± 0.01, Codex 0.83 ± 0.01 → 0.94 ± 0.02).
-6. **Distillation gave no clear gain.** RoBERTa-large is 3× bigger but ties
-   BERTweet on dev and is worse on messy text, so it had nothing to teach: the distilled
-   BERTweet stayed within 0.01 of plain BERTweet. Jev was a weaker teacher still (0.73 span F1
-   on 300 dev sentences, against 0.96 for BERTweet). When BERTweet teaches the 12× smaller
-   BERT-mini, the soft labels raised dev F1 for every α tried with seed 42 (0.957 → 0.958–0.960),
-   but over three seeds dev F1 is equal (0.957) and messy F1 moves only 0.84 → 0.85, less than
-   the spread between seeds. So the gain from soft labels here is not shown to be real.
-7. **A 12× smaller model keeps the clean-text score but not the messy one**: BERT-mini reaches
-   0.960 dev F1 (BERTweet 0.966) but only 0.86 on messy requests (BERTweet 0.95). Adding 9k
-   chat-style copies (set F) did not close the gap. Dev is clean text, so choosing α on dev
-   cannot reward gains on messy text.
-8. **Shrinking BERTweet itself works much better than starting from a small model.** Half of
-   BERTweet (6 layers) stored in 16-bit is 184 MB, 2.9× smaller than the full model. With seed
-   42 it had the same messy and Codex F1 (0.95); over three seeds it loses about 0.01 (messy
-   0.93 ± 0.02 vs 0.95 ± 0.01, Codex 0.94 vs 0.94). Cut-down BERTweet keeps its knowledge of
-   casual text, which BERT-mini never had. Keeping the bottom 4 layers beat keeping 4 spread-out layers on the
-   Codex test (0.94 vs 0.90): neighbouring layers already work together. 16-bit storage cost
-   nothing; 8-bit costs 0.03–0.07 on messy text, so it is not worth it here. The word table
-   (49M of BERTweet's 135M parameters) is why cutting layers alone shrinks the model only 1.5×.
-   Between the two 16-bit versions we keep all 12 layers: the 6-layer model is 1.8× faster on the
-   GPU (3.3 vs 5.9 ms per request, batch size 1) but less reliable, with one seed at 0.91 messy F1
-   where 12 layers never went below 0.94.
-9. **About 500 AI-written requests are enough.** The data curve below adds the first N rows of a
-   1,957-row pool of AI-written requests to set D (3 seeds per point). On all 260 Codex requests,
-   F1 rises from 0.85 to 0.93 by 500 rows and then stays flat (0.92–0.93 up to 1,957), so more of
-   the same data is not worth making. The messy test keeps rising slowly (0.95 → 0.98), but it was
-   written by the same AI as the training rows and its spread between seeds is as large as the rise.
-
-Data curve (BERTweet, set D + N AI-written rows; mean ± standard deviation over seeds 42, 1, 2). The pool is
-decontaminated against every test set, so the 260 Codex requests share no event name with it:
-
-| AI-written rows | Codex test (260) | Messy test (50) |
-|---|---|---|
-| 0 | 0.85 ± 0.01 | 0.80 ± 0.03 |
-| 250 | 0.91 ± 0.00 | 0.93 ± 0.02 |
-| 500 | **0.93 ± 0.01** | 0.95 ± 0.01 |
-| 1,000 | 0.92 ± 0.01 | 0.97 ± 0.02 |
-| 1,500 | 0.92 ± 0.00 | 0.95 ± 0.03 |
-| 1,957 | 0.92 ± 0.00 | 0.98 ± 0.01 |
-
-Confidence intervals (`evaluate.py`, `results/evaluation.json`; seed-42 models, 95% bootstrap: the test
-requests are drawn again with replacement 1,000 times and each draw is scored; the interval is the middle 95% of
-those scores). Differences are paired: both models are scored on the same draws, so an interval above 0 means the
-gain does not come from which requests happen to be in the test set.
-
-| Model | Messy test (50) | Codex test (all 260) |
-|---|---|---|
-| Linear SVM, set E | 0.85 [0.78, 0.91] | 0.78 [0.75, 0.80] |
-| BERTweet, set D | 0.78 [0.70, 0.85] | 0.85 [0.83, 0.88] |
-| **BERTweet_E** | **0.95 [0.90, 0.99]** | **0.93 [0.91, 0.95]** |
-| BERTweet_E, 6 layers | 0.93 [0.88, 0.98] | 0.93 [0.91, 0.94] |
-
-| Difference | Messy test (50) | Codex test (all 260) | SGD test |
+| Comparison | Difference | 95% interval | Reading |
 |---|---|---|---|
-| AI-written data: BERTweet_E − BERTweet (set D) | +0.18 [+0.10, +0.25] | +0.08 [+0.06, +0.10] | 0.00 [−0.01, +0.01] |
-| Model: BERTweet_E − Linear SVM (both set E) | +0.10 [+0.05, +0.17] | +0.16 [+0.13, +0.18] | +0.10 [+0.08, +0.11] |
-| BERTweet_E − RoBERTa (set D) | +0.20 [+0.12, +0.29] | +0.12 [+0.09, +0.14] | 0.00 [−0.00, +0.01] |
-| Shrinking: 6 layers − 12 layers | −0.02 [−0.04, 0.00] | −0.01 [−0.02, +0.01] | 0.00 [−0.01, +0.01] |
+| HMM − frequent tag | +0.137 | [+0.105, +0.168] | neighbouring tags help |
+| CRF − HMM | +0.104 | [+0.081, +0.125] | rich word features + context help most |
+| CRF − CRF without suffixes | +0.026 | [+0.011, +0.040] | Turkish endings are a real clue |
+| BERTurk (BIO rules) − CRF | +0.070 | [+0.051, +0.087] | pre-training helps on the unseen writer |
+| BERTurk: BIO rules − softmax | +0.004 | [+0.001, +0.007] | small but reliable: fixes every IOB2 break |
+| BERTurk: CRF layer − BIO rules | +0.003 | [−0.005, +0.010] | not distinguishable from 0 |
 
-The gains from the AI-written data and from BERTweet over the classic models stay above 0 on both messy test sets,
-and the AI-written data costs nothing on clean text. The loss from cutting BERTweet to 6 layers is too small to tell
-apart from noise. On 50 messy requests one F1 is only known to about ±0.05.
+Per label on the Codex test (F1):
 
-Confusion matrix (`evaluate.py`, `results/evaluation.json`): words of all 260 Codex requests, gold slot against the
-slot BERTweet_E predicted (B-/I- dropped; O = no slot). The same file has the matrices of Linear SVM and of BERTweet
-on set D, and of the messy test.
+| Method | PLACE | DATE | TYPE | NAME | PRICE | PEOPLE | EXCLUDE |
+|---|---|---|---|---|---|---|---|
+| HMM | 0.858 | 0.829 | 0.714 | 0.585 | 0.937 | 0.718 | **0.359** |
+| CRF | 0.938 | 0.907 | 0.802 | 0.722 | 0.963 | 0.867 | 0.766 |
+| BERTurk + CRF layer | 0.980 | 0.996 | 0.919 | 0.800 | 0.973 | 0.895 | 0.899 |
 
-| Gold ↓ / predicted → | city | date | event_name | O |
-|---|---|---|---|---|
-| city | **271** | 0 | 0 | 0 |
-| date | 0 | **384** | 0 | 27 |
-| event_name | 0 | 0 | **241** | 8 |
-| O | 35 | 2 | 14 | **1,487** |
+### What the results show
 
-Slots are almost never mixed up with each other; the errors are missed slots and false alarms. The AI-written data
-mostly fixed missed slots: against BERTweet on set D, missed date words fall from 74 to 27 and missed event-name
-words from 32 to 8. The largest remaining error is 35 words tagged as a city that are not cities (venues such as
-"msg"), then time-of-day words not tagged as dates ("this evening").
+1. **Context decides EXCLUDE.** The HMM gets EXCLUDE right only 36% of the time: its emission sees one word, and
+   `konser` is usually TYPE. The CRF, which sees the next word (`olmasın`, `hariç`, `istemiyorum`), reaches 0.77, and
+   BERTurk 0.90. This is the *Washington* problem of the slides with a Turkish negation.
+2. **Suffixes matter for Turkish places.** Recall of PLACE spans that end in a case suffix (`kadıköyde`,
+   `Bursa'da`) goes from 0.907 (CRF without suffix features) to 0.952 (CRF) to 0.983 (BERTurk), and the CRF's overall
+   gain from suffix features is +0.026 [+0.011, +0.040].
+3. **BIO rules: needed for softmax, free for HMM/CRF.** Per-word softmax produced 8 tag sequences that break IOB2
+   (`O → I-PRICE`); constrained Viterbi on the same scores removes all of them and adds +0.004 F1. The HMM and CRF
+   learn very low probabilities / scores for those transitions on their own and never break IOB2, so forcing the rule
+   changes nothing for the HMM.
+   A learned CRF layer on top of BERTurk gives no further measurable gain here.
+4. **Same-writer dev sets are too optimistic.** Every model loses 0.04–0.15 F1 between dev (Haiku) and the Codex test,
+   the frequent-tag baseline most (0.782 → 0.632), BERTurk least (0.986 → 0.941). Without a test set from a different
+   writer the comparison would look much closer than it is.
+5. **Missing Turkish letters do not hurt.** On the Codex test, requests typed without any Turkish letter (125) and
+   with them (174) score almost the same for every model (CRF 0.877 vs 0.871, BERTurk + CRF 0.938 vs 0.949), because
+   every method folds or learns both spellings.
+6. **On the 25 Bi' Plan requests all strong models tie** (0.94–0.97, intervals overlap); the set is too small to rank
+   them.
 
-Limitations: one seed except for the three-seed table and the data curve; the messy and Codex test sets have only
-50 and 60 requests (260 Codex requests for the data curve and the intervals), so differences of a few points are
-within noise (see the intervals above); both were written by AI models, not by real
-users. Remaining BERTweet errors on the Codex test include places that are not cities
-("msg", "bway") tagged as cities, and missed time-of-day words ("this evening").
+### Error analysis
 
-Full numbers, per-slot scores and the learning curve are in `results/`.
+`results/error_examples.json` lists all 58 Codex requests that BERTurk + CRF (seed 7) gets at least partly wrong.
+Counted by type (`errors` in `results/evaluation.json`): 39 wrong boundaries, 14 wrong labels, 11 missed spans,
+4 invented spans. The main groups:
 
-## Folders and scripts
+- **Lowercase names read as a kind of event:** `manga konseri`, `hadise konseri`, `hamlet oyunu` become one TYPE span
+  instead of NAME + TYPE. Without capitals, a band name looks like a genre word; NAME is also the rarest training
+  label (271 spans).
+- **Excluded names split in two:** `besiktas maci olmasin` → EXCLUDE `besiktas` + EXCLUDE `maci` instead of one span.
+- **Ticket counts as PEOPLE:** `iki bilet` (two tickets) is missed; the training data rarely says it this way.
+- **Unclear guide cases:** `6 kişilik grup`, `21.30 seansına`, `annem babam ve ben`: the prediction is reasonable
+  and the gold boundary is a convention. These are limits of the guide, not only of the model.
 
-| Path | What it is |
+### Speed
+
+Milliseconds per request on the Codex test, measured inside the scripts (classic models on the CPU, BERTurk
+on an RTX 4070 SUPER in batches of 16): frequent tag 0.007, HMM 0.34, CRF 0.14, BERTurk 0.7–2.2. CRF training takes
+4 s; BERTurk training took 35 s to 53 min per run because the GPU was shared with other programs, so those times are
+not comparable.
+
+## Running it
+
+Python 3.13. CPU part:
+
+```
+python -m pip install -r requirements.txt
+python prepare_data.py          # data/clean/*.jsonl and stats.json
+python train_classic.py         # frequent tag, HMM, CRF -> results/classic.json
+python -m pytest tests          # span conversion, scoring, HMM/CRF math
+```
+
+BERTurk needs a CUDA GPU (`requirements-gpu.txt`):
+
+```
+for seed in 7 13 42; do
+  python train_bert.py --seed $seed
+  python train_bert.py --seed $seed --crf
+done
+python evaluate.py              # results/evaluation.json, results/error_examples.json
+```
+
+Predictions of every model for dev and both test sets are kept in `results/predictions/`, so `evaluate.py` reruns
+without any model.
+
+## Files
+
+| File | Purpose |
 |---|---|
-| `prepare_sgd.py` | Downloads SGD, keeps Events dialogues, writes `data/raw/sgd/` and `data/clean/{train,dev,test}.jsonl` |
-| `prepare_massive.py` | Downloads MASSIVE en-US, maps slots, writes `data/raw/massive/` and `data/clean/massive_*.jsonl` |
-| `prepare_synthetic.py` | Converts `data/synthetic/` to BIO tags and drops rows that leak test-set event names: parts 1–4 for set E (`data/clean/synthetic_*`), parts 1–8 for the data curve (`data/clean/synthetic_pool_*`) |
-| `slots.py` | Shared helpers: reading data, BIO tags, span F1, word features, typo copies, dictionary baseline |
-| `train_classic.py` | Trains and compares the dictionary, Naive Bayes, Logistic Regression and Linear SVM on sets A–E; learning curve |
-| `train_bert.py` | Fine-tunes one transformer (`--model`) on set D, E or F (`--train-set`), optionally distilled from a trained teacher (`--teacher`, `--alpha`); needs a CUDA GPU |
-| `jev.py` | Jev client with a hard call limit and a receipt for every call |
-| `evaluate.py` | Reloads the saved models and adds 95% bootstrap confidence intervals (each model and the main differences) and word-level confusion matrices on the SGD, messy and all 260 Codex test requests; writes `results/evaluation.json` |
-| `quantize.py` | Stores trained transformers as 16-bit floats and 8-bit integers, rescores them and times one request at a time; writes `results/quantized_results.json` |
-| `jev_soft_labels.py` | Asks Jev for the tag probabilities of every word (paid; capped with `--max-calls`) and scores them against BERTweet |
-| `extract.py` | Loads the trained models, tags a request, and lists the follow-up questions an assistant would ask |
-| `app.py`, `demo.html` | Local demo: runs the parser, the Linear SVM, BERTweet_E and its 6-layer version (all trained on set E) side by side on any request, marks the words no model saw in training, shows the filled slots, Jev's answer and the follow-up questions, and shows all results as charts |
-| `requirements.txt`, `requirements-lock.txt` | CPU dependencies (scikit-learn, joblib, numpy): direct pins, and every package pinned (used by CI) |
-| `requirements-gpu.txt` | torch and transformers for the transformer scripts |
-| `.env.example` | Template for `.env` (Jev key and call limit); `.env` itself is git-ignored |
-| `.github/workflows/tests.yml` | GitHub Actions: runs the unit tests on every push and pull request |
-| `.gitattributes`, `.gitignore` | LF line endings; keeps models, reports, `.env` and logged requests out of git |
-| `LICENSE`, `data/LICENSE.md` | MIT licence for the code and the project's own data; source licences of SGD and MASSIVE |
-| `data/raw/` | Downloaded data with its licence files |
-| `data/clean/` | BIO-tagged training, dev and test data, plus statistics |
-| `data/messy/` | The 50-request messy test set |
-| `data/synthetic/` | The AI-written training requests with their slot spans, before conversion |
-| `data/codex/` | The Codex test sets: 60 requests (`codex_test.jsonl`) and 200 more for the data curve (`codex_more_test.jsonl`) |
-| `results/` | Scores of every model (JSON), written by the training scripts |
-| `tests/` | Unit tests (no network or GPU needed) |
-| `contributions/` | Contribution statement |
+| `data/GUIDELINES.md` | The labeling guide |
+| `data/train_ai/` | AI-written training requests and the prompt |
+| `data/test_codex/` | Codex test requests, prompt, and the hand fixes |
+| `data/test_biplan/` | The 25 Turkish Bi' Plan requests |
+| `data/clean/` | Tokenized BIO splits made by `prepare_data.py` |
+| `common.py` | Tokenizer, span ↔ BIO conversion, exact-span scoring, bootstrap |
+| `prepare_data.py` | Checks, cleans and splits the data |
+| `hmm.py` | Frequent-tag baseline and the HMM with Viterbi |
+| `crf.py` | CRF features and model |
+| `train_classic.py` | Trains and scores the baseline, HMM and CRF |
+| `train_bert.py` | BERTurk with softmax, BIO-rule and CRF-layer decoding |
+| `evaluate.py` | Intervals, seeds, paired differences, slices, error types |
+| `tests/test_tagging.py` | Unit tests |
+| `project1/` | Project 1, unchanged |
 
-## How to run
-
-Python 3.13.
-
-```bash
-python -m pip install -r requirements-lock.txt
-python prepare_sgd.py          # uses data/raw if present, otherwise downloads
-python prepare_massive.py
-python prepare_synthetic.py
-python train_classic.py        # about 5 minutes on a CPU
-python -m unittest discover -s tests
-```
-
-Transformers (CUDA GPU; about 2 minutes each on an RTX 4070 SUPER):
-
-```bash
-python -m pip install --index-url https://download.pytorch.org/whl/cu128 torch==2.11.0
-python -m pip install -r requirements-gpu.txt
-python train_bert.py --model bert-base-uncased
-python train_bert.py --model roberta-base
-python train_bert.py --model vinai/bertweet-base
-python train_bert.py --model vinai/bertweet-base --train-set E
-python train_bert.py --model roberta-large --train-set E          # teacher for BERTweet
-python train_bert.py --model vinai/bertweet-base --train-set E --teacher artifacts/roberta_large_E --alpha 0.3
-python train_bert.py --model google/bert_uncased_L-4_H-256_A-4 --train-set E --tag bert_mini_8ep --epochs 8
-python train_bert.py --model google/bert_uncased_L-4_H-256_A-4 --train-set E --tag bert_mini_8ep --epochs 8 --teacher artifacts/bertweet_E --alpha 0.5
-```
-
-The other distillation runs use the same commands with `--alpha 0.3` / `0.5` / `0.7` and `--train-set F`.
-Data curve: `python train_bert.py --model vinai/bertweet-base --synthetic N --seed S` for N in 0, 250, 500, 1000,
-1500, 1957 and S in 42, 1, 2.
-Three seeds: the same commands with `--seed 1` and `--seed 2` (results get a `_seed<n>` suffix).
-Shrinking (also with `--alpha 0.3` / `0.5` / `0.7`, and `--keep-layers 0,3,6,9` or `0,1,2,3` with tags
-`bertweet_4L` / `bertweet_4L_bottom`), then the precision check:
-
-```bash
-python train_bert.py --model vinai/bertweet-base --train-set E --init-from artifacts/bertweet_E \
-    --keep-layers 0,2,4,6,8,10 --teacher artifacts/bertweet_E --alpha 0.7 --tag bertweet_6L
-python quantize.py artifacts/bertweet_E artifacts/bertweet_6L_E_kd0.7 artifacts/bertweet_4L_bottom_E_kd0.3 \
-    artifacts/bertweet_E_seed1 artifacts/bertweet_E_seed2 artifacts/bertweet_6L_E_kd0.7_seed1 artifacts/bertweet_6L_E_kd0.7_seed2
-```
-
-Confidence intervals and confusion matrices (after the models above are trained):
-
-```bash
-python evaluate.py
-```
-
-Demo (http://127.0.0.1:8000). Jev is only called when `.env` has a `TYPESAFE_API_KEY` and a
-`JEV_MAX_CALLS` above 0 (see `.env.example`):
-
-```bash
-python app.py
-```
-
-## How to check the results
-
-Each claim above can be checked without a GPU:
-
-| Claim | Where to look |
-|---|---|
-| Rubric items | Preprocessing: `prepare_*.py`. Training: `train_*.py`. Raw and clean data: `data/`. Licence: `LICENSE`. Contributions: `contributions/` |
-| Naive Bayes plus taught methods (LR, SVM, BERT), and benchmarks | `train_classic.py`, `train_bert.py`; baselines and new methods in the Methods section (Jev as a new method) |
-| No test data used for choosing settings | `train_classic.py` and `train_bert.py` pick settings and epochs by dev F1 only |
-| No overlap between splits | `clean_split` in `slots.py` drops dev/test sentences seen in an earlier split; counts in `data/clean/*stats.json`. Synthetic rows that mention messy-test event names are dropped (`data/clean/synthetic_stats.json`) |
-| Table numbers | `results/classic_results.json` (rows for sets D and E) and `results/{bert,roberta,bertweet,bertweet_E,roberta_large_E}_results.json`; distillation: `results/*_kd<alpha>_results.json` next to the gold-label run of the same student (the README shows the α with the best dev F1); Jev as teacher: `results/jev_teacher_check.json` (310 calls, about $0.04); shrinking: `results/bertweet_{6L,4L,4L_bottom}_E_kd*_results.json` (layers, parameters) and `results/quantized_results.json` (sizes, scores and ms per request per precision, including the seed 1 and 2 runs of the 12- and 6-layer models); seeds: `results/*_seed{1,2}_results.json` next to the seed-42 file of the same run; data curve: `results/bertweet_syn<N>[_seed<n>]_results.json` (`codex_all` = all 260 Codex requests), pool sizes in `data/clean/synthetic_pool_stats.json` |
-| Confidence intervals and confusion matrices | `results/evaluation.json` (F1 with its 95% interval per model and test set, paired differences, and confusion matrices), written by `evaluate.py` with `slots.bootstrap_f1` and `slots.word_confusion` |
-| Classic numbers are reproducible | `python train_classic.py` rebuilds `results/classic_results.json` on a CPU |
-| Code works | `python -m unittest discover -s tests` (also run by GitHub Actions) |
-
-## Licence
-
-Code: MIT (`LICENSE`). Data keeps its source licences (`data/LICENSE.md`).
+Licence: code MIT (`LICENSE`). The data in `data/` was written for this project and is released under MIT as well.

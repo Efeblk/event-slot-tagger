@@ -1,16 +1,18 @@
 # İsmet Efe Balık (2509011061, GitHub: Efeblk)
 
-Solo project. I did all parts:
+Solo project. Project 2 parts:
 
-- Chose the task: slot filling (city, date, event name) for event-search requests.
-- Wrote the preprocessing for Google SGD (Events) and Amazon MASSIVE (English), including slot mapping, BIO tagging, deduplication and leak removal.
-- Built the project's own messy-request dataset: had Claude Haiku write 2,400 requests with their slots, wrote the script that checks and cleans them (1,957 kept), and built and checked the 50-request messy test set.
-- Checked and corrected the labels of the 260-request Codex test set.
-- Trained and compared the dictionary baseline, Naive Bayes, Logistic Regression, Linear SVM, BERT, RoBERTa and BERTweet.
-- Ran the training-data experiments (dataset mixing, typo augmentation, AI-written training data), the learning curve and the data curve, with three seeds for the main results.
-- Tried distillation (RoBERTa-large → BERTweet, BERTweet → BERT-mini, Jev as a teacher) and shrinking BERTweet (fewer layers, 16-bit and 8-bit weights).
-- Added bootstrap confidence intervals and confusion matrices for the main models.
-- Added Jev as a benchmark for event type and ticket count, and the follow-up questions built from the found slots.
-- Built the local demo that compares a simple parser, the best classic model and BERTweet side by side, and shows the results as charts.
+- Chose the task: token classification of Turkish event requests with seven labels (place, date, event type, name,
+  price, people, excluded), the request parser my app Bi' Plan needs.
+- Wrote the labeling guide and the prompts for the AI-written data.
+- Built the dataset: 2,000 training requests written by Claude Haiku agents, a 299-request test set written by a
+  different AI (OpenAI Codex), and the 25 Turkish requests of the Bi' Plan golden set. Rejected a first Codex attempt
+  that was template-made, and kept the label fixes of the Codex test separate from its original files.
+- Wrote the cleaning script (span checks, deduplication with Turkish-letter folding, test-leak removal).
+- Implemented and compared the frequent-tag baseline, an HMM with Viterbi written from scratch, a CRF with Turkish
+  suffix features, and BERTurk with softmax, BIO-rule and CRF-layer decoding (3 seeds each).
+- Evaluated with exact-span F1, bootstrap intervals, paired comparisons, slices (no Turkish letters, suffixed places),
+  IOB2 breaks, speed, and an error analysis.
 
-I used an AI coding assistant (Claude) to help write and review code.
+I used AI coding assistants (Claude) to help write the code, review the Codex test labels against the guide, and
+write this README.

@@ -1,3 +1,5 @@
-scikit-learn==1.9.1
-joblib==1.6.0
+# CPU part: prepare_data.py, train_classic.py, evaluate.py, tests
 numpy==2.5.3
+sklearn-crfsuite==0.5.0
+python-crfsuite==0.9.12
+pytest

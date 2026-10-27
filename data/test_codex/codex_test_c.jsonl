@@ -1,0 +1,100 @@
+{"text":"ankara'da bu akşam caz konseri var mı, 400 tl altı olsun","spans":[["PLACE","ankara'da"],["DATE","bu akşam"],["TYPE","caz konseri"],["PRICE","400 tl altı"]]}
+{"text":"izmirde yarin duman konseri bul, iki kisi gidecegiz","spans":[["PLACE","izmirde"],["DATE","yarin"],["NAME","duman"],["TYPE","konseri"],["PEOPLE","iki kisi"]]}
+{"text":"Bursa'da hafta sonu çocuk tiyatrosu, oğlumla geleyim; ücretsiz var mı?","spans":[["PLACE","Bursa'da"],["DATE","hafta sonu"],["TYPE","çocuk tiyatrosu"],["PEOPLE","oğlumla"],["PRICE","ücretsiz"]]}
+{"text":"antalya bu cuma akşamı açık hava konseri istiyorum, kişi başı en fazla 700 TL","spans":[["PLACE","antalya"],["DATE","bu cuma akşamı"],["TYPE","açık hava konseri"],["PRICE","kişi başı en fazla 700 TL"]]}
+{"text":"eskisehirde yarin aksam arkadaslarla stand-up var mi?","spans":[["PLACE","eskisehirde"],["DATE","yarin aksam"],["PEOPLE","arkadaslarla"],["TYPE","stand-up"]]}
+{"text":"Trabzon'da bu pazar Trabzonspor maçı için iki bilet, 900 TL'yi geçmesin","spans":[["PLACE","Trabzon'da"],["DATE","bu pazar"],["NAME","Trabzonspor"],["TYPE","maçı"],["PEOPLE","iki"],["PRICE","900 TL'yi geçmesin"]]}
+{"text":"Konya'da önümüzdeki cuma akşamı Cem Yılmaz stand-up gösterisi, annemle gideceğim","spans":[["PLACE","Konya'da"],["DATE","önümüzdeki cuma akşamı"],["NAME","Cem Yılmaz"],["TYPE","stand-up gösterisi"],["PEOPLE","annemle"]]}
+{"text":"mersinde 12 ekimde rock konseri olsun, 500 liradan ucuz","spans":[["PLACE","mersinde"],["DATE","12 ekimde"],["TYPE","rock konseri"],["PRICE","500 liradan ucuz"]]}
+{"text":"Samsun'da yarın akşam Fenerbahçe maçı nerede izlenir, arkadaşlarımla","spans":[["PLACE","Samsun'da"],["DATE","yarın akşam"],["NAME","Fenerbahçe"],["TYPE","maçı"],["PEOPLE","arkadaşlarımla"]]}
+{"text":"adana'da cumartesi ücretsiz çocuk etkinliği var mı, kızı da getircem","spans":[["PLACE","adana'da"],["DATE","cumartesi"],["PRICE","ücretsiz"],["TYPE","çocuk etkinliği"],["PEOPLE","kızı da"]]}
+{"text":"Eskişehir'de bu akşam tiyatro olsun, müzikal olmasın","spans":[["PLACE","Eskişehir'de"],["DATE","bu akşam"],["TYPE","tiyatro"],["EXCLUDE","müzikal"]]}
+{"text":"izmirde bu hafta sonu konser degil stand up, 3 kisi icin","spans":[["PLACE","izmirde"],["DATE","bu hafta sonu"],["EXCLUDE","konser"],["TYPE","stand up"],["PEOPLE","3 kisi"]]}
+{"text":"Ankara'da pazar günü sergi bakıyorum, resim sergisi hariç","spans":[["PLACE","Ankara'da"],["DATE","pazar günü"],["TYPE","sergi"],["EXCLUDE","resim sergisi"]]}
+{"text":"bursada yarin aksam futbol maci bul ama basketbol istemiyorum","spans":[["PLACE","bursada"],["DATE","yarin aksam"],["TYPE","futbol maci"],["EXCLUDE","basketbol"]]}
+{"text":"Antalya'da bu yaz opera gösterisi olsun, bale dışında; 2 kişilik","spans":[["PLACE","Antalya'da"],["DATE","bu yaz"],["TYPE","opera gösterisi"],["EXCLUDE","bale"],["PEOPLE","2 kişilik"]]}
+{"text":"konya'da cuma akşamı rock konseri, pop olmasın ve ucuz olsun","spans":[["PLACE","konya'da"],["DATE","cuma akşamı"],["TYPE","rock konseri"],["EXCLUDE","pop"],["PRICE","ucuz"]]}
+{"text":"Mersin'de yarın çocuk tiyatrosu olsun, kukla tiyatrosu istemiyorum","spans":[["PLACE","Mersin'de"],["DATE","yarın"],["TYPE","çocuk tiyatrosu"],["EXCLUDE","kukla tiyatrosu"]]}
+{"text":"trabzonda bu gece canlı müzik, türkü olmasın; sevgilimle gidecez","spans":[["PLACE","trabzonda"],["DATE","bu gece"],["TYPE","canlı müzik"],["EXCLUDE","türkü"],["PEOPLE","sevgilimle"]]}
+{"text":"Gaziantep'te hafta sonu stand-up olsun, Cem Yılmaz dışında","spans":[["PLACE","Gaziantep'te"],["DATE","hafta sonu"],["TYPE","stand-up"],["EXCLUDE","Cem Yılmaz"]]}
+{"text":"samsunda cuma günü konser ariyorum, Duman olmasin","spans":[["PLACE","samsunda"],["DATE","cuma günü"],["TYPE","konser"],["EXCLUDE","Duman"]]}
+{"text":"izmirde bu akşam 250 TL altı caz konseri ve 2 bilet lazım","spans":[["PLACE","izmirde"],["DATE","bu akşam"],["PRICE","250 TL altı"],["TYPE","caz konseri"],["PEOPLE","2"]]}
+{"text":"Ankara'da gelecek hafta salı 20.00'den sonra Hamlet oyunu, 4 kişilik ve en fazla 1200 TL","spans":[["PLACE","Ankara'da"],["DATE","gelecek hafta salı 20.00'den sonra"],["NAME","Hamlet"],["TYPE","oyunu"],["PEOPLE","4 kişilik"],["PRICE","en fazla 1200 TL"]]}
+{"text":"bursa merkezde 8 kasim cocuk tiyatrosu, 2 yetiskin 1 cocuk, kisi basi 300 tl gecmesin","spans":[["PLACE","bursa merkezde"],["DATE","8 kasim"],["TYPE","cocuk tiyatrosu"],["PEOPLE","2 yetiskin 1 cocuk"],["PRICE","kisi basi 300 tl gecmesin"]]}
+{"text":"Antalya'da önümüzdeki pazar sabahı doğa yürüyüşü, çocuklarımla; ücretsiz olsun","spans":[["PLACE","Antalya'da"],["DATE","önümüzdeki pazar sabahı"],["TYPE","doğa yürüyüşü"],["PEOPLE","çocuklarımla"],["PRICE","ücretsiz"]]}
+{"text":"eskisehirde 21 ekimde seramik atölyesi var mı, tek başıma katılcam","spans":[["PLACE","eskisehirde"],["DATE","21 ekimde"],["TYPE","seramik atölyesi"],["PEOPLE","tek başıma"]]}
+{"text":"Konya'da bu akşam Konyaspor maçı için 3 kişi, bilet 600 TL'yi geçmesin","spans":[["PLACE","Konya'da"],["DATE","bu akşam"],["NAME","Konyaspor"],["TYPE","maçı"],["PEOPLE","3 kişi"],["PRICE","600 TL'yi geçmesin"]]}
+{"text":"mersin sahilde hafta sonu açık hava sineması, iki kişiyiz","spans":[["PLACE","mersin sahilde"],["DATE","hafta sonu"],["TYPE","açık hava sineması"],["PEOPLE","iki kişiyiz"]]}
+{"text":"Samsun'da 5 Mayıs pazar çocuklar için bilim atölyesi, 100 tl altı","spans":[["PLACE","Samsun'da"],["DATE","5 Mayıs pazar"],["TYPE","bilim atölyesi"],["PRICE","100 tl altı"]]}
+{"text":"adana'da yarin aksam ailecek gidecek tiyatro ya da konser gibi bisey var mi","spans":[["PLACE","adana'da"],["DATE","yarin aksam"],["PEOPLE","ailecek"]]}
+{"text":"İzmir'de 14 Haziran'da Zeytinli Rock Festivali'ne gideceğiz, 3 arkadaş; bilet kişi başı 1500 TL altında","spans":[["PLACE","İzmir'de"],["DATE","14 Haziran'da"],["NAME","Zeytinli Rock Festivali'ne"],["PEOPLE","3 arkadaş"],["PRICE","kişi başı 1500 TL altında"]]}
+{"text":"ankara'da cuma akşami caz konseri olmasin, tiyatro ariyorum","spans":[["PLACE","ankara'da"],["DATE","cuma akşami"],["EXCLUDE","caz konseri"],["TYPE","tiyatro"]]}
+{"text":"Bursa'da yarın akşam basketbol maçı olsun, futbol değil; babamla geleceğim","spans":[["PLACE","Bursa'da"],["DATE","yarın akşam"],["TYPE","basketbol maçı"],["EXCLUDE","futbol"],["PEOPLE","babamla"]]}
+{"text":"antalyada hafta sonu çocuk oyunu arıyorum, korku filmi hariç, 700 tl civarı","spans":[["PLACE","antalyada"],["DATE","hafta sonu"],["TYPE","çocuk oyunu"],["EXCLUDE","korku filmi"],["PRICE","700 tl civarı"]]}
+{"text":"Trabzon'da bu gece konser olsun, rap istemiyorum","spans":[["PLACE","Trabzon'da"],["DATE","bu gece"],["TYPE","konser"],["EXCLUDE","rap"]]}
+{"text":"gaziantepde cumartesi sergi, fotoğraf sergisi olmasın; annemle","spans":[["PLACE","gaziantepde"],["DATE","cumartesi"],["TYPE","sergi"],["EXCLUDE","fotoğraf sergisi"],["PEOPLE","annemle"]]}
+{"text":"mersin'de pazar günü stand-up değil çocuk tiyatrosu bakıyoruz, 5 kişiyiz","spans":[["PLACE","mersin'de"],["DATE","pazar günü"],["EXCLUDE","stand-up"],["TYPE","çocuk tiyatrosu"],["PEOPLE","5 kişiyiz"]]}
+{"text":"eskişehirde yarın akşam canlı caz, pop olmasın, 400 lirayı aşmasın","spans":[["PLACE","eskişehirde"],["DATE","yarın akşam"],["TYPE","canlı caz"],["EXCLUDE","pop"],["PRICE","400 lirayı aşmasın"]]}
+{"text":"Samsun'da hafta sonu müzikal olsun, çocuk oyunu dışında","spans":[["PLACE","Samsun'da"],["DATE","hafta sonu"],["TYPE","müzikal"],["EXCLUDE","çocuk oyunu"]]}
+{"text":"bursada bu cuma aksam ne yapilir ya","spans":[["PLACE","bursada"],["DATE","bu cuma aksam"]]}
+{"text":"Diyarbakır'da önümüzdeki hafta ücretsiz halk konseri, 6 kişi gideceğiz","spans":[["PLACE","Diyarbakır'da"],["DATE","önümüzdeki hafta"],["PRICE","ücretsiz"],["TYPE","halk konseri"],["PEOPLE","6 kişi"]]}
+{"text":"Kayseri'de bu akşam Kayserispor maçı var mı, 2 kişiyiz ve 350 TL altı bilet olsun","spans":[["PLACE","Kayseri'de"],["DATE","bu akşam"],["NAME","Kayserispor"],["TYPE","maçı"],["PEOPLE","2 kişiyiz"],["PRICE","350 TL altı"]]}
+{"text":"ordu'da yarin deniz kenarinda konser gibi bisey olsun arkadaslarla","spans":[["PLACE","ordu'da"],["DATE","yarin"],["PLACE","deniz kenarinda"],["PEOPLE","arkadaslarla"]]}
+{"text":"Muğla'da 3 Ağustos akşamı açık hava tiyatrosu, 2 kişi, toplam 800 TL'yi geçmesin","spans":[["PLACE","Muğla'da"],["DATE","3 Ağustos akşamı"],["TYPE","açık hava tiyatrosu"],["PEOPLE","2 kişi"],["PRICE","toplam 800 TL'yi geçmesin"]]}
+{"text":"Rize'de pazar çocuk atölyesi var mı, yeğenimle gelsem","spans":[["PLACE","Rize'de"],["DATE","pazar"],["TYPE","çocuk atölyesi"],["PEOPLE","yeğenimle"]]}
+{"text":"denizlide hafta ici aksam bedava stand-up biliyon mu","spans":[["PLACE","denizlide"],["DATE","hafta ici aksam"],["PRICE","bedava"],["TYPE","stand-up"]]}
+{"text":"Tekirdağ'da 19.00'dan sonra canlı müzik, eşimle gideceğim; 500 TL'den ucuz","spans":[["PLACE","Tekirdağ'da"],["DATE","19.00'dan sonra"],["TYPE","canlı müzik"],["PEOPLE","eşimle"],["PRICE","500 TL'den ucuz"]]}
+{"text":"Çanakkale'de Troya Festivali'ne yarın akşam gideceğiz, 4 kişilik grup","spans":[["PLACE","Çanakkale'de"],["NAME","Troya Festivali'ne"],["DATE","yarın akşam"],["PEOPLE","4 kişilik grup"]]}
+{"text":"Hatay'da bu hafta sonu Antakya Medeniyetler Korosu konseri ve uygun bilet arıyorum","spans":[["PLACE","Hatay'da"],["DATE","bu hafta sonu"],["NAME","Antakya Medeniyetler Korosu"],["TYPE","konseri"],["PRICE","uygun"]]}
+{"text":"afyonda cuma akşamı rock konseri olsun, elektronik müzik olmasın","spans":[["PLACE","afyonda"],["DATE","cuma akşamı"],["TYPE","rock konseri"],["EXCLUDE","elektronik müzik"]]}
+{"text":"Erzurum'da yarın buz pateni etkinliği bulabilir misin, çocuklarımla ve bedava","spans":[["PLACE","Erzurum'da"],["DATE","yarın"],["TYPE","buz pateni etkinliği"],["PEOPLE","çocuklarımla"],["PRICE","bedava"]]}
+{"text":"sakaryada cumartesi stand-up istemiyorum, ailece gidilecek tiyatro olsun","spans":[["PLACE","sakaryada"],["DATE","cumartesi"],["EXCLUDE","stand-up"],["TYPE","tiyatro"],["PEOPLE","ailece"]]}
+{"text":"Isparta'da 10 Eylül günü Süleyman Demirel Üniversitesi bahar şenliği gibi konser var mı, 1000 TL altı","spans":[["PLACE","Isparta'da"],["DATE","10 Eylül günü"],["NAME","Süleyman Demirel Üniversitesi bahar şenliği"],["TYPE","konser"],["PRICE","1000 TL altı"]]}
+{"text":"Aydın'da önümüzdeki cumartesi gündüz çocuk tiyatrosu, 3 kişilik aile için 450 TL'yi aşmasın","spans":[["PLACE","Aydın'da"],["DATE","önümüzdeki cumartesi gündüz"],["TYPE","çocuk tiyatrosu"],["PEOPLE","3 kişilik aile"],["PRICE","450 TL'yi aşmasın"]]}
+{"text":"bilecikte cuma günü sergi bakiyorum, heykel sergisi olmasin","spans":[["PLACE","bilecikte"],["DATE","cuma günü"],["TYPE","sergi"],["EXCLUDE","heykel sergisi"]]}
+{"text":"Kars'ta bu akşam yerel müzik konseri, 250 liradan ucuz olsun","spans":[["PLACE","Kars'ta"],["DATE","bu akşam"],["TYPE","yerel müzik konseri"],["PRICE","250 liradan ucuz"]]}
+{"text":"nevsehirde yarin kapali alanda konser istemem, acik hava olsun","spans":[["PLACE","nevsehirde"],["DATE","yarin"],["EXCLUDE","kapali alanda konser"],["TYPE","acik hava"]]}
+{"text":"Van'da bu hafta sonu Van Gölü kıyısında yürüyüş turu, eşim ve iki çocuğumla","spans":[["PLACE","Van'da"],["DATE","bu hafta sonu"],["PLACE","Van Gölü kıyısında"],["TYPE","yürüyüş turu"],["PEOPLE","eşim ve iki çocuğumla"]]}
+{"text":"bursada 15 kasim pazar günü müze gezisi için 4 kişi, öğrenci indirimi olsun","spans":[["PLACE","bursada"],["DATE","15 kasim pazar günü"],["TYPE","müze gezisi"],["PEOPLE","4 kişi"],["PRICE","öğrenci indirimi"]]}
+{"text":"İzmir'de yarın sabah yoga atölyesi var mı, tek başıma gelirim","spans":[["PLACE","İzmir'de"],["DATE","yarın sabah"],["TYPE","yoga atölyesi"],["PEOPLE","tek başıma"]]}
+{"text":"ankara'da 20.00'de başlayan Fenerbahçe maçı için 2 bilet, en fazla 2 bin tl","spans":[["PLACE","ankara'da"],["DATE","20.00'de"],["NAME","Fenerbahçe"],["TYPE","maçı"],["PEOPLE","2"],["PRICE","en fazla 2 bin tl"]]}
+{"text":"Adana'da bu akşam stand-up olsun, tiyatro hariç, arkadaşlarımla gideceğiz","spans":[["PLACE","Adana'da"],["DATE","bu akşam"],["TYPE","stand-up"],["EXCLUDE","tiyatro"],["PEOPLE","arkadaşlarımla"]]}
+{"text":"antalya'da bayramın ikinci günü akşam dj performansı, 3 kişi, 800 tl'yi geçmesin","spans":[["PLACE","antalya'da"],["DATE","bayramın ikinci günü akşam"],["TYPE","dj performansı"],["PEOPLE","3 kişi"],["PRICE","800 tl'yi geçmesin"]]}
+{"text":"Kahramanmaraş'ta hafta sonu basketbol maçı var mı, voleybol olmasın","spans":[["PLACE","Kahramanmaraş'ta"],["DATE","hafta sonu"],["TYPE","basketbol maçı"],["EXCLUDE","voleybol"]]}
+{"text":"manisada yarin aksam konser degil film gosterimi bakiyoruz, 4 kisiyiz","spans":[["PLACE","manisada"],["DATE","yarin aksam"],["EXCLUDE","konser"],["TYPE","film gösterimi"],["PEOPLE","4 kisiyiz"]]}
+{"text":"Mardin'de bu cuma akşamı Mezopotamya kültür gecesi, annemle ve 300 TL altı","spans":[["PLACE","Mardin'de"],["DATE","bu cuma akşamı"],["NAME","Mezopotamya kültür gecesi"],["PEOPLE","annemle"],["PRICE","300 TL altı"]]}
+{"text":"usakta cumartesi tiyatro var mi ne oynuyor","spans":[["PLACE","usakta"],["DATE","cumartesi"],["TYPE","tiyatro"]]}
+{"text":"Bolu'da yarın öğleden sonra doğa yürüyüşü ve kamp etkinliği, 5 arkadaş katılacağız","spans":[["PLACE","Bolu'da"],["DATE","yarın öğleden sonra"],["TYPE","doğa yürüyüşü"],["TYPE","kamp etkinliği"],["PEOPLE","5 arkadaş"]]}
+{"text":"balikesirde hafta sonu sahilde konser olmasin, tiyatro olur","spans":[["PLACE","balikesirde"],["DATE","hafta sonu"],["PLACE","sahilde"],["EXCLUDE","konser"],["TYPE","tiyatro"]]}
+{"text":"Düzce'de 2 Kasım'da Düzce Belediyesi halk dansları gösterisi, 2 kişilik ve ücretsiz","spans":[["PLACE","Düzce'de"],["DATE","2 Kasım'da"],["NAME","Düzce Belediyesi halk dansları gösterisi"],["TYPE","gösterisi"],["PEOPLE","2 kişilik"],["PRICE","ücretsiz"]]}
+{"text":"Niğde'de bu pazar çocuklar için kukla tiyatrosu, 200 TL'den ucuz olsun","spans":[["PLACE","Niğde'de"],["DATE","bu pazar"],["TYPE","kukla tiyatrosu"],["PRICE","200 TL'den ucuz"]]}
+{"text":"tekirdagda yarin konser olsun, metal olmasin; 2 kisiyiz","spans":[["PLACE","tekirdagda"],["DATE","yarin"],["TYPE","konser"],["EXCLUDE","metal"],["PEOPLE","2 kisiyiz"]]}
+{"text":"Yalova'da akşam 18.30'dan sonra termal spa etkinliği gibi bir şey var mı","spans":[["PLACE","Yalova'da"],["DATE","akşam 18.30'dan sonra"]]}
+{"text":"giresunda bu gece canli muzik onerisi lazim","spans":[["PLACE","giresunda"],["DATE","bu gece"],["TYPE","canli muzik"]]}
+{"text":"Elazığ'da gelecek ayın ilk cuması senfoni orkestrası konseri, 6 kişilik rezervasyon ve kişi başı en fazla 900 TL","spans":[["PLACE","Elazığ'da"],["DATE","gelecek ayın ilk cuması"],["TYPE","senfoni orkestrası konseri"],["PEOPLE","6 kişilik"],["PRICE","kişi başı en fazla 900 TL"]]}
+{"text":"erzincanda pazar günü futbol maci istemiyorum, cocuk tiyatrosu olsun","spans":[["PLACE","erzincanda"],["DATE","pazar günü"],["EXCLUDE","futbol maci"],["TYPE","cocuk tiyatrosu"]]}
+{"text":"Artvin'de yarın doğa fotoğrafçılığı gezisi, tek başıma katılabilir miyim","spans":[["PLACE","Artvin'de"],["DATE","yarın"],["TYPE","doğa fotoğrafçılığı gezisi"],["PEOPLE","tek başıma"]]}
+{"text":"agride cumartesi aksam bi konser falan var mi","spans":[["PLACE","agride"],["DATE","cumartesi aksam"],["TYPE","konser"]]}
+{"text":"Kütahya'da 30 Ekim akşamı Kütahyaspor maçı izlemek istiyoruz, 3 kişi; 400 TL altı bilet","spans":[["PLACE","Kütahya'da"],["DATE","30 Ekim akşamı"],["NAME","Kütahyaspor"],["TYPE","maçı"],["PEOPLE","3 kişi"],["PRICE","400 TL altı"]]}
+{"text":"mugla'da yazin ailece gidilecek tiyatro, komedi olmasin","spans":[["PLACE","mugla'da"],["DATE","yazin"],["PEOPLE","ailece"],["TYPE","tiyatro"],["EXCLUDE","komedi"]]}
+{"text":"Bartın'da hafta sonu ücretsiz sahil festivali, 4 kişiyle gideceğiz","spans":[["PLACE","Bartın'da"],["DATE","hafta sonu"],["PRICE","ücretsiz"],["TYPE","sahil festivali"],["PEOPLE","4 kişiyle"]]}
+{"text":"Osmaniye'de 11.00'den sonra çocuk bilim müzesi turu, 2 yetişkinle","spans":[["PLACE","Osmaniye'de"],["DATE","11.00'den sonra"],["TYPE","çocuk bilim müzesi turu"],["PEOPLE","2 yetişkinle"]]}
+{"text":"tokatta cuma günü sinema olmasin, canlı müzik bakıyorum","spans":[["PLACE","tokatta"],["DATE","cuma günü"],["EXCLUDE","sinema"],["TYPE","canlı müzik"]]}
+{"text":"Kırklareli'de yarın akşam geleneksel halk dansları gösterisi, 3 kişi ve 150 TL altı","spans":[["PLACE","Kırklareli'de"],["DATE","yarın akşam"],["TYPE","geleneksel halk dansları gösterisi"],["PEOPLE","3 kişi"],["PRICE","150 TL altı"]]}
+{"text":"bingolde hafta sonu ne yapabiliriz, çocuk da gelecek","spans":[["PLACE","bingolde"],["DATE","hafta sonu"],["PEOPLE","çocuk da"]]}
+{"text":"Aksaray'da bu akşam akustik konser, 2 bilet ve 600 TL'den ucuz olsun","spans":[["PLACE","Aksaray'da"],["DATE","bu akşam"],["TYPE","akustik konser"],["PEOPLE","2"],["PRICE","600 TL'den ucuz"]]}
+{"text":"batmanda yarin stand-up disinda bir goster","spans":[["PLACE","batmanda"],["DATE","yarin"],["EXCLUDE","stand-up"]]}
+{"text":"Siirt'te pazar günü aile tiyatrosu, korku türü olmasın; 5 kişilik","spans":[["PLACE","Siirt'te"],["DATE","pazar günü"],["TYPE","aile tiyatrosu"],["EXCLUDE","korku türü"],["PEOPLE","5 kişilik"]]}
+{"text":"sivasta bu hafta sonu sivasspor maci 2 kisi icin","spans":[["PLACE","sivasta"],["DATE","bu hafta sonu"],["NAME","sivasspor"],["TYPE","maci"],["PEOPLE","2 kisi"]]}
+{"text":"Gümüşhane'de yarın yöresel yemek festivali, kardeşimle katılmak istiyorum","spans":[["PLACE","Gümüşhane'de"],["DATE","yarın"],["TYPE","yöresel yemek festivali"],["PEOPLE","kardeşimle"]]}
+{"text":"Burdur'da 7 Temmuz'da açık hava film gösterimi, arkadaş grubumuzla ve ücretsiz","spans":[["PLACE","Burdur'da"],["DATE","7 Temmuz'da"],["TYPE","açık hava film gösterimi"],["PEOPLE","arkadaş grubumuzla"],["PRICE","ücretsiz"]]}
+{"text":"Şırnak'ta gelecek hafta sonu voleybol maçı olsun, futbol hariç, 2 kişi gideceğiz","spans":[["PLACE","Şırnak'ta"],["DATE","gelecek hafta sonu"],["TYPE","voleybol maçı"],["EXCLUDE","futbol"],["PEOPLE","2 kişi"]]}
+{"text":"tuncelide yarin sabah trekking turu bul, tek basima da olur","spans":[["PLACE","tuncelide"],["DATE","yarin sabah"],["TYPE","trekking turu"],["PEOPLE","tek basima"]]}
+{"text":"Bingöl'de 9 Aralık akşamı halk müziği konseri, 3 kişi ve bilet kişi başı 500 TL'yi aşmasın","spans":[["PLACE","Bingöl'de"],["DATE","9 Aralık akşamı"],["TYPE","halk müziği konseri"],["PEOPLE","3 kişi"],["PRICE","kişi başı 500 TL'yi aşmasın"]]}
+{"text":"sinopta cuma aksam cocuklar icin tiyatro olsun, kukla olmasin","spans":[["PLACE","sinopta"],["DATE","cuma aksam"],["TYPE","cocuklar icin tiyatro"],["EXCLUDE","kukla"]]}
+{"text":"Ardahan'da hafta sonu buz hokeyi maçı izlemeye gideceğiz, 4 kişilik","spans":[["PLACE","Ardahan'da"],["DATE","hafta sonu"],["TYPE","buz hokeyi maçı"],["PEOPLE","4 kişilik"]]}
+{"text":"igdirda bu gece muzikli bi sey olsun","spans":[["PLACE","igdirda"],["DATE","bu gece"]]}
+{"text":"Uşak'ta yarın akşam seramik boyama atölyesi, kızımla geleyim; 300 TL altı","spans":[["PLACE","Uşak'ta"],["DATE","yarın akşam"],["TYPE","seramik boyama atölyesi"],["PEOPLE","kızımla"],["PRICE","300 TL altı"]]}
+{"text":"malatyada bu hafta sonu konser olmasin, cocuk tiyatrosu ariyoruz","spans":[["PLACE","malatyada"],["DATE","bu hafta sonu"],["EXCLUDE","konser"],["TYPE","cocuk tiyatrosu"]]}
+{"text":"Erzincan'da 16.00'da başlayan gençlik korosu konseri, 2 kişi, bedava","spans":[["PLACE","Erzincan'da"],["DATE","16.00'da"],["TYPE","gençlik korosu konseri"],["PEOPLE","2 kişi"],["PRICE","bedava"]]}
+{"text":"canim sikildi disari cikmak istiyorum ama fikir yok","spans":[]}

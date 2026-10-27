@@ -1,474 +1,636 @@
 {
-  "rounds": 1000,
-  "sentences": {
-    "SGD test": 784,
-    "messy": 50,
-    "codex_all": 260
+  "requests": {
+    "codex_test": 299,
+    "biplan_test": 25
+  },
+  "slice_sizes": {
+    "codex_test": 125,
+    "biplan_test": 4
   },
   "models": {
-    "Parser (set E)": {
-      "SGD test": {
-        "f1": 0.7184014869888476,
-        "low": 0.6907092519847741,
-        "high": 0.7458104887801941
+    "berturk_crf": {
+      "codex_test": {
+        "f1": 0.9452569995821145,
+        "low": 0.9320585084707502,
+        "high": 0.9587466284877532,
+        "macro_f1": 0.92321611586608,
+        "precision": 0.9440734557595993,
+        "recall": 0.9464435146443515,
+        "request_exact": 0.8060200668896321,
+        "labels": {
+          "PLACE": 0.9796,
+          "DATE": 0.9964,
+          "TYPE": 0.9194,
+          "NAME": 0.8,
+          "PRICE": 0.9733,
+          "PEOPLE": 0.8945,
+          "EXCLUDE": 0.8994
+        },
+        "f1_no_turkish_letters": 0.9383259911894273,
+        "f1_with_turkish_letters": 0.9494949494949495,
+        "place_suffix_recall": 0.9826989619377162,
+        "iob2_breaks": 0,
+        "errors": {
+          "invented": 4,
+          "missed": 11,
+          "wrong label": 14,
+          "wrong boundary": 39
+        }
       },
-      "messy": {
-        "f1": 0.7682926829268293,
-        "low": 0.7023538961038961,
-        "high": 0.8243376851427698
-      },
-      "codex_all": {
-        "f1": 0.7157534246575342,
-        "low": 0.6878265216847894,
-        "high": 0.7446862787668258
+      "biplan_test": {
+        "f1": 0.9557522123893806,
+        "low": 0.9010989010989011,
+        "high": 0.9921259842519685,
+        "macro_f1": 0.9151960784313725,
+        "precision": 0.9473684210526315,
+        "recall": 0.9642857142857143,
+        "request_exact": 0.84,
+        "labels": {
+          "PLACE": 1.0,
+          "DATE": 0.9412,
+          "TYPE": 1.0,
+          "PRICE": 1.0,
+          "PEOPLE": 0.8,
+          "EXCLUDE": 0.75
+        },
+        "f1_no_turkish_letters": 1.0,
+        "f1_with_turkish_letters": 0.9504950495049505,
+        "place_suffix_recall": 1.0,
+        "iob2_breaks": 0,
+        "errors": {
+          "invented": 3,
+          "missed": 2
+        }
       }
     },
-    "Naive Bayes (set E)": {
-      "SGD test": {
-        "f1": 0.6696696696696696,
-        "low": 0.6490747080802819,
-        "high": 0.6913033680492988
+    "berturk_softmax": {
+      "codex_test": {
+        "f1": 0.939115929941618,
+        "low": 0.9244832573603625,
+        "high": 0.9531200959305852,
+        "macro_f1": 0.9205439924152439,
+        "precision": 0.9359933499584372,
+        "recall": 0.9422594142259414,
+        "request_exact": 0.7792642140468228,
+        "labels": {
+          "PLACE": 0.9779,
+          "DATE": 0.9964,
+          "TYPE": 0.8889,
+          "NAME": 0.806,
+          "PRICE": 0.984,
+          "PEOPLE": 0.8913,
+          "EXCLUDE": 0.8994
+        },
+        "f1_no_turkish_letters": 0.9383259911894273,
+        "f1_with_turkish_letters": 0.9395973154362416,
+        "place_suffix_recall": 0.9826989619377162,
+        "iob2_breaks": 8,
+        "errors": {
+          "invented": 4,
+          "missed": 13,
+          "wrong label": 10,
+          "wrong boundary": 46
+        }
       },
-      "messy": {
-        "f1": 0.6296296296296297,
-        "low": 0.536579822616408,
-        "high": 0.7158192651439921
-      },
-      "codex_all": {
-        "f1": 0.6801346801346801,
-        "low": 0.6437538126698371,
-        "high": 0.7159322033898305
+      "biplan_test": {
+        "f1": 0.9557522123893806,
+        "low": 0.9010989010989011,
+        "high": 0.9921259842519685,
+        "macro_f1": 0.9151960784313725,
+        "precision": 0.9473684210526315,
+        "recall": 0.9642857142857143,
+        "request_exact": 0.84,
+        "labels": {
+          "PLACE": 1.0,
+          "DATE": 0.9412,
+          "TYPE": 1.0,
+          "PRICE": 1.0,
+          "PEOPLE": 0.8,
+          "EXCLUDE": 0.75
+        },
+        "f1_no_turkish_letters": 1.0,
+        "f1_with_turkish_letters": 0.9504950495049505,
+        "place_suffix_recall": 1.0,
+        "iob2_breaks": 0,
+        "errors": {
+          "invented": 3,
+          "missed": 2
+        }
       }
     },
-    "Logistic Regression (set E)": {
-      "SGD test": {
-        "f1": 0.8925301204819277,
-        "low": 0.8745615636275219,
-        "high": 0.9093601884886422
+    "berturk_softmax_bio": {
+      "codex_test": {
+        "f1": 0.9427496865858754,
+        "low": 0.9293944516329886,
+        "high": 0.9561672312148877,
+        "macro_f1": 0.9256550095497699,
+        "precision": 0.9415692821368948,
+        "recall": 0.9439330543933054,
+        "request_exact": 0.7859531772575251,
+        "labels": {
+          "PLACE": 0.9796,
+          "DATE": 0.9964,
+          "TYPE": 0.8966,
+          "NAME": 0.8271,
+          "PRICE": 0.984,
+          "PEOPLE": 0.8913,
+          "EXCLUDE": 0.9048
+        },
+        "f1_no_turkish_letters": 0.9426048565121413,
+        "f1_with_turkish_letters": 0.9428379287155346,
+        "place_suffix_recall": 0.9826989619377162,
+        "iob2_breaks": 0,
+        "errors": {
+          "invented": 4,
+          "missed": 14,
+          "wrong label": 10,
+          "wrong boundary": 43
+        }
       },
-      "messy": {
-        "f1": 0.8735632183908046,
-        "low": 0.7974904028988626,
-        "high": 0.9333502538071066
-      },
-      "codex_all": {
-        "f1": 0.7865519937451134,
-        "low": 0.758386098149638,
-        "high": 0.816519558821398
+      "biplan_test": {
+        "f1": 0.9557522123893806,
+        "low": 0.9010989010989011,
+        "high": 0.9921259842519685,
+        "macro_f1": 0.9151960784313725,
+        "precision": 0.9473684210526315,
+        "recall": 0.9642857142857143,
+        "request_exact": 0.84,
+        "labels": {
+          "PLACE": 1.0,
+          "DATE": 0.9412,
+          "TYPE": 1.0,
+          "PRICE": 1.0,
+          "PEOPLE": 0.8,
+          "EXCLUDE": 0.75
+        },
+        "f1_no_turkish_letters": 1.0,
+        "f1_with_turkish_letters": 0.9504950495049505,
+        "place_suffix_recall": 1.0,
+        "iob2_breaks": 0,
+        "errors": {
+          "invented": 3,
+          "missed": 2
+        }
       }
     },
-    "Linear SVM (set E)": {
-      "SGD test": {
-        "f1": 0.885040885040885,
-        "low": 0.8671940039735311,
-        "high": 0.9015265256615311
+    "crf": {
+      "codex_test": {
+        "f1": 0.8730025231286795,
+        "low": 0.8550572535842031,
+        "high": 0.8927108328440521,
+        "macro_f1": 0.8518943981109962,
+        "precision": 0.8774302620456467,
+        "recall": 0.8686192468619247,
+        "request_exact": 0.5953177257525084,
+        "labels": {
+          "PLACE": 0.9376,
+          "DATE": 0.9068,
+          "TYPE": 0.8016,
+          "NAME": 0.7218,
+          "PRICE": 0.9626,
+          "PEOPLE": 0.8667,
+          "EXCLUDE": 0.7662
+        },
+        "f1_no_turkish_letters": 0.876803551609323,
+        "f1_with_turkish_letters": 0.8706838185511171,
+        "place_suffix_recall": 0.9515570934256056,
+        "iob2_breaks": 0,
+        "errors": {
+          "invented": 5,
+          "missed": 24,
+          "wrong boundary": 87,
+          "wrong label": 46
+        }
       },
-      "messy": {
-        "f1": 0.8488372093023256,
-        "low": 0.774989161849711,
-        "high": 0.9111181434599156
-      },
-      "codex_all": {
-        "f1": 0.7754467754467754,
-        "low": 0.7461587372407092,
-        "high": 0.8039258110797427
+      "biplan_test": {
+        "f1": 0.9649122807017544,
+        "low": 0.9215382613222279,
+        "high": 1.0,
+        "macro_f1": 0.9597222222222223,
+        "precision": 0.9482758620689655,
+        "recall": 0.9821428571428571,
+        "request_exact": 0.88,
+        "labels": {
+          "PLACE": 1.0,
+          "DATE": 1.0,
+          "TYPE": 0.9583,
+          "PRICE": 1.0,
+          "PEOPLE": 0.8,
+          "EXCLUDE": 1.0
+        },
+        "f1_no_turkish_letters": 1.0,
+        "f1_with_turkish_letters": 0.9607843137254902,
+        "place_suffix_recall": 1.0,
+        "iob2_breaks": 0,
+        "errors": {
+          "invented": 3,
+          "missed": 1
+        }
       }
     },
-    "BERT (set D)": {
-      "SGD test": {
-        "f1": 0.9670437776684703,
-        "low": 0.9565196109727809,
-        "high": 0.97733299995061
+    "crf_no_suffix": {
+      "codex_test": {
+        "f1": 0.8475010679196925,
+        "low": 0.8266398478150574,
+        "high": 0.8687380879931365,
+        "macro_f1": 0.8289628544910039,
+        "precision": 0.8656195462478184,
+        "recall": 0.8301255230125523,
+        "request_exact": 0.5183946488294314,
+        "labels": {
+          "PLACE": 0.9014,
+          "DATE": 0.8828,
+          "TYPE": 0.7835,
+          "NAME": 0.7143,
+          "PRICE": 0.9519,
+          "PEOPLE": 0.8157,
+          "EXCLUDE": 0.7532
+        },
+        "f1_no_turkish_letters": 0.8435374149659864,
+        "f1_with_turkish_letters": 0.8498971898560658,
+        "place_suffix_recall": 0.9065743944636678,
+        "iob2_breaks": 0,
+        "errors": {
+          "invented": 8,
+          "wrong boundary": 97,
+          "missed": 54,
+          "wrong label": 52
+        }
       },
-      "messy": {
-        "f1": 0.7065868263473054,
-        "low": 0.618421052631579,
-        "high": 0.7892046823893958
-      },
-      "codex_all": {
-        "f1": 0.7668049792531121,
-        "low": 0.7331010565397418,
-        "high": 0.7990234042714397
+      "biplan_test": {
+        "f1": 0.954954954954955,
+        "low": 0.9090488215488215,
+        "high": 0.9910025410025409,
+        "macro_f1": 0.9546272615326323,
+        "precision": 0.9636363636363636,
+        "recall": 0.9464285714285714,
+        "request_exact": 0.8,
+        "labels": {
+          "PLACE": 0.9412,
+          "DATE": 0.9412,
+          "TYPE": 0.9565,
+          "PRICE": 1.0,
+          "PEOPLE": 0.8889,
+          "EXCLUDE": 1.0
+        },
+        "f1_no_turkish_letters": 0.8333333333333334,
+        "f1_with_turkish_letters": 0.9696969696969697,
+        "place_suffix_recall": 1.0,
+        "iob2_breaks": 0,
+        "errors": {
+          "invented": 2,
+          "missed": 3
+        }
       }
     },
-    "RoBERTa (set D)": {
-      "SGD test": {
-        "f1": 0.9783677482792527,
-        "low": 0.9680844529248784,
-        "high": 0.9875327190708093
+    "frequent_tag": {
+      "codex_test": {
+        "f1": 0.631578947368421,
+        "low": 0.6034205382842924,
+        "high": 0.6606068301177048,
+        "macro_f1": 0.560115771366031,
+        "precision": 0.6408268733850129,
+        "recall": 0.6225941422594142,
+        "request_exact": 0.16387959866220736,
+        "labels": {
+          "PLACE": 0.6336,
+          "DATE": 0.6834,
+          "TYPE": 0.6464,
+          "NAME": 0.4754,
+          "PRICE": 0.6476,
+          "PEOPLE": 0.7629,
+          "EXCLUDE": 0.0714
+        },
+        "f1_no_turkish_letters": 0.6567164179104478,
+        "f1_with_turkish_letters": 0.6168350168350168,
+        "place_suffix_recall": 0.4982698961937716,
+        "iob2_breaks": 180,
+        "errors": {
+          "invented": 15,
+          "wrong label": 83,
+          "wrong boundary": 190,
+          "missed": 178
+        }
       },
-      "messy": {
-        "f1": 0.7530864197530862,
-        "low": 0.6626487545273118,
-        "high": 0.8343109243697479
-      },
-      "codex_all": {
-        "f1": 0.8138957816377169,
-        "low": 0.7851699427057298,
-        "high": 0.8418534083073776
+      "biplan_test": {
+        "f1": 0.7166666666666667,
+        "low": 0.6153571428571429,
+        "high": 0.8264462809917356,
+        "macro_f1": 0.5677430128836778,
+        "precision": 0.671875,
+        "recall": 0.7678571428571429,
+        "request_exact": 0.48,
+        "labels": {
+          "PLACE": 0.8235,
+          "DATE": 0.7,
+          "TYPE": 0.9565,
+          "NAME": 0.0,
+          "PRICE": 0.381,
+          "PEOPLE": 0.5455,
+          "EXCLUDE": 0.0
+        },
+        "f1_no_turkish_letters": 0.6666666666666666,
+        "f1_with_turkish_letters": 0.7222222222222222,
+        "place_suffix_recall": 0.875,
+        "iob2_breaks": 8,
+        "errors": {
+          "wrong boundary": 9,
+          "invented": 1,
+          "wrong label": 2,
+          "missed": 2
+        }
       }
     },
-    "BERTweet (set D)": {
-      "SGD test": {
-        "f1": 0.9818181818181818,
-        "low": 0.9731051344743277,
-        "high": 0.9898847600511063
+    "hmm": {
+      "codex_test": {
+        "f1": 0.7689713322091062,
+        "low": 0.7452409695817491,
+        "high": 0.7940763769982948,
+        "macro_f1": 0.714071901847601,
+        "precision": 0.7748513169073916,
+        "recall": 0.7631799163179916,
+        "request_exact": 0.38461538461538464,
+        "labels": {
+          "PLACE": 0.8576,
+          "DATE": 0.829,
+          "TYPE": 0.7135,
+          "NAME": 0.5846,
+          "PRICE": 0.9368,
+          "PEOPLE": 0.7179,
+          "EXCLUDE": 0.359
+        },
+        "f1_no_turkish_letters": 0.7685393258426966,
+        "f1_with_turkish_letters": 0.7692307692307693,
+        "place_suffix_recall": 0.8546712802768166,
+        "iob2_breaks": 0,
+        "errors": {
+          "invented": 12,
+          "wrong label": 130,
+          "wrong boundary": 130,
+          "missed": 23
+        }
       },
-      "messy": {
-        "f1": 0.7752808988764045,
-        "low": 0.7032900432900433,
-        "high": 0.8540863505014449
-      },
-      "codex_all": {
-        "f1": 0.8524072612470402,
-        "low": 0.8275834526826044,
-        "high": 0.8771741364366114
+      "biplan_test": {
+        "f1": 0.8521739130434782,
+        "low": 0.7407222222222222,
+        "high": 0.9420319798778296,
+        "macro_f1": 0.7898593780946722,
+        "precision": 0.8305084745762712,
+        "recall": 0.875,
+        "request_exact": 0.64,
+        "labels": {
+          "PLACE": 0.8889,
+          "DATE": 0.9412,
+          "TYPE": 0.9091,
+          "PRICE": 1.0,
+          "PEOPLE": 0.8,
+          "EXCLUDE": 0.2
+        },
+        "f1_no_turkish_letters": 0.8333333333333334,
+        "f1_with_turkish_letters": 0.8543689320388349,
+        "place_suffix_recall": 1.0,
+        "iob2_breaks": 0,
+        "errors": {
+          "invented": 4,
+          "wrong boundary": 1,
+          "wrong label": 5,
+          "missed": 1
+        }
       }
     },
-    "BERTweet_E": {
-      "SGD test": {
-        "f1": 0.9822834645669292,
-        "low": 0.9737457730505694,
-        "high": 0.9898897585672615
+    "hmm_bio": {
+      "codex_test": {
+        "f1": 0.7689713322091062,
+        "low": 0.7452409695817491,
+        "high": 0.7940763769982948,
+        "macro_f1": 0.714071901847601,
+        "precision": 0.7748513169073916,
+        "recall": 0.7631799163179916,
+        "request_exact": 0.38461538461538464,
+        "labels": {
+          "PLACE": 0.8576,
+          "DATE": 0.829,
+          "TYPE": 0.7135,
+          "NAME": 0.5846,
+          "PRICE": 0.9368,
+          "PEOPLE": 0.7179,
+          "EXCLUDE": 0.359
+        },
+        "f1_no_turkish_letters": 0.7685393258426966,
+        "f1_with_turkish_letters": 0.7692307692307693,
+        "place_suffix_recall": 0.8546712802768166,
+        "iob2_breaks": 0,
+        "errors": {
+          "invented": 12,
+          "wrong label": 130,
+          "wrong boundary": 130,
+          "missed": 23
+        }
       },
-      "messy": {
-        "f1": 0.9502762430939227,
-        "low": 0.903954802259887,
-        "high": 0.9892501715854496
+      "biplan_test": {
+        "f1": 0.8521739130434782,
+        "low": 0.7407222222222222,
+        "high": 0.9420319798778296,
+        "macro_f1": 0.7898593780946722,
+        "precision": 0.8305084745762712,
+        "recall": 0.875,
+        "request_exact": 0.64,
+        "labels": {
+          "PLACE": 0.8889,
+          "DATE": 0.9412,
+          "TYPE": 0.9091,
+          "PRICE": 1.0,
+          "PEOPLE": 0.8,
+          "EXCLUDE": 0.2
+        },
+        "f1_no_turkish_letters": 0.8333333333333334,
+        "f1_with_turkish_letters": 0.8543689320388349,
+        "place_suffix_recall": 1.0,
+        "iob2_breaks": 0,
+        "errors": {
+          "invented": 4,
+          "wrong boundary": 1,
+          "wrong label": 5,
+          "missed": 1
+        }
+      }
+    }
+  },
+  "seeds": {
+    "berturk_crf": {
+      "codex_test": {
+        "seeds": [
+          7,
+          13,
+          42
+        ],
+        "f1": [
+          0.9407839866555463,
+          0.9377870563674322,
+          0.9452569995821145
+        ],
+        "mean": 0.9412760142016977,
+        "std": 0.003759199547413433
       },
-      "codex_all": {
-        "f1": 0.930053804765565,
-        "low": 0.9117403783067951,
-        "high": 0.9474516798787623
+      "biplan_test": {
+        "seeds": [
+          7,
+          13,
+          42
+        ],
+        "f1": [
+          0.9557522123893806,
+          0.9557522123893806,
+          0.9557522123893806
+        ],
+        "mean": 0.9557522123893806,
+        "std": 0.0
       }
     },
-    "BERTweet_E 6 layers": {
-      "SGD test": {
-        "f1": 0.9808353808353808,
-        "low": 0.9717373096779138,
-        "high": 0.9890331743812387
+    "berturk_softmax": {
+      "codex_test": {
+        "seeds": [
+          7,
+          13,
+          42
+        ],
+        "f1": [
+          0.9383333333333334,
+          0.933997509339975,
+          0.939115929941618
+        ],
+        "mean": 0.9371489242049754,
+        "std": 0.002757113726586879
       },
-      "messy": {
-        "f1": 0.9340659340659341,
-        "low": 0.8839714762944879,
-        "high": 0.9775343320848938
+      "biplan_test": {
+        "seeds": [
+          7,
+          13,
+          42
+        ],
+        "f1": [
+          0.9391304347826087,
+          0.9391304347826087,
+          0.9557522123893806
+        ],
+        "mean": 0.9446710273181993,
+        "std": 0.009596587775679826
+      }
+    },
+    "berturk_softmax_bio": {
+      "codex_test": {
+        "seeds": [
+          7,
+          13,
+          42
+        ],
+        "f1": [
+          0.9394572025052192,
+          0.9383846794338052,
+          0.9427496865858754
+        ],
+        "mean": 0.9401971895083,
+        "std": 0.00227464446297709
       },
-      "codex_all": {
-        "f1": 0.924864446165763,
-        "low": 0.9062433226495726,
-        "high": 0.9420561993356406
+      "biplan_test": {
+        "seeds": [
+          7,
+          13,
+          42
+        ],
+        "f1": [
+          0.9391304347826087,
+          0.9391304347826087,
+          0.9557522123893806
+        ],
+        "mean": 0.9446710273181993,
+        "std": 0.009596587775679826
       }
     }
   },
   "differences": {
-    "BERTweet_E - BERTweet (set D)": {
-      "SGD test": {
-        "diff": 0.0004652827487473532,
-        "low": -0.004871098808406529,
-        "high": 0.005336990642241118
+    "crf - hmm_bio": {
+      "codex_test": {
+        "diff": 0.10403119091957336,
+        "low": 0.08079803845635268,
+        "high": 0.12469032756597566
       },
-      "messy": {
-        "diff": 0.17499534421751817,
-        "low": 0.09611675979223222,
-        "high": 0.24650656051894432
-      },
-      "codex_all": {
-        "diff": 0.07764654351852474,
-        "low": 0.057381018966506894,
-        "high": 0.10042615104387918
+      "biplan_test": {
+        "diff": 0.11273836765827616,
+        "low": 0.03028074866310158,
+        "high": 0.21621507001774873
       }
     },
-    "BERTweet_E - Linear SVM (set E)": {
-      "SGD test": {
-        "diff": 0.0972425795260442,
-        "low": 0.08155431699142097,
-        "high": 0.11426415527308212
+    "crf - crf_no_suffix": {
+      "codex_test": {
+        "diff": 0.025501455208987056,
+        "low": 0.010735093160162839,
+        "high": 0.03962327660054566
       },
-      "messy": {
-        "diff": 0.10143903379159702,
-        "low": 0.05031441535440438,
-        "high": 0.16685830041597186
-      },
-      "codex_all": {
-        "diff": 0.15460702931878956,
-        "low": 0.12497905933828586,
-        "high": 0.18239911767498984
+      "biplan_test": {
+        "diff": 0.009957325746799417,
+        "low": -0.031737061319949085,
+        "high": 0.057320872274143286
       }
     },
-    "BERTweet_E - RoBERTa (set D)": {
-      "SGD test": {
-        "diff": 0.003915716287676507,
-        "low": -0.001996212452882318,
-        "high": 0.01030704716100991
-      },
-      "messy": {
-        "diff": 0.19718982334083646,
-        "low": 0.11896214944931958,
-        "high": 0.28995078155331433
-      },
-      "codex_all": {
-        "diff": 0.11615802312784806,
-        "low": 0.08983384351215674,
-        "high": 0.14092808761278164
-      }
-    },
-    "BERTweet_E 6 layers - BERTweet_E": {
-      "SGD test": {
-        "diff": -0.0014480837315483663,
-        "low": -0.007708238333280604,
-        "high": 0.005314820305569563
-      },
-      "messy": {
-        "diff": -0.01621030902798859,
-        "low": -0.035756430292663406,
+    "hmm_bio - hmm": {
+      "codex_test": {
+        "diff": 0.0,
+        "low": 0.0,
         "high": 0.0
       },
-      "codex_all": {
-        "diff": -0.005189358599801963,
-        "low": -0.016126688537604433,
-        "high": 0.006390655072331985
-      }
-    }
-  },
-  "confusion": {
-    "Linear SVM (set E)": {
-      "SGD test": {
-        "city": {
-          "city": 865,
-          "date": 0,
-          "event_name": 0,
-          "O": 6
-        },
-        "date": {
-          "city": 0,
-          "date": 1046,
-          "event_name": 0,
-          "O": 5
-        },
-        "event_name": {
-          "city": 15,
-          "date": 7,
-          "event_name": 112,
-          "O": 117
-        },
-        "O": {
-          "city": 30,
-          "date": 10,
-          "event_name": 57,
-          "O": 9988
-        }
-      },
-      "messy": {
-        "city": {
-          "city": 39,
-          "date": 0,
-          "event_name": 1,
-          "O": 0
-        },
-        "date": {
-          "city": 0,
-          "date": 58,
-          "event_name": 0,
-          "O": 6
-        },
-        "event_name": {
-          "city": 0,
-          "date": 0,
-          "event_name": 14,
-          "O": 14
-        },
-        "O": {
-          "city": 1,
-          "date": 0,
-          "event_name": 2,
-          "O": 279
-        }
-      },
-      "codex_all": {
-        "city": {
-          "city": 258,
-          "date": 0,
-          "event_name": 1,
-          "O": 12
-        },
-        "date": {
-          "city": 6,
-          "date": 343,
-          "event_name": 5,
-          "O": 57
-        },
-        "event_name": {
-          "city": 13,
-          "date": 0,
-          "event_name": 173,
-          "O": 63
-        },
-        "O": {
-          "city": 28,
-          "date": 11,
-          "event_name": 20,
-          "O": 1479
-        }
+      "biplan_test": {
+        "diff": 0.0,
+        "low": 0.0,
+        "high": 0.0
       }
     },
-    "BERTweet (set D)": {
-      "SGD test": {
-        "city": {
-          "city": 867,
-          "date": 0,
-          "event_name": 0,
-          "O": 4
-        },
-        "date": {
-          "city": 0,
-          "date": 1048,
-          "event_name": 0,
-          "O": 3
-        },
-        "event_name": {
-          "city": 1,
-          "date": 0,
-          "event_name": 236,
-          "O": 14
-        },
-        "O": {
-          "city": 10,
-          "date": 3,
-          "event_name": 1,
-          "O": 10071
-        }
+    "hmm - frequent_tag": {
+      "codex_test": {
+        "diff": 0.13739238484068517,
+        "low": 0.10548995347925405,
+        "high": 0.16800308732269675
       },
-      "messy": {
-        "city": {
-          "city": 39,
-          "date": 0,
-          "event_name": 0,
-          "O": 1
-        },
-        "date": {
-          "city": 0,
-          "date": 52,
-          "event_name": 0,
-          "O": 12
-        },
-        "event_name": {
-          "city": 2,
-          "date": 0,
-          "event_name": 22,
-          "O": 4
-        },
-        "O": {
-          "city": 0,
-          "date": 0,
-          "event_name": 5,
-          "O": 277
-        }
-      },
-      "codex_all": {
-        "city": {
-          "city": 271,
-          "date": 0,
-          "event_name": 0,
-          "O": 0
-        },
-        "date": {
-          "city": 0,
-          "date": 337,
-          "event_name": 0,
-          "O": 74
-        },
-        "event_name": {
-          "city": 4,
-          "date": 0,
-          "event_name": 213,
-          "O": 32
-        },
-        "O": {
-          "city": 41,
-          "date": 1,
-          "event_name": 14,
-          "O": 1482
-        }
+      "biplan_test": {
+        "diff": 0.13550724637681155,
+        "low": -0.0066861292662381885,
+        "high": 0.2705640956234578
       }
     },
-    "BERTweet_E": {
-      "SGD test": {
-        "city": {
-          "city": 867,
-          "date": 0,
-          "event_name": 0,
-          "O": 4
-        },
-        "date": {
-          "city": 0,
-          "date": 1050,
-          "event_name": 0,
-          "O": 1
-        },
-        "event_name": {
-          "city": 2,
-          "date": 1,
-          "event_name": 226,
-          "O": 22
-        },
-        "O": {
-          "city": 9,
-          "date": 3,
-          "event_name": 0,
-          "O": 10073
-        }
+    "berturk_softmax_bio - berturk_softmax": {
+      "codex_test": {
+        "diff": 0.0036337566442574687,
+        "low": 0.0007892687143928933,
+        "high": 0.007277938364872135
       },
-      "messy": {
-        "city": {
-          "city": 39,
-          "date": 0,
-          "event_name": 0,
-          "O": 1
-        },
-        "date": {
-          "city": 0,
-          "date": 60,
-          "event_name": 0,
-          "O": 4
-        },
-        "event_name": {
-          "city": 0,
-          "date": 0,
-          "event_name": 28,
-          "O": 0
-        },
-        "O": {
-          "city": 0,
-          "date": 0,
-          "event_name": 1,
-          "O": 281
-        }
+      "biplan_test": {
+        "diff": 0.0,
+        "low": 0.0,
+        "high": 0.0
+      }
+    },
+    "berturk_crf - berturk_softmax_bio": {
+      "codex_test": {
+        "diff": 0.002507312996239075,
+        "low": -0.004929012937968336,
+        "high": 0.010228647729566111
       },
-      "codex_all": {
-        "city": {
-          "city": 271,
-          "date": 0,
-          "event_name": 0,
-          "O": 0
-        },
-        "date": {
-          "city": 0,
-          "date": 384,
-          "event_name": 0,
-          "O": 27
-        },
-        "event_name": {
-          "city": 0,
-          "date": 0,
-          "event_name": 241,
-          "O": 8
-        },
-        "O": {
-          "city": 35,
-          "date": 2,
-          "event_name": 14,
-          "O": 1487
-        }
+      "biplan_test": {
+        "diff": 0.0,
+        "low": 0.0,
+        "high": 0.0
+      }
+    },
+    "berturk_softmax_bio - crf": {
+      "codex_test": {
+        "diff": 0.0697471634571959,
+        "low": 0.051113834198695314,
+        "high": 0.08737296245993105
+      },
+      "biplan_test": {
+        "diff": -0.009160068312373815,
+        "low": -0.06438548889558843,
+        "high": 0.029107691724823984
       }
     }
   }
