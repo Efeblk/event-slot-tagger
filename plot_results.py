@@ -1,7 +1,8 @@
 """Draws the README figures from the saved results (no model needed).
 
-Reads results/evaluation.json, results/classic.json, results/bert-base-turkish-cased*_seed*.json and
-results/timing_idle_gpu.json; writes results/figures/*.png.
+Reads results/evaluation.json, results/classic.json, results/bert-base-turkish-cased*_seed*.json,
+results/timing_idle_gpu.json, results/predictions/, and (when present) results/robustness.json and
+results/learning_curve.json; writes results/figures/*.png.
 
 Usage: python plot_results.py
 """
@@ -20,6 +21,8 @@ FIGURES = RESULTS / "figures"
 
 SURFACE, INK, INK_2, MUTED, GRID = "#fcfcfb", "#0b0b0b", "#52514e", "#8a8984", "#e6e5e1"
 SERIES = ["#2a78d6", "#eb6834", "#1baf7a"]  # categorical slots 1-3, in fixed order
+BLUES = ["#fcfcfb", "#cde2fb", "#9ec5f4", "#6da7ec", "#3987e5", "#256abf", "#184f95", "#0d366b"]  # sequential
+THREE = [("hmm", "HMM"), ("crf", "CRF"), ("berturk_crf", "BERTurk + CRF layer")]  # one per categorical slot
 LABELS = ["PLACE", "DATE", "TYPE", "NAME", "PRICE", "PEOPLE", "EXCLUDE"]
 METHODS = [  # (key in evaluation.json, shown name, BERTurk result files and decoder, or None for classic models)
     ("frequent_tag", "Frequent tag", None),
@@ -195,6 +198,128 @@ def plot_training():
     save(fig, "training.png")
 
 
+def plot_confusion():
+    """Row-normalized word-level confusion (B-/I- merged) on the Codex test: HMM against BERTurk + CRF layer."""
+    from matplotlib.colors import LinearSegmentedColormap
+    gold = [json.loads(line)["tags"] for line in (ROOT / "data" / "clean" / "codex_test.jsonl").read_text(
+        encoding="utf-8").splitlines() if line.strip()]
+    classes = ["O"] + LABELS
+    runs = [("HMM", "hmm.json"), ("BERTurk + CRF layer (seed 7)", "bert-base-turkish-cased_crf_seed7_crf.json")]
+    cmap = LinearSegmentedColormap.from_list("blues", BLUES)
+    fig, axes = plt.subplots(1, 2, figsize=(10, 4.8), sharey=True)
+    for ax, (title, path) in zip(axes, runs):
+        preds = load(f"predictions/{path}")["codex_test"]
+        counts = [[0] * len(classes) for _ in classes]
+        for g_tags, p_tags in zip(gold, preds):
+            for g, p in zip(g_tags, p_tags):
+                counts[classes.index(g[2:] if g != "O" else g)][classes.index(p[2:] if p != "O" else p)] += 1
+        share = [[c / sum(row) for c in row] for row in counts]
+        ax.imshow(share, cmap=cmap, vmin=0, vmax=1)
+        for i, row in enumerate(share):
+            for j, v in enumerate(row):
+                if v >= 0.005:
+                    ax.text(j, i, f"{v:.2f}".lstrip("0") if v < 1 else "1", ha="center", va="center", fontsize=7.5,
+                            color=SURFACE if v > 0.5 else INK)
+        ax.set_xticks(range(len(classes)), classes, rotation=45, ha="right", fontsize=8)
+        ax.set_yticks(range(len(classes)), classes, fontsize=8)
+        ax.grid(False)
+        ax.tick_params(length=0)
+        for spine in ax.spines.values():
+            spine.set_visible(False)
+        ax.set_title(title, fontsize=10)
+        ax.set_xlabel("Predicted label")
+    axes[0].set_ylabel("Gold label (each row sums to 1)")
+    fig.suptitle("The HMM tags most excluded words as TYPE; BERTurk keeps them apart", x=0.0, ha="left",
+                 fontsize=12, fontweight="bold")
+    fig.tight_layout()
+    save(fig, "confusion.png")
+
+
+def plot_robustness():
+    """F1 change on each perturbed copy of the Codex test, for three models."""
+    if not (RESULTS / "robustness.json").exists():
+        return
+    rob = load("robustness.json")
+    names = {"lowercase": "all lowercase", "no_turkish_letters": "no Turkish letters", "no_apostrophes":
+             "no apostrophes", "all_caps": "ALL CAPS", "typos_10": "typos in 10% of words", "typos_25":
+             "typos in 25% of words", "messy": "messy (first three + 10% typos)"}
+    rows = list(reversed(list(names)))
+    fig, ax = plt.subplots(figsize=(8, 4.4))
+    for k, (key, label) in enumerate(THREE):
+        result = rob["models"][key]["perturbed"]
+        clean = result["clean"]["f1"]
+        drops = [result[p]["f1"] - clean for p in rows]
+        ys = [y + (1 - k) * 0.22 for y in range(len(rows))]
+        ax.hlines(ys, 0, drops, color=SERIES[k], linewidth=2)
+        ax.scatter(drops, ys, s=50, color=SERIES[k], edgecolor=SURFACE, linewidth=1.5, zorder=3,
+                   label=f"{label} (clean {clean:.3f})")
+    ax.axvline(0, color=INK_2, linewidth=1)
+    ax.set_yticks(range(len(rows)), [names[p] for p in rows])
+    ax.tick_params(axis="y", length=0)
+    ax.grid(axis="y", visible=False)
+    ax.set_xlabel("Change in Codex test F1 against the clean text")
+    ax.set_title("Attacking the input: how much F1 each change costs", pad=28)
+    ax.legend(loc="lower left", bbox_to_anchor=(0, 1.0), ncol=3, fontsize=8.5)
+    save(fig, "robustness.png")
+
+
+def plot_contrast():
+    """Share of minimal pairs where the target span is right in both the wanted and the excluded version."""
+    if not (RESULTS / "robustness.json").exists():
+        return
+    rob = load("robustness.json")
+    groups = [("TYPE", "TYPE ↔ EXCLUDE\nkonser olsun / olmasın"), ("PLACE", "PLACE ↔ EXCLUDE\nKadıköy civarında / dışında"),
+              ("NAME", "NAME ↔ EXCLUDE\nDuman olsun / olmasın"), ("all", "all pairs")]
+    fig, ax = plt.subplots(figsize=(9, 3.8))
+    width = 0.26
+    for k, (key, label) in enumerate(THREE):
+        values = [rob["models"][key]["contrast"][g]["pair"] for g, _ in groups]
+        xs = [x + (k - 1) * width for x in range(len(groups))]
+        ax.bar(xs, values, width=width, color=SERIES[k], edgecolor=SURFACE, linewidth=1.5, label=label)
+        for x, v in zip(xs, values):
+            if v < 0.02:
+                ax.text(x, 0.02, "0", ha="center", va="bottom", fontsize=8, color=INK_2)
+    ax.set_xticks(range(len(groups)), [shown for _, shown in groups], fontsize=8.5)
+    ax.tick_params(axis="x", length=0)
+    ax.grid(axis="x", visible=False)
+    ax.set_ylim(0, 1)
+    ax.set_ylabel("Pairs with both versions right")
+    ax.set_title(f"Contrast set ({rob['contrast_pairs']} minimal pairs): does one word flip the label?", pad=28)
+    ax.legend(loc="lower left", bbox_to_anchor=(0, 1.0), ncol=3, fontsize=9)
+    save(fig, "contrast.png")
+
+
+def plot_learning_curve():
+    """Codex test F1 against the number of training requests (3 random subsets per point)."""
+    if not (RESULTS / "learning_curve.json").exists():
+        return
+    curve = load("learning_curve.json")
+    fig, ax = plt.subplots(figsize=(8, 4))
+    shown = [("hmm", "HMM"), ("crf", "CRF"), ("berturk_softmax_bio", "BERTurk, softmax + BIO rules")]
+    for k, (key, label) in enumerate(shown):
+        if key not in curve["models"]:
+            continue
+        points = curve["models"][key]
+        xs = [p["requests"] for p in points]
+        ax.fill_between(xs, [min(p["f1"]) for p in points], [max(p["f1"]) for p in points], color=SERIES[k],
+                        alpha=0.15, linewidth=0)
+        ax.plot(xs, [p["mean"] for p in points], color=SERIES[k], linewidth=2, marker="o", markersize=6,
+                markeredgecolor=SURFACE, label=label)
+        ax.annotate(f"{points[0]['mean']:.2f}", (xs[0], points[0]["mean"]), xytext=(-6, 0),
+                    textcoords="offset points", ha="right", va="center", fontsize=8.5, color=INK_2)
+    ax.set_xscale("log")
+    ax.set_xticks(xs, [f"{x:,}" for x in xs])
+    ax.minorticks_off()
+    ax.set_xlim(xs[0] * 0.75, xs[-1] * 1.15)
+    ax.set_xlabel("Training requests (log scale; 10%, 25%, 50%, 100%)")
+    ax.set_ylabel("Codex test F1")
+    ax.set_title("How much training data does each model need?", pad=28)
+    ax.legend(loc="lower left", bbox_to_anchor=(0, 1.0), ncol=3, fontsize=9)
+    fig.text(0.0, -0.03, "Line: mean of 3 random subsets (seeds 7, 13, 42); band: lowest to highest.", fontsize=8,
+             color=MUTED)
+    save(fig, "learning_curve.png")
+
+
 def main():
     evaluation = load("evaluation.json")
     plot_dev_vs_test(evaluation)
@@ -202,6 +327,10 @@ def main():
     plot_differences(evaluation)
     plot_speed(evaluation)
     plot_training()
+    plot_confusion()
+    plot_robustness()
+    plot_contrast()
+    plot_learning_curve()
 
 
 if __name__ == "__main__":

@@ -87,3 +87,32 @@ def test_crf_layer_matches_slide_example():
 
 def test_tag_set_size():
     assert len(TAGS) == 2 * 7 + 1
+
+
+def test_perturbations_keep_words_aligned():
+    from robustness import PERTURBATIONS, tr_lower, tr_upper
+    tokens = ["İzmir'de", "Işık", "ücretsiz", "stand-up", "'", "20:00'den"]
+    assert tr_lower("İzmir'de Işık") == "izmir'de ışık" and tr_upper("izmir ışık") == "İZMİR IŞIK"
+    assert PERTURBATIONS["no_turkish_letters"](tokens, "k")[:3] == ["Izmir'de", "Isik", "ucretsiz"]
+    assert PERTURBATIONS["no_apostrophes"](tokens, "k")[4] == "'"  # a lone apostrophe stays a token
+    for name, change in PERTURBATIONS.items():
+        changed = change(tokens, "k")
+        assert len(changed) == len(tokens) and all(changed), name
+        assert changed == change(tokens, "k"), name  # the same key gives the same typos
+
+
+def test_contrast_pairs_flip_only_the_target():
+    from common import ROOT, read_jsonl
+    rows = read_jsonl(ROOT / "data" / "contrast" / "contrast.jsonl")
+    pairs = {}
+    for r in rows:
+        pairs.setdefault(r["pair"], {})[r["version"]] = r
+    assert len(pairs) == len(rows) // 2
+    for pair in pairs.values():
+        want, exclude = pair["want"], pair["exclude"]
+        assert exclude["target"][0] == "EXCLUDE" and want["target"][0] in ("TYPE", "PLACE", "NAME")
+        target_words = lambda r: r["tokens"][r["target"][1]:r["target"][2]]
+        assert target_words(want) == target_words(exclude)
+        others = lambda r: {(label, " ".join(r["tokens"][s:e])) for label, s, e in spans(r["tags"])} - {
+            (r["target"][0], " ".join(target_words(r)))}
+        assert others(want) == others(exclude)
