@@ -1,8 +1,10 @@
 """Compare every trained tagger from its saved predictions (results/predictions/*.json); no model is rerun.
 
 For each test set (codex_test, biplan_test) and model:
-- exact-span micro F1 with a 95% bootstrap interval over requests (1,000 draws), macro F1 and per-label F1;
-- for BERTurk models trained with several seeds: mean and standard deviation over the seeds;
+- exact-span micro F1 with a 95% bootstrap interval over requests (1,000 draws), macro F1, per-label F1 and a
+  bootstrap interval for each label;
+- for BERTurk models trained with several seeds: mean and standard deviation over the seeds, and the bootstrap
+  interval of the mean (each draw scores every seed on the same requests);
 - slices: requests typed without any Turkish letter vs with them, and PLACE spans written with a suffix;
 - IOB2 breaks: predicted I- tags that do not continue a span of their own label;
 - error types: wrong boundary, wrong label, missed span, invented span.
@@ -10,7 +12,7 @@ Every Codex test request that BERTurk + CRF (lowest seed) gets wrong is listed w
 results/error_examples.json, for reading the errors by hand.
 Paired bootstrap intervals for the differences in PAIRS (the claims in the README) use the same draws for both models.
 For BERTurk, the run with the lowest seed stands for its group in the
-pairs. Writes results/evaluation.json.
+pairs; "seed_mean" repeats each pair with the mean over all seeds of each model. Writes results/evaluation.json.
 
 Usage: python evaluate.py
 """
@@ -20,7 +22,7 @@ import re
 import statistics
 from collections import Counter, defaultdict
 
-from common import ROOT, bootstrap_f1, read_jsonl, span_scores, spans
+from common import ROOT, bootstrap_f1, bootstrap_mean_f1, read_jsonl, span_scores, spans
 
 TESTS = ("codex_test", "biplan_test")
 TURKISH = re.compile("[çğıöşüÇĞİÖŞÜ]")
@@ -89,6 +91,7 @@ def describe(rows, preds):
             "precision": scores["precision"], "recall": scores["recall"],
             "request_exact": scores["request_exact"],
             "labels": {k: round(v["f1"], 4) for k, v in scores["labels"].items()},
+            "label_intervals": {k: bootstrap_f1(gold, preds, label=k) for k in scores["labels"]},
             "f1_no_turkish_letters": span_scores([gold[i] for i in plain], [preds[i] for i in plain])["f1"],
             "f1_with_turkish_letters": span_scores([gold[i] for i in turkish], [preds[i] for i in turkish])["f1"],
             "place_suffix_recall": place_suffix_recall(rows, preds),
@@ -109,9 +112,10 @@ def main():
         if len(by_seed) > 1:
             out["seeds"][name] = {}
             for t, rows in tests.items():
-                f1s = [span_scores([r["tags"] for r in rows], p[t])["f1"] for p in by_seed.values()]
+                f1s = [span_scores([r["tags"] for r in rows], by_seed[s][t])["f1"] for s in sorted(by_seed)]
+                low, high = bootstrap_mean_f1([r["tags"] for r in rows], [by_seed[s][t] for s in sorted(by_seed)])
                 out["seeds"][name][t] = {"seeds": sorted(by_seed), "f1": f1s, "mean": statistics.mean(f1s),
-                                         "std": statistics.stdev(f1s)}
+                                         "std": statistics.stdev(f1s), "low": low, "high": high}
     for model, base in PAIRS:
         if model in first and base in first:
             out["differences"][f"{model} - {base}"] = {}
@@ -120,6 +124,13 @@ def main():
                 diff = span_scores(gold, first[model][t])["f1"] - span_scores(gold, first[base][t])["f1"]
                 low, high = bootstrap_f1(gold, first[model][t], base_list=first[base][t])
                 out["differences"][f"{model} - {base}"][t] = {"diff": diff, "low": low, "high": high}
+                runs, base_runs = ([p[t] for _, p in sorted(models[m].items(), key=lambda kv: kv[0] or 0)]
+                                   for m in (model, base))
+                mean_diff = (statistics.mean(span_scores(gold, p)["f1"] for p in runs)
+                             - statistics.mean(span_scores(gold, p)["f1"] for p in base_runs))
+                low, high = bootstrap_mean_f1(gold, runs, base_runs)
+                out["differences"][f"{model} - {base}"][t]["seed_mean"] = {"diff": mean_diff, "low": low,
+                                                                           "high": high}
 
     if "berturk_crf" in first:
         rows = tests["codex_test"]

@@ -86,39 +86,49 @@ with the best dev F1 is kept. Three seeds (7, 13, 42) for every BERTurk variant.
 ## Results
 
 Metric: **exact-span micro F1** (a span counts only if label and both boundaries are right, as on the slides).
-Brackets: 95% bootstrap interval over requests (1,000 draws). BERTurk rows: mean ± standard deviation over 3 seeds;
-the interval is of the lowest seed. Everything is in `results/evaluation.json`; test sets were scored once, after all
+Brackets: 95% bootstrap interval over requests (1,000 draws). BERTurk rows: mean ± standard deviation over 3 seeds,
+and the interval of that mean (each draw scores all 3 seeds on the same requests). Everything is in `results/evaluation.json`; test sets were scored once, after all
 settings were chosen on dev.
 
 | Method | Dev F1 | Codex test F1 | Bi' Plan F1 | IOB2 breaks (both tests) |
 |---|---|---|---|---|
-| Frequent tag | 0.782 | 0.632 [0.603, 0.661] | 0.717 | 188 |
-| HMM | 0.857 | 0.769 [0.745, 0.794] | 0.852 | 0 |
-| HMM + BIO rules | 0.857 | 0.769 [0.745, 0.794] | 0.852 | 0 |
-| CRF, no suffix features | 0.954 | 0.848 [0.827, 0.869] | 0.955 | 0 |
-| CRF | 0.968 | 0.873 [0.855, 0.893] | 0.965 | 0 |
-| BERTurk, softmax | 0.983 | 0.937 ± 0.003 | 0.945 ± 0.010 | 8 |
-| BERTurk, softmax + BIO rules | 0.984 | 0.940 ± 0.002 | 0.945 ± 0.010 | 0 |
-| **BERTurk + CRF layer** | 0.986 | **0.941 ± 0.004** [0.932, 0.959] | 0.956 ± 0.000 | 0 |
+| Frequent tag | 0.782 | 0.632 [0.603, 0.661] | 0.717 [0.615, 0.826] | 188 |
+| HMM | 0.857 | 0.769 [0.745, 0.794] | 0.852 [0.741, 0.942] | 0 |
+| HMM + BIO rules | 0.857 | 0.769 [0.745, 0.794] | 0.852 [0.741, 0.942] | 0 |
+| CRF, no suffix features | 0.954 | 0.848 [0.827, 0.869] | 0.955 [0.909, 0.991] | 0 |
+| CRF | 0.968 | 0.873 [0.855, 0.893] | 0.965 [0.922, 1.000] | 0 |
+| BERTurk, softmax | 0.983 | 0.937 ± 0.003 [0.923, 0.950] | 0.945 ± 0.010 [0.888, 0.986] | 8 |
+| BERTurk, softmax + BIO rules | 0.984 | 0.940 ± 0.002 [0.927, 0.953] | 0.945 ± 0.010 [0.888, 0.986] | 0 |
+| **BERTurk + CRF layer** | 0.986 | **0.941 ± 0.004** [0.929, 0.954] | 0.956 ± 0.000 [0.902, 0.992] | 0 |
 
-Paired differences on the Codex test (same bootstrap draws for both models):
+![Dev F1 against Codex test F1 for every method](results/figures/dev_vs_test.png)
+
+Paired differences on the Codex test (same bootstrap draws for both models; for BERTurk, the means over 3 seeds):
 
 | Comparison | Difference | 95% interval | Reading |
 |---|---|---|---|
 | HMM − frequent tag | +0.137 | [+0.105, +0.168] | neighbouring tags help |
 | CRF − HMM | +0.104 | [+0.081, +0.125] | rich word features + context help most |
 | CRF − CRF without suffixes | +0.026 | [+0.011, +0.040] | Turkish endings are a real clue |
-| BERTurk (BIO rules) − CRF | +0.070 | [+0.051, +0.087] | pre-training helps on the unseen writer |
-| BERTurk: BIO rules − softmax | +0.004 | [+0.001, +0.007] | small but reliable: fixes every IOB2 break |
-| BERTurk: CRF layer − BIO rules | +0.003 | [−0.005, +0.010] | not distinguishable from 0 |
+| BERTurk (BIO rules) − CRF | +0.067 | [+0.049, +0.085] | pre-training helps on the unseen writer |
+| BERTurk: BIO rules − softmax | +0.003 | [+0.001, +0.006] | small but reliable: fixes every IOB2 break |
+| BERTurk: CRF layer − BIO rules | +0.001 | [−0.003, +0.005] | not distinguishable from 0 |
 
-Per label on the Codex test (F1):
+![Paired differences with 95% intervals](results/figures/differences.png)
 
-| Method | PLACE | DATE | TYPE | NAME | PRICE | PEOPLE | EXCLUDE |
-|---|---|---|---|---|---|---|---|
-| HMM | 0.858 | 0.829 | 0.714 | 0.585 | 0.937 | 0.718 | **0.359** |
-| CRF | 0.938 | 0.907 | 0.802 | 0.722 | 0.963 | 0.867 | 0.766 |
-| BERTurk + CRF layer | 0.980 | 0.996 | 0.919 | 0.800 | 0.973 | 0.895 | 0.899 |
+Per label on the Codex test (F1 and 95% bootstrap interval; BERTurk: seed 7):
+
+| Label | HMM | CRF | BERTurk + CRF layer |
+|---|---|---|---|
+| PLACE | 0.858 [0.82, 0.89] | 0.938 [0.91, 0.96] | 0.980 [0.96, 0.99] |
+| DATE | 0.829 [0.79, 0.87] | 0.907 [0.87, 0.94] | 0.996 [0.99, 1.00] |
+| TYPE | 0.714 [0.67, 0.76] | 0.802 [0.76, 0.85] | 0.919 [0.89, 0.95] |
+| NAME | 0.585 [0.48, 0.69] | 0.722 [0.62, 0.81] | 0.800 [0.70, 0.88] |
+| PRICE | 0.937 [0.89, 0.97] | 0.963 [0.92, 0.99] | 0.973 [0.94, 1.00] |
+| PEOPLE | 0.718 [0.65, 0.79] | 0.867 [0.81, 0.92] | 0.894 [0.84, 0.95] |
+| EXCLUDE | **0.359 [0.25, 0.47]** | 0.766 [0.67, 0.85] | 0.899 [0.82, 0.96] |
+
+![F1 per label for HMM, CRF and BERTurk + CRF layer](results/figures/per_label.png)
 
 ### What the results show
 
@@ -129,7 +139,7 @@ Per label on the Codex test (F1):
    `Bursa'da`) goes from 0.907 (CRF without suffix features) to 0.952 (CRF) to 0.983 (BERTurk), and the CRF's overall
    gain from suffix features is +0.026 [+0.011, +0.040].
 3. **BIO rules: needed for softmax, free for HMM/CRF.** Per-word softmax produced 8 tag sequences that break IOB2
-   (`O → I-PRICE`); constrained Viterbi on the same scores removes all of them and adds +0.004 F1. The HMM and CRF
+   (`O → I-PRICE`); constrained Viterbi on the same scores removes all of them and adds +0.003 F1 [+0.001, +0.006]. The HMM and CRF
    learn very low probabilities / scores for those transitions on their own and never break IOB2, so forcing the rule
    changes nothing for the HMM.
    A learned CRF layer on top of BERTurk gives no further measurable gain here.
@@ -152,6 +162,7 @@ Counted by type (`errors` in `results/evaluation.json`): 39 wrong boundaries, 14
   instead of NAME + TYPE. Without capitals, a band name looks like a genre word; NAME is also the rarest training
   label (271 spans).
 - **Excluded names split in two:** `besiktas maci olmasin` → EXCLUDE `besiktas` + EXCLUDE `maci` instead of one span.
+  The training data labels these cases this way (see *An inconsistency in the gold labels* below).
 - **Ticket counts as PEOPLE:** `iki bilet` (two tickets) is missed; the training data rarely says it this way.
 - **Unclear guide cases:** `6 kişilik grup`, `21.30 seansına`, `annem babam ve ben`: the prediction is reasonable
   and the gold boundary is a convention. These are limits of the guide, not only of the model.
@@ -159,9 +170,146 @@ Counted by type (`errors` in `results/evaluation.json`): 39 wrong boundaries, 14
 ### Speed
 
 Milliseconds per request on the Codex test, measured inside the scripts (classic models on the CPU, BERTurk
-on an RTX 4070 SUPER in batches of 16): frequent tag 0.007, HMM 0.34, CRF 0.14, BERTurk 0.7–2.2. CRF training takes
-4 s; BERTurk training took 35 s to 53 min per run because the GPU was shared with other programs, so those times are
-not comparable.
+on an RTX 4070 SUPER in batches of 16): frequent tag 0.007, HMM 0.34, CRF 0.14, BERTurk 0.7 (softmax), 1.0–1.1
+(softmax + BIO rules, and CRF layer).
+
+![Codex test F1 against milliseconds per request](results/figures/speed.png)
+
+Training time: CRF 4 s. BERTurk (5 epochs, 1,691 requests) takes 28–31 s with softmax and 34–35 s with the CRF
+layer. The original runs shared the GPU with other programs (35 s to 53 min), so all six runs were repeated on an idle
+GPU only to measure time: every run chose the same epoch and gave exactly the same predictions, so the scores above
+are unchanged and reproducible. The idle-GPU times are in `results/timing_idle_gpu.json`. Dev F1 passes 0.98 after
+2 epochs in every run; the best epoch (kept) is 2–4:
+
+![Dev F1 per epoch for every BERTurk run](results/figures/training.png)
+
+## Stress tests
+
+The results above use clean test text and one score per model. The tests below look at the models from other sides. Every number has a 95% bootstrap interval.
+They were added after the main results, so none of them was used to choose a model or a setting. The models are
+retrained with the same settings and seeds (training is deterministic: every retrained model gives exactly the
+reported clean scores, which the scripts check).
+
+### Which labels get mixed up
+
+![Word-level confusion matrices of the HMM and BERTurk](results/figures/confusion.png)
+
+Word-level confusion on the Codex test (B-/I- merged, each row sums to 1). The HMM tags 61% of excluded words as
+TYPE: it sees `konser` and not the `olmasın` after it. BERTurk keeps 96% of them as EXCLUDE. NAME is the weakest row
+for both models: 15% of name words become TYPE (`manga konseri`, see the error analysis).
+
+### Attacking the input
+
+`robustness.py` changes every word of the Codex test in place, so the gold tags stay valid, and scores each model
+again (BERTurk: mean of 3 seeds).
+
+| Method | clean | all lowercase | no Turkish letters | no apostrophes | ALL CAPS | typos 10% | typos 25% | messy |
+|---|---|---|---|---|---|---|---|---|
+| HMM | 0.769 | 0.769 | 0.769 | 0.753 | 0.769 | 0.726 | 0.675 | 0.713 |
+| CRF, no suffix features | 0.848 | 0.823 | 0.845 | 0.839 | **0.699** | 0.803 | 0.740 | 0.761 |
+| CRF | 0.873 | 0.866 | 0.874 | 0.871 | 0.825 | 0.851 | 0.832 | 0.839 |
+| BERTurk, softmax + BIO rules | 0.940 | 0.934 | 0.936 | 0.940 | **0.798** | 0.914 | 0.867 | 0.887 |
+| BERTurk + CRF layer | 0.941 | 0.934 | 0.934 | 0.941 | **0.790** | 0.914 | 0.862 | 0.882 |
+
+Typos: one random edit (swap two letters, drop one, double one) in 10% or 25% of the words of 4+ letters. Messy: all
+lowercase + no Turkish letters + no apostrophes + 10% typos, like a hurried chat message.
+
+Change against the clean text, with 95% paired bootstrap intervals (BERTurk: mean over 3 seeds):
+
+| Attack | HMM | CRF | BERTurk + CRF layer |
+|---|---|---|---|
+| all lowercase | +0.000 [+0.000, +0.000] | −0.007 [−0.016, +0.001] | −0.008 [−0.013, −0.004] |
+| no Turkish letters | +0.000 [+0.000, +0.000] | +0.001 [−0.003, +0.005] | −0.007 [−0.013, −0.001] |
+| no apostrophes | −0.016 [−0.028, −0.005] | −0.002 [−0.006, +0.002] | 0.000 [−0.002, +0.002] |
+| ALL CAPS | +0.000 [+0.000, +0.000] | −0.048 [−0.068, −0.029] | **−0.151 [−0.172, −0.133]** |
+| typos 10% | −0.043 [−0.057, −0.030] | −0.022 [−0.032, −0.013] | −0.027 [−0.038, −0.018] |
+| typos 25% | −0.094 [−0.116, −0.075] | −0.041 [−0.054, −0.029] | −0.080 [−0.095, −0.065] |
+| messy | −0.056 [−0.076, −0.040] | −0.034 [−0.048, −0.020] | −0.060 [−0.073, −0.045] |
+
+![F1 change under each attack](results/figures/robustness.png)
+
+- **ALL CAPS is BERTurk's weak spot: −0.151 F1 [−0.172, −0.133]**,
+  three times the CRF's loss (−0.048 [−0.068, −0.029]; the intervals
+  do not overlap). Under this attack the CRF (0.825 [0.803, 0.847]) is level with or
+  ahead of BERTurk (0.790 [0.770, 0.811]). BERTurk is a *cased* model and capital words are rare in its training. The HMM loses nothing because it lowercases every word; the CRF loses little
+  because its suffix features are lowercased (without them the CRF loses as much as BERTurk). The fix is cheap:
+  Turkish-lowercase a request that is written in capitals before tagging. Lowercase text only costs BERTurk 0.007
+  (0.934), and an all-caps request becomes exactly that text.
+- **Lost Turkish letters, lowercase and missing apostrophes cost little**: at most 0.025, and under 0.01 for the CRF
+  and BERTurk, in line with result 5 above: the training data already contains both spellings.
+- **Typos hurt everyone**, and more typos hurt more (every typo interval is below 0). BERTurk keeps the highest
+  score under typos, but at 25% typos it loses 0.080 [0.065, 0.095],
+  about twice the CRF's 0.041 [0.029, 0.054]: the CRF's prefix, suffix and neighbour features still work when one
+  letter in the middle of a word is wrong.
+
+### Contrast set: does one word flip the label?
+
+`make_contrast.py` builds 140 minimal pairs from templates that follow the guide. The two requests of a pair differ
+only in the negating word, and the target span must change from TYPE, PLACE or NAME to EXCLUDE:
+
+| Phenomenon | Wanted | Excluded |
+|---|---|---|
+| TYPE ↔ EXCLUDE | `bu akşam kadıköyde [konser] olsun` | `bu akşam kadıköyde [konser] olmasın` |
+| PLACE ↔ EXCLUDE | `yarın [Ankara] civarında festival` | `yarın [Ankara] dışında festival` |
+| NAME ↔ EXCLUDE | `bu hafta sonu [Hadise] olsun, beşiktaşta` | `bu hafta sonu [Hadise] olmasın, beşiktaşta` |
+
+A pair counts as right only when the target span is right in both requests. Brackets: 95% bootstrap interval over
+pairs (BERTurk: mean over 3 seeds). None of the 280 requests is in the
+training data. Because the requests come from templates, this tests one phenomenon; it is not a test of natural
+requests.
+
+| Method | Wanted version right | Excluded version right | Both right |
+|---|---|---|---|
+| HMM | 0.86 [0.80, 0.91] | 0.06 [0.03, 0.11] | **0.00 [0.00, 0.00]** |
+| CRF | 0.94 [0.90, 0.98] | 0.91 [0.86, 0.96] | 0.86 [0.80, 0.91] |
+| BERTurk + CRF layer | 0.99 [0.98, 1.00] | 1.00 [1.00, 1.00] | 0.99 [0.98, 1.00] |
+
+![Contrast set pair accuracy](results/figures/contrast.png)
+
+The HMM gets no pair right: the emission sees one word and the negation comes *after* it, so a bigram HMM cannot use
+it. This is the *Washington* problem of the slides in its purest form. The CRF's next-word features fix most pairs;
+its lowest group is PLACE (0.80 [0.67, 0.90]), though the intervals of
+the three groups overlap.
+
+### How much data is needed
+
+`learning_curve.py` trains on 10%, 25% and 50% of the training requests (3 random subsets each) and scores the Codex
+test.
+
+Codex test F1, mean of 3 runs, with the 95% bootstrap interval of that mean:
+
+| Training requests | HMM | CRF | BERTurk, softmax + BIO rules |
+|---|---|---|---|
+| 169 (10%) | 0.646 [0.622, 0.670] | 0.722 [0.698, 0.744] | 0.779 [0.758, 0.801] |
+| 423 (25%) | 0.718 [0.695, 0.741] | 0.811 [0.791, 0.831] | 0.911 [0.894, 0.927] |
+| 846 (50%) | 0.750 [0.728, 0.773] | 0.851 [0.831, 0.870] | 0.932 [0.918, 0.945] |
+| 1,691 (100%) | 0.769 [0.745, 0.794] | 0.873 [0.855, 0.893] | 0.940 [0.927, 0.953] |
+
+![Learning curve](results/figures/learning_curve.png)
+
+**BERTurk trained on 25% of the data (423 requests, 0.911 [0.894, 0.927]) beats the CRF trained on
+all of it (0.873 [0.855, 0.893])**; the intervals do not overlap. The CRF on 25%
+(0.811 [0.791, 0.831]) is probably above the HMM on all of it (0.769
+[0.745, 0.794]; the intervals barely overlap). Pre-training saves more data than any feature design. BERTurk's
+curve is flat after 50% (0.932 → 0.940, overlapping intervals), so more AI-written data of the same kind would help little; more varied
+writers would help more (see the dev–test gap above). At 10% BERTurk gets only 55 training steps in its 5 epochs,
+so that point is partly too few steps, not only too little data.
+
+### An inconsistency in the gold labels
+
+The guide does not say how to label an excluded *name* followed by an event word (`Galatasaray maçı olmasın`). The
+two AI writers chose differently:
+
+| Set | Such requests | One EXCLUDE span (`[Galatasaray maçı]`) | Two spans (`[Galatasaray] [maçı]`) | Name only (`[Galatasaray] maçı`) |
+|---|---|---|---|---|
+| train (Haiku) | 7 | 0 | 4 | 3 |
+| dev | 1 | 0 | 0 | 1 |
+| Codex test | 5 | 5 | 0 | 0 |
+
+So the "excluded names split in two" errors below are partly the model following its training labels: BERTurk + CRF
+splits 3 of the 5 Codex cases exactly as Haiku labeled them. Excluded *kinds* (`rock konseri olmasın` → one span) are
+consistent in all sets. The labels were not changed after the test was scored; a guide rule for this case, applied to
+the training data, would remove the conflict.
 
 ## Running it
 
@@ -182,10 +330,14 @@ for seed in 7 13 42; do
   python train_bert.py --seed $seed --crf
 done
 python evaluate.py              # results/evaluation.json, results/error_examples.json
+python make_contrast.py         # data/contrast/contrast.jsonl
+python robustness.py            # results/robustness.json (attacks + contrast set)
+python learning_curve.py        # results/learning_curve.json
+python plot_results.py          # results/figures/*.png
 ```
 
-Predictions of every model for dev and both test sets are kept in `results/predictions/`, so `evaluate.py` reruns
-without any model.
+Predictions of every model for dev and both test sets are kept in `results/predictions/`, so `evaluate.py` and
+`plot_results.py` rerun without any model.
 
 ## Files
 
@@ -195,6 +347,7 @@ without any model.
 | `data/train_ai/` | AI-written training requests and the prompt |
 | `data/test_codex/` | Codex test requests, prompt, and the hand fixes |
 | `data/test_biplan/` | The 25 Turkish Bi' Plan requests |
+| `data/contrast/` | 140 template-made minimal pairs (wanted vs excluded) |
 | `data/clean/` | Tokenized BIO splits made by `prepare_data.py` |
 | `common.py` | Tokenizer, span ↔ BIO conversion, exact-span scoring, bootstrap |
 | `prepare_data.py` | Checks, cleans and splits the data |
@@ -203,6 +356,10 @@ without any model.
 | `train_classic.py` | Trains and scores the baseline, HMM and CRF |
 | `train_bert.py` | BERTurk with softmax, BIO-rule and CRF-layer decoding |
 | `evaluate.py` | Intervals, seeds, paired differences, slices, error types |
+| `make_contrast.py` | Builds the contrast set (`data/contrast/contrast.jsonl`) |
+| `robustness.py` | Perturbed Codex test and contrast set scores |
+| `learning_curve.py` | Scores after training on 10%, 25%, 50% of the data |
+| `plot_results.py` | The figures in `results/figures/` |
 | `tests/test_tagging.py` | Unit tests |
 | `project1/` | Project 1, unchanged |
 

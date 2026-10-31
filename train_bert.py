@@ -162,36 +162,30 @@ def predict(model, examples, pad_id, rules):
     return out
 
 
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--model", default="dbmdz/bert-base-turkish-cased")
-    parser.add_argument("--crf", action="store_true")
-    parser.add_argument("--seed", type=int, default=13)
-    parser.add_argument("--epochs", type=int, default=5)
-    parser.add_argument("--save", action="store_true")
-    args = parser.parse_args()
-    tag = f"{args.model.split('/')[-1]}{'_crf' if args.crf else ''}_seed{args.seed}"
-    set_seed(args.seed)
+def fit(model_name, crf, seed, epochs, train_rows, dev_rows):
+    """Fine-tune on train_rows and keep the epoch with the best dev span F1.
 
-    tokenizer = AutoTokenizer.from_pretrained(args.model)
-    data = {name: read_jsonl(ROOT / "data" / "clean" / f"{name}.jsonl") for name in ("train",) + SPLITS}
-    examples = {name: encode(tokenizer, rows) for name, rows in data.items()}
-    model = Tagger(args.model, args.crf).cuda()
+    Returns (tokenizer, model, history, train_seconds). Also used by learning_curve.py and robustness.py.
+    """
+    set_seed(seed)
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    train, dev = encode(tokenizer, train_rows), encode(tokenizer, dev_rows)
+    model = Tagger(model_name, crf).cuda()
 
     head = [p for n, p in model.named_parameters() if not n.startswith("encoder.")]
     optimizer = torch.optim.AdamW([{"params": model.encoder.parameters(), "lr": LR, "weight_decay": 0.01},
                                    {"params": head, "lr": HEAD_LR, "weight_decay": 0.0}])
-    steps = math.ceil(len(examples["train"]) / BATCH) * args.epochs
+    steps = math.ceil(len(train) / BATCH) * epochs
     scheduler = get_linear_schedule_with_warmup(optimizer, int(WARMUP * steps), steps)
-    rules = not args.crf
+    rules = not crf
     history, best_f1, best_state = [], -1.0, None
     start_time = time.perf_counter()
-    for epoch in range(1, args.epochs + 1):
+    for epoch in range(1, epochs + 1):
         model.train()
-        order = torch.randperm(len(examples["train"])).tolist()
+        order = torch.randperm(len(train)).tolist()
         losses = []
         for i in range(0, len(order), BATCH):
-            ids, mask, first, tags, word_mask = collate([examples["train"][j] for j in order[i:i + BATCH]],
+            ids, mask, first, tags, word_mask = collate([train[j] for j in order[i:i + BATCH]],
                                                         tokenizer.pad_token_id)
             with torch.autocast("cuda", dtype=torch.bfloat16):
                 scores = model.word_scores(ids, mask, first)
@@ -202,14 +196,34 @@ def main():
             scheduler.step()
             optimizer.zero_grad()
             losses.append(loss.item())
-        dev_f1 = span_scores([r["tags"] for r in data["dev"]],
-                             predict(model, examples["dev"], tokenizer.pad_token_id, rules))["f1"]
+        dev_f1 = span_scores([r["tags"] for r in dev_rows], predict(model, dev, tokenizer.pad_token_id, rules))["f1"]
         history.append({"epoch": epoch, "loss": sum(losses) / len(losses), "dev_f1": dev_f1})
         print(f"epoch {epoch}: loss {history[-1]['loss']:.4f}  dev F1 {dev_f1:.3f}", flush=True)
         if dev_f1 > best_f1:
             best_f1, best_state = dev_f1, {k: v.detach().clone() for k, v in model.state_dict().items()}
     train_seconds = time.perf_counter() - start_time
     model.load_state_dict(best_state)
+    return tokenizer, model, history, train_seconds
+
+
+def tag_rows(model, tokenizer, rows, rules):
+    """Predicted tags for rows with "tokens" (and "tags", which only fix the length)."""
+    return predict(model, encode(tokenizer, rows), tokenizer.pad_token_id, rules)
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--model", default="dbmdz/bert-base-turkish-cased")
+    parser.add_argument("--crf", action="store_true")
+    parser.add_argument("--seed", type=int, default=13)
+    parser.add_argument("--epochs", type=int, default=5)
+    parser.add_argument("--save", action="store_true")
+    args = parser.parse_args()
+    tag = f"{args.model.split('/')[-1]}{'_crf' if args.crf else ''}_seed{args.seed}"
+    data = {name: read_jsonl(ROOT / "data" / "clean" / f"{name}.jsonl") for name in ("train",) + SPLITS}
+    tokenizer, model, history, train_seconds = fit(args.model, args.crf, args.seed, args.epochs, data["train"],
+                                                   data["dev"])
+    examples = {name: encode(tokenizer, data[name]) for name in SPLITS}
 
     out = {"model": args.model, "crf": args.crf, "seed": args.seed, "epochs": args.epochs, "lr": LR,
            "batch": BATCH, "train_seconds": train_seconds, "history": history,

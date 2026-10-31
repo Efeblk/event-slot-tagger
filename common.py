@@ -109,12 +109,24 @@ def span_scores(gold_list, pred_list):
             "labels": labels}
 
 
-def bootstrap_f1(gold_list, pred_list, base_list=None, rounds=1000, seed=0):
+def bootstrap_f1(gold_list, pred_list, base_list=None, rounds=1000, seed=0, label=None):
     """95% bootstrap interval of micro span F1 over requests drawn with replacement. With base_list, the interval of
-    F1(pred) - F1(base) on the same draws (a paired comparison). Returns (low, high)."""
+    F1(pred) - F1(base) on the same draws (a paired comparison). With label, only spans of that label count.
+    Returns (low, high)."""
+    return bootstrap_mean_f1(gold_list, [pred_list], None if base_list is None else [base_list], rounds, seed, label)
+
+
+def bootstrap_mean_f1(gold_list, runs, base_runs=None, rounds=1000, seed=0, label=None):
+    """Like bootstrap_f1 for a model trained several times (one prediction list per seed): each draw scores the mean
+    F1 of the runs, so the interval is that of the mean over seeds. Every run uses the same drawn requests."""
     def per_request(preds):
-        return np.array([(len(g & p), len(p - g), len(g - p))
-                         for g, p in ((spans(a), spans(b)) for a, b in zip(gold_list, preds))], dtype=float)
+        rows = []
+        for a, b in zip(gold_list, preds):
+            g, p = spans(a), spans(b)
+            if label is not None:
+                g, p = {x for x in g if x[0] == label}, {x for x in p if x[0] == label}
+            rows.append((len(g & p), len(p - g), len(g - p)))
+        return np.array(rows, dtype=float)
 
     def f1(counts):
         tp, fp, fn = counts.sum(axis=1).T
@@ -122,8 +134,17 @@ def bootstrap_f1(gold_list, pred_list, base_list=None, rounds=1000, seed=0):
         return np.divide(2 * tp, denominator, out=np.zeros_like(tp), where=denominator > 0)
 
     picks = np.random.default_rng(seed).integers(0, len(gold_list), size=(rounds, len(gold_list)))
-    scores = f1(per_request(pred_list)[picks])
-    if base_list is not None:
-        scores = scores - f1(per_request(base_list)[picks])
+    scores = np.mean([f1(per_request(preds)[picks]) for preds in runs], axis=0)
+    if base_runs is not None:
+        scores = scores - np.mean([f1(per_request(preds)[picks]) for preds in base_runs], axis=0)
     low, high = np.percentile(scores, [2.5, 97.5])
+    return float(low), float(high)
+
+
+def bootstrap_mean(values, rounds=1000, seed=0):
+    """95% bootstrap interval of the mean of values [items] or [runs, items] (then the mean over runs and items, with
+    the same drawn items for every run). Returns (low, high)."""
+    values = np.atleast_2d(np.asarray(values, dtype=float))
+    picks = np.random.default_rng(seed).integers(0, values.shape[1], size=(rounds, values.shape[1]))
+    low, high = np.percentile(values[:, picks].mean(axis=(0, 2)), [2.5, 97.5])
     return float(low), float(high)

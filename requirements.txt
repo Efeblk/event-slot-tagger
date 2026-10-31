@@ -1,5 +1,6 @@
-# CPU part: prepare_data.py, train_classic.py, evaluate.py, tests
+# CPU part: prepare_data.py, train_classic.py, evaluate.py, plot_results.py, tests
 numpy==2.5.3
 sklearn-crfsuite==0.5.0
 python-crfsuite==0.9.12
+matplotlib==3.11.2
 pytest
