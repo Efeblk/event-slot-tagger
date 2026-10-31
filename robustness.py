@@ -6,6 +6,8 @@
    10% typos, like a hurried chat message).
 2. Contrast set (data/contrast/contrast.jsonl, from make_contrast.py): a pair is right only when the target span gets
    the wanted label in one request and EXCLUDE in the other.
+Every score has a 95% bootstrap interval over requests (pairs for the contrast set); for BERTurk it is the interval of
+the mean over 3 seeds, and the change against the clean text is a paired interval.
 
 The models are retrained here with the settings and seeds of train_classic.py / train_bert.py (training is
 deterministic, so they are the reported models; the clean scores are checked against results/evaluation.json).
@@ -19,7 +21,7 @@ import json
 import random
 import statistics
 
-from common import ROOT, read_jsonl, span_scores, spans
+from common import ROOT, bootstrap_mean, bootstrap_mean_f1, read_jsonl, span_scores, spans
 from crf import CRF
 from hmm import HMM, FrequentTag
 
@@ -77,32 +79,55 @@ def perturbed_sets(rows):
     return out
 
 
-def contrast_scores(rows, preds):
-    """Target-span accuracy of each version and of whole pairs, overall and per phenomenon."""
-    hit = {}
-    for r, p in zip(rows, preds):
-        label, start, end = r["target"]
-        hit[(r["pair"], r["version"])] = (label, start, end) in spans(p)
+def contrast_scores(rows, runs):
+    """Target-span accuracy of each version and of whole pairs, overall and per phenomenon, with 95% bootstrap
+    intervals over pairs. runs: one prediction list per trained model (seed)."""
+    hits = []
+    for preds in runs:
+        hit = {}
+        for r, p in zip(rows, preds):
+            label, start, end = r["target"]
+            hit[(r["pair"], r["version"])] = (label, start, end) in spans(p)
+        hits.append(hit)
     pairs = {r["pair"]: r["phenomenon"] for r in rows}
 
     def summary(keep):
         chosen = [k for k, ph in pairs.items() if keep(ph)]
-        return {"pairs": len(chosen),
-                "want": statistics.mean(hit[(k, "want")] for k in chosen),
-                "exclude": statistics.mean(hit[(k, "exclude")] for k in chosen),
-                "pair": statistics.mean(hit[(k, "want")] and hit[(k, "exclude")] for k in chosen)}
+        out = {"pairs": len(chosen)}
+        for part, right in (("want", lambda h, k: h[(k, "want")]), ("exclude", lambda h, k: h[(k, "exclude")]),
+                            ("pair", lambda h, k: h[(k, "want")] and h[(k, "exclude")])):
+            values = [[right(h, k) for k in chosen] for h in hits]
+            low, high = bootstrap_mean(values)
+            out[part] = statistics.mean(v for run in values for v in run)
+            out[part + "_low"], out[part + "_high"] = low, high
+        return out
 
     return {"all": summary(lambda ph: True),
             **{ph: summary(lambda x, ph=ph: x == ph) for ph in sorted(set(pairs.values()))}}
 
 
-def evaluate(predict_rows, attacked, contrast):
-    """Scores of one trained model on every perturbed set and on the contrast set."""
+def predictions(predict_rows, attacked, contrast):
+    """Predicted tags of one trained model on every perturbed set and on the contrast set."""
+    return {"perturbed": {name: predict_rows(rows) for name, rows in attacked.items()},
+            "contrast": predict_rows(contrast)}
+
+
+def score(runs, attacked, contrast):
+    """F1 on every perturbed set and its change against the clean text (mean over runs, with 95% bootstrap
+    intervals; the change is a paired interval on the same drawn requests), and the contrast set scores."""
+    gold = [r["tags"] for r in attacked["clean"]]
+    clean = [run["perturbed"]["clean"] for run in runs]
     out = {"perturbed": {}}
-    for name, rows in attacked.items():
-        scores = span_scores([r["tags"] for r in rows], predict_rows(rows))
-        out["perturbed"][name] = {"f1": scores["f1"], "labels": {k: v["f1"] for k, v in scores["labels"].items()}}
-    out["contrast"] = contrast_scores(contrast, predict_rows(contrast))
+    for name in attacked:
+        preds = [run["perturbed"][name] for run in runs]
+        f1s = [span_scores(gold, p)["f1"] for p in preds]
+        low, high = bootstrap_mean_f1(gold, preds)
+        change_low, change_high = bootstrap_mean_f1(gold, preds, clean)
+        out["perturbed"][name] = {"f1": statistics.mean(f1s), "seed_f1": f1s, "low": low, "high": high,
+                                  "change": statistics.mean(f1s) - statistics.mean(span_scores(gold, p)["f1"]
+                                                                                   for p in clean),
+                                  "change_low": change_low, "change_high": change_high}
+    out["contrast"] = contrast_scores(contrast, [run["contrast"] for run in runs])
     return out
 
 
@@ -112,27 +137,18 @@ def classic_models():
             "crf_no_suffix": CRF(chosen["c1"], chosen["c2"], suffixes=False)}
 
 
-def bert_results(train, dev, attacked, contrast):
+def bert_runs(train, dev, attacked, contrast):
     from train_bert import fit, tag_rows
     out = {}
     for name, crf in (("berturk_softmax_bio", False), ("berturk_crf", True)):
-        out[name] = {}
+        out[name] = []
         for seed in SEEDS:
             tokenizer, model, _, _ = fit("dbmdz/bert-base-turkish-cased", crf, seed, 5, train, dev)
-            out[name][seed] = evaluate(lambda rows: tag_rows(model, tokenizer, rows, rules=True), attacked, contrast)
-            print(f"{name} seed {seed}: clean F1 {out[name][seed]['perturbed']['clean']['f1']:.3f}", flush=True)
+            out[name].append(predictions(lambda rows: tag_rows(model, tokenizer, rows, rules=True), attacked,
+                                         contrast))
+            print(f"{name} seed {seed} done", flush=True)
             del model
     return out
-
-
-def average(by_seed):
-    """Mean (and per-seed values) of every number in the per-seed results."""
-    first = next(iter(by_seed.values()))
-    if isinstance(first, dict):
-        return {k: average({s: v[k] for s, v in by_seed.items()}) for k in first}
-    if isinstance(first, (int, float)) and not isinstance(first, bool):
-        return statistics.mean(by_seed.values())
-    return first
 
 
 def main():
@@ -144,22 +160,21 @@ def main():
     contrast = read_jsonl(ROOT / "data" / "contrast" / "contrast.jsonl")
     reported = json.loads((ROOT / "results" / "evaluation.json").read_text(encoding="utf-8"))
 
-    out = {"perturbations": list(PERTURBATIONS), "requests": len(data["codex_test"]), "contrast_pairs":
-           len(contrast) // 2, "models": {}, "seeds": {}}
+    runs = {}
     for name, model in classic_models().items():
         model.fit(data["train"])
-        out["models"][name] = evaluate(lambda rows: [model.predict(r["tokens"]) for r in rows], attacked, contrast)
-        print(f"{name}: clean F1 {out['models'][name]['perturbed']['clean']['f1']:.3f}", flush=True)
+        runs[name] = [predictions(lambda rows: [model.predict(r["tokens"]) for r in rows], attacked, contrast)]
     if not args.no_bert:
-        for name, by_seed in bert_results(data["train"], data["dev"], attacked, contrast).items():
-            out["seeds"][name] = by_seed
-            out["models"][name] = average(by_seed)
+        runs.update(bert_runs(data["train"], data["dev"], attacked, contrast))
 
-    for name, result in out["models"].items():  # the retrained models must be the reported ones
-        key = "seeds" if name in out["seeds"] else "models"
-        expected = (reported["seeds"][name]["codex_test"]["mean"] if key == "seeds"
+    out = {"perturbations": list(PERTURBATIONS), "requests": len(data["codex_test"]), "contrast_pairs":
+           len(contrast) // 2, "seeds": {name: list(SEEDS) for name, r in runs.items() if len(r) > 1}, "models": {}}
+    for name, model_runs in runs.items():
+        out["models"][name] = score(model_runs, attacked, contrast)
+        expected = (reported["seeds"][name]["codex_test"]["mean"] if len(model_runs) > 1
                     else reported["models"][name]["codex_test"]["f1"])
-        assert abs(result["perturbed"]["clean"]["f1"] - expected) < 1e-9, (name, expected)
+        clean = out["models"][name]["perturbed"]["clean"]["f1"]
+        assert abs(clean - expected) < 1e-9, (name, clean, expected)  # the retrained models are the reported ones
 
     (ROOT / "results" / "robustness.json").write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8")
     print(f"\n{'model':<22}" + "".join(f"{p[:9]:>10}" for p in PERTURBATIONS) + "  contrast pairs")

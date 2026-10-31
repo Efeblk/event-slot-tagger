@@ -79,8 +79,8 @@ def plot_dev_vs_test(evaluation):
     fig, ax = plt.subplots(figsize=(8, 4.6))
     rows = list(reversed(METHODS))
     for y, (key, _, bert) in enumerate(rows):
-        test = evaluation["models"][key]["codex_test"]
-        f1 = evaluation["seeds"][key]["codex_test"]["mean"] if bert else test["f1"]
+        test = evaluation["seeds" if bert else "models"][key]["codex_test"]
+        f1 = test["mean"] if bert else test["f1"]
         ax.plot([f1, dev[key]], [y, y], color=GRID, linewidth=2, zorder=1)
         ax.plot([test["low"], test["high"]], [y, y], color=SERIES[0], linewidth=2, zorder=2,
                 solid_capstyle="round")
@@ -96,20 +96,25 @@ def plot_dev_vs_test(evaluation):
     ax.set_xlabel("Exact-span micro F1")
     ax.set_title("Every model drops on text from a writer it never saw", pad=10)
     ax.legend(loc="lower left", fontsize=9, handletextpad=0.3, facecolor=SURFACE, frameon=True, edgecolor=GRID)
-    fig.text(0.0, -0.02, "BERTurk: mean of 3 seeds; interval from seed 7. 1,000 bootstrap draws over requests.",
+    fig.text(0.0, -0.02, "BERTurk: mean of 3 seeds and the interval of that mean. 1,000 bootstrap draws over requests.",
              fontsize=8, color=MUTED)
     save(fig, "dev_vs_test.png")
 
 
 def plot_per_label(evaluation):
-    """Grouped bars: F1 per label on the Codex test for HMM, CRF and BERTurk + CRF layer."""
+    """Grouped bars: F1 per label on the Codex test for HMM, CRF and BERTurk + CRF layer, with 95% intervals."""
     models = [("hmm", "HMM"), ("crf", "CRF"), ("berturk_crf", "BERTurk + CRF layer")]
     fig, ax = plt.subplots(figsize=(8, 4.2))
     width = 0.26
     for i, (key, name) in enumerate(models):
-        values = [evaluation["models"][key]["codex_test"]["labels"][label] for label in LABELS]
+        result = evaluation["models"][key]["codex_test"]
+        values = [result["labels"][label] for label in LABELS]
+        errors = [[v - result["label_intervals"][label][0] for label, v in zip(LABELS, values)],
+                  [result["label_intervals"][label][1] - v for label, v in zip(LABELS, values)]]
         xs = [x + (i - 1) * width for x in range(len(LABELS))]
         ax.bar(xs, values, width=width, color=SERIES[i], edgecolor=SURFACE, linewidth=1.5, label=name)
+        ax.errorbar(xs, values, yerr=errors, fmt="none", ecolor=INK_2, elinewidth=1, capsize=0)
+    fig.text(0.0, -0.02, "Lines: 95% bootstrap intervals over requests. BERTurk: seed 7.", fontsize=8, color=MUTED)
     ax.set_xticks(range(len(LABELS)), LABELS)
     ax.tick_params(axis="x", length=0)
     ax.grid(axis="x", visible=False)
@@ -133,7 +138,7 @@ def plot_differences(evaluation):
     fig, ax = plt.subplots(figsize=(8, 3.6))
     rows = list(reversed(pairs))
     for y, (key, _) in enumerate(rows):
-        d = evaluation["differences"][key]["codex_test"]
+        d = evaluation["differences"][key]["codex_test"]["seed_mean"]
         ax.plot([d["low"], d["high"]], [y, y], color=SERIES[0], linewidth=2, solid_capstyle="round")
         ax.scatter(d["diff"], y, s=60, color=SERIES[0], edgecolor=SURFACE, linewidth=2, zorder=3)
         ax.text(d["high"] + 0.004, y, f"{d['diff']:+.3f}", va="center", fontsize=8.5, color=INK_2)
@@ -144,6 +149,8 @@ def plot_differences(evaluation):
     ax.set_xlim(-0.02, 0.19)
     ax.set_xlabel("Difference in Codex test F1 (dot) and 95% paired bootstrap interval")
     ax.set_title("Which step helps? An interval crossing 0 means no measurable gain")
+    fig.text(0.0, -0.09, "BERTurk: difference of the means over 3 seeds; every seed scored on the same drawn requests.",
+             fontsize=8, color=MUTED)
     save(fig, "differences.png")
 
 
@@ -248,16 +255,17 @@ def plot_robustness():
     for k, (key, label) in enumerate(THREE):
         result = rob["models"][key]["perturbed"]
         clean = result["clean"]["f1"]
-        drops = [result[p]["f1"] - clean for p in rows]
+        drops = [result[p]["change"] for p in rows]
         ys = [y + (1 - k) * 0.22 for y in range(len(rows))]
-        ax.hlines(ys, 0, drops, color=SERIES[k], linewidth=2)
+        ax.hlines(ys, [result[p]["change_low"] for p in rows], [result[p]["change_high"] for p in rows],
+                  color=SERIES[k], linewidth=2)
         ax.scatter(drops, ys, s=50, color=SERIES[k], edgecolor=SURFACE, linewidth=1.5, zorder=3,
                    label=f"{label} (clean {clean:.3f})")
     ax.axvline(0, color=INK_2, linewidth=1)
     ax.set_yticks(range(len(rows)), [names[p] for p in rows])
     ax.tick_params(axis="y", length=0)
     ax.grid(axis="y", visible=False)
-    ax.set_xlabel("Change in Codex test F1 against the clean text")
+    ax.set_xlabel("Change in Codex test F1 against the clean text (dot) and 95% paired bootstrap interval")
     ax.set_title("Attacking the input: how much F1 each change costs", pad=28)
     ax.legend(loc="lower left", bbox_to_anchor=(0, 1.0), ncol=3, fontsize=8.5)
     save(fig, "robustness.png")
@@ -273,9 +281,13 @@ def plot_contrast():
     fig, ax = plt.subplots(figsize=(9, 3.8))
     width = 0.26
     for k, (key, label) in enumerate(THREE):
-        values = [rob["models"][key]["contrast"][g]["pair"] for g, _ in groups]
+        result = rob["models"][key]["contrast"]
+        values = [result[g]["pair"] for g, _ in groups]
         xs = [x + (k - 1) * width for x in range(len(groups))]
         ax.bar(xs, values, width=width, color=SERIES[k], edgecolor=SURFACE, linewidth=1.5, label=label)
+        ax.errorbar(xs, values, yerr=[[v - result[g]["pair_low"] for (g, _), v in zip(groups, values)],
+                                      [result[g]["pair_high"] - v for (g, _), v in zip(groups, values)]],
+                    fmt="none", ecolor=INK_2, elinewidth=1, capsize=0)
         for x, v in zip(xs, values):
             if v < 0.02:
                 ax.text(x, 0.02, "0", ha="center", va="bottom", fontsize=8, color=INK_2)
@@ -285,6 +297,7 @@ def plot_contrast():
     ax.set_ylim(0, 1)
     ax.set_ylabel("Pairs with both versions right")
     ax.set_title(f"Contrast set ({rob['contrast_pairs']} minimal pairs): does one word flip the label?", pad=28)
+    fig.text(0.0, -0.06, "Lines: 95% bootstrap intervals over pairs. BERTurk: mean of 3 seeds.", fontsize=8, color=MUTED)
     ax.legend(loc="lower left", bbox_to_anchor=(0, 1.0), ncol=3, fontsize=9)
     save(fig, "contrast.png")
 
@@ -301,7 +314,7 @@ def plot_learning_curve():
             continue
         points = curve["models"][key]
         xs = [p["requests"] for p in points]
-        ax.fill_between(xs, [min(p["f1"]) for p in points], [max(p["f1"]) for p in points], color=SERIES[k],
+        ax.fill_between(xs, [p["low"] for p in points], [p["high"] for p in points], color=SERIES[k],
                         alpha=0.15, linewidth=0)
         ax.plot(xs, [p["mean"] for p in points], color=SERIES[k], linewidth=2, marker="o", markersize=6,
                 markeredgecolor=SURFACE, label=label)
@@ -315,7 +328,8 @@ def plot_learning_curve():
     ax.set_ylabel("Codex test F1")
     ax.set_title("How much training data does each model need?", pad=28)
     ax.legend(loc="lower left", bbox_to_anchor=(0, 1.0), ncol=3, fontsize=9)
-    fig.text(0.0, -0.03, "Line: mean of 3 random subsets (seeds 7, 13, 42); band: lowest to highest.", fontsize=8,
+    fig.text(0.0, -0.03, "Line: mean of 3 random subsets (seeds 7, 13, 42); band: 95% bootstrap interval of that mean.",
+             fontsize=8,
              color=MUTED)
     save(fig, "learning_curve.png")
 
