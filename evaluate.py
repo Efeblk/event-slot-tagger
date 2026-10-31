@@ -109,7 +109,7 @@ def main():
         if len(by_seed) > 1:
             out["seeds"][name] = {}
             for t, rows in tests.items():
-                f1s = [span_scores([r["tags"] for r in rows], p[t])["f1"] for p in by_seed.values()]
+                f1s = [span_scores([r["tags"] for r in rows], by_seed[s][t])["f1"] for s in sorted(by_seed)]
                 out["seeds"][name][t] = {"seeds": sorted(by_seed), "f1": f1s, "mean": statistics.mean(f1s),
                                          "std": statistics.stdev(f1s)}
     for model, base in PAIRS:

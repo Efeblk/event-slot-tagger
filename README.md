@@ -101,6 +101,8 @@ settings were chosen on dev.
 | BERTurk, softmax + BIO rules | 0.984 | 0.940 ± 0.002 | 0.945 ± 0.010 | 0 |
 | **BERTurk + CRF layer** | 0.986 | **0.941 ± 0.004** [0.932, 0.959] | 0.956 ± 0.000 | 0 |
 
+![Dev F1 against Codex test F1 for every method](results/figures/dev_vs_test.png)
+
 Paired differences on the Codex test (same bootstrap draws for both models):
 
 | Comparison | Difference | 95% interval | Reading |
@@ -112,6 +114,8 @@ Paired differences on the Codex test (same bootstrap draws for both models):
 | BERTurk: BIO rules − softmax | +0.004 | [+0.001, +0.007] | small but reliable: fixes every IOB2 break |
 | BERTurk: CRF layer − BIO rules | +0.003 | [−0.005, +0.010] | not distinguishable from 0 |
 
+![Paired differences with 95% intervals](results/figures/differences.png)
+
 Per label on the Codex test (F1):
 
 | Method | PLACE | DATE | TYPE | NAME | PRICE | PEOPLE | EXCLUDE |
@@ -119,6 +123,8 @@ Per label on the Codex test (F1):
 | HMM | 0.858 | 0.829 | 0.714 | 0.585 | 0.937 | 0.718 | **0.359** |
 | CRF | 0.938 | 0.907 | 0.802 | 0.722 | 0.963 | 0.867 | 0.766 |
 | BERTurk + CRF layer | 0.980 | 0.996 | 0.919 | 0.800 | 0.973 | 0.895 | 0.899 |
+
+![F1 per label for HMM, CRF and BERTurk + CRF layer](results/figures/per_label.png)
 
 ### What the results show
 
@@ -162,10 +168,15 @@ Milliseconds per request on the Codex test, measured inside the scripts (classic
 on an RTX 4070 SUPER in batches of 16): frequent tag 0.007, HMM 0.34, CRF 0.14, BERTurk 0.7 (softmax), 1.0–1.1
 (softmax + BIO rules, and CRF layer).
 
+![Codex test F1 against milliseconds per request](results/figures/speed.png)
+
 Training time: CRF 4 s. BERTurk (5 epochs, 1,691 requests) takes 28–31 s with softmax and 34–35 s with the CRF
 layer. The original runs shared the GPU with other programs (35 s to 53 min), so all six runs were repeated on an idle
 GPU only to measure time: every run chose the same epoch and gave exactly the same predictions, so the scores above
-are unchanged and reproducible. The idle-GPU times are in `results/timing_idle_gpu.json`.
+are unchanged and reproducible. The idle-GPU times are in `results/timing_idle_gpu.json`. Dev F1 passes 0.98 after
+2 epochs in every run; the best epoch (kept) is 2–4:
+
+![Dev F1 per epoch for every BERTurk run](results/figures/training.png)
 
 ## Running it
 
@@ -186,10 +197,11 @@ for seed in 7 13 42; do
   python train_bert.py --seed $seed --crf
 done
 python evaluate.py              # results/evaluation.json, results/error_examples.json
+python plot_results.py          # results/figures/*.png
 ```
 
-Predictions of every model for dev and both test sets are kept in `results/predictions/`, so `evaluate.py` reruns
-without any model.
+Predictions of every model for dev and both test sets are kept in `results/predictions/`, so `evaluate.py` and
+`plot_results.py` rerun without any model.
 
 ## Files
 
@@ -207,6 +219,7 @@ without any model.
 | `train_classic.py` | Trains and scores the baseline, HMM and CRF |
 | `train_bert.py` | BERTurk with softmax, BIO-rule and CRF-layer decoding |
 | `evaluate.py` | Intervals, seeds, paired differences, slices, error types |
+| `plot_results.py` | The figures in `results/figures/` |
 | `tests/test_tagging.py` | Unit tests |
 | `project1/` | Project 1, unchanged |
 
