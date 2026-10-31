@@ -159,9 +159,13 @@ Counted by type (`errors` in `results/evaluation.json`): 39 wrong boundaries, 14
 ### Speed
 
 Milliseconds per request on the Codex test, measured inside the scripts (classic models on the CPU, BERTurk
-on an RTX 4070 SUPER in batches of 16): frequent tag 0.007, HMM 0.34, CRF 0.14, BERTurk 0.7–2.2. CRF training takes
-4 s; BERTurk training took 35 s to 53 min per run because the GPU was shared with other programs, so those times are
-not comparable.
+on an RTX 4070 SUPER in batches of 16): frequent tag 0.007, HMM 0.34, CRF 0.14, BERTurk 0.7 (softmax), 1.0–1.1
+(softmax + BIO rules, and CRF layer).
+
+Training time: CRF 4 s. BERTurk (5 epochs, 1,691 requests) takes 28–31 s with softmax and 34–35 s with the CRF
+layer. The original runs shared the GPU with other programs (35 s to 53 min), so all six runs were repeated on an idle
+GPU only to measure time: every run chose the same epoch and gave exactly the same predictions, so the scores above
+are unchanged and reproducible. The idle-GPU times are in `results/timing_idle_gpu.json`.
 
 ## Running it
 
