@@ -43,6 +43,7 @@ NAME vs TYPE, what EXCLUDE covers).
 | AI-written | 10 Claude Haiku agents, 200 requests each, one focus per agent (cities, prices, exclusions, performers, very messy chat style, ...). Prompt: [`data/train_ai/PROMPT.md`](data/train_ai/PROMPT.md) | 2,000 → 1,691 train + 296 dev | train, choose settings |
 | Codex test | Written by a **different AI** (OpenAI Codex) from the same guide, without seeing any training file. Prompt and history: [`data/test_codex/PROMPT.md`](data/test_codex/PROMPT.md) | 299 | test |
 | Bi' Plan test | The 25 Turkish requests of the Bi' Plan golden set, written by me for the app, labeled following the guide | 25 | test |
+| Opus test | Written by a **third AI** (Claude Opus) from the same guide and prompt as the Codex test, after all models were trained; it read only the guide. Prompt: [`data/test_opus/PROMPT.md`](data/test_opus/PROMPT.md) | 300 → 298 | second test |
 
 Cleaning (`prepare_data.py`): every span must be found in its text on whole words, in order; lines that fail are
 dropped and listed in `data/clean/stats.json` (0 in the final data). Duplicates are removed after lowercasing and
@@ -58,6 +59,12 @@ Honest notes on the data:
 - All 299 Codex lines were reviewed against the guide. 23 labels were corrected; the original files are unchanged and
   the corrections, each with a reason, are in [`data/test_codex/fixes.json`](data/test_codex/fixes.json).
 - The Bi' Plan set is small (25 requests) and its intervals are wide; it is a real-use check, not the main test.
+- The Opus test was added after all results above it were final, to check that the Codex result is not a quirk of one
+  writer. Opus and Haiku are both Claude models, so it is less independent of the training writer than Codex is, yet
+  it turned out harder for the classic models (below). All 300 lines were reviewed against the guide and no label was
+  changed. Its 2 duplicates of other requests were dropped from the Opus test, never from train or dev, so train,
+  dev and every earlier number stay byte-identical; retraining all models gave identical predictions on every other
+  split.
 
 Span counts (from `data/clean/stats.json`):
 
@@ -65,6 +72,7 @@ Span counts (from `data/clean/stats.json`):
 |---|---|---|---|---|---|---|---|
 | train | 1,214 | 924 | 1,131 | 271 | 568 | 518 | 390 |
 | Codex test | 293 | 274 | 240 | 69 | 95 | 140 | 84 |
+| Opus test | 204 | 165 | 229 | 75 | 56 | 102 | 40 |
 
 ## Methods
 
@@ -111,7 +119,7 @@ with the best dev F1 is kept. Three seeds (7, 13, 42) for every BERTurk variant.
 
 ### Benchmark and why this metric
 
-Methods are ranked by **exact-span micro F1 on the Codex test**: a span counts only if its label and both boundaries
+Methods are ranked by **exact-span micro F1 on the two AI-written tests** (Codex, then Opus as a second check): a span counts only if its label and both boundaries
 are right, as on the slides. Two methods count as different only if the 95% interval of their paired difference
 excludes 0. Why this metric and not the others:
 
@@ -145,7 +153,25 @@ The full benchmark on the Codex test (BERTurk: mean over 3 seeds):
 The task is not saturated: the floor baseline gets 16% of requests fully right and the best model 80%. Token accuracy
 squeezes the gap between the CRF and BERTurk to 0.05; request exact match shows it is 0.20.
 
-![Token accuracy, span F1 and request exact match for every method](results/figures/metrics.png)
+The same benchmark on the Opus test (a third writer):
+
+| Method | Role | Span micro F1 | Macro F1 | Request exact match | Token accuracy |
+|---|---|---|---|---|---|
+| Frequent tag | baseline | 0.630 | 0.573 | 0.292 | 0.770 |
+| HMM | baseline | 0.729 | 0.707 | 0.413 | 0.846 |
+| CRF, no suffix features | baseline | 0.775 | 0.791 | 0.483 | 0.847 |
+| CRF | new features | 0.805 | 0.817 | 0.564 | 0.876 |
+| BERTurk, softmax | baseline | 0.935 | 0.936 | 0.839 | 0.970 |
+| BERTurk, softmax + BIO rules | new decoder | 0.943 | 0.945 | 0.856 | 0.972 |
+| **BERTurk_E (CRF layer)** | new decoder | **0.942** | **0.943** | **0.852** | **0.972** |
+
+**Only the BERTurk models hold up across writers.** BERTurk_E scores 0.941 on Codex and 0.942 [0.924, 0.957] on
+Opus, while the CRF falls from 0.873 to 0.805 [0.778, 0.837] and the HMM from 0.769 to 0.729. So the gain from
+pre-training doubles on the third writer: BERTurk (BIO rules) − CRF is +0.067 [+0.049, +0.085] on Codex and
++0.138 [+0.110, +0.164] on Opus (means over seeds, paired). A likely reason: the feature-based models learn the
+training writer's wording, while the pre-trained model has seen far more Turkish.
+
+![Token accuracy, span F1 and request exact match for every method on both tests](results/figures/metrics.png)
 
 ### Span F1 with intervals
 
@@ -153,16 +179,16 @@ Brackets: 95% bootstrap interval over requests (1,000 draws). BERTurk rows: mean
 and the interval of that mean (each draw scores all 3 seeds on the same requests). Everything is in `results/evaluation.json`; test sets were scored once, after all
 settings were chosen on dev.
 
-| Method | Dev F1 | Codex test F1 | Bi' Plan F1 | IOB2 breaks (both tests) |
-|---|---|---|---|---|
-| Frequent tag | 0.782 | 0.632 [0.603, 0.661] | 0.717 [0.615, 0.826] | 188 |
-| HMM | 0.857 | 0.769 [0.745, 0.794] | 0.852 [0.741, 0.942] | 0 |
-| HMM + BIO rules | 0.857 | 0.769 [0.745, 0.794] | 0.852 [0.741, 0.942] | 0 |
-| CRF, no suffix features | 0.954 | 0.848 [0.827, 0.869] | 0.955 [0.909, 0.991] | 0 |
-| CRF | 0.968 | 0.873 [0.855, 0.893] | 0.965 [0.922, 1.000] | 0 |
-| BERTurk, softmax | 0.983 | 0.937 ± 0.003 [0.923, 0.950] | 0.945 ± 0.010 [0.888, 0.986] | 8 |
-| BERTurk, softmax + BIO rules | 0.984 | 0.940 ± 0.002 [0.927, 0.953] | 0.945 ± 0.010 [0.888, 0.986] | 0 |
-| **BERTurk_E (CRF layer)** | 0.986 | **0.941 ± 0.004** [0.929, 0.954] | 0.956 ± 0.000 [0.902, 0.992] | 0 |
+| Method | Dev F1 | Codex test F1 | Opus test F1 | Bi' Plan F1 | IOB2 breaks (Codex + Bi' Plan) |
+|---|---|---|---|---|---|
+| Frequent tag | 0.782 | 0.632 [0.603, 0.661] | 0.630 [0.596, 0.664] | 0.717 [0.615, 0.826] | 188 |
+| HMM | 0.857 | 0.769 [0.745, 0.794] | 0.729 [0.698, 0.761] | 0.852 [0.741, 0.942] | 0 |
+| HMM + BIO rules | 0.857 | 0.769 [0.745, 0.794] | 0.729 [0.698, 0.761] | 0.852 [0.741, 0.942] | 0 |
+| CRF, no suffix features | 0.954 | 0.848 [0.827, 0.869] | 0.775 [0.748, 0.806] | 0.955 [0.909, 0.991] | 0 |
+| CRF | 0.968 | 0.873 [0.855, 0.893] | 0.805 [0.778, 0.837] | 0.965 [0.922, 1.000] | 0 |
+| BERTurk, softmax | 0.983 | 0.937 ± 0.003 [0.923, 0.950] | 0.935 ± 0.009 [0.918, 0.950] | 0.945 ± 0.010 [0.888, 0.986] | 8 |
+| BERTurk, softmax + BIO rules | 0.984 | 0.940 ± 0.002 [0.927, 0.953] | 0.943 ± 0.007 [0.928, 0.957] | 0.945 ± 0.010 [0.888, 0.986] | 0 |
+| **BERTurk_E (CRF layer)** | 0.986 | **0.941 ± 0.004** [0.929, 0.954] | **0.942 ± 0.005** [0.924, 0.957] | 0.956 ± 0.000 [0.902, 0.992] | 0 |
 
 ![Dev F1 against Codex test F1 for every method](results/figures/dev_vs_test.png)
 
@@ -409,6 +435,7 @@ Predictions of every model for dev and both test sets are kept in `results/predi
 | `data/GUIDELINES.md` | The labeling guide |
 | `data/train_ai/` | AI-written training requests and the prompt |
 | `data/test_codex/` | Codex test requests, prompt, and the hand fixes |
+| `data/test_opus/` | Opus test requests (second test, added last) and its prompt |
 | `data/test_biplan/` | The 25 Turkish Bi' Plan requests |
 | `data/contrast/` | 140 template-made minimal pairs (wanted vs excluded) |
 | `data/clean/` | Tokenized BIO splits made by `prepare_data.py` |

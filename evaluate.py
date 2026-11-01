@@ -1,6 +1,6 @@
 """Compare every trained tagger from its saved predictions (results/predictions/*.json); no model is rerun.
 
-For each test set (codex_test, biplan_test) and model:
+For each test set (codex_test, biplan_test, opus_test) and model:
 - exact-span micro F1 with a 95% bootstrap interval over requests (1,000 draws), macro F1, request exact match,
   token accuracy, per-label F1 and a bootstrap interval for each label;
 - for BERTurk models trained with several seeds: mean and standard deviation over the seeds, and the bootstrap
@@ -24,7 +24,7 @@ from collections import Counter, defaultdict
 
 from common import ROOT, bootstrap_f1, bootstrap_mean_f1, read_jsonl, span_scores, spans
 
-TESTS = ("codex_test", "biplan_test")
+TESTS = ("codex_test", "biplan_test", "opus_test")
 TURKISH = re.compile("[çğıöşüÇĞİÖŞÜ]")
 PAIRS = (("crf", "hmm_bio"), ("crf", "crf_no_suffix"), ("hmm_bio", "hmm"), ("hmm", "frequent_tag"),
          ("berturk_softmax_bio", "berturk_softmax"), ("berturk_crf", "berturk_softmax_bio"),

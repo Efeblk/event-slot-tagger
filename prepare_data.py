@@ -6,11 +6,14 @@ Inputs ({"text", "spans"} per line, see data/GUIDELINES.md):
   line by line against the guide; the corrected labels are in data/test_codex/fixes.json and replace the original
   spans here, so both versions stay visible.
 - data/test_biplan/golden_raw.jsonl: the Turkish requests of the Bi' Plan golden set, labeled by hand.
+- data/test_opus/opus_test_*.jsonl: test requests written by a third AI writer (Claude Opus) after all models were
+  trained. Its duplicates are dropped from the Opus test itself, never from train or dev, so adding it changes no
+  other split.
 
 A line whose spans do not fit its text is dropped and counted, never repaired silently. Texts are compared after
 lowercasing, folding Turkish letters to ASCII and removing punctuation, so "Kadıköy'de konser" and "kadikoyde konser"
 count as the same request. Duplicates are dropped, then train and dev rows that match a test request.
-Dev takes 15% of each part (fixed seed). Writes data/clean/{train,dev,codex_test,biplan_test}.jsonl and stats.json.
+Dev takes 15% of each part (fixed seed). Writes data/clean/{train,dev,codex_test,biplan_test,opus_test}.jsonl and stats.json.
 
 Usage: python prepare_data.py
 """
@@ -92,6 +95,15 @@ def main():
     dev, dev_dropped = dedupe(dev, test_keys | {key(r["text"]) for r in train})
     stats["train"] = {"duplicates_or_test_matches_dropped": train_dropped}
     stats["dev"] = {"duplicates_or_train_test_matches_dropped": dev_dropped}
+
+    rows, bad = [], []
+    for path in sorted((ROOT / "data" / "test_opus").glob("opus_test_*.jsonl")):
+        part_rows, part_bad = load(path, f"opus:{path.stem}")
+        rows, bad = rows + part_rows, bad + part_bad
+    errors += bad
+    tests["opus_test"], duplicates = dedupe(rows, test_keys | {key(r["text"]) for r in train + dev})
+    stats["opus_test"] = {"lines": len(rows) + len(bad), "bad_spans": len(bad),
+                          "duplicates_or_matches_dropped": duplicates}
 
     for name, rows in (("train", train), ("dev", dev), *tests.items()):
         write_jsonl(ROOT / "data" / "clean" / f"{name}.jsonl", rows)

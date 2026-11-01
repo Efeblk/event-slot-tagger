@@ -31,7 +31,7 @@ from transformers import AutoModel, AutoTokenizer, get_linear_schedule_with_warm
 from common import ROOT, TAGS, bio_valid, read_jsonl, span_scores
 
 TAG_ID = {tag: i for i, tag in enumerate(TAGS)}
-SPLITS = ("dev", "codex_test", "biplan_test")
+SPLITS = ("dev", "codex_test", "biplan_test", "opus_test")
 LR, HEAD_LR, BATCH, WARMUP, MAX_LEN = 3e-5, 1e-3, 16, 0.1, 128
 # allowed[i, j] is True when tag j may follow tag i under IOB2; allowed_start[j] when tag j may start a request.
 ALLOWED = torch.tensor([[bio_valid(a, b) for b in TAGS] for a in TAGS])

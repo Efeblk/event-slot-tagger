@@ -5,7 +5,7 @@ suffix features, to measure what Turkish case endings add). The CRF penalties c1
 small grid; the test sets are scored once with the chosen setting.
 
 Writes results/classic.json (scores, chosen settings, speed) and results/predictions/<model>.json (predicted tags for
-dev and both test sets, used by evaluate.py).
+dev and every test set, used by evaluate.py).
 
 Usage: python train_classic.py
 """
@@ -17,7 +17,7 @@ from common import ROOT, read_jsonl, span_scores
 from crf import CRF
 from hmm import HMM, FrequentTag
 
-SPLITS = ("dev", "codex_test", "biplan_test")
+SPLITS = ("dev", "codex_test", "biplan_test", "opus_test")
 GRID = [(c1, c2) for c1 in (0.0, 0.05, 0.2) for c2 in (0.01, 0.1, 0.5)]
 
 

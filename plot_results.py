@@ -145,39 +145,45 @@ def plot_dev_vs_test(evaluation):
 
 
 def plot_metrics(evaluation):
-    """The benchmark: token accuracy, exact-span micro F1 (the ranking metric) and request exact match per method."""
+    """The benchmark on both AI-written tests (two writers the models never saw): token accuracy, exact-span micro F1
+    (the ranking metric) and request exact match per method."""
     roles = {"crf": "new", "berturk_softmax_bio": "new", "berturk_crf": "new"}
-    fig, ax = plt.subplots(figsize=(WIDTH, 4.4))
+    fig, axes = plt.subplots(1, 2, figsize=(WIDTH, 4.6), sharey=True, gridspec_kw={"wspace": 0.08})
     rows = [m for m in reversed(METHODS) if m[0] != "hmm_bio"]  # HMM + BIO rules predicts exactly what the HMM does
-    for y, (key, _, bert) in enumerate(rows):
-        if bert:
-            s = evaluation["seeds"][key]["codex_test"]
-            acc, f1, exact = s["mean_token_accuracy"], s["mean"], s["mean_request_exact"]
-        else:
-            s = evaluation["models"][key]["codex_test"]
-            acc, f1, exact = s["token_accuracy"], s["f1"], s["request_exact"]
-        ax.plot([exact, acc], [y, y], color=GRID, linewidth=5, zorder=1, solid_capstyle="round")
-        for x, color, size in ((exact, INK_2, 50), (acc, MUTED, 50), (f1, SERIES[0], 80)):
-            ax.scatter(x, y, s=size, color=color, edgecolor=SURFACE, linewidth=1.5, zorder=3)
-        ax.text(exact - 0.012, y, f"{exact:.2f}", ha="right", va="center", fontsize=8, color=INK_2)
-        ax.annotate(f"{f1:.3f}", (f1, y), xytext=(0, -12), textcoords="offset points", ha="center", va="center",
-                    fontsize=8, color=SERIES[0], fontweight="bold")
-        ax.text(acc + 0.012, y, f"{acc:.2f}", ha="left", va="center", fontsize=8, color=MUTED)
-        if y == len(rows) - 1:  # direct labels on the top row instead of a legend
-            for x, label, color in ((exact, "request exact match", INK_2), (f1, "span F1", SERIES[0]),
-                                    (acc, "token accuracy", MUTED)):
-                ax.annotate(label, (x, y), xytext=(0, 11), textcoords="offset points", ha="center", fontsize=8.5,
-                            color=color, fontweight="bold")
-    for boundary in (2.5, 4.5):  # BERTurk | CRF | count-based models
-        ax.axhline(boundary, color=GRID, linewidth=0.8, zorder=0)
-    ax.set_yticks(range(len(rows)), [f"{name}  ({roles.get(key, 'baseline')})" for key, name, _ in rows])
-    clean_y(ax)
-    ax.set_ylim(-0.6, len(rows) - 0.3)
-    ax.set_xlim(0.05, 1.05)
-    ax.set_xlabel("Score on the Codex test")
-    header(ax, "Token accuracy hides errors that whole requests show",
-           "Methods are ranked by exact-span micro F1 (blue); a request counts as exact only if every span is right")
-    note(ax, "BERTurk: mean of 3 seeds. Baseline = the vanilla method of the lecture; new = what this project adds.")
+    for ax, (test, title) in zip(axes, [("codex_test", "Codex test (OpenAI Codex, 299)"),
+                                        ("opus_test", "Opus test (Claude Opus, 298)")]):
+        for y, (key, _, bert) in enumerate(rows):
+            if bert:
+                s = evaluation["seeds"][key][test]
+                acc, f1, exact = s["mean_token_accuracy"], s["mean"], s["mean_request_exact"]
+            else:
+                s = evaluation["models"][key][test]
+                acc, f1, exact = s["token_accuracy"], s["f1"], s["request_exact"]
+            ax.plot([exact, acc], [y, y], color=GRID, linewidth=5, zorder=1, solid_capstyle="round")
+            for x, color, size in ((exact, INK_2, 40), (acc, MUTED, 40), (f1, SERIES[0], 70)):
+                ax.scatter(x, y, s=size, color=color, edgecolor=SURFACE, linewidth=1.5, zorder=3)
+            ax.text(exact - 0.02, y, f"{exact:.2f}", ha="right", va="center", fontsize=7.5, color=INK_2)
+            ax.annotate(f"{f1:.3f}", (f1, y), xytext=(0, -11), textcoords="offset points", ha="center",
+                        va="center", fontsize=7.5, color=SERIES[0], fontweight="bold")
+            if y == len(rows) - 1 and test == "codex_test":  # direct labels on the top row instead of a legend
+                for x, label, color, ha in ((exact - 0.02, "request exact match", INK_2, "left"),
+                                            (f1, "span F1", SERIES[0], "center"), (acc, "accuracy", MUTED, "left")):
+                    ax.annotate(label, (x, y), xytext=(0, 10), textcoords="offset points", ha=ha, fontsize=8,
+                                color=color, fontweight="bold")
+        for boundary in (2.5, 4.5):  # BERTurk | CRF | count-based models
+            ax.axhline(boundary, color=GRID, linewidth=0.8, zorder=0)
+        ax.set_title(title, fontsize=10, loc="left", color=INK, fontweight="bold")
+        ax.set_xlim(0.05, 1.05)
+        ax.set_xticks([0.2, 0.4, 0.6, 0.8, 1.0])
+        clean_y(ax)
+    axes[0].set_yticks(range(len(rows)), [f"{name}  ({roles.get(key, 'baseline')})" for key, name, _ in rows])
+    axes[0].set_ylim(-0.6, len(rows) - 0.3)
+    fig.supxlabel("Score on the test written by an AI the models never saw", fontsize=9.5, color=INK_2, x=0.6, y=0.0)
+    header(axes[0], "Only the BERTurk models hold up on both unseen writers",
+           "Ranked by exact-span micro F1 (blue); token accuracy hides errors that whole requests show",
+           panel_titles=True)
+    note(axes[0], "BERTurk: mean of 3 seeds. Baseline = the vanilla method of the lecture; new = what this project "
+                  "adds.", below=48)
     save(fig, "metrics.png")
 
 
