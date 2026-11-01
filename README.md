@@ -91,7 +91,11 @@ and each addition is measured against its own baseline (paired differences below
 | — | HMM: unknown words mapped to suffix classes (`<UNK-de>`); `hmm_bio` adds IOB2 constraints | new |
 | — | CRF: Turkish suffix and apostrophe features (`crf`) | new, +0.026 over its baseline |
 | — | BERTurk + BIO-constrained Viterbi decoding (`berturk_softmax_bio`) | new, +0.003, removes every IOB2 break |
-| — | BERTurk + learned CRF layer (`berturk_crf`) | new, no measurable gain over the constrained decoder |
+| — | **BERTurk_E**: BERTurk + learned CRF layer (`berturk_crf`), our final model | new, no measurable gain over the constrained decoder |
+
+**Our model, BERTurk_E** (E for *etkinlik*, event): BERTurk with a CRF layer on top, fine-tuned on the 1,691
+training requests (3 seeds). The architecture is BERT; the pre-trained model is BERTurk; BERTurk_E is the tagger
+this project trained.
 
 BERT is the architecture; BERTurk is one pre-trained model of that architecture (same layers as `bert-base-cased`,
 different vocabulary and pre-training text). Swapping in another model of a different architecture (e.g. a
@@ -136,7 +140,7 @@ The full benchmark on the Codex test (BERTurk: mean over 3 seeds):
 | CRF | new features | 0.873 | 0.852 | 0.595 | 0.911 |
 | BERTurk, softmax | baseline | 0.937 | 0.920 | 0.784 | 0.963 |
 | BERTurk, softmax + BIO rules | new decoder | 0.940 | 0.924 | 0.785 | 0.963 |
-| **BERTurk + CRF layer** | new decoder | **0.941** | **0.925** | **0.796** | **0.965** |
+| **BERTurk_E (CRF layer)** | new decoder | **0.941** | **0.925** | **0.796** | **0.965** |
 
 The task is not saturated: the floor baseline gets 16% of requests fully right and the best model 80%. Token accuracy
 squeezes the gap between the CRF and BERTurk to 0.05; request exact match shows it is 0.20.
@@ -158,7 +162,7 @@ settings were chosen on dev.
 | CRF | 0.968 | 0.873 [0.855, 0.893] | 0.965 [0.922, 1.000] | 0 |
 | BERTurk, softmax | 0.983 | 0.937 ± 0.003 [0.923, 0.950] | 0.945 ± 0.010 [0.888, 0.986] | 8 |
 | BERTurk, softmax + BIO rules | 0.984 | 0.940 ± 0.002 [0.927, 0.953] | 0.945 ± 0.010 [0.888, 0.986] | 0 |
-| **BERTurk + CRF layer** | 0.986 | **0.941 ± 0.004** [0.929, 0.954] | 0.956 ± 0.000 [0.902, 0.992] | 0 |
+| **BERTurk_E (CRF layer)** | 0.986 | **0.941 ± 0.004** [0.929, 0.954] | 0.956 ± 0.000 [0.902, 0.992] | 0 |
 
 ![Dev F1 against Codex test F1 for every method](results/figures/dev_vs_test.png)
 
@@ -177,7 +181,7 @@ Paired differences on the Codex test (same bootstrap draws for both models; for 
 
 Per label on the Codex test (F1 and 95% bootstrap interval; BERTurk: seed 7):
 
-| Label | HMM | CRF | BERTurk + CRF layer |
+| Label | HMM | CRF | BERTurk_E (CRF layer) |
 |---|---|---|---|
 | PLACE | 0.858 [0.82, 0.89] | 0.938 [0.91, 0.96] | 0.980 [0.96, 0.99] |
 | DATE | 0.829 [0.79, 0.87] | 0.907 [0.87, 0.94] | 0.996 [0.99, 1.00] |
@@ -187,7 +191,7 @@ Per label on the Codex test (F1 and 95% bootstrap interval; BERTurk: seed 7):
 | PEOPLE | 0.718 [0.65, 0.79] | 0.867 [0.81, 0.92] | 0.894 [0.84, 0.95] |
 | EXCLUDE | **0.359 [0.25, 0.47]** | 0.766 [0.67, 0.85] | 0.899 [0.82, 0.96] |
 
-![F1 per label for HMM, CRF and BERTurk + CRF layer](results/figures/per_label.png)
+![F1 per label for HMM, CRF and BERTurk_E (CRF layer)](results/figures/per_label.png)
 
 ### What the results show
 
@@ -206,14 +210,14 @@ Per label on the Codex test (F1 and 95% bootstrap interval; BERTurk: seed 7):
    the frequent-tag baseline most (0.782 → 0.632), BERTurk least (0.986 → 0.941). Without a test set from a different
    writer the comparison would look much closer than it is.
 5. **Missing Turkish letters do not hurt.** On the Codex test, requests typed without any Turkish letter (125) and
-   with them (174) score almost the same for every model (CRF 0.877 vs 0.871, BERTurk + CRF 0.938 vs 0.949), because
+   with them (174) score almost the same for every model (CRF 0.877 vs 0.871, BERTurk_E 0.938 vs 0.949), because
    every method folds or learns both spellings.
 6. **On the 25 Bi' Plan requests all strong models tie** (0.94–0.97, intervals overlap); the set is too small to rank
    them.
 
 ### Error analysis
 
-`results/error_examples.json` lists all 58 Codex requests that BERTurk + CRF (seed 7) gets at least partly wrong.
+`results/error_examples.json` lists all 58 Codex requests that BERTurk_E (seed 7) gets at least partly wrong.
 Counted by type (`errors` in `results/evaluation.json`): 39 wrong boundaries, 14 wrong labels, 11 missed spans,
 4 invented spans. The main groups:
 
@@ -268,14 +272,14 @@ again (BERTurk: mean of 3 seeds).
 | CRF, no suffix features | 0.848 | 0.823 | 0.845 | 0.839 | **0.699** | 0.803 | 0.740 | 0.761 |
 | CRF | 0.873 | 0.866 | 0.874 | 0.871 | 0.825 | 0.851 | 0.832 | 0.839 |
 | BERTurk, softmax + BIO rules | 0.940 | 0.934 | 0.936 | 0.940 | **0.798** | 0.914 | 0.867 | 0.887 |
-| BERTurk + CRF layer | 0.941 | 0.934 | 0.934 | 0.941 | **0.790** | 0.914 | 0.862 | 0.882 |
+| BERTurk_E (CRF layer) | 0.941 | 0.934 | 0.934 | 0.941 | **0.790** | 0.914 | 0.862 | 0.882 |
 
 Typos: one random edit (swap two letters, drop one, double one) in 10% or 25% of the words of 4+ letters. Messy: all
 lowercase + no Turkish letters + no apostrophes + 10% typos, like a hurried chat message.
 
 Change against the clean text, with 95% paired bootstrap intervals (BERTurk: mean over 3 seeds):
 
-| Attack | HMM | CRF | BERTurk + CRF layer |
+| Attack | HMM | CRF | BERTurk_E (CRF layer) |
 |---|---|---|---|
 | all lowercase | +0.000 [+0.000, +0.000] | −0.007 [−0.016, +0.001] | −0.008 [−0.013, −0.004] |
 | no Turkish letters | +0.000 [+0.000, +0.000] | +0.001 [−0.003, +0.005] | −0.007 [−0.013, −0.001] |
@@ -321,7 +325,7 @@ requests.
 |---|---|---|---|
 | HMM | 0.86 [0.80, 0.91] | 0.06 [0.03, 0.11] | **0.00 [0.00, 0.00]** |
 | CRF | 0.94 [0.90, 0.98] | 0.91 [0.86, 0.96] | 0.86 [0.80, 0.91] |
-| BERTurk + CRF layer | 0.99 [0.98, 1.00] | 1.00 [1.00, 1.00] | 0.99 [0.98, 1.00] |
+| BERTurk_E (CRF layer) | 0.99 [0.98, 1.00] | 1.00 [1.00, 1.00] | 0.99 [0.98, 1.00] |
 
 ![Contrast set pair accuracy](results/figures/contrast.png)
 
@@ -365,7 +369,7 @@ two AI writers chose differently:
 | dev | 1 | 0 | 0 | 1 |
 | Codex test | 5 | 5 | 0 | 0 |
 
-So the "excluded names split in two" errors below are partly the model following its training labels: BERTurk + CRF
+So the "excluded names split in two" errors below are partly the model following its training labels: BERTurk_E
 splits 3 of the 5 Codex cases exactly as Haiku labeled them. Excluded *kinds* (`rock konseri olmasın` → one span) are
 consistent in all sets. The labels were not changed after the test was scored; a guide rule for this case, applied to
 the training data, would remove the conflict.

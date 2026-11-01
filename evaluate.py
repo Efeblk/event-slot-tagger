@@ -8,7 +8,7 @@ For each test set (codex_test, biplan_test) and model:
 - slices: requests typed without any Turkish letter vs with them, and PLACE spans written with a suffix;
 - IOB2 breaks: predicted I- tags that do not continue a span of their own label;
 - error types: wrong boundary, wrong label, missed span, invented span.
-Every Codex test request that BERTurk + CRF (lowest seed) gets wrong is listed with its gold and predicted spans in
+Every Codex test request that BERTurk_E (lowest seed) gets wrong is listed with its gold and predicted spans in
 results/error_examples.json, for reading the errors by hand.
 Paired bootstrap intervals for the differences in PAIRS (the claims in the README) use the same draws for both models.
 For BERTurk, the run with the lowest seed stands for its group in the

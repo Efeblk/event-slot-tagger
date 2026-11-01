@@ -31,7 +31,7 @@ SURFACE, INK, INK_2, MUTED, GRID = "#fcfcfb", "#0b0b0b", "#52514e", "#8a8984", "
 SERIES = ["#2a78d6", "#eb6834", "#1baf7a"]  # categorical slots 1-3, in fixed order
 BLUES = ["#fcfcfb", "#cde2fb", "#9ec5f4", "#6da7ec", "#3987e5", "#256abf", "#184f95", "#0d366b"]  # sequential
 WIDTH = 9  # inches; every figure has the same width so text has the same size in the README
-THREE = [("hmm", "HMM"), ("crf", "CRF"), ("berturk_crf", "BERTurk + CRF layer")]  # one per categorical slot
+THREE = [("hmm", "HMM"), ("crf", "CRF"), ("berturk_crf", "BERTurk_E (CRF layer)")]  # one per categorical slot
 LABELS = ["PLACE", "DATE", "TYPE", "NAME", "PRICE", "PEOPLE", "EXCLUDE"]
 METHODS = [  # (key in evaluation.json, shown name, BERTurk result files and decoder, or None for classic models)
     ("frequent_tag", "Frequent tag", None),
@@ -41,7 +41,7 @@ METHODS = [  # (key in evaluation.json, shown name, BERTurk result files and dec
     ("crf", "CRF", None),
     ("berturk_softmax", "BERTurk, softmax", ("", "softmax")),
     ("berturk_softmax_bio", "BERTurk, softmax + BIO rules", ("", "softmax_bio")),
-    ("berturk_crf", "BERTurk + CRF layer", ("_crf", "crf")),
+    ("berturk_crf", "BERTurk_E (CRF layer)", ("_crf", "crf")),
 ]
 SEEDS = (7, 13, 42)
 
@@ -182,7 +182,7 @@ def plot_metrics(evaluation):
 
 
 def plot_per_label(evaluation):
-    """Dot plot: F1 per label on the Codex test for HMM, CRF and BERTurk + CRF layer, with 95% intervals."""
+    """Dot plot: F1 per label on the Codex test for HMM, CRF and BERTurk_E, with 95% intervals."""
     gold = [r["tags"] for r in codex_rows()]
     support = {label: sum(s[0] == label for tags in gold for s in spans(tags)) for label in LABELS}
     results = {key: evaluation["models"][key]["codex_test"] for key, _ in THREE}
@@ -290,7 +290,7 @@ def plot_speed(evaluation):
 def plot_training():
     """Dev F1 per epoch for every BERTurk run; the kept (best) epoch is circled."""
     fig, axes = plt.subplots(1, 2, figsize=(WIDTH, 3.6), sharey=True)
-    for ax, (suffix, title) in zip(axes, [("", "BERTurk, softmax"), ("_crf", "BERTurk + CRF layer")]):
+    for ax, (suffix, title) in zip(axes, [("", "BERTurk, softmax"), ("_crf", "BERTurk_E (CRF layer)")]):
         for color, run in zip(SERIES, bert_runs(suffix)):
             epochs = [h["epoch"] for h in run["history"]]
             f1s = [h["dev_f1"] for h in run["history"]]
@@ -318,10 +318,10 @@ def codex_rows():
 
 
 def plot_confusion():
-    """Row-normalized word-level confusion (B-/I- merged) on the Codex test: HMM against BERTurk + CRF layer."""
+    """Row-normalized word-level confusion (B-/I- merged) on the Codex test: HMM against BERTurk_E."""
     gold = [r["tags"] for r in codex_rows()]
     classes = ["O"] + LABELS
-    runs = [("HMM", "hmm.json"), ("BERTurk + CRF layer (seed 7)", "bert-base-turkish-cased_crf_seed7_crf.json")]
+    runs = [("HMM", "hmm.json"), ("BERTurk_E (seed 7)", "bert-base-turkish-cased_crf_seed7_crf.json")]
     cmap = LinearSegmentedColormap.from_list("blues", BLUES)
     fig, axes = plt.subplots(1, 2, figsize=(WIDTH, 4.9), gridspec_kw={"wspace": 0.08})
     for n, (ax, (title, path)) in enumerate(zip(axes, runs)):
