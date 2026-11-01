@@ -99,5 +99,21 @@
       "NAME": 52
     }
   },
+  "opus_test": {
+    "lines": 300,
+    "bad_spans": 0,
+    "duplicates_or_matches_dropped": 2,
+    "requests": 298,
+    "tokens": 2361,
+    "spans": {
+      "TYPE": 229,
+      "PLACE": 204,
+      "DATE": 165,
+      "PEOPLE": 102,
+      "NAME": 75,
+      "PRICE": 56,
+      "EXCLUDE": 40
+    }
+  },
   "dropped_lines": []
 }

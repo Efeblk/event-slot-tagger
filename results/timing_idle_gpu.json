@@ -1,0 +1,87 @@
+{
+  "note": "BERTurk re-trained on an idle RTX 4070 SUPER (2026-10-31) only to measure time; predictions and scores were identical to the reported runs, so results/*.json are unchanged.",
+  "gpu": "NVIDIA GeForce RTX 4070 SUPER",
+  "runs": {
+    "bert-base-turkish-cased_seed7": {
+      "train_seconds": 30.7,
+      "epochs": 5,
+      "ms_per_request": {
+        "softmax": {
+          "dev": 0.795,
+          "codex_test": 0.722,
+          "biplan_test": 0.905
+        },
+        "softmax_bio": {
+          "dev": 1.086,
+          "codex_test": 1.045,
+          "biplan_test": 1.147
+        }
+      }
+    },
+    "bert-base-turkish-cased_seed13": {
+      "train_seconds": 29.0,
+      "epochs": 5,
+      "ms_per_request": {
+        "softmax": {
+          "dev": 0.756,
+          "codex_test": 0.678,
+          "biplan_test": 0.841
+        },
+        "softmax_bio": {
+          "dev": 1.012,
+          "codex_test": 1.044,
+          "biplan_test": 1.089
+        }
+      }
+    },
+    "bert-base-turkish-cased_seed42": {
+      "train_seconds": 28.4,
+      "epochs": 5,
+      "ms_per_request": {
+        "softmax": {
+          "dev": 0.773,
+          "codex_test": 0.693,
+          "biplan_test": 0.858
+        },
+        "softmax_bio": {
+          "dev": 0.917,
+          "codex_test": 0.961,
+          "biplan_test": 1.11
+        }
+      }
+    },
+    "bert-base-turkish-cased_crf_seed7": {
+      "train_seconds": 35.4,
+      "epochs": 5,
+      "ms_per_request": {
+        "crf": {
+          "dev": 1.03,
+          "codex_test": 1.064,
+          "biplan_test": 1.213
+        }
+      }
+    },
+    "bert-base-turkish-cased_crf_seed13": {
+      "train_seconds": 33.6,
+      "epochs": 5,
+      "ms_per_request": {
+        "crf": {
+          "dev": 1.025,
+          "codex_test": 1.055,
+          "biplan_test": 1.19
+        }
+      }
+    },
+    "bert-base-turkish-cased_crf_seed42": {
+      "train_seconds": 34.0,
+      "epochs": 5,
+      "ms_per_request": {
+        "crf": {
+          "dev": 1.054,
+          "codex_test": 1.076,
+          "biplan_test": 1.194
+        }
+      }
+    }
+  }
+}
