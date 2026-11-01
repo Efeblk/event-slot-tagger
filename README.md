@@ -77,6 +77,26 @@ Every method gives one tag per word; all are scored the same way.
 | CRF | `crf.py` | Linear-chain CRF (sklearn-crfsuite) with word features: folded word, stem before the apostrophe, the suffix after it, last 1–4 letters, shape, neighbouring words. c1, c2 chosen on dev from a 3×3 grid (chosen: 0.05, 0.1). `crf_no_suffix` drops the suffix features. |
 | BERTurk | `train_bert.py` | `dbmdz/bert-base-turkish-cased` fine-tuned as a token classifier, first sub-token of each word labeled (others −100). Decoded three ways: **softmax** (argmax per word), **softmax + BIO rules** (Viterbi over the same scores with IOB2-breaking transitions forbidden, no retraining), and **+ CRF layer** (learned transition scores, trained with the CRF loss log Z − gold score, Viterbi decoding). |
 
+### Baselines and what is new; architecture vs model
+
+The vanilla form of every method from the lecture is a baseline. What this project adds on top is listed separately,
+and each addition is measured against its own baseline (paired differences below).
+
+| Architecture | Specific model in this repo | Role |
+|---|---|---|
+| Majority lookup | Frequent tag per word, trained on `train` | floor baseline |
+| Generative sequence model: bigram HMM | Own implementation (`hmm.py`), add-0.1 smoothing, Viterbi | baseline |
+| Discriminative sequence model: linear-chain CRF | sklearn-crfsuite (L-BFGS, L1 + L2), word, stem, shape and neighbouring-word features | baseline (`crf_no_suffix`) |
+| Transformer encoder: BERT-base (12 layers, 768 hidden, 12 heads, ~110M parameters) | `dbmdz/bert-base-turkish-cased` (BERTurk, 32k Turkish WordPiece vocabulary) + linear softmax head | baseline (`berturk_softmax`) |
+| — | HMM: unknown words mapped to suffix classes (`<UNK-de>`); `hmm_bio` adds IOB2 constraints | new |
+| — | CRF: Turkish suffix and apostrophe features (`crf`) | new, +0.026 over its baseline |
+| — | BERTurk + BIO-constrained Viterbi decoding (`berturk_softmax_bio`) | new, +0.003, removes every IOB2 break |
+| — | BERTurk + learned CRF layer (`berturk_crf`) | new, no measurable gain over the constrained decoder |
+
+BERT is the architecture; BERTurk is one pre-trained model of that architecture (same layers as `bert-base-cased`,
+different vocabulary and pre-training text). Swapping in another model of a different architecture (e.g. a
+DeBERTa- or ELECTRA-style Turkish encoder) would be a new model; it is not part of this benchmark.
+
 The HMM's Viterbi and the CRF layer's loss and decoding are checked against the worked examples of the week 6
 slides in `tests/test_tagging.py` ("can fish" → VN with joint weight 0.1344; Z = 16 and loss = ln 2).
 
@@ -85,7 +105,44 @@ with the best dev F1 is kept. Three seeds (7, 13, 42) for every BERTurk variant.
 
 ## Results
 
-Metric: **exact-span micro F1** (a span counts only if label and both boundaries are right, as on the slides).
+### Benchmark and why this metric
+
+Methods are ranked by **exact-span micro F1 on the Codex test**: a span counts only if its label and both boundaries
+are right, as on the slides. Two methods count as different only if the 95% interval of their paired difference
+excludes 0. Why this metric and not the others:
+
+- **The unit the app uses is a span, not a token.** `en fazla 500 TL` tagged as `en fazla 500` is a wrong price
+  filter. Token accuracy gives that request 3 of 4 points; exact-span F1 gives it 0.
+- **Token accuracy flatters every model.** It counts the O tokens (30% of the Codex test tokens) and half-right
+  spans. The CRF baseline reaches 0.911 token accuracy, which looks almost solved, but only 0.873 span F1, and 4 of 10
+  requests have at least one wrong span.
+- **Precision and recall both matter.** An invented span filters out events the user wanted; a missed span ignores
+  a wish. F1 weighs the two equally, so it is used instead of either one.
+- **The labels are skewed** (Codex test: 293 PLACE spans, 69 NAME, 84 EXCLUDE). Micro F1 weights every span equally,
+  so it follows the frequent labels. **Macro F1** (mean over the 7 labels) and per-label F1 are reported next to it,
+  so a model cannot hide a weak rare label such as EXCLUDE.
+- **Request exact match** (every span of the request right) is the strictest, app-level number: did the app
+  understand the whole request?
+- **AUC is not used.** The output is a tag sequence decoded with Viterbi, not one score per item with a threshold;
+  a per-tag ROC curve would ignore span boundaries and the BIO constraints.
+
+The full benchmark on the Codex test (BERTurk: mean over 3 seeds):
+
+| Method | Role | Span micro F1 | Macro F1 | Request exact match | Token accuracy |
+|---|---|---|---|---|---|
+| Frequent tag | baseline | 0.632 | 0.560 | 0.164 | 0.750 |
+| HMM | baseline | 0.769 | 0.714 | 0.385 | 0.861 |
+| CRF, no suffix features | baseline | 0.848 | 0.829 | 0.518 | 0.886 |
+| CRF | new features | 0.873 | 0.852 | 0.595 | 0.911 |
+| BERTurk, softmax | baseline | 0.937 | 0.920 | 0.784 | 0.963 |
+| BERTurk, softmax + BIO rules | new decoder | 0.940 | 0.924 | 0.785 | 0.963 |
+| **BERTurk + CRF layer** | new decoder | **0.941** | **0.925** | **0.796** | **0.965** |
+
+The task is not saturated: the floor baseline gets 16% of requests fully right and the best model 80%. Token accuracy
+squeezes the gap between the CRF and BERTurk to 0.05; request exact match shows it is 0.20.
+
+### Span F1 with intervals
+
 Brackets: 95% bootstrap interval over requests (1,000 draws). BERTurk rows: mean ± standard deviation over 3 seeds,
 and the interval of that mean (each draw scores all 3 seeds on the same requests). Everything is in `results/evaluation.json`; test sets were scored once, after all
 settings were chosen on dev.

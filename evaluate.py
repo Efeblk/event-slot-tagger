@@ -1,8 +1,8 @@
 """Compare every trained tagger from its saved predictions (results/predictions/*.json); no model is rerun.
 
 For each test set (codex_test, biplan_test) and model:
-- exact-span micro F1 with a 95% bootstrap interval over requests (1,000 draws), macro F1, per-label F1 and a
-  bootstrap interval for each label;
+- exact-span micro F1 with a 95% bootstrap interval over requests (1,000 draws), macro F1, request exact match,
+  token accuracy, per-label F1 and a bootstrap interval for each label;
 - for BERTurk models trained with several seeds: mean and standard deviation over the seeds, and the bootstrap
   interval of the mean (each draw scores every seed on the same requests);
 - slices: requests typed without any Turkish letter vs with them, and PLACE spans written with a suffix;
@@ -89,7 +89,7 @@ def describe(rows, preds):
     scores = span_scores(gold, preds)
     return {"f1": scores["f1"], "low": low, "high": high, "macro_f1": scores["macro_f1"],
             "precision": scores["precision"], "recall": scores["recall"],
-            "request_exact": scores["request_exact"],
+            "request_exact": scores["request_exact"], "token_accuracy": scores["token_accuracy"],
             "labels": {k: round(v["f1"], 4) for k, v in scores["labels"].items()},
             "label_intervals": {k: bootstrap_f1(gold, preds, label=k) for k in scores["labels"]},
             "f1_no_turkish_letters": span_scores([gold[i] for i in plain], [preds[i] for i in plain])["f1"],
@@ -112,10 +112,13 @@ def main():
         if len(by_seed) > 1:
             out["seeds"][name] = {}
             for t, rows in tests.items():
-                f1s = [span_scores([r["tags"] for r in rows], by_seed[s][t])["f1"] for s in sorted(by_seed)]
+                runs = [span_scores([r["tags"] for r in rows], by_seed[s][t]) for s in sorted(by_seed)]
+                f1s = [run["f1"] for run in runs]
                 low, high = bootstrap_mean_f1([r["tags"] for r in rows], [by_seed[s][t] for s in sorted(by_seed)])
                 out["seeds"][name][t] = {"seeds": sorted(by_seed), "f1": f1s, "mean": statistics.mean(f1s),
-                                         "std": statistics.stdev(f1s), "low": low, "high": high}
+                                         "std": statistics.stdev(f1s), "low": low, "high": high,
+                                         **{f"mean_{k}": statistics.mean(run[k] for run in runs)
+                                            for k in ("macro_f1", "request_exact", "token_accuracy")}}
     for model, base in PAIRS:
         if model in first and base in first:
             out["differences"][f"{model} - {base}"] = {}
