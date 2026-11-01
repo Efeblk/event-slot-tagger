@@ -141,6 +141,8 @@ The full benchmark on the Codex test (BERTurk: mean over 3 seeds):
 The task is not saturated: the floor baseline gets 16% of requests fully right and the best model 80%. Token accuracy
 squeezes the gap between the CRF and BERTurk to 0.05; request exact match shows it is 0.20.
 
+![Token accuracy, span F1 and request exact match for every method](results/figures/metrics.png)
+
 ### Span F1 with intervals
 
 Brackets: 95% bootstrap interval over requests (1,000 draws). BERTurk rows: mean ± standard deviation over 3 seeds,
