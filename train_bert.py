@@ -119,7 +119,11 @@ def encode(tokenizer, rows):
     """Sub-token ids, first sub-token position of each word, and tag ids per request."""
     out = []
     for r in rows:
-        enc = tokenizer(r["tokens"], is_split_into_words=True, truncation=True, max_length=MAX_LEN)
+        words = list(r["tokens"])
+        empty = [i for i, w in enumerate(words) if not tokenizer.tokenize(w)]  # e.g. an emoji an uncased model strips
+        for i in empty:
+            words[i] = tokenizer.unk_token
+        enc = tokenizer(words, is_split_into_words=True, truncation=True, max_length=MAX_LEN)
         first = {}
         for pos, word in enumerate(enc.word_ids()):
             if word is not None and word not in first:

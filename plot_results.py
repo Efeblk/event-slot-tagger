@@ -113,6 +113,42 @@ def save(fig, name):
     print(f"wrote results/figures/{name}")
 
 
+ENCODERS = [  # (key in evaluation.json, shown name, result file prefix); all fine-tuned with a CRF layer, 3 seeds
+    ("berturk_crf", "BERTurk_E: BERTurk cased (BERT)", "bert-base-turkish-cased"),
+    ("electra_crf", "Turkish ELECTRA (ELECTRA)", "electra-base-turkish-cased-discriminator"),
+    ("berturk_uncased_crf", "BERTurk uncased (BERT)", "bert-base-turkish-uncased"),
+    ("xlmr_crf", "XLM-RoBERTa, multilingual (RoBERTa)", "xlm-roberta-base"),
+]
+
+
+def plot_models(evaluation):
+    """Pre-trained encoders compared: dev F1 (used to pick one) against both unseen-writer tests, 95% intervals."""
+    fig, ax = plt.subplots(figsize=(WIDTH, 3.6))
+    rows = list(reversed(ENCODERS))
+    for y, (key, _, prefix) in enumerate(rows):
+        dev = statistics.mean(load(f"{prefix}_crf_seed{s}.json")["decoders"]["crf"]["dev"]["f1"] for s in SEEDS)
+        ax.scatter(dev, y + 0.2, s=50, color=SERIES[1], edgecolor=SURFACE, linewidth=1.5, zorder=3)
+        ax.text(dev + 0.002, y + 0.2, f"{dev:.3f}", ha="left", va="center", fontsize=8, color=SERIES[1])
+        for offset, test, color in ((0.0, "codex_test", SERIES[0]), (-0.2, "opus_test", SERIES[2])):
+            s = evaluation["seeds"][key][test]
+            interval_dot(ax, s["mean"], s["low"], s["high"], y + offset, color, size=50)
+            ax.text(s["high"] + 0.002, y + offset, f"{s['mean']:.3f}", ha="left", va="center", fontsize=8,
+                    color=color, fontweight="bold" if key == "berturk_crf" else None)
+    ax.scatter([], [], s=50, color=SERIES[1], label="dev (same writer as training): used to pick")
+    ax.scatter([], [], s=50, color=SERIES[0], label="Codex test")
+    ax.scatter([], [], s=50, color=SERIES[2], label="Opus test")
+    legend_row(ax, 3)
+    ax.set_yticks(range(len(rows)), [name for _, name, _ in rows])
+    clean_y(ax)
+    ax.set_ylim(-0.5, len(rows) - 0.5)
+    ax.set_xlim(0.89, 1.0)
+    ax.set_xlabel("Exact-span micro F1")
+    header(ax, "Dev picks BERTurk_E; the unseen writers slightly favour ELECTRA and uncased BERTurk",
+           "Same training, same settings, CRF layer on top, mean of 3 seeds; lines: 95% interval of that mean",
+           legend=True)
+    save(fig, "models.png")
+
+
 def plot_dev_vs_test(evaluation):
     """Dumbbell: dev F1 (same writer as train) against Codex test F1 (another writer), with the 95% interval."""
     dev = dev_f1()
@@ -476,6 +512,7 @@ def main():
     evaluation = load("evaluation.json")
     plot_dev_vs_test(evaluation)
     plot_metrics(evaluation)
+    plot_models(evaluation)
     plot_per_label(evaluation)
     plot_differences(evaluation)
     plot_speed(evaluation)
