@@ -8,6 +8,7 @@ For each test set (codex_test, biplan_test, opus_test) and model:
 - slices: requests typed without any Turkish letter vs with them, and PLACE spans written with a suffix;
 - IOB2 breaks: predicted I- tags that do not continue a span of their own label;
 - error types: wrong boundary, wrong label, missed span, invented span.
+Dev F1 per model (mean over seeds) with the same kind of interval, since dev picks the final model.
 Every Codex test request that BERTurk_E (lowest seed) gets wrong is listed with its gold and predicted spans in
 results/error_examples.json, for reading the errors by hand.
 Paired bootstrap intervals for the differences in PAIRS (the claims in the README) use the same draws for both models.
@@ -110,7 +111,7 @@ def main():
     models = load_predictions()
     out = {"requests": {t: len(rows) for t, rows in tests.items()},
            "slice_sizes": {t: sum(not TURKISH.search(r["text"]) for r in rows) for t, rows in tests.items()},
-           "models": {}, "seeds": {}, "differences": {}}
+           "models": {}, "seeds": {}, "dev": {}, "differences": {}}
     first = {}
     for name, by_seed in models.items():
         seed = min(by_seed, key=lambda s: -1 if s is None else s)
@@ -126,6 +127,11 @@ def main():
                                          "std": statistics.stdev(f1s), "low": low, "high": high,
                                          **{f"mean_{k}": statistics.mean(run[k] for run in runs)
                                             for k in ("macro_f1", "request_exact", "token_accuracy")}}
+    dev = [r["tags"] for r in read_jsonl(ROOT / "data" / "clean" / "dev.jsonl")]
+    for name, by_seed in models.items():  # dev decides which model is picked; its interval shows how sure that is
+        runs = [by_seed[s]["dev"] for s in sorted(by_seed, key=lambda s: s or 0)]
+        low, high = bootstrap_mean_f1(dev, runs)
+        out["dev"][name] = {"f1": statistics.mean(span_scores(dev, run)["f1"] for run in runs), "low": low, "high": high}
     for model, base in PAIRS:
         if model in first and base in first:
             out["differences"][f"{model} - {base}"] = {}
