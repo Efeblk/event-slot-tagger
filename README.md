@@ -122,6 +122,11 @@ with the best dev F1 is kept. Three seeds (7, 13, 42) for every BERTurk variant.
 
 ### Benchmark and why this metric
 
+Everything tried, in one picture: dev decides, the two unseen-writer tests check. The sections below give the
+intervals and the paired differences.
+
+![Dev, Codex and Opus span F1 and Codex token accuracy and exact match for all nine methods](results/figures/benchmark.png)
+
 Methods are ranked by **exact-span micro F1 on the two AI-written tests** (Codex, then Opus as a second check): a span counts only if its label and both boundaries
 are right, as on the slides. Two methods count as different only if the 95% interval of their paired difference
 excludes 0. Why this metric and not the others:
