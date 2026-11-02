@@ -189,14 +189,14 @@ settings were chosen on dev.
 
 | Method | Dev F1 | Codex test F1 | Opus test F1 | Bi' Plan F1 | IOB2 breaks (Codex + Bi' Plan) |
 |---|---|---|---|---|---|
-| Frequent tag | 0.782 | 0.632 [0.603, 0.661] | 0.630 [0.596, 0.664] | 0.717 [0.615, 0.826] | 188 |
-| HMM | 0.857 | 0.769 [0.745, 0.794] | 0.729 [0.698, 0.761] | 0.852 [0.741, 0.942] | 0 |
-| HMM + BIO rules | 0.857 | 0.769 [0.745, 0.794] | 0.729 [0.698, 0.761] | 0.852 [0.741, 0.942] | 0 |
-| CRF, no suffix features | 0.954 | 0.848 [0.827, 0.869] | 0.775 [0.748, 0.806] | 0.955 [0.909, 0.991] | 0 |
-| CRF | 0.968 | 0.873 [0.855, 0.893] | 0.805 [0.778, 0.837] | 0.965 [0.922, 1.000] | 0 |
-| BERTurk, softmax | 0.983 | 0.937 ± 0.003 [0.923, 0.950] | 0.935 ± 0.009 [0.918, 0.950] | 0.945 ± 0.010 [0.888, 0.986] | 8 |
-| BERTurk, softmax + BIO rules | 0.984 | 0.940 ± 0.002 [0.927, 0.953] | 0.943 ± 0.007 [0.928, 0.957] | 0.945 ± 0.010 [0.888, 0.986] | 0 |
-| **BERTurk_E (CRF layer)** | 0.986 | **0.941 ± 0.004** [0.929, 0.954] | **0.942 ± 0.005** [0.924, 0.957] | 0.956 ± 0.000 [0.902, 0.992] | 0 |
+| Frequent tag | 0.782 [0.752, 0.809] | 0.632 [0.603, 0.661] | 0.630 [0.596, 0.664] | 0.717 [0.615, 0.826] | 188 |
+| HMM | 0.857 [0.833, 0.880] | 0.769 [0.745, 0.794] | 0.729 [0.698, 0.761] | 0.852 [0.741, 0.942] | 0 |
+| HMM + BIO rules | 0.857 [0.833, 0.880] | 0.769 [0.745, 0.794] | 0.729 [0.698, 0.761] | 0.852 [0.741, 0.942] | 0 |
+| CRF, no suffix features | 0.954 [0.939, 0.969] | 0.848 [0.827, 0.869] | 0.775 [0.748, 0.806] | 0.955 [0.909, 0.991] | 0 |
+| CRF | 0.968 [0.955, 0.979] | 0.873 [0.855, 0.893] | 0.805 [0.778, 0.837] | 0.965 [0.922, 1.000] | 0 |
+| BERTurk, softmax | 0.983 [0.975, 0.991] | 0.937 ± 0.003 [0.923, 0.950] | 0.935 ± 0.009 [0.918, 0.950] | 0.945 ± 0.010 [0.888, 0.986] | 8 |
+| BERTurk, softmax + BIO rules | 0.984 [0.977, 0.992] | 0.940 ± 0.002 [0.927, 0.953] | 0.943 ± 0.007 [0.928, 0.957] | 0.945 ± 0.010 [0.888, 0.986] | 0 |
+| **BERTurk_E (CRF layer)** | 0.986 [0.978, 0.993] | **0.941 ± 0.004** [0.929, 0.954] | **0.942 ± 0.005** [0.924, 0.957] | 0.956 ± 0.000 [0.902, 0.992] | 0 |
 
 ![Dev F1 against Codex test F1 for every method](results/figures/dev_vs_test.png)
 
@@ -235,13 +235,13 @@ afterwards.
 
 | Model (+ CRF layer) | Architecture | Dev F1 | Codex test F1 | Opus test F1 | Opus: difference to BERTurk_E |
 |---|---|---|---|---|---|
-| **BERTurk_E** (BERTurk cased) | BERT | **0.986** | 0.941 [0.929, 0.954] | 0.942 [0.924, 0.957] | — |
-| Turkish ELECTRA | ELECTRA | 0.984 | 0.948 [0.935, 0.960] | 0.956 [0.942, 0.968] | +0.013 [+0.002, +0.026] |
-| BERTurk uncased | BERT | 0.980 | 0.947 [0.936, 0.960] | 0.955 [0.941, 0.969] | +0.013 [+0.001, +0.025] |
-| XLM-RoBERTa (multilingual) | RoBERTa | 0.980 | 0.931 [0.918, 0.945] | 0.913 [0.895, 0.932] | −0.029 [−0.044, −0.014] |
+| **BERTurk_E** (BERTurk cased) | BERT | **0.986** [0.978, 0.993] | 0.941 [0.929, 0.954] | 0.942 [0.924, 0.957] | — |
+| Turkish ELECTRA | ELECTRA | 0.984 [0.975, 0.992] | 0.948 [0.935, 0.960] | 0.956 [0.942, 0.968] | +0.013 [+0.002, +0.026] |
+| BERTurk uncased | BERT | 0.980 [0.970, 0.988] | 0.947 [0.936, 0.960] | 0.955 [0.941, 0.969] | +0.013 [+0.001, +0.025] |
+| XLM-RoBERTa (multilingual) | RoBERTa | 0.980 [0.971, 0.988] | 0.931 [0.918, 0.945] | 0.913 [0.895, 0.932] | −0.029 [−0.044, −0.014] |
 
 Mean over 3 seeds; brackets are the 95% interval of that mean, and the last column is the paired difference of the
-seed means. On Codex, ELECTRA and uncased BERTurk are +0.006 [−0.002, +0.014] over BERTurk_E (not distinguishable).
+seed means. The dev intervals overlap for all four, so dev alone cannot rank them. On Codex, ELECTRA and uncased BERTurk are +0.006 [−0.002, +0.014] over BERTurk_E (not distinguishable).
 
 - **Dev picks BERTurk_E**, so it stays the reported model. Choosing again after seeing the tests would leak them.
 - **Dev cannot separate the strong models.** All four score 0.98–0.99 on dev (same writer as training), within 0.006
