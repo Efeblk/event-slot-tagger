@@ -28,16 +28,23 @@ TESTS = ("codex_test", "biplan_test", "opus_test")
 TURKISH = re.compile("[çğıöşüÇĞİÖŞÜ]")
 PAIRS = (("crf", "hmm_bio"), ("crf", "crf_no_suffix"), ("hmm_bio", "hmm"), ("hmm", "frequent_tag"),
          ("berturk_softmax_bio", "berturk_softmax"), ("berturk_crf", "berturk_softmax_bio"),
-         ("berturk_softmax_bio", "crf"))
+         ("berturk_softmax_bio", "crf"), ("electra_crf", "berturk_crf"), ("berturk_uncased_crf", "berturk_crf"),
+         ("xlmr_crf", "berturk_crf"))
+
+
+ENCODERS = {"bert-base-turkish-cased": "berturk", "bert-base-turkish-uncased": "berturk_uncased",
+            "electra-base-turkish-cased-discriminator": "electra", "xlm-roberta-base": "xlmr"}
 
 
 def load_predictions():
-    """{model: {seed or None: {split: tags}}}. BERTurk files are named bert-base-turkish-cased[_crf]_seed<N>_<decoder>."""
+    """{model: {seed or None: {split: tags}}}. Fine-tuned encoder files are named <model>[_crf]_seed<N>_<decoder>;
+    ENCODERS gives each pre-trained model its short name (berturk_crf is BERTurk_E)."""
     models = defaultdict(dict)
     for path in sorted((ROOT / "results" / "predictions").glob("*.json")):
-        match = re.fullmatch(r"bert-base-turkish-cased(_crf)?_seed(\d+)_(\w+)", path.stem)
-        if match:
-            name, seed = ("berturk_crf" if match[1] else f"berturk_{match[3]}"), int(match[2])
+        match = re.fullmatch(r"(.+?)(_crf)?_seed(\d+)_(\w+)", path.stem)
+        if match and match[1] in ENCODERS:
+            short = ENCODERS[match[1]]
+            name, seed = (f"{short}_crf" if match[2] else f"{short}_{match[4]}"), int(match[3])
         else:
             name, seed = path.stem, None
         models[name][seed] = json.loads(path.read_text(encoding="utf-8"))

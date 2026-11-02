@@ -113,6 +113,106 @@ def save(fig, name):
     print(f"wrote results/figures/{name}")
 
 
+ENCODERS = [  # (key in evaluation.json, shown name, result file prefix); all fine-tuned with a CRF layer, 3 seeds
+    ("berturk_crf", "BERTurk_E: BERTurk cased (BERT)", "bert-base-turkish-cased"),
+    ("electra_crf", "Turkish ELECTRA (ELECTRA)", "electra-base-turkish-cased-discriminator"),
+    ("berturk_uncased_crf", "BERTurk uncased (BERT)", "bert-base-turkish-uncased"),
+    ("xlmr_crf", "XLM-RoBERTa, multilingual (RoBERTa)", "xlm-roberta-base"),
+]
+
+
+def plot_models(evaluation):
+    """Pre-trained encoders compared: dev F1 (used to pick one) against both unseen-writer tests, 95% intervals."""
+    fig, ax = plt.subplots(figsize=(WIDTH, 3.6))
+    rows = list(reversed(ENCODERS))
+    for y, (key, _, prefix) in enumerate(rows):
+        dev = statistics.mean(load(f"{prefix}_crf_seed{s}.json")["decoders"]["crf"]["dev"]["f1"] for s in SEEDS)
+        ax.scatter(dev, y + 0.2, s=50, color=SERIES[1], edgecolor=SURFACE, linewidth=1.5, zorder=3)
+        ax.text(dev + 0.002, y + 0.2, f"{dev:.3f}", ha="left", va="center", fontsize=8, color=SERIES[1])
+        for offset, test, color in ((0.0, "codex_test", SERIES[0]), (-0.2, "opus_test", SERIES[2])):
+            s = evaluation["seeds"][key][test]
+            interval_dot(ax, s["mean"], s["low"], s["high"], y + offset, color, size=50)
+            ax.text(s["high"] + 0.002, y + offset, f"{s['mean']:.3f}", ha="left", va="center", fontsize=8,
+                    color=color, fontweight="bold" if key == "berturk_crf" else None)
+    ax.scatter([], [], s=50, color=SERIES[1], label="dev (same writer as training): used to pick")
+    ax.scatter([], [], s=50, color=SERIES[0], label="Codex test")
+    ax.scatter([], [], s=50, color=SERIES[2], label="Opus test")
+    legend_row(ax, 3)
+    ax.set_yticks(range(len(rows)), [name for _, name, _ in rows])
+    clean_y(ax)
+    ax.set_ylim(-0.5, len(rows) - 0.5)
+    ax.set_xlim(0.89, 1.0)
+    ax.set_xlabel("Exact-span micro F1")
+    header(ax, "Dev picks BERTurk_E; the unseen writers slightly favour ELECTRA and uncased BERTurk",
+           "Same training, same settings, CRF layer on top, mean of 3 seeds; lines: 95% interval of that mean",
+           legend=True)
+    save(fig, "models.png")
+
+
+TRIED = [  # (key in evaluation.json, shown name, role, result file prefix and decoder, or None for classic models)
+    ("frequent_tag", "Frequent tag", "baseline", None),
+    ("hmm", "HMM", "baseline", None),
+    ("crf", "CRF", "new", None),
+    ("berturk_softmax", "BERTurk, softmax", "baseline", ("bert-base-turkish-cased", "softmax")),
+    ("berturk_softmax_bio", "BERTurk, softmax + BIO rules", "new", ("bert-base-turkish-cased", "softmax_bio")),
+    ("berturk_crf", "BERTurk_E: BERTurk + CRF layer", "ours", ("bert-base-turkish-cased_crf", "crf")),
+    ("electra_crf", "Turkish ELECTRA + CRF layer", "tried", ("electra-base-turkish-cased-discriminator_crf", "crf")),
+    ("berturk_uncased_crf", "BERTurk uncased + CRF layer", "tried", ("bert-base-turkish-uncased_crf", "crf")),
+    ("xlmr_crf", "XLM-RoBERTa + CRF layer", "tried", ("xlm-roberta-base_crf", "crf")),
+]
+
+
+def plot_benchmark(evaluation):
+    """Everything tried in one picture: span F1 on dev (used to pick) and on both unseen-writer tests, next to the
+    Codex token accuracy and request exact match that span F1 is preferred to."""
+    classic = load("classic.json")["models"]
+    fig, (ax, table) = plt.subplots(1, 2, figsize=(WIDTH, 4.6), sharey=True,
+                                    gridspec_kw={"width_ratios": [2.1, 1.25], "wspace": 0.03})
+    rows = list(reversed(TRIED))
+    columns = [("dev", SERIES[1]), ("Codex", SERIES[0]), ("Opus", SERIES[2]), ("acc.", MUTED), ("exact", MUTED)]
+    for y, (key, _, role, bert) in enumerate(rows):
+        if bert is None:
+            dev, s = classic[key]["dev"]["f1"], evaluation["models"][key]
+            codex, opus = s["codex_test"]["f1"], s["opus_test"]["f1"]
+            acc, exact = s["codex_test"]["token_accuracy"], s["codex_test"]["request_exact"]
+        else:
+            dev = statistics.mean(load(f"{bert[0]}_seed{seed}.json")["decoders"][bert[1]]["dev"]["f1"] for seed in SEEDS)
+            s = evaluation["seeds"][key]
+            codex, opus = s["codex_test"]["mean"], s["opus_test"]["mean"]
+            acc, exact = s["codex_test"]["mean_token_accuracy"], s["codex_test"]["mean_request_exact"]
+        if role == "ours":
+            for a in (ax, table):
+                a.axhspan(y - 0.45, y + 0.45, color=GRID, alpha=0.6, zorder=0, linewidth=0)
+        ax.plot([min(codex, opus), dev], [y, y], color=GRID, linewidth=4, zorder=1, solid_capstyle="round")
+        for x, color in ((dev, SERIES[1]), (codex, SERIES[0]), (opus, SERIES[2])):
+            ax.scatter(x, y, s=48, color=color, edgecolor=SURFACE, linewidth=1.3, zorder=3)
+        for i, value in enumerate((dev, codex, opus, acc, exact)):
+            table.text(i, y, f"{value:.2f}" if i > 2 else f"{value:.3f}", ha="center", va="center", fontsize=8.5,
+                       color=columns[i][1], fontweight="bold" if role == "ours" else None)
+    for i, (name, color) in enumerate(columns):
+        table.text(i, len(rows) - 0.35, name, ha="center", va="bottom", fontsize=8.5, color=color, fontweight="bold")
+    table.text(1, len(rows) + 0.25, "span F1", ha="center", va="bottom", fontsize=8.5, color=INK_2)
+    table.text(3.5, len(rows) + 0.25, "Codex", ha="center", va="bottom", fontsize=8.5, color=INK_2)
+    for boundary in (2.5, 5.5, 6.5):  # other encoders | BERTurk decoders | CRF | count-based models
+        for a in (ax, table):
+            a.axhline(boundary, color=GRID, linewidth=0.8, zorder=0)
+    table.set_xlim(-0.6, len(columns) - 0.4)
+    table.axis("off")
+    ax.set_yticks(range(len(rows)), [f"{name}  ({role})" for _, name, role, _ in rows])
+    clean_y(ax)
+    ax.set_ylim(-0.6, len(rows) - 0.2)
+    ax.set_xlim(0.55, 1.0)
+    ax.set_xlabel("Exact-span micro F1")
+    ax.scatter([], [], s=48, color=SERIES[1], label="dev: used to pick")
+    ax.scatter([], [], s=48, color=SERIES[0], label="Codex test")
+    ax.scatter([], [], s=48, color=SERIES[2], label="Opus test")
+    legend_row(ax, 3)
+    header(ax, "Nine methods tried; dev picks BERTurk_E",
+           "Tests: two AI writers the models never saw. BERTurk rows: mean of 3 seeds", legend=True)
+    note(ax, "acc. = token accuracy, exact = share of requests with every span right (Codex test).", below=34)
+    save(fig, "benchmark.png")
+
+
 def plot_dev_vs_test(evaluation):
     """Dumbbell: dev F1 (same writer as train) against Codex test F1 (another writer), with the 95% interval."""
     dev = dev_f1()
@@ -476,6 +576,8 @@ def main():
     evaluation = load("evaluation.json")
     plot_dev_vs_test(evaluation)
     plot_metrics(evaluation)
+    plot_models(evaluation)
+    plot_benchmark(evaluation)
     plot_per_label(evaluation)
     plot_differences(evaluation)
     plot_speed(evaluation)

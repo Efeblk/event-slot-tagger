@@ -100,14 +100,17 @@ and each addition is measured against its own baseline (paired differences below
 | — | CRF: Turkish suffix and apostrophe features (`crf`) | new, +0.026 over its baseline |
 | — | BERTurk + BIO-constrained Viterbi decoding (`berturk_softmax_bio`) | new, +0.003, removes every IOB2 break |
 | — | **BERTurk_E**: BERTurk + learned CRF layer (`berturk_crf`), our final model | new, no measurable gain over the constrained decoder |
+| Transformer encoder: ELECTRA-base (discriminator, same size as BERT-base) | `dbmdz/electra-base-turkish-cased-discriminator` + CRF layer (`electra_crf`) | new model |
+| Transformer encoder: RoBERTa-base (XLM-R, 12 layers, 250k multilingual SentencePiece vocabulary) | `FacebookAI/xlm-roberta-base` + CRF layer (`xlmr_crf`) | new model |
+| Transformer encoder: BERT-base | `dbmdz/bert-base-turkish-uncased` + CRF layer (`berturk_uncased_crf`) | new model (same architecture, lowercased input) |
 
 **Our model, BERTurk_E** (E for *etkinlik*, event): BERTurk with a CRF layer on top, fine-tuned on the 1,691
 training requests (3 seeds). The architecture is BERT; the pre-trained model is BERTurk; BERTurk_E is the tagger
 this project trained.
 
 BERT is the architecture; BERTurk is one pre-trained model of that architecture (same layers as `bert-base-cased`,
-different vocabulary and pre-training text). Swapping in another model of a different architecture (e.g. a
-DeBERTa- or ELECTRA-style Turkish encoder) would be a new model; it is not part of this benchmark.
+different vocabulary and pre-training text). Three other pre-trained models were tried with exactly the same training
+(see "Which pre-trained model" below); BERTurk_E was picked on dev.
 
 The HMM's Viterbi and the CRF layer's loss and decoding are checked against the worked examples of the week 6
 slides in `tests/test_tagging.py` ("can fish" → VN with joint weight 0.1344; Z = 16 and loss = ln 2).
@@ -118,6 +121,11 @@ with the best dev F1 is kept. Three seeds (7, 13, 42) for every BERTurk variant.
 ## Results
 
 ### Benchmark and why this metric
+
+Everything tried, in one picture: dev decides, the two unseen-writer tests check. The sections below give the
+intervals and the paired differences.
+
+![Dev, Codex and Opus span F1 and Codex token accuracy and exact match for all nine methods](results/figures/benchmark.png)
 
 Methods are ranked by **exact-span micro F1 on the two AI-written tests** (Codex, then Opus as a second check): a span counts only if its label and both boundaries
 are right, as on the slides. Two methods count as different only if the 95% interval of their paired difference
@@ -218,6 +226,34 @@ Per label on the Codex test (F1 and 95% bootstrap interval; BERTurk: seed 7):
 | EXCLUDE | **0.359 [0.25, 0.47]** | 0.766 [0.67, 0.85] | 0.899 [0.82, 0.96] |
 
 ![F1 per label for HMM, CRF and BERTurk_E (CRF layer)](results/figures/per_label.png)
+
+### Which pre-trained model
+
+Four pre-trained encoders, each fine-tuned with the same script, settings and CRF layer on top, 3 seeds each
+(`python train_bert.py --model <name> --crf --seed <seed>`). The model is **picked on dev**; the tests are only read
+afterwards.
+
+| Model (+ CRF layer) | Architecture | Dev F1 | Codex test F1 | Opus test F1 | Opus: difference to BERTurk_E |
+|---|---|---|---|---|---|
+| **BERTurk_E** (BERTurk cased) | BERT | **0.986** | 0.941 [0.929, 0.954] | 0.942 [0.924, 0.957] | — |
+| Turkish ELECTRA | ELECTRA | 0.984 | 0.948 [0.935, 0.960] | 0.956 [0.942, 0.968] | +0.013 [+0.002, +0.026] |
+| BERTurk uncased | BERT | 0.980 | 0.947 [0.936, 0.960] | 0.955 [0.941, 0.969] | +0.013 [+0.001, +0.025] |
+| XLM-RoBERTa (multilingual) | RoBERTa | 0.980 | 0.931 [0.918, 0.945] | 0.913 [0.895, 0.932] | −0.029 [−0.044, −0.014] |
+
+Mean over 3 seeds; brackets are the 95% interval of that mean, and the last column is the paired difference of the
+seed means. On Codex, ELECTRA and uncased BERTurk are +0.006 [−0.002, +0.014] over BERTurk_E (not distinguishable).
+
+- **Dev picks BERTurk_E**, so it stays the reported model. Choosing again after seeing the tests would leak them.
+- **Dev cannot separate the strong models.** All four score 0.98–0.99 on dev (same writer as training), within 0.006
+  of each other. On the unseen writers, ELECTRA and uncased BERTurk are slightly ahead of BERTurk_E (clearly on Opus,
+  not on Codex). A dev set from a different writer would be the better selection set; with this data, the honest
+  result is that the three Turkish models are close, and the multilingual XLM-R is clearly behind.
+- **A Turkish model beats a multilingual one**: XLM-R shares its 12 layers and vocabulary with 100 languages and is
+  −0.029 behind on Opus.
+- The uncased model needed one fix: its tokenizer drops some emoji entirely, so `train_bert.py` maps a word with no
+  sub-token to the unknown token. The cased models never meet such a word, so their results are unchanged.
+
+![Dev, Codex and Opus F1 for four pre-trained models](results/figures/models.png)
 
 ### What the results show
 
