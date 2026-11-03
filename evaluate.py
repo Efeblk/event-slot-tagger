@@ -74,7 +74,7 @@ def error_types(gold_list, pred_list):
             else:
                 counts["missed"] += 1
         counts["invented"] += sum(1 for _, s, e in pred - gold if not any(g[1] < e and g[2] > s for g in gold))
-    return dict(counts)
+    return dict(sorted(counts.items()))
 
 
 def place_suffix_recall(rows, pred_list):

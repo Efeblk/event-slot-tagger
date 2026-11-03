@@ -66,8 +66,8 @@
         "errors": {
           "invented": 4,
           "missed": 11,
-          "wrong label": 14,
-          "wrong boundary": 39
+          "wrong boundary": 39,
+          "wrong label": 14
         }
       },
       "biplan_test": {
@@ -176,9 +176,9 @@
         "iob2_breaks": 0,
         "errors": {
           "invented": 8,
+          "missed": 3,
           "wrong boundary": 32,
-          "wrong label": 13,
-          "missed": 3
+          "wrong label": 13
         }
       }
     },
@@ -238,8 +238,8 @@
         "errors": {
           "invented": 4,
           "missed": 13,
-          "wrong label": 10,
-          "wrong boundary": 46
+          "wrong boundary": 46,
+          "wrong label": 10
         }
       },
       "biplan_test": {
@@ -410,8 +410,8 @@
         "errors": {
           "invented": 4,
           "missed": 14,
-          "wrong label": 10,
-          "wrong boundary": 43
+          "wrong boundary": 43,
+          "wrong label": 10
         }
       },
       "biplan_test": {
@@ -582,8 +582,8 @@
         "errors": {
           "invented": 3,
           "missed": 8,
-          "wrong label": 10,
-          "wrong boundary": 44
+          "wrong boundary": 44,
+          "wrong label": 10
         }
       },
       "biplan_test": {
@@ -693,8 +693,8 @@
         "iob2_breaks": 0,
         "errors": {
           "invented": 2,
-          "wrong boundary": 25,
           "missed": 3,
+          "wrong boundary": 25,
           "wrong label": 8
         }
       }
@@ -865,9 +865,9 @@
         "iob2_breaks": 0,
         "errors": {
           "invented": 12,
-          "wrong label": 56,
+          "missed": 56,
           "wrong boundary": 75,
-          "missed": 56
+          "wrong label": 56
         }
       }
     },
@@ -926,8 +926,8 @@
         "iob2_breaks": 0,
         "errors": {
           "invented": 8,
-          "wrong boundary": 97,
           "missed": 54,
+          "wrong boundary": 97,
           "wrong label": 52
         }
       },
@@ -1037,9 +1037,9 @@
         "iob2_breaks": 0,
         "errors": {
           "invented": 15,
-          "wrong label": 48,
           "missed": 128,
-          "wrong boundary": 65
+          "wrong boundary": 65,
+          "wrong label": 48
         }
       }
     },
@@ -1099,8 +1099,8 @@
         "errors": {
           "invented": 2,
           "missed": 9,
-          "wrong label": 12,
-          "wrong boundary": 40
+          "wrong boundary": 40,
+          "wrong label": 12
         }
       },
       "biplan_test": {
@@ -1209,8 +1209,8 @@
         "iob2_breaks": 0,
         "errors": {
           "invented": 8,
-          "wrong boundary": 24,
           "missed": 4,
+          "wrong boundary": 24,
           "wrong label": 9
         }
       }
@@ -1270,9 +1270,9 @@
         "iob2_breaks": 180,
         "errors": {
           "invented": 15,
-          "wrong label": 83,
+          "missed": 178,
           "wrong boundary": 190,
-          "missed": 178
+          "wrong label": 83
         }
       },
       "biplan_test": {
@@ -1328,10 +1328,10 @@
         "place_suffix_recall": 0.875,
         "iob2_breaks": 8,
         "errors": {
-          "wrong boundary": 9,
           "invented": 1,
-          "wrong label": 2,
-          "missed": 2
+          "missed": 2,
+          "wrong boundary": 9,
+          "wrong label": 2
         }
       },
       "opus_test": {
@@ -1387,10 +1387,10 @@
         "place_suffix_recall": 0.5423728813559322,
         "iob2_breaks": 157,
         "errors": {
-          "wrong label": 60,
           "invented": 15,
+          "missed": 171,
           "wrong boundary": 118,
-          "missed": 171
+          "wrong label": 60
         }
       }
     },
@@ -1449,9 +1449,9 @@
         "iob2_breaks": 0,
         "errors": {
           "invented": 12,
-          "wrong label": 130,
+          "missed": 23,
           "wrong boundary": 130,
-          "missed": 23
+          "wrong label": 130
         }
       },
       "biplan_test": {
@@ -1503,9 +1503,9 @@
         "iob2_breaks": 0,
         "errors": {
           "invented": 4,
+          "missed": 1,
           "wrong boundary": 1,
-          "wrong label": 5,
-          "missed": 1
+          "wrong label": 5
         }
       },
       "opus_test": {
@@ -1623,9 +1623,9 @@
         "iob2_breaks": 0,
         "errors": {
           "invented": 12,
-          "wrong label": 130,
+          "missed": 23,
           "wrong boundary": 130,
-          "missed": 23
+          "wrong label": 130
         }
       },
       "biplan_test": {
@@ -1677,9 +1677,9 @@
         "iob2_breaks": 0,
         "errors": {
           "invented": 4,
+          "missed": 1,
           "wrong boundary": 1,
-          "wrong label": 5,
-          "missed": 1
+          "wrong label": 5
         }
       },
       "opus_test": {
@@ -1797,9 +1797,9 @@
         "iob2_breaks": 0,
         "errors": {
           "invented": 4,
+          "missed": 10,
           "wrong boundary": 57,
-          "wrong label": 26,
-          "missed": 10
+          "wrong label": 26
         }
       },
       "biplan_test": {
@@ -1851,8 +1851,8 @@
         "iob2_breaks": 0,
         "errors": {
           "invented": 5,
-          "wrong boundary": 1,
-          "missed": 1
+          "missed": 1,
+          "wrong boundary": 1
         }
       },
       "opus_test": {
@@ -1909,9 +1909,9 @@
         "iob2_breaks": 0,
         "errors": {
           "invented": 12,
+          "missed": 8,
           "wrong boundary": 41,
-          "wrong label": 27,
-          "missed": 8
+          "wrong label": 27
         }
       }
     }
