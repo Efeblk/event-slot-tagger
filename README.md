@@ -2,7 +2,8 @@
 
 COE025 Natural Language Processing, Project 2: Token Classification.
 Solo project by İsmet Efe Balık (see `contributions/`). Project 1 (English slot filling) is kept unchanged in
-`project1/`.
+`project1/`. Reviewing? [`AGENTS.md`](AGENTS.md) maps every claim to its evidence, and `python verify.py` checks the
+CPU part in about a minute.
 
 A user types a request to an event app, for example
 
@@ -32,6 +33,25 @@ Why this is harder than the slot filling of the lecture (`fly from Boston to Par
 
 There is no public Turkish dataset for this task, so this project built one. It is the request parser that
 Bi' Plan (my event-recommendation app for İstanbul) needs.
+
+## Related work: what existing Turkish slot data covers
+
+Turkish slot filling exists, but not for this task:
+
+- **ATIS in Turkish** (Upadhyay et al., 2018; part of MultiATIS++, Xu et al., 2020) is flight booking: cities, dates,
+  airlines. No events, prices as limits, or exclusions.
+- **MASSIVE** (FitzGerald et al., 2023) has 16,521 Turkish requests translated from English for a voice assistant,
+  with 55 slot types (`date`, `place_name`, `event_name`, ...). `event_name` is mostly a calendar entry
+  (`toplantı`), there is no price-limit or party-size slot, and **no slot means "not this"**.
+  `massive_check.py` lists the 40 requests where a slot is followed by a negation word (`hariç`, `dışında`,
+  `değil`, `olmasın`, ...). Read by hand, only 4 of them exclude something the user asks for, and in all 4 the
+  excluded item gets the same slot as a wanted one:
+  `[artist_name : bach] veya [artist_name : schubert] hariç [music_genre : klasik]`,
+  `[media_type : fox haber] den değil`. A tagger trained on MASSIVE would turn "not Bach" into a Bach filter.
+  Here, 356 of the 1,691 training requests (21%) and 81 of the 299 Codex test requests have an EXCLUDE span.
+
+So the new part is the negation scope (EXCLUDE) and the event-search slots, in typed chat Turkish (lowercase, no
+Turkish letters), not Turkish slot filling as such.
 
 ## Data
 
@@ -113,7 +133,9 @@ different vocabulary and pre-training text). Three other pre-trained models were
 (see "Which pre-trained model" below); BERTurk_E was picked on dev.
 
 The HMM's Viterbi and the CRF layer's loss and decoding are checked against the worked examples of the week 6
-slides in `tests/test_tagging.py` ("can fish" → VN with joint weight 0.1344; Z = 16 and loss = ln 2).
+slides in `tests/test_tagging.py` ("can fish" → VN with joint weight 0.1344; Z = 16 and loss = ln 2). The same file
+checks that our exact-span scorer gives the same micro precision, recall and F1 as `seqeval` (conlleval rules) for
+every saved prediction of every model and split (92 pairs, identical to 1e-12).
 
 Training setup for BERTurk: AdamW (encoder 3e-5, head 1e-3), linear warmup 10%, batch 16, 5 epochs, bf16; the epoch
 with the best dev F1 is kept. Three seeds (7, 13, 42) for every BERTurk variant.
@@ -254,6 +276,26 @@ seed means. The dev intervals overlap for all four, so dev alone cannot rank the
   sub-token to the unknown token. The cased models never meet such a word, so their results are unchanged.
 
 ![Dev, Codex and Opus F1 for four pre-trained models](results/figures/models.png)
+
+### Was the training setting tuned?
+
+BERTurk_E's setting (encoder learning rate 3e-5, 5 epochs) was fixed before training. `tune_bert.py` checks it
+afterwards: BERTurk_E trained for every learning rate in {1e-5, 2e-5, 3e-5, 5e-5} × {5, 10} epochs, 3 seeds each
+(24 runs), chosen on dev only. Mean dev F1 over the 3 seeds:
+
+| Learning rate | 5 epochs | 10 epochs |
+|---|---|---|
+| 1e-5 | 0.983 | 0.984 |
+| 2e-5 | 0.985 | 0.985 |
+| 3e-5 | **0.986** | 0.984 |
+| 5e-5 | 0.984 | 0.984 |
+
+- **Dev picks the setting already used** (3e-5, 5 epochs), so the reported model and every test number stay the
+  same; the tests did not need to be read for this choice.
+- All eight settings are within 0.003 of each other on dev, and every interval overlaps (e.g. 3e-5 / 5 epochs:
+  [0.978, 0.993]; 1e-5 / 5 epochs: [0.974, 0.991]). The result does not depend on a lucky setting.
+- The reported setting was retrained inside the search, and all 3 seeds gave exactly the saved predictions, so
+  BERTurk training is deterministic.
 
 ### What the results show
 
@@ -458,6 +500,8 @@ python evaluate.py              # results/evaluation.json, results/error_example
 python make_contrast.py         # data/contrast/contrast.jsonl
 python robustness.py            # results/robustness.json (attacks + contrast set)
 python learning_curve.py        # results/learning_curve.json
+python tune_bert.py             # results/tuning.json (learning rate x epochs, picked on dev)
+python massive_check.py PATH/tr-TR.jsonl   # results/massive_negation.json (MASSIVE 1.1, downloaded separately)
 python plot_results.py          # results/figures/*.png
 ```
 
@@ -485,8 +529,12 @@ Predictions of every model for dev and both test sets are kept in `results/predi
 | `make_contrast.py` | Builds the contrast set (`data/contrast/contrast.jsonl`) |
 | `robustness.py` | Perturbed Codex test and contrast set scores |
 | `learning_curve.py` | Scores after training on 10%, 25%, 50% of the data |
+| `tune_bert.py` | Learning-rate and epoch search for BERTurk_E on dev |
+| `massive_check.py` | Negation cues after slots in MASSIVE tr-TR (related work) |
 | `plot_results.py` | The figures in `results/figures/` |
 | `tests/test_tagging.py` | Unit tests |
+| `verify.py` | Reruns the CPU pipeline, checks for leakage and checks the README tables |
+| `AGENTS.md` | Guide for reviewers: claims, evidence, how to check |
 | `project1/` | Project 1, unchanged |
 
 Licence: code MIT (`LICENSE`). The data in `data/` was written for this project and is released under MIT as well.

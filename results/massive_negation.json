@@ -1,0 +1,247 @@
+{
+ "requests": 16521,
+ "slot_types": 55,
+ "slot_then_cue": 40,
+ "candidates": [
+  {
+   "id": "1181",
+   "partition": "train",
+   "intent": "news_query",
+   "annot_utt": "bana yeni [news_topic : trump] makaleleri bul ama [media_type : fox haber] den değil"
+  },
+  {
+   "id": "1333",
+   "partition": "dev",
+   "intent": "weather_query",
+   "annot_utt": "[date : bugün] [weather_descriptor : sıcak] değil mi"
+  },
+  {
+   "id": "1334",
+   "partition": "dev",
+   "intent": "weather_query",
+   "annot_utt": "[date : bugün] çok [weather_descriptor : sıcak] değil mi"
+  },
+  {
+   "id": "1541",
+   "partition": "train",
+   "intent": "weather_query",
+   "annot_utt": "bir [weather_descriptor : şemsiye] taşımak istemiyorum [date : bugün] [weather_descriptor : yağmur] olacak mı"
+  },
+  {
+   "id": "2001",
+   "partition": "train",
+   "intent": "iot_cleaning",
+   "annot_utt": "eğer [device_type : elektrik süpürgesi] aktif değil ise lütfen aktif et"
+  },
+  {
+   "id": "2010",
+   "partition": "train",
+   "intent": "weather_query",
+   "annot_utt": "[date : bu hafta] hava [weather_descriptor : güneşli] mi değil mi"
+  },
+  {
+   "id": "2084",
+   "partition": "train",
+   "intent": "play_music",
+   "annot_utt": "[artist_name : bach] veya [artist_name : schubert] hariç [music_genre : klasik] dinlemek istiyorum"
+  },
+  {
+   "id": "2085",
+   "partition": "test",
+   "intent": "play_music",
+   "annot_utt": "alexa [artist_name : bach] veya [artist_name : schubert] hariç [music_genre : klasik] müzik dinlemek istiyorum"
+  },
+  {
+   "id": "2086",
+   "partition": "train",
+   "intent": "play_music",
+   "annot_utt": "[artist_name : bach] veya [artist_name : schubert] dışında herhangi bir [music_genre : klasik] dinlemek isterim"
+  },
+  {
+   "id": "2351",
+   "partition": "test",
+   "intent": "iot_hue_lightchange",
+   "annot_utt": "olly [house_place : eve] [color_type : koyu] renkler yerine açık renkli ışıklar koy"
+  },
+  {
+   "id": "3378",
+   "partition": "test",
+   "intent": "iot_hue_lightoff",
+   "annot_utt": "[house_place : mutfakta] ışık olmasın"
+  },
+  {
+   "id": "3543",
+   "partition": "test",
+   "intent": "iot_hue_lightchange",
+   "annot_utt": "ışığın biraz daha [color_type : kırmızımsı] olmasını istiyorum"
+  },
+  {
+   "id": "3612",
+   "partition": "train",
+   "intent": "weather_query",
+   "annot_utt": "[weather_descriptor : yağış] yok değil mi"
+  },
+  {
+   "id": "3614",
+   "partition": "test",
+   "intent": "weather_query",
+   "annot_utt": "[date : bugün] [weather_descriptor : güneşli] değil mi"
+  },
+  {
+   "id": "3616",
+   "partition": "train",
+   "intent": "weather_query",
+   "annot_utt": "[date : yarın] [weather_descriptor : yağmur] beklemiyoruz değil mi"
+  },
+  {
+   "id": "3882",
+   "partition": "train",
+   "intent": "iot_hue_lightchange",
+   "annot_utt": "[house_place : ev] ışıklarının [color_type : pembe] olmasını istiyorum"
+  },
+  {
+   "id": "4225",
+   "partition": "train",
+   "intent": "takeaway_query",
+   "annot_utt": "[food_type : pizzamın] burada olmasına daha ne kadar var"
+  },
+  {
+   "id": "4878",
+   "partition": "train",
+   "intent": "alarm_set",
+   "annot_utt": "[time : akşam dokuzdaki] alarmım yerine [time : sabah beş] alarmı ekle"
+  },
+  {
+   "id": "6226",
+   "partition": "train",
+   "intent": "general_quirky",
+   "annot_utt": "[date : bugün] fena değildi"
+  },
+  {
+   "id": "6912",
+   "partition": "dev",
+   "intent": "calendar_query",
+   "annot_utt": "[date : bugün] [event_name : toplantıda] kimin olmasını beklemeliyim"
+  },
+  {
+   "id": "7145",
+   "partition": "train",
+   "intent": "calendar_remove",
+   "annot_utt": "[date : bir martdaki] [meal_type : akşam yemeğine] katılmak istemiyorum artık ajandamdan siler misin"
+  },
+  {
+   "id": "7230",
+   "partition": "train",
+   "intent": "datetime_query",
+   "annot_utt": "[date : bugün pazartesi] değil mi"
+  },
+  {
+   "id": "7231",
+   "partition": "train",
+   "intent": "datetime_query",
+   "annot_utt": "[date : bugün beş mart] mı değil mi"
+  },
+  {
+   "id": "7957",
+   "partition": "train",
+   "intent": "calendar_set",
+   "annot_utt": "benim takvimimde bu etkinliğin [event_name : tekrarlayan döngüde] olmasına ihtiyacım var"
+  },
+  {
+   "id": "8102",
+   "partition": "train",
+   "intent": "calendar_set",
+   "annot_utt": "alexa takvimimi [date : bugün] müsait değil olarak işaretle"
+  },
+  {
+   "id": "8103",
+   "partition": "train",
+   "intent": "calendar_set",
+   "annot_utt": "takvimimi [date : bugün] müsait değil olarak işaretle"
+  },
+  {
+   "id": "9968",
+   "partition": "dev",
+   "intent": "cooking_recipe",
+   "annot_utt": "[ingredient : beyaz şarap] yerine ne kullanılabilir"
+  },
+  {
+   "id": "9969",
+   "partition": "test",
+   "intent": "cooking_recipe",
+   "annot_utt": "[ingredient : safran] yerine ne kullanılabilir"
+  },
+  {
+   "id": "9970",
+   "partition": "train",
+   "intent": "cooking_recipe",
+   "annot_utt": "[ingredient : kinoa] lezzetsiz olmasın diye yapacak bir şey var mı"
+  },
+  {
+   "id": "10059",
+   "partition": "train",
+   "intent": "cooking_recipe",
+   "annot_utt": "[food_type : margarinin] yerine ne kullanılabilir"
+  },
+  {
+   "id": "10187",
+   "partition": "train",
+   "intent": "cooking_recipe",
+   "annot_utt": "[food_type : tereyağı] yerine kullanılacak en iyi şey nedir"
+  },
+  {
+   "id": "11990",
+   "partition": "test",
+   "intent": "recommendation_movies",
+   "annot_utt": "[place_name : sinemalarda] kötü olmayan bir film"
+  },
+  {
+   "id": "12154",
+   "partition": "train",
+   "intent": "transport_traffic",
+   "annot_utt": "benim [place_name : ofis] dışında trafik şartları nasıl"
+  },
+  {
+   "id": "12205",
+   "partition": "dev",
+   "intent": "transport_taxi",
+   "annot_utt": "[transport_agency : uber'in] [time : on beş dakika] içinde [place_name : evimde] olmasını rica eder misin"
+  },
+  {
+   "id": "12714",
+   "partition": "train",
+   "intent": "transport_taxi",
+   "annot_utt": "şu anda [place_name : zeki bar] dışından beni alacak bir [transport_agency : uber] ayırt"
+  },
+  {
+   "id": "15349",
+   "partition": "dev",
+   "intent": "social_post",
+   "annot_utt": "[business_name : metrodan] memnun değilim lütfen bana yardım et"
+  },
+  {
+   "id": "15350",
+   "partition": "test",
+   "intent": "social_post",
+   "annot_utt": "[business_name : metro'dan] memnun değilim lütfen bana yardım eder misin"
+  },
+  {
+   "id": "15684",
+   "partition": "train",
+   "intent": "social_post",
+   "annot_utt": "[business_name : şişko tantuniye] jcpenney yerine onların kapatıyor olması gerektiğini söyleyen bir [media_type : tweet] yaz"
+  },
+  {
+   "id": "16969",
+   "partition": "train",
+   "intent": "email_sendemail",
+   "annot_utt": "e-postayı [email_address : xyz at gmail nokta com] adresi yerine [email_address : a. b. c. at gmail nokta com] adresine gönder"
+  },
+  {
+   "id": "17132",
+   "partition": "train",
+   "intent": "email_sendemail",
+   "annot_utt": "lütfen [person : özgeye] bir sonraki program için [date : pazar gününün] tatil olmasını isteyen bir eposta taslağı hazırla"
+  }
+ ]
+}
