@@ -277,6 +277,26 @@ seed means. The dev intervals overlap for all four, so dev alone cannot rank the
 
 ![Dev, Codex and Opus F1 for four pre-trained models](results/figures/models.png)
 
+### Was the training setting tuned?
+
+BERTurk_E's setting (encoder learning rate 3e-5, 5 epochs) was fixed before training. `tune_bert.py` checks it
+afterwards: BERTurk_E trained for every learning rate in {1e-5, 2e-5, 3e-5, 5e-5} × {5, 10} epochs, 3 seeds each
+(24 runs), chosen on dev only. Mean dev F1 over the 3 seeds:
+
+| Learning rate | 5 epochs | 10 epochs |
+|---|---|---|
+| 1e-5 | 0.983 | 0.984 |
+| 2e-5 | 0.985 | 0.985 |
+| 3e-5 | **0.986** | 0.984 |
+| 5e-5 | 0.984 | 0.984 |
+
+- **Dev picks the setting already used** (3e-5, 5 epochs), so the reported model and every test number stay the
+  same; the tests did not need to be read for this choice.
+- All eight settings are within 0.003 of each other on dev, and every interval overlaps (e.g. 3e-5 / 5 epochs:
+  [0.978, 0.993]; 1e-5 / 5 epochs: [0.974, 0.991]). The result does not depend on a lucky setting.
+- The reported setting was retrained inside the search, and all 3 seeds gave exactly the saved predictions, so
+  BERTurk training is deterministic.
+
 ### What the results show
 
 1. **Context decides EXCLUDE.** The HMM gets EXCLUDE right only 36% of the time: its emission sees one word, and

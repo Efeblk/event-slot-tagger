@@ -23,7 +23,10 @@ python verify.py
    Viterbi and the CRF loss against the week 6 slide examples, and our scorer against `seqeval` on every saved
    prediction. The CRF-layer test needs `torch` and is skipped without it.
 2. `prepare_data.py`, `train_classic.py` and `evaluate.py` rerun from the raw data and reproduce all 14 committed
-   outputs exactly (data splits, classic predictions, `results/evaluation.json`); only timing fields may differ.
+   outputs (data splits, classic predictions, `results/evaluation.json`). Only timing fields may differ, and on an OS
+   other than Windows the dev F1 of the CRF settings that were *not* chosen may differ by about 0.001 (crfsuite float
+   noise; seen on the Linux CI). This is reported and checked within a tolerance; the chosen CRF and every
+   prediction must be identical.
 3. No request is shared between train, dev and the three test sets (after lowercasing and folding Turkish letters).
 4. Every number in the two README benchmark tables and the paired-difference table equals `results/evaluation.json`.
 
@@ -40,7 +43,7 @@ should be empty. `tune_bert.py` does this check for all three seeds and prints t
 |---|---|---|
 | The task is not trivial (teacher's bar: baseline ≥ 90% accuracy or ≥ 85% EM) | Frequent tag: 0.750 token accuracy, 16.4% request exact match on the Codex test | `results/evaluation.json` → `models.frequent_tag.codex_test` |
 | Final model: BERTurk_E, 0.941 span F1 / 79.6% EM on Codex, 0.942 on Opus | Mean of seeds 7, 13, 42 with bootstrap intervals | `evaluation.json` → `seeds.berturk_crf` |
-| Tests were not used to choose anything | Model and settings are chosen on dev; the README reports where dev and tests disagree (the "Which pre-trained model" section) instead of re-choosing | `evaluation.json` → `dev`; `results/tuning.json` (learning-rate and epoch search, dev only) |
+| Tests were not used to choose anything | Model and settings are chosen on dev; the README reports where dev and tests disagree (the "Which pre-trained model" section) instead of re-choosing | `evaluation.json` → `dev`; `results/tuning.json`: a dev-only search over 4 learning rates × 2 epoch counts picks the setting already used |
 | No leakage between splits | Dedup after folding in `prepare_data.py` | `verify.py` step 3 |
 | Our scorer is standard exact-span F1 | Same P/R/F1 as `seqeval` on all 92 model/split pairs | `tests/test_tagging.py::test_span_scores_match_seqeval_on_every_saved_prediction` |
 | Each addition is measured against its own baseline, with paired 95% intervals | Paired bootstrap over requests, same draws for both models | `evaluation.json` → `differences`; `common.py::bootstrap_mean_f1` |
