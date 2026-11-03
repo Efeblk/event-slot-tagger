@@ -33,6 +33,25 @@ Why this is harder than the slot filling of the lecture (`fly from Boston to Par
 There is no public Turkish dataset for this task, so this project built one. It is the request parser that
 Bi' Plan (my event-recommendation app for İstanbul) needs.
 
+## Related work: what existing Turkish slot data covers
+
+Turkish slot filling exists, but not for this task:
+
+- **ATIS in Turkish** (Upadhyay et al., 2018; part of MultiATIS++, Xu et al., 2020) is flight booking: cities, dates,
+  airlines. No events, prices as limits, or exclusions.
+- **MASSIVE** (FitzGerald et al., 2023) has 16,521 Turkish requests translated from English for a voice assistant,
+  with 55 slot types (`date`, `place_name`, `event_name`, ...). `event_name` is mostly a calendar entry
+  (`toplantı`), there is no price-limit or party-size slot, and **no slot means "not this"**.
+  `massive_check.py` lists the 40 requests where a slot is followed by a negation word (`hariç`, `dışında`,
+  `değil`, `olmasın`, ...). Read by hand, only 4 of them exclude something the user asks for, and in all 4 the
+  excluded item gets the same slot as a wanted one:
+  `[artist_name : bach] veya [artist_name : schubert] hariç [music_genre : klasik]`,
+  `[media_type : fox haber] den değil`. A tagger trained on MASSIVE would turn "not Bach" into a Bach filter.
+  Here, 356 of the 1,691 training requests (21%) and 81 of the 299 Codex test requests have an EXCLUDE span.
+
+So the new part is the negation scope (EXCLUDE) and the event-search slots, in typed chat Turkish (lowercase, no
+Turkish letters), not Turkish slot filling as such.
+
 ## Data
 
 All labels follow one written guide, [`data/GUIDELINES.md`](data/GUIDELINES.md) (span boundaries, suffixes,
@@ -460,6 +479,8 @@ python evaluate.py              # results/evaluation.json, results/error_example
 python make_contrast.py         # data/contrast/contrast.jsonl
 python robustness.py            # results/robustness.json (attacks + contrast set)
 python learning_curve.py        # results/learning_curve.json
+python tune_bert.py             # results/tuning.json (learning rate x epochs, picked on dev)
+python massive_check.py PATH/tr-TR.jsonl   # results/massive_negation.json (MASSIVE 1.1, downloaded separately)
 python plot_results.py          # results/figures/*.png
 ```
 
@@ -487,6 +508,8 @@ Predictions of every model for dev and both test sets are kept in `results/predi
 | `make_contrast.py` | Builds the contrast set (`data/contrast/contrast.jsonl`) |
 | `robustness.py` | Perturbed Codex test and contrast set scores |
 | `learning_curve.py` | Scores after training on 10%, 25%, 50% of the data |
+| `tune_bert.py` | Learning-rate and epoch search for BERTurk_E on dev |
+| `massive_check.py` | Negation cues after slots in MASSIVE tr-TR (related work) |
 | `plot_results.py` | The figures in `results/figures/` |
 | `tests/test_tagging.py` | Unit tests |
 | `project1/` | Project 1, unchanged |
