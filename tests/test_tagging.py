@@ -116,3 +116,21 @@ def test_contrast_pairs_flip_only_the_target():
         others = lambda r: {(label, " ".join(r["tokens"][s:e])) for label, s, e in spans(r["tags"])} - {
             (r["target"][0], " ".join(target_words(r)))}
         assert others(want) == others(exclude)
+
+
+def test_span_scores_match_seqeval_on_every_saved_prediction():
+    """Our exact-span scorer gives the same micro P/R/F1 as seqeval (conlleval rules: a stray I- tag starts a span) for
+    every model and split in results/predictions."""
+    import json
+
+    from common import ROOT, read_jsonl
+    seqeval = pytest.importorskip("seqeval.metrics")
+    paths = sorted((ROOT / "results" / "predictions").glob("*.json"))
+    assert paths
+    for path in paths:
+        for split, pred in json.loads(path.read_text(encoding="utf-8")).items():
+            gold = [row["tags"] for row in read_jsonl(ROOT / "data" / "clean" / f"{split}.jsonl")]
+            ours = span_scores(gold, pred)
+            assert ours["precision"] == pytest.approx(seqeval.precision_score(gold, pred), abs=1e-12), (path.stem, split)
+            assert ours["recall"] == pytest.approx(seqeval.recall_score(gold, pred), abs=1e-12), (path.stem, split)
+            assert ours["f1"] == pytest.approx(seqeval.f1_score(gold, pred), abs=1e-12), (path.stem, split)

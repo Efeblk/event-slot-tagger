@@ -113,7 +113,9 @@ different vocabulary and pre-training text). Three other pre-trained models were
 (see "Which pre-trained model" below); BERTurk_E was picked on dev.
 
 The HMM's Viterbi and the CRF layer's loss and decoding are checked against the worked examples of the week 6
-slides in `tests/test_tagging.py` ("can fish" → VN with joint weight 0.1344; Z = 16 and loss = ln 2).
+slides in `tests/test_tagging.py` ("can fish" → VN with joint weight 0.1344; Z = 16 and loss = ln 2). The same file
+checks that our exact-span scorer gives the same micro precision, recall and F1 as `seqeval` (conlleval rules) for
+every saved prediction of every model and split (92 pairs, identical to 1e-12).
 
 Training setup for BERTurk: AdamW (encoder 3e-5, head 1e-3), linear warmup 10%, batch 16, 5 epochs, bf16; the epoch
 with the best dev F1 is kept. Three seeds (7, 13, 42) for every BERTurk variant.
