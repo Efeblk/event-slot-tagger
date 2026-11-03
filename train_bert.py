@@ -166,10 +166,10 @@ def predict(model, examples, pad_id, rules):
     return out
 
 
-def fit(model_name, crf, seed, epochs, train_rows, dev_rows):
+def fit(model_name, crf, seed, epochs, train_rows, dev_rows, lr=LR):
     """Fine-tune on train_rows and keep the epoch with the best dev span F1.
 
-    Returns (tokenizer, model, history, train_seconds). Also used by learning_curve.py and robustness.py.
+    Returns (tokenizer, model, history, train_seconds). Also used by learning_curve.py, robustness.py and tune_bert.py.
     """
     set_seed(seed)
     tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -177,7 +177,7 @@ def fit(model_name, crf, seed, epochs, train_rows, dev_rows):
     model = Tagger(model_name, crf).cuda()
 
     head = [p for n, p in model.named_parameters() if not n.startswith("encoder.")]
-    optimizer = torch.optim.AdamW([{"params": model.encoder.parameters(), "lr": LR, "weight_decay": 0.01},
+    optimizer = torch.optim.AdamW([{"params": model.encoder.parameters(), "lr": lr, "weight_decay": 0.01},
                                    {"params": head, "lr": HEAD_LR, "weight_decay": 0.0}])
     steps = math.ceil(len(train) / BATCH) * epochs
     scheduler = get_linear_schedule_with_warmup(optimizer, int(WARMUP * steps), steps)

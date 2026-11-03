@@ -54,6 +54,23 @@ def content(path):
     return strip(json.loads(text))
 
 
+def first_difference(a, b, where=""):
+    """Path and values of the first place where two parsed JSON values differ, or None."""
+    if isinstance(a, dict) and isinstance(b, dict):
+        for k in sorted(set(a) | set(b)):
+            found = first_difference(a.get(k), b.get(k), f"{where}.{k}")
+            if found:
+                return found
+        return None
+    if isinstance(a, list) and isinstance(b, list) and len(a) == len(b):
+        for i, (x, y) in enumerate(zip(a, b)):
+            found = first_difference(x, y, f"{where}[{i}]")
+            if found:
+                return found
+        return None
+    return None if a == b else f"{where or '(top)'}: committed {str(a)[:80]}, now {str(b)[:80]}"
+
+
 def run(*command):
     print("$ python", " ".join(command), flush=True)
     result = subprocess.run([sys.executable, *command], cwd=ROOT, capture_output=True, text=True, encoding="utf-8",
@@ -127,6 +144,9 @@ def main():
         changed = [path.relative_to(ROOT).as_posix() for path in OUTPUTS if content(path) != expected[path]]
         print(f"reproduced {len(OUTPUTS) - len(changed)} of {len(OUTPUTS)} committed outputs exactly"
               + (f"; different: {changed}" if changed else ""))
+        for path in OUTPUTS:
+            if content(path) != expected[path]:
+                print(f"  {path.relative_to(ROOT).as_posix()}: {first_difference(expected[path], content(path))}")
         ok &= not changed
     finally:
         for path, data in saved.items():
