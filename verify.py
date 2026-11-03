@@ -4,7 +4,9 @@
 2. Reruns prepare_data.py, train_classic.py and evaluate.py, and checks that every file they write has the same
    content as the committed one. Timing fields (train_seconds, ms_per_request) are not compared, and neither are line
    endings or key order. BERTurk is not retrained; evaluate.py scores its saved predictions.
-3. Checks that every number in the two README benchmark tables (Codex and Opus test) and in the table of paired
+3. Checks that no training or dev request is also a test request (after lowercasing and folding Turkish letters,
+   as prepare_data.py does), and that no test request appears in two test sets.
+4. Checks that every number in the two README benchmark tables (Codex and Opus test) and in the table of paired
    differences equals the value in results/evaluation.json, rounded as printed.
 
 The committed files are restored afterwards, so the working tree is unchanged. Exit code 0 when everything matches.
@@ -17,7 +19,8 @@ import os
 import subprocess
 import sys
 
-from common import ROOT
+from common import ROOT, read_jsonl
+from prepare_data import key
 
 OUTPUTS = (sorted((ROOT / "data" / "clean").glob("*")) + [ROOT / "results" / "classic.json"]
            + [ROOT / "results" / "predictions" / f"{m}.json"
@@ -76,6 +79,17 @@ def readme_tables():
     return tables
 
 
+def check_overlap():
+    texts = {name: {key(r["text"]) for r in read_jsonl(ROOT / "data" / "clean" / f"{name}.jsonl")}
+             for name in ("train", "dev", "codex_test", "opus_test", "biplan_test")}
+    tests = ("codex_test", "opus_test", "biplan_test")
+    problems = [f"{a} and {b} share {len(texts[a] & texts[b])} requests"
+                for i, a in enumerate(("train", "dev") + tests) for b in (("dev",) + tests)[i:]
+                if a != b and texts[a] & texts[b]]
+    print(f"overlap between train, dev and the three tests: {'none' if not problems else problems}")
+    return not problems
+
+
 def check_readme(evaluation):
     problems, checked = [], 0
     tables = readme_tables()
@@ -117,6 +131,7 @@ def main():
     finally:
         for path, data in saved.items():
             path.write_bytes(data)
+    ok &= check_overlap()
     checked, problems = check_readme(json.loads((ROOT / "results" / "evaluation.json").read_text(encoding="utf-8")))
     print(f"README numbers checked against results/evaluation.json: {checked}, mismatches: {len(problems)}")
     for problem in problems:

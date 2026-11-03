@@ -2,7 +2,8 @@
 
 COE025 Natural Language Processing, Project 2: Token Classification.
 Solo project by İsmet Efe Balık (see `contributions/`). Project 1 (English slot filling) is kept unchanged in
-`project1/`.
+`project1/`. Reviewing? [`AGENTS.md`](AGENTS.md) maps every claim to its evidence, and `python verify.py` checks the
+CPU part in about a minute.
 
 A user types a request to an event app, for example
 
@@ -512,6 +513,8 @@ Predictions of every model for dev and both test sets are kept in `results/predi
 | `massive_check.py` | Negation cues after slots in MASSIVE tr-TR (related work) |
 | `plot_results.py` | The figures in `results/figures/` |
 | `tests/test_tagging.py` | Unit tests |
+| `verify.py` | Reruns the CPU pipeline, checks for leakage and checks the README tables |
+| `AGENTS.md` | Guide for reviewers: claims, evidence, how to check |
 | `project1/` | Project 1, unchanged |
 
 Licence: code MIT (`LICENSE`). The data in `data/` was written for this project and is released under MIT as well.
